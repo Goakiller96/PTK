@@ -980,16 +980,8 @@ a {
     font-size: 1.25rem;
   }
 
-  .phones__link {
-    font-size: 0.875rem;
-  }
-
   .emails__icon::before {
     font-size: 1.25rem;
-  }
-
-  .emails__link {
-    font-size: 0.875rem;
   }
 
   .header__logo {
@@ -1101,6 +1093,11 @@ a {
 
   .search-form__icon {
     margin-right: 2.8125rem;
+    padding: 0px 5px;
+  }
+
+  .actions-header__cart {
+    padding: 5px 5px;
   }
 }
 
@@ -1128,16 +1125,8 @@ a {
     font-size: 1rem;
   }
 
-  .phones__link {
-    font-size: 0.75rem;
-  }
-
   .emails__icon::before {
     font-size: 1rem;
-  }
-
-  .emails__link {
-    font-size: 0.75rem;
   }
 
   .header__logo {
@@ -1548,18 +1537,6 @@ a {
     }
 }
 
-@supports (font-size: clamp( 0.75rem , 0.7078947368rem  +  0.2105263158vw , 0.875rem )) {
-    .phones__link {
-      font-size: clamp( 0.75rem , 0.7078947368rem  +  0.2105263158vw , 0.875rem );
-    }
-}
-
-@supports not (font-size: clamp( 0.75rem , 0.7078947368rem  +  0.2105263158vw , 0.875rem )) {
-    .phones__link {
-      font-size: calc(0.75rem + 0.125 * (100vw - 20rem) / 59.375);
-    }
-}
-
 @supports (font-size: clamp( 1rem , 0.9157894737rem  +  0.4210526316vw , 1.25rem )) {
     .emails__icon::before {
       font-size: clamp( 1rem , 0.9157894737rem  +  0.4210526316vw , 1.25rem );
@@ -1569,18 +1546,6 @@ a {
 @supports not (font-size: clamp( 1rem , 0.9157894737rem  +  0.4210526316vw , 1.25rem )) {
     .emails__icon::before {
       font-size: calc(1rem + 0.25 * (100vw - 20rem) / 59.375);
-    }
-}
-
-@supports (font-size: clamp( 0.75rem , 0.7078947368rem  +  0.2105263158vw , 0.875rem )) {
-    .emails__link {
-      font-size: clamp( 0.75rem , 0.7078947368rem  +  0.2105263158vw , 0.875rem );
-    }
-}
-
-@supports not (font-size: clamp( 0.75rem , 0.7078947368rem  +  0.2105263158vw , 0.875rem )) {
-    .emails__link {
-      font-size: calc(0.75rem + 0.125 * (100vw - 20rem) / 59.375);
     }
 }
 
