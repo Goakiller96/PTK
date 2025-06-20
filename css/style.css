@@ -1526,6 +1526,16 @@ a {
   }
 }
 
+@media (max-width: 29.99875em) {
+  .phones__link {
+    font-size: 0.75rem;
+  }
+
+  .emails__link {
+    font-size: 0.75rem;
+  }
+}
+
 @media (min-width: 20em) and (max-width: 79.375em) {
 @supports (font-size: clamp( 1rem , 0.9157894737rem  +  0.4210526316vw , 1.25rem )) {
     .phones__icon::before {
