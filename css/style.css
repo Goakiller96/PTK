@@ -281,7 +281,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 30px;
+  gap: 20px;
   width: 100%;
 }
 
@@ -340,6 +340,10 @@ a {
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   color: rgba(56, 56, 56, 0.8);
+}
+
+.header__container {
+  background-color: #f8f4ba;
 }
 
 .header__body {
@@ -542,6 +546,7 @@ a {
   z-index: 5;
   font-size: 22px;
   color: rgba(56, 56, 56, 0.8);
+  padding: 5px 10px;
 }
 
 .search-form__item {
@@ -624,6 +629,7 @@ a {
   font-size: 1.5rem;
   font-weight: 600;
   color: rgba(56, 56, 56, 0.8);
+  padding: 5px 5px;
 }
 
 .icon-menu {
@@ -989,7 +995,7 @@ a {
   }
 
   .header__logo-img {
-    margin-right: 0.9375rem;
+    margin-right: 0.625rem;
   }
 
   .header__logo-text {
@@ -997,11 +1003,11 @@ a {
   }
 
   .header__actions {
-    gap: 1.875rem;
+    gap: 0.9375rem;
   }
 
   .header__actions {
-    margin-left: 1.875rem;
+    margin-left: 1.25rem;
   }
 
   .header__bottom-btn {
@@ -1078,6 +1084,7 @@ a {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    padding-bottom: 0.625rem;
   }
 
   .header__actions {
@@ -1088,16 +1095,11 @@ a {
   }
 
   .search-form._active .search-form__item {
-    top: 95px;
+    top: 105px;
   }
 
   .search-form__icon {
     margin-right: 2.8125rem;
-    padding: 0px 5px;
-  }
-
-  .actions-header__cart {
-    padding: 5px 5px;
   }
 }
 
@@ -1134,7 +1136,7 @@ a {
   }
 
   .header__logo-img {
-    margin-right: 0.5rem;
+    margin-right: 0.3125rem;
   }
 
   .header__logo-text {
@@ -1142,7 +1144,7 @@ a {
   }
 
   .header__actions {
-    gap: 0.3125rem;
+    gap: 0.125rem;
   }
 
   .header__actions {
@@ -1561,15 +1563,15 @@ a {
     }
 }
 
-@supports (margin-right: clamp( 0.5rem , 0.3526315789rem  +  0.7368421053vw , 0.9375rem )) {
+@supports (margin-right: clamp( 0.3125rem , 0.2072368421rem  +  0.5263157895vw , 0.625rem )) {
     .header__logo-img {
-      margin-right: clamp( 0.5rem , 0.3526315789rem  +  0.7368421053vw , 0.9375rem );
+      margin-right: clamp( 0.3125rem , 0.2072368421rem  +  0.5263157895vw , 0.625rem );
     }
 }
 
-@supports not (margin-right: clamp( 0.5rem , 0.3526315789rem  +  0.7368421053vw , 0.9375rem )) {
+@supports not (margin-right: clamp( 0.3125rem , 0.2072368421rem  +  0.5263157895vw , 0.625rem )) {
     .header__logo-img {
-      margin-right: calc(0.5rem + 0.4375 * (100vw - 20rem) / 59.375);
+      margin-right: calc(0.3125rem + 0.3125 * (100vw - 20rem) / 59.375);
     }
 }
 
@@ -1585,27 +1587,27 @@ a {
     }
 }
 
-@supports (gap: clamp( 0.3125rem , -0.2138157895rem  +  2.6315789474vw , 1.875rem )) {
+@supports (gap: clamp( 0.125rem , -0.1486842105rem  +  1.3684210526vw , 0.9375rem )) {
     .header__actions {
-      gap: clamp( 0.3125rem , -0.2138157895rem  +  2.6315789474vw , 1.875rem );
+      gap: clamp( 0.125rem , -0.1486842105rem  +  1.3684210526vw , 0.9375rem );
     }
 }
 
-@supports not (gap: clamp( 0.3125rem , -0.2138157895rem  +  2.6315789474vw , 1.875rem )) {
+@supports not (gap: clamp( 0.125rem , -0.1486842105rem  +  1.3684210526vw , 0.9375rem )) {
     .header__actions {
-      gap: calc(0.3125rem + 1.5625 * (100vw - 20rem) / 59.375);
+      gap: calc(0.125rem + 0.8125 * (100vw - 20rem) / 59.375);
     }
 }
 
-@supports (margin-left: clamp( 0.0000000625rem , -0.6315788638rem  +  3.1578946316vw , 1.875rem )) {
+@supports (margin-left: clamp( 0.0000000625rem , -0.421052548rem  +  2.1052630526vw , 1.25rem )) {
     .header__actions {
-      margin-left: clamp( 0.0000000625rem , -0.6315788638rem  +  3.1578946316vw , 1.875rem );
+      margin-left: clamp( 0.0000000625rem , -0.421052548rem  +  2.1052630526vw , 1.25rem );
     }
 }
 
-@supports not (margin-left: clamp( 0.0000000625rem , -0.6315788638rem  +  3.1578946316vw , 1.875rem )) {
+@supports not (margin-left: clamp( 0.0000000625rem , -0.421052548rem  +  2.1052630526vw , 1.25rem )) {
     .header__actions {
-      margin-left: calc(0.0000000625rem + 1.8749999375 * (100vw - 20rem) / 59.375);
+      margin-left: calc(0.0000000625rem + 1.2499999375 * (100vw - 20rem) / 59.375);
     }
 }
 
