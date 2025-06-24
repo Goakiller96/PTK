@@ -6,13 +6,13 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250620153442">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250624125036">
 	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 	<meta name="apple-mobile-web-app-title" content="MyWebSite" />
-	<link rel="manifest" href="/site.webmanifest" />
+	<!-- <link rel="manifest" href="/site.webmanifest" /> -->
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -39,14 +39,23 @@
 									<a href="/" class="header__logo-text-short">ПТК</a>
 								</div>
 							</div>
-							<div class="header__search">
-								<div class="search-form">
-									<button type="button" class="search-form__icon _icon-search"></button>
-									<form action="#" class="search-form__item">
-										<button type="submit" class="search-form__btn _icon-search"></button>
-										<input autocomplete="off" type="text" name="form[]" data-value="Search" placeholder="Поиск" class="search-form__input">
-									</form>
-								</div>
+							<!-- <div class="header__search">
+						<div class="search-form">
+							<button type="button" class="search-form__icon _icon-search"></button>
+							<form action="#" class="search-form__item">
+								<button type="submit" class="search-form__btn _icon-search"></button>
+								<input autocomplete="off" type="text" name="form[]" data-value="Search"
+									placeholder="Поиск" class="search-form__input">
+							</form>
+						</div>
+					</div> -->
+							<div class="search-form">
+								<button type="button" class="search-form__icon _icon-search"></button>
+								<form action="#" class="search-form__item">
+									<button type="submit" class="search-form__btn _icon-search"></button>
+									<input autocomplete="off" type="text" name="form[]" data-value="Search" placeholder="Поиск" class="search-form__input" id="search-input">
+									<button type="reset" class="search-form__clear _icon-cross" aria-label="Очистить поиск"></button>
+								</form>
 							</div>
 							<div data-da=".header__container,640" class="header__actions">
 
@@ -69,12 +78,14 @@
 								</div>
 
 								<div data-da=".header__main,640" class="header__actions-item actions-header__cart cart-header">
-									<a href="#" class="cart-header__icon _icon-cart"></a>
+									<a href="#" class="cart-header__icon _icon-cart" id="cart-icon"></a>
 									<div class="cart-header__body">
 										<ul class="cart-header__list cart-list"></ul>
 									</div>
+									<span class="cart-count">0</span>
 								</div>
 							</div>
+							<!-- Бургер меню -->
 							<button type="button" class="menu__icon icon-menu">
 								<span></span>
 								<span></span>
@@ -83,108 +94,208 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="header__container"> -->
+
 				<div class="header__bottom">
-					<div class="header__bottom-wrapper">
-						<div class="header__menu menu container">
-							<nav class="menu__body">
-								<h2 class="header__bottom-title">Каталог</h2>
-								<ul data-spollers="767.98,max" class="menu__list">
-									<li class="menu__item">
-										<a href="/" class="menu__link">ПЛАЗМОТРОНЫ</a>
-										<button data-spoller type="button" class="menu__arrow _icon-arrow-down"></button>
-										<ul class="menu__sub-list">
-											<li class="menu__sub-item">
-												<a href="/" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-										</ul>
-									</li>
-									<li class="menu__item">
-										<a href="#" class="menu__link">ЭЛЕКТРОДЫ</a>
-										<button data-spoller type="button" class="menu__arrow _icon-arrow-down"></button>
-										<ul class="menu__sub-list">
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-										</ul>
-									</li>
-									<li class="menu__item">
-										<a href="#" class="menu__link">СОПЛА</a>
-										<button data-spoller type="button" class="menu__arrow _icon-arrow-down"></button>
-										<ul class="menu__sub-list">
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-												<a href="#" class="menu__sub-link">пункт</a>
-											</li>
-											<li class="menu__sub-item">
-										</ul>
-									</li>
-									<li class="menu__item">
-										<a href="#" class="menu__link">ПУНКТ МЕНЮ</a>
-									</li>
-									<li class="menu__item">
-										<a href="#" class="menu__link">ПУНКТ МЕНЮ</a>
-									</li>
-								</ul>
-								<div class="menu__body-decor"></div>
-							</nav>
-						</div>
+					<div class="header__menu menu __container">
+						<nav class="menu__body">
+							<h2 class="header__bottom-title">Каталог</h2>
+							<ul data-spollers="767.98,max" class="menu__list">
+								<li class="menu__item">
+									<a href="/" class="menu__link">ПЛАЗМОТРОНЫ</a>
+									<button data-spoller type="button" class="menu__arrow _icon-arrow-down"></button>
+									<ul class="menu__sub-list">
+										<li class="menu__sub-item">
+											<a href="/" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+									</ul>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">ЭЛЕКТРОДЫ</a>
+									<button data-spoller type="button" class="menu__arrow _icon-arrow-down"></button>
+									<ul class="menu__sub-list">
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+									</ul>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">СОПЛА</a>
+									<button data-spoller type="button" class="menu__arrow _icon-arrow-down"></button>
+									<ul class="menu__sub-list">
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+											<a href="#" class="menu__sub-link">пункт</a>
+										</li>
+										<li class="menu__sub-item">
+									</ul>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">ПУНКТ МЕНЮ</a>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">ПУНКТ МЕНЮ</a>
+								</li>
+							</ul>
+							<div class="menu__body-decor"></div>
+						</nav>
 					</div>
 				</div>
-				<!-- </div> -->
+
 
 
 			</div>
 		</header>
 		<main class="page">
 
-			<!-- 
-			<div class="actions__contacts">
-				<div class="phones">
-					<div class="phones__icon _icon-phone"></div>
-					<div class="phones__item">
-						<a href="tel:+73432879643" class="phones__link">+7(343)287-96-43</a>
-						<a href="tel:+79089020509" class="phones__link">+7(908)902-05-09</a>
-					</div>
-				</div>
+			<section class="catalog">
+				<div class="catalog__container">
+					<div class="catalog__wrapper" id="products-container">
+						<!-- Карточка товара -->
+						<div class="product__card" data-title="Фламинго" data-article="12345">
+							<picture><source srcset="img/cards/flamingo.webp" type="image/webp"><img src="img/cards/flamingo.png" alt="Товар" class="product__image"></picture>
+							<div class="product__content">
+								<h3 class="product__title">Фламинго</h3>
+								<p class="product__subtitle">Артикул: 12345</p>
+								<p class="product__price">1 999 ₽</p>
 
-				<div class="emails">
-					<div class="emails__icon _icon-mail"></div>
-					<div class="emails__item">
-						<a href="mailto:promplazma@mail.ru" class="emails__link">promplazma@mail.ru</a>
-						<a href="mailto:plazmatk@mail.ru" class="emails__link">plazmatk@mail.ru</a>
+								<div class="quantity__controls">
+									<button class="quantity__btn minus">-</button>
+									<input type="number" class="quantity__input" value="1" min="1">
+									<button class="quantity__btn plus">+</button>
+								</div>
+
+								<button class="add-to-cart">Добавить в корзину</button>
+							</div>
+						</div>
+						<!-- Карточка товара -->
+						<div class="product__card" data-title="Сопло" data-article="12346">
+							<picture><source srcset="img/cards/soplo-402.webp" type="image/webp"><img src="img/cards/soplo-402.png" alt="Товар" class="product__image"></picture>
+							<div class="product__content">
+								<h3 class="product__title">Сопло</h3>
+								<p class="product__subtitle">Артикул: 12346</p>
+								<p class="product__price">348,24 ₽</p>
+
+								<div class="quantity__controls">
+									<button class="quantity__btn minus">-</button>
+									<input type="number" class="quantity__input" value="1" min="1">
+									<button class="quantity__btn plus">+</button>
+								</div>
+
+								<button class="add-to-cart">Добавить в корзину</button>
+							</div>
+						</div>
+						<!-- Карточка товара -->
+						<div class="product__card" data-title="Электрод" data-article="4014-11">
+							<picture><source srcset="img/cards/electrod.webp" type="image/webp"><img src="img/cards/electrod.png" alt="Товар" class="product__image"></picture>
+							<div class="product__content">
+								<h3 class="product__title">Электрод</h3>
+								<p class="product__subtitle">Артикул: 4014-11</p>
+								<p class="product__price">342,96 ₽</p>
+
+								<div class="quantity__controls">
+									<button class="quantity__btn minus">-</button>
+									<input type="number" class="quantity__input" value="1" min="1">
+									<button class="quantity__btn plus">+</button>
+								</div>
+
+								<button class="add-to-cart">Добавить в корзину</button>
+							</div>
+						</div>
+						<!-- Карточка товара -->
+						<div class="product__card" data-title="Корпус" data-article="12348">
+							<picture><source srcset="img/cards/soplo-410.webp" type="image/webp"><img src="img/cards/soplo-410.png" alt="Товар" class="product__image"></picture>
+							<div class="product__content">
+								<h3 class="product__title">Корпус</h3>
+								<p class="product__subtitle">Артикул: 12348</p>
+								<p class="product__price">262,84 ₽</p>
+
+								<div class="quantity__controls">
+									<button class="quantity__btn minus">-</button>
+									<input type="number" class="quantity__input" value="1" min="1">
+									<button class="quantity__btn plus">+</button>
+								</div>
+
+								<button class="add-to-cart">Добавить в корзину</button>
+							</div>
+						</div>
+						<!-- Карточка товара -->
+						<div class="product__card" data-title="Гайка" data-article="12349">
+							<picture><source srcset="img/cards/soplo-210.webp" type="image/webp"><img src="img/cards/soplo-210.png" alt="Товар" class="product__image"></picture>
+							<div class="product__content">
+								<h3 class="product__title">Гайка</h3>
+								<p class="product__subtitle">Артикул: 12349</p>
+								<p class="product__price">284,52 ₽</p>
+
+								<div class="quantity__controls">
+									<button class="quantity__btn minus">-</button>
+									<input type="number" class="quantity__input" value="1" min="1">
+									<button class="quantity__btn plus">+</button>
+								</div>
+
+								<button class="add-to-cart">Добавить в корзину</button>
+							</div>
+						</div>
+
+
+
+
+
+
+						<!-- Модальное окно корзины -->
+						<div class="cart-modal">
+							<div class="cart-header">
+								<h2>Корзина</h2>
+								<button class="close-cart">×</button>
+							</div>
+
+							<div class="cart-items">
+								<!-- Товары будут добавляться сюда -->
+							</div>
+
+							<div class="cart-total">
+								Итого: <span class="total-price">0</span> ₽
+							</div>
+
+							<!-- Блок для кнопки отправки заказа -->
+							<div class="cart-footer" style="display: none;">
+								<button class="submit-order">Отправить заказ</button>
+							</div>
+						</div>
+
+
+
 					</div>
 				</div>
-			</div> -->
+			</section>
 
 		</main>
 		<footer class="footer">
@@ -317,7 +428,8 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250620153442"></script>
+	<script src="js/app.min.js?_v=20250624125036"></script>
+	<div class="cart-overlay"></div>
 </body>
 
 </html>
