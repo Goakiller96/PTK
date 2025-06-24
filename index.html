@@ -2,24 +2,31 @@
 <html lang="ru">
 
 <head>
+	<!-- Базовые мета-теги -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- Заголовок и описание -->
 	<title>Плазменная резка | Комплектующие и расходники | ПлазмаТехКомплект</title>
-	<meta name="description" content="Производство и продажа сопел, электродов, плазмотронов для плазменной резки. Гарантия качества, доставка по России, техническая поддержка.">
+	<meta name="description" content="Производство сопел, электродов и плазмотронов для плазменной резки. Гарантия качества, доставка по России, профессиональная поддержка.">
 
-	<!-- Favicon -->
-	<link rel="icon" href="/favicon.ico">
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	<!-- Favicon (оптимизированная версия) -->
+	<link rel="icon" href="/favicon.ico" sizes="any">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-	<!-- Предзагрузка -->
-	<link rel="preload" href="css/style.min.css" as="style">
-	<link rel="preload" href="js/main.min.js" as="script">
-
-	<!-- PWA -->
+	<link rel="manifest" href="/site.webmanifest">
 	<meta name="theme-color" content="#005f87">
 
-	<!-- Schema.org (исправленная версия) -->
+	<!-- Предзагрузка ресурсов -->
+	<link rel="preload" href="/css/style.min.css" as="style">
+	<link rel="preload" href="/js/main.min.js" as="script">
+
+	<!-- Основные стили и скрипты -->
+	<link rel="stylesheet" href="/css/style.min.css?_v=20250624212854">
+	<script src="/js/main.min.js?_v=20250624212854" defer></script>
+
+	<!-- Schema.org -->
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
@@ -27,6 +34,7 @@
 			"name": "ПлазмаТехКомплект",
 			"description": "Производитель комплектующих для плазменной резки: сопла, электроды, плазмотроны",
 			"url": "https://plazmatk.ru/",
+			"logo": "https://plazmatk.img/logo.png",
 			"email": "promplazma@mail.ru",
 			"address": {
 				"@type": "PostalAddress",
@@ -40,13 +48,6 @@
 		}
 	</script>
 
-	<!-- Основной CSS -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250624161340">
-
-	<!-- Технические мета-теги -->
-	<meta name="format-detection" content="telephone=no">
-	<meta name="keywords" content="сопла плазменные, электроды, плазмотроны, купить комплектующие для резки металла, расходники плазменной резки">
-
 	<!-- OpenGraph -->
 	<meta property="og:title" content="ПлазмаТехКомплект | Комплектующие для плазменной резки">
 	<meta property="og:description" content="Профессиональные сопла, электроды и плазмотроны для промышленной резки металла">
@@ -55,8 +56,10 @@
 	<meta property="og:image" content="https://plazmatk.img/og-image.jpg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
+	<meta property="og:site_name" content="ПлазмаТехКомплект">
 
-	<!-- Поисковые системы -->
+	<!-- Поисковая оптимизация -->
+	<meta name="keywords" content="плазменная резка, сопла для плазмотронов, электроды для плазмотронов, купить плазмотрон, комплектующие для резки металла">
 	<meta name="robots" content="index, follow">
 	<link rel="canonical" href="https://plazmatk.ru/">
 </head>
@@ -83,24 +86,19 @@
 									<a href="/" class="header__logo-text-short">ПТК</a>
 								</div>
 							</div>
-							<!-- <div class="header__search">
-						<div class="search-form">
-							<button type="button" class="search-form__icon _icon-search"></button>
-							<form action="#" class="search-form__item">
-								<button type="submit" class="search-form__btn _icon-search"></button>
-								<input autocomplete="off" type="text" name="form[]" data-value="Search"
-									placeholder="Поиск" class="search-form__input">
-							</form>
-						</div>
-					</div> -->
+
 							<div class="search-form">
-								<button type="button" class="search-form__icon _icon-search"></button>
+								<!-- Иконка поиска (видна только на мобильных) -->
+								<button type="button" class="search-form__icon _icon-search" aria-label="Открыть поиск"></button>
+
+								<!-- Сама форма поиска -->
 								<form action="#" class="search-form__item">
-									<button type="submit" class="search-form__btn _icon-search"></button>
-									<input autocomplete="off" type="text" name="form[]" data-value="Search" placeholder="Поиск" class="search-form__input" id="search-input">
+									<button type="submit" class="search-form__btn _icon-search" aria-label="Найти"></button>
+									<input autocomplete="off" type="text" name="search" placeholder="Поиск по каталогу" class="search-form__input" id="search-input">
 									<button type="reset" class="search-form__clear _icon-cross" aria-label="Очистить поиск"></button>
 								</form>
 							</div>
+
 							<div data-da=".header__container,640" class="header__actions">
 
 								<div class="actions__contacts actions__contacts-header">
@@ -230,8 +228,8 @@
 								<h3 class="product__title" itemprop="name">Фламинго</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 12345</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="1999">1 999</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -252,8 +250,8 @@
 								<h3 class="product__title" itemprop="name">Сопло</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 12346</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="348.24">348,24</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -274,8 +272,8 @@
 								<h3 class="product__title" itemprop="name">Электрод</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 4014-11</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="342.96">342,96</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -296,8 +294,8 @@
 								<h3 class="product__title" itemprop="name">Корпус</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 12348</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="262.84">262,84</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -318,8 +316,8 @@
 								<h3 class="product__title" itemprop="name">Гайка</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 12349</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="284.52">284,52</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -340,8 +338,8 @@
 								<h3 class="product__title" itemprop="name">Фламинго</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 12345</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="1999">1 999</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -362,8 +360,8 @@
 								<h3 class="product__title" itemprop="name">Сопло</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 12346</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="348.24">348,24</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -384,8 +382,8 @@
 								<h3 class="product__title" itemprop="name">Электрод</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 4014-11</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="342.96">342,96</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -406,8 +404,8 @@
 								<h3 class="product__title" itemprop="name">Корпус</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 12348</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="262.84">262,84</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -428,8 +426,8 @@
 								<h3 class="product__title" itemprop="name">Гайка</h3>
 								<p class="product__subtitle" itemprop="sku">Артикул: 12349</p>
 								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-									<span itemprop="priceCurrency" content="RUB">₽</span>
 									<span itemprop="price" content="284.52">284,52</span>
+									<span itemprop="priceCurrency" content="RUB">₽</span>
 								</p>
 
 								<div class="quantity__controls">
@@ -446,7 +444,7 @@
 
 
 						<!-- Модальное окно корзины -->
-						<aside class="cart-modal" aria-hidden="true" aria-labelledby="cart-title">
+						<aside class="cart-modal" aria-modal="true" aria-labelledby="cart-title" role="dialog" tabindex="-1">
 							<div class="cart-header">
 								<h2 id="cart-title">Корзина</h2>
 								<button type="button" class="close-cart" aria-label="Закрыть корзину">×</button>
@@ -599,7 +597,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250624161340"></script>
+	<script src="js/app.min.js?_v=20250624212854"></script>
 	<div class="cart-overlay"></div>
 </body>
 
