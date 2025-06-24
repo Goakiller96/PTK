@@ -378,6 +378,192 @@
         const headerObserver = new IntersectionObserver(callback);
         headerObserver.observe(headerElement);
     };
+    document.addEventListener("DOMContentLoaded", (function() {
+        const cartIcon = document.getElementById("cart-icon");
+        const cartModal = document.querySelector(".cart-modal");
+        const closeCartBtn = document.querySelector(".close-cart");
+        const cartItemsContainer = document.querySelector(".cart-items");
+        const cartTotal = document.querySelector(".total-price");
+        const cartCount = document.querySelector(".cart-count");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+        const submitOrderBtn = document.querySelector(".submit-order");
+        const cartFooter = document.querySelector(".cart-footer");
+        const cartOverlay = document.createElement("div");
+        cartOverlay.className = "cart-overlay";
+        document.body.appendChild(cartOverlay);
+        let cart = [];
+        let totalPrice = 0;
+        function parsePrice(priceString) {
+            const cleaned = priceString.replace(/\./g, "").replace(",", ".").replace(/[^\d.]/g, "");
+            return parseFloat(cleaned) || 0;
+        }
+        if (submitOrderBtn) submitOrderBtn.addEventListener("click", submitOrder);
+        document.querySelectorAll(".quantity__btn").forEach((button => {
+            button.addEventListener("click", (function(e) {
+                e.preventDefault();
+                const controls = this.closest(".quantity__controls");
+                if (!controls) return;
+                const input = controls.querySelector(".quantity__input");
+                if (!input) return;
+                let value = parseInt(input.value) || 1;
+                if (this.classList.contains("minus") && value > 1) value--; else if (this.classList.contains("plus")) value++;
+                input.value = value;
+            }));
+        }));
+        if (cartIcon) cartIcon.addEventListener("click", (function(e) {
+            e.preventDefault();
+            cartModal.classList.add("active");
+            cartOverlay.classList.add("active");
+        }));
+        if (closeCartBtn) closeCartBtn.addEventListener("click", (function() {
+            cartModal.classList.remove("active");
+            cartOverlay.classList.remove("active");
+        }));
+        if (cartOverlay) cartOverlay.addEventListener("click", (function() {
+            cartModal.classList.remove("active");
+            cartOverlay.classList.remove("active");
+        }));
+        addToCartButtons.forEach((button => {
+            button.addEventListener("click", (function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const productCard = this.closest(".product__card");
+                if (!productCard) return;
+                const productSubtitle = productCard.querySelector(".product__subtitle");
+                const productTitle = productCard.querySelector(".product__title");
+                const productPrice = productCard.querySelector(".product__price");
+                const quantityInput = productCard.querySelector(".quantity__input");
+                const productImage = productCard.querySelector(".product__image");
+                if (!productSubtitle || !productTitle || !productPrice || !quantityInput || !productImage) {
+                    console.error("Не найдены необходимые элементы в карточке товара");
+                    return;
+                }
+                const productId = productSubtitle.textContent.split(": ")[1] || Date.now().toString();
+                const productTitleText = productTitle.textContent || "Без названия";
+                const productPriceValue = parsePrice(productPrice.textContent);
+                const productQuantity = parseInt(quantityInput.value) || 1;
+                const productImageSrc = productImage.src || "";
+                const existingItem = cart.find((item => item.id === productId));
+                if (existingItem) existingItem.quantity += productQuantity; else cart.push({
+                    id: productId,
+                    title: productTitleText,
+                    price: productPriceValue,
+                    quantity: productQuantity,
+                    image: productImageSrc,
+                    subtitle: productSubtitle.textContent
+                });
+                updateCart();
+                if (cartCount) {
+                    cartCount.classList.add("update");
+                    setTimeout((() => {
+                        cartCount.classList.remove("update");
+                    }), 500);
+                }
+            }));
+        }));
+        function updateCart() {
+            if (!cartItemsContainer || !cartTotal || !cartCount || !cartFooter) return;
+            cartItemsContainer.innerHTML = "";
+            totalPrice = 0;
+            cart.forEach((item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                const cartItemElement = document.createElement("div");
+                cartItemElement.className = "cart-item";
+                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h3 class="cart-item-title">${item.title}</h3>\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    <p class="cart-item-price">${formatPrice(item.price)} ₽</p>\n                    <div class="cart-item-quantity">\n                        <button class="quantity-btn minus" data-id="${item.id}">-</button>\n                        <span>${item.quantity}</span>\n                        <button class="quantity-btn plus" data-id="${item.id}">+</button>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
+                cartItemsContainer.appendChild(cartItemElement);
+            }));
+            cartTotal.textContent = formatPrice(totalPrice);
+            const totalItems = cart.reduce(((sum, item) => sum + item.quantity), 0);
+            cartCount.textContent = totalItems;
+            cartFooter.style.display = cart.length > 0 ? "block" : "none";
+            document.querySelectorAll(".cart-item-quantity .minus").forEach((btn => {
+                btn.addEventListener("click", (function() {
+                    const id = this.getAttribute("data-id");
+                    const item = cart.find((item => item.id === id));
+                    if (item && item.quantity > 1) {
+                        item.quantity--;
+                        updateCart();
+                    }
+                }));
+            }));
+            document.querySelectorAll(".cart-item-quantity .plus").forEach((btn => {
+                btn.addEventListener("click", (function() {
+                    const id = this.getAttribute("data-id");
+                    const item = cart.find((item => item.id === id));
+                    if (item) {
+                        item.quantity++;
+                        updateCart();
+                    }
+                }));
+            }));
+            document.querySelectorAll(".cart-item-remove").forEach((btn => {
+                btn.addEventListener("click", (function() {
+                    const id = this.getAttribute("data-id");
+                    cart = cart.filter((item => item.id !== id));
+                    updateCart();
+                }));
+            }));
+        }
+        function formatPrice(price) {
+            return new Intl.NumberFormat("ru-RU").format(price);
+        }
+        function submitOrder() {
+            if (cart.length === 0) {
+                alert("Корзина пуста!");
+                return;
+            }
+            const orderData = {
+                items: cart,
+                total: totalPrice,
+                date: (new Date).toISOString()
+            };
+            console.log("Данные заказа:", orderData);
+            alert(`Ваш заказ на сумму ${formatPrice(totalPrice)} ₽ успешно отправлен!`);
+            cart = [];
+            updateCart();
+            cartModal.classList.remove("active");
+            cartOverlay.classList.remove("active");
+        }
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        const searchInput = document.getElementById("search-input");
+        const searchForm = document.querySelector(".search-form");
+        const searchIcon = document.querySelector(".search-form__icon");
+        const clearBtn = document.querySelector(".search-form__clear");
+        const productCards = document.querySelectorAll(".product__card");
+        if (searchInput && searchForm && productCards.length) {
+            if (clearBtn) clearBtn.style.display = "none";
+            function performSearch() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                productCards.forEach((function(card) {
+                    const title = card.dataset.title ? card.dataset.title.toLowerCase() : "";
+                    const article = card.dataset.article ? card.dataset.article.toLowerCase() : "";
+                    card.style.display = title.includes(searchTerm) || article.includes(searchTerm) ? "block" : "none";
+                }));
+                if (clearBtn) clearBtn.style.display = searchTerm.length > 0 ? "block" : "none";
+            }
+            searchInput.addEventListener("input", performSearch);
+            searchForm.addEventListener("submit", (function(e) {
+                e.preventDefault();
+                performSearch();
+            }));
+            if (searchIcon) searchIcon.addEventListener("click", (function() {
+                searchForm.classList.toggle("_active");
+                if (searchForm.classList.contains("_active")) searchInput.focus();
+            }));
+            if (clearBtn) clearBtn.addEventListener("click", (function(e) {
+                e.preventDefault();
+                searchInput.value = "";
+                searchInput.focus();
+                performSearch();
+                this.style.display = "none";
+            }));
+            document.addEventListener("click", (function(e) {
+                if (!searchForm.contains(e.target)) searchForm.classList.remove("_active");
+            }));
+        }
+    }));
     window["FLS"] = true;
     isWebp();
     menuInit();
