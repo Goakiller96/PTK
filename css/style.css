@@ -648,6 +648,13 @@ a {
   padding: 5px 5px;
 }
 
+.visually-hidden {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
 .icon-menu {
   display: none;
 }
