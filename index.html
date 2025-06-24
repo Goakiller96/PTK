@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250624125036">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250624143101">
 	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<link rel="shortcut icon" href="/favicon.ico" />
@@ -179,105 +179,235 @@
 			<section class="catalog">
 				<div class="catalog__container">
 					<div class="catalog__wrapper" id="products-container">
-						<!-- Карточка товара -->
-						<div class="product__card" data-title="Фламинго" data-article="12345">
-							<picture><source srcset="img/cards/flamingo.webp" type="image/webp"><img src="img/cards/flamingo.png" alt="Товар" class="product__image"></picture>
+						<!-- Карточки товаров (оптимизированные) -->
+						<article class="product__card" data-title="Фламинго" data-article="12345" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/flamingo.webp" type="image/webp"><img src="img/cards/flamingo.png" alt="Фламинго" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
 							<div class="product__content">
-								<h3 class="product__title">Фламинго</h3>
-								<p class="product__subtitle">Артикул: 12345</p>
-								<p class="product__price">1 999 ₽</p>
+								<h3 class="product__title" itemprop="name">Фламинго</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 12345</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="1999">1 999</span>
+								</p>
 
 								<div class="quantity__controls">
-									<button class="quantity__btn minus">-</button>
-									<input type="number" class="quantity__input" value="1" min="1">
-									<button class="quantity__btn plus">+</button>
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
 								</div>
 
-								<button class="add-to-cart">Добавить в корзину</button>
+								<button type="button" class="add-to-cart" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
 							</div>
-						</div>
-						<!-- Карточка товара -->
-						<div class="product__card" data-title="Сопло" data-article="12346">
-							<picture><source srcset="img/cards/soplo-402.webp" type="image/webp"><img src="img/cards/soplo-402.png" alt="Товар" class="product__image"></picture>
+						</article>
+
+						<article class="product__card" data-title="Сопло" data-article="12346" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/soplo-402.webp" type="image/webp"><img src="img/cards/soplo-402.png" alt="Сопло" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
 							<div class="product__content">
-								<h3 class="product__title">Сопло</h3>
-								<p class="product__subtitle">Артикул: 12346</p>
-								<p class="product__price">348,24 ₽</p>
+								<h3 class="product__title" itemprop="name">Сопло</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 12346</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="348.24">348,24</span>
+								</p>
 
 								<div class="quantity__controls">
-									<button class="quantity__btn minus">-</button>
-									<input type="number" class="quantity__input" value="1" min="1">
-									<button class="quantity__btn plus">+</button>
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
 								</div>
 
-								<button class="add-to-cart">Добавить в корзину</button>
+								<button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
 							</div>
-						</div>
-						<!-- Карточка товара -->
-						<div class="product__card" data-title="Электрод" data-article="4014-11">
-							<picture><source srcset="img/cards/electrod.webp" type="image/webp"><img src="img/cards/electrod.png" alt="Товар" class="product__image"></picture>
+						</article>
+
+						<article class="product__card" data-title="Электрод" data-article="4014-11" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/electrod.webp" type="image/webp"><img src="img/cards/electrod.png" alt="Электрод" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
 							<div class="product__content">
-								<h3 class="product__title">Электрод</h3>
-								<p class="product__subtitle">Артикул: 4014-11</p>
-								<p class="product__price">342,96 ₽</p>
+								<h3 class="product__title" itemprop="name">Электрод</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 4014-11</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="342.96">342,96</span>
+								</p>
 
 								<div class="quantity__controls">
-									<button class="quantity__btn minus">-</button>
-									<input type="number" class="quantity__input" value="1" min="1">
-									<button class="quantity__btn plus">+</button>
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
 								</div>
 
-								<button class="add-to-cart">Добавить в корзину</button>
+								<button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
 							</div>
-						</div>
-						<!-- Карточка товара -->
-						<div class="product__card" data-title="Корпус" data-article="12348">
-							<picture><source srcset="img/cards/soplo-410.webp" type="image/webp"><img src="img/cards/soplo-410.png" alt="Товар" class="product__image"></picture>
+						</article>
+
+						<article class="product__card" data-title="Корпус" data-article="12348" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/soplo-410.webp" type="image/webp"><img src="img/cards/soplo-410.png" alt="Корпус" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
 							<div class="product__content">
-								<h3 class="product__title">Корпус</h3>
-								<p class="product__subtitle">Артикул: 12348</p>
-								<p class="product__price">262,84 ₽</p>
+								<h3 class="product__title" itemprop="name">Корпус</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 12348</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="262.84">262,84</span>
+								</p>
 
 								<div class="quantity__controls">
-									<button class="quantity__btn minus">-</button>
-									<input type="number" class="quantity__input" value="1" min="1">
-									<button class="quantity__btn plus">+</button>
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
 								</div>
 
-								<button class="add-to-cart">Добавить в корзину</button>
+								<button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
 							</div>
-						</div>
-						<!-- Карточка товара -->
-						<div class="product__card" data-title="Гайка" data-article="12349">
-							<picture><source srcset="img/cards/soplo-210.webp" type="image/webp"><img src="img/cards/soplo-210.png" alt="Товар" class="product__image"></picture>
+						</article>
+
+						<article class="product__card" data-title="Гайка" data-article="12349" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/soplo-210.webp" type="image/webp"><img src="img/cards/soplo-210.png" alt="Гайка" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
 							<div class="product__content">
-								<h3 class="product__title">Гайка</h3>
-								<p class="product__subtitle">Артикул: 12349</p>
-								<p class="product__price">284,52 ₽</p>
+								<h3 class="product__title" itemprop="name">Гайка</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 12349</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="284.52">284,52</span>
+								</p>
 
 								<div class="quantity__controls">
-									<button class="quantity__btn minus">-</button>
-									<input type="number" class="quantity__input" value="1" min="1">
-									<button class="quantity__btn plus">+</button>
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
 								</div>
 
-								<button class="add-to-cart">Добавить в корзину</button>
+								<button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
 							</div>
-						</div>
+						</article>
+						<!-- Карточки товаров (оптимизированные) -->
+						<article class="product__card" data-title="Фламинго" data-article="12345" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/flamingo.webp" type="image/webp"><img src="img/cards/flamingo.png" alt="Фламинго" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
+							<div class="product__content">
+								<h3 class="product__title" itemprop="name">Фламинго</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 12345</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="1999">1 999</span>
+								</p>
 
+								<div class="quantity__controls">
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
+								</div>
 
+								<button type="button" class="add-to-cart" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
+							</div>
+						</article>
 
+						<article class="product__card" data-title="Сопло" data-article="12346" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/soplo-402.webp" type="image/webp"><img src="img/cards/soplo-402.png" alt="Сопло" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
+							<div class="product__content">
+								<h3 class="product__title" itemprop="name">Сопло</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 12346</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="348.24">348,24</span>
+								</p>
 
+								<div class="quantity__controls">
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
+								</div>
 
+								<button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
+							</div>
+						</article>
+
+						<article class="product__card" data-title="Электрод" data-article="4014-11" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/electrod.webp" type="image/webp"><img src="img/cards/electrod.png" alt="Электрод" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
+							<div class="product__content">
+								<h3 class="product__title" itemprop="name">Электрод</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 4014-11</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="342.96">342,96</span>
+								</p>
+
+								<div class="quantity__controls">
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
+								</div>
+
+								<button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
+							</div>
+						</article>
+
+						<article class="product__card" data-title="Корпус" data-article="12348" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/soplo-410.webp" type="image/webp"><img src="img/cards/soplo-410.png" alt="Корпус" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
+							<div class="product__content">
+								<h3 class="product__title" itemprop="name">Корпус</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 12348</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="262.84">262,84</span>
+								</p>
+
+								<div class="quantity__controls">
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
+								</div>
+
+								<button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
+							</div>
+						</article>
+
+						<article class="product__card" data-title="Гайка" data-article="12349" itemscope itemtype="http://schema.org/Product">
+							<picture><source srcset="img/cards/soplo-210.webp" type="image/webp"><img src="img/cards/soplo-210.png" alt="Гайка" class="product__image" loading="lazy" width="300" height="200" itemprop="image"></picture>
+							<div class="product__content">
+								<h3 class="product__title" itemprop="name">Гайка</h3>
+								<p class="product__subtitle" itemprop="sku">Артикул: 12349</p>
+								<p class="product__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<span itemprop="priceCurrency" content="RUB">₽</span>
+									<span itemprop="price" content="284.52">284,52</span>
+								</p>
+
+								<div class="quantity__controls">
+									<button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>
+									<input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">
+									<button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>
+								</div>
+
+								<button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">
+									Добавить в корзину
+								</button>
+							</div>
+						</article>
 
 						<!-- Модальное окно корзины -->
-						<div class="cart-modal">
+						<aside class="cart-modal" aria-hidden="true" aria-labelledby="cart-title">
 							<div class="cart-header">
-								<h2>Корзина</h2>
-								<button class="close-cart">×</button>
+								<h2 id="cart-title">Корзина</h2>
+								<button type="button" class="close-cart" aria-label="Закрыть корзину">×</button>
 							</div>
 
-							<div class="cart-items">
+							<div class="cart-items" role="region" aria-live="polite">
 								<!-- Товары будут добавляться сюда -->
 							</div>
 
@@ -285,14 +415,10 @@
 								Итого: <span class="total-price">0</span> ₽
 							</div>
 
-							<!-- Блок для кнопки отправки заказа -->
 							<div class="cart-footer" style="display: none;">
-								<button class="submit-order">Отправить заказ</button>
+								<button type="button" class="submit-order">Отправить заказ</button>
 							</div>
-						</div>
-
-
-
+						</aside>
 					</div>
 				</div>
 			</section>
@@ -428,7 +554,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250624125036"></script>
+	<script src="js/app.min.js?_v=20250624143101"></script>
 	<div class="cart-overlay"></div>
 </body>
 
