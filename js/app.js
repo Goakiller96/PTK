@@ -470,7 +470,7 @@
                 totalPrice += itemTotal;
                 const cartItemElement = document.createElement("div");
                 cartItemElement.className = "cart-item";
-                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h3 class="cart-item-title">${item.title}</h3>\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    <p class="cart-item-price">${formatPrice(item.price)} ₽</p>\n                    <div class="cart-item-quantity">\n                        <button class="quantity-btn minus" data-id="${item.id}">-</button>\n                        <span>${item.quantity}</span>\n                        <button class="quantity-btn plus" data-id="${item.id}">+</button>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
+                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h3 class="cart-item-title">${item.title}</h3>\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    <p class="cart-item-price">${formatPrice(item.price)} ₽</p>\n                    <div class="cart-item-quantity">\n                        <button class="quantity-btn minus" data-id="${item.id}" aria-label="Уменьшить количество">-</button>\n                        <input type="number" class="cart-quantity-input" value="${item.quantity}" min="1" \n                               data-id="${item.id}" aria-label="Количество товара">\n                        <button class="quantity-btn plus" data-id="${item.id}" aria-label="Увеличить количество">+</button>\n                        <button class="cart-item-remove" data-id="${item.id}" aria-label="Удалить товар">×</button>\n                    </div>\n                </div>\n            `;
                 cartItemsContainer.appendChild(cartItemElement);
             }));
             cartTotal.textContent = formatPrice(totalPrice);
@@ -495,6 +495,20 @@
                         item.quantity++;
                         updateCart();
                     }
+                }));
+            }));
+            document.querySelectorAll(".cart-quantity-input").forEach((input => {
+                input.addEventListener("change", (function() {
+                    const id = this.getAttribute("data-id");
+                    const item = cart.find((item => item.id === id));
+                    const newQuantity = parseInt(this.value) || 1;
+                    if (item && newQuantity >= 1) {
+                        item.quantity = newQuantity;
+                        updateCart();
+                    } else this.value = item.quantity;
+                }));
+                input.addEventListener("input", (function() {
+                    this.value = this.value.replace(/[^0-9]/g, "");
                 }));
             }));
             document.querySelectorAll(".cart-item-remove").forEach((btn => {
@@ -525,39 +539,41 @@
             cartModal.classList.remove("active");
             cartOverlay.classList.remove("active");
         }
-    }));
-    document.addEventListener("DOMContentLoaded", (function() {
         const searchForm = document.querySelector(".search-form");
-        const searchIcon = searchForm.querySelector(".search-form__icon");
-        const searchItem = searchForm.querySelector(".search-form__item");
-        const searchInput = searchForm.querySelector(".search-form__input");
-        const searchClear = searchForm.querySelector(".search-form__clear");
-        const productCards = document.querySelectorAll(".product__card");
-        searchIcon.addEventListener("click", (function(e) {
-            e.stopPropagation();
-            searchItem.classList.toggle("active");
-            if (searchItem.classList.contains("active")) searchInput.focus();
-        }));
-        searchClear.addEventListener("click", (function() {
-            searchInput.value = "";
-            searchInput.focus();
-            performSearch();
-        }));
-        document.addEventListener("click", (function(e) {
-            if (!searchForm.contains(e.target)) searchItem.classList.remove("active");
-        }));
-        searchInput.addEventListener("input", (function() {
-            searchClear.style.display = this.value ? "block" : "none";
-            performSearch();
-        }));
-        function performSearch() {
-            const searchTerm = searchInput.value.trim().toLowerCase();
-            productCards.forEach((function(card) {
-                const title = card.querySelector(".product__title").textContent.toLowerCase();
-                const article = card.querySelector(".product__subtitle").textContent.toLowerCase();
-                const isVisible = title.includes(searchTerm) || article.includes(searchTerm);
-                card.style.display = isVisible ? "block" : "none";
-            }));
+        if (searchForm) {
+            const searchIcon = searchForm.querySelector(".search-form__icon");
+            const searchItem = searchForm.querySelector(".search-form__item");
+            const searchInput = searchForm.querySelector(".search-form__input");
+            const searchClear = searchForm.querySelector(".search-form__clear");
+            const productCards = document.querySelectorAll(".product__card");
+            if (searchIcon && searchItem && searchInput && searchClear) {
+                searchIcon.addEventListener("click", (function(e) {
+                    e.stopPropagation();
+                    searchItem.classList.toggle("active");
+                    if (searchItem.classList.contains("active")) searchInput.focus();
+                }));
+                searchClear.addEventListener("click", (function() {
+                    searchInput.value = "";
+                    searchInput.focus();
+                    performSearch();
+                }));
+                document.addEventListener("click", (function(e) {
+                    if (!searchForm.contains(e.target)) searchItem.classList.remove("active");
+                }));
+                searchInput.addEventListener("input", (function() {
+                    searchClear.style.display = this.value ? "block" : "none";
+                    performSearch();
+                }));
+                function performSearch() {
+                    const searchTerm = searchInput.value.trim().toLowerCase();
+                    productCards.forEach((function(card) {
+                        const title = card.querySelector(".product__title")?.textContent.toLowerCase() || "";
+                        const article = card.querySelector(".product__subtitle")?.textContent.toLowerCase() || "";
+                        const isVisible = title.includes(searchTerm) || article.includes(searchTerm);
+                        card.style.display = isVisible ? "block" : "none";
+                    }));
+                }
+            }
         }
     }));
     window["FLS"] = true;
