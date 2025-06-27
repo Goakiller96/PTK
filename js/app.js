@@ -364,6 +364,52 @@
     }
     const da = new DynamicAdapt("max");
     da.init();
+    const productsData = [ {
+        id: 1,
+        title: "Фламинго",
+        article: "12345",
+        image: "img/cards/flamingo.png",
+        price: 1999,
+        sizeLabel: "Размер:"
+    }, {
+        id: 2,
+        title: "Сопло 410",
+        article: "410011",
+        image: "img/cards/soplo-410.png",
+        sizes: [ "2.5", "3.0", "3.5", "4.0" ],
+        sizeLabel: "Размер:"
+    }, {
+        id: 3,
+        title: "Сопло 402",
+        article: "402011",
+        image: "img/cards/soplo-402.png",
+        sizes: [ "2.5", "3.0", "3.5", "4.0" ],
+        sizeLabel: "Размер:"
+    }, {
+        id: 4,
+        title: "Электрод",
+        article: "4014",
+        image: "img/cards/electrod.png",
+        sizes: [ "Гафний", "Биметалл" ],
+        sizeLabel: "Вставка:"
+    }, {
+        id: 5,
+        title: "Сопло 210",
+        article: "1512",
+        image: "img/cards/soplo-210.png",
+        price: 242.56,
+        sizes: [ "1.3", "1.5", "1.8", "2.0" ],
+        sizeLabel: "Размер:"
+    }, {
+        id: 6,
+        title: "Сопло 402",
+        article: "12350",
+        image: "img/cards/flamingo.png",
+        price: 1999,
+        sizes: [ "2.5", "3.0", "3.5", "4.0" ],
+        sizeLabel: "Размер:"
+    } ];
+    const products = productsData;
     window.onload = function() {
         document.addEventListener("click", documentActions);
         function documentActions(e) {
@@ -379,88 +425,98 @@
         headerObserver.observe(headerElement);
     };
     document.addEventListener("DOMContentLoaded", (function() {
-        const cartIcon = document.getElementById("cart-icon");
+        const productsContainer = document.getElementById("products-container");
         const cartModal = document.querySelector(".cart-modal");
+        document.getElementById("cart-icon");
         const closeCartBtn = document.querySelector(".close-cart");
         const cartItemsContainer = document.querySelector(".cart-items");
         const cartTotal = document.querySelector(".total-price");
         const cartCount = document.querySelector(".cart-count");
-        const addToCartButtons = document.querySelectorAll(".add-to-cart");
-        const submitOrderBtn = document.querySelector(".submit-order");
         const cartFooter = document.querySelector(".cart-footer");
-        const cartOverlay = document.createElement("div");
-        cartOverlay.className = "cart-overlay";
-        document.body.appendChild(cartOverlay);
+        const submitOrderBtn = document.querySelector(".submit-order");
+        const searchForm = document.querySelector(".search-form");
+        const searchInput = document.querySelector(".search-form__input");
+        const searchClear = document.querySelector(".search-form__clear");
         let cart = [];
         let totalPrice = 0;
-        function parsePrice(priceString) {
-            const cleaned = priceString.replace(/\./g, "").replace(",", ".").replace(/[^\d.]/g, "");
-            return parseFloat(cleaned) || 0;
+        let searchTimeout;
+        function setupCartOverlay() {
+            const cartOverlay = document.createElement("div");
+            cartOverlay.className = "cart-overlay";
+            document.body.appendChild(cartOverlay);
+            cartOverlay.addEventListener("click", closeCart);
+            document.addEventListener("click", (e => {
+                if (!cartModal.contains(e.target) && !e.target.closest("#cart-icon") && cartModal.classList.contains("active")) closeCart();
+            }));
         }
-        if (submitOrderBtn) submitOrderBtn.addEventListener("click", submitOrder);
-        document.querySelectorAll(".quantity__btn").forEach((button => {
-            button.addEventListener("click", (function(e) {
-                e.preventDefault();
-                const controls = this.closest(".quantity__controls");
-                if (!controls) return;
-                const input = controls.querySelector(".quantity__input");
-                if (!input) return;
-                let value = parseInt(input.value) || 1;
-                if (this.classList.contains("minus") && value > 1) value--; else if (this.classList.contains("plus")) value++;
-                input.value = value;
-            }));
-        }));
-        if (cartIcon) cartIcon.addEventListener("click", (function(e) {
-            e.preventDefault();
+        function openCart() {
             cartModal.classList.add("active");
-            cartOverlay.classList.add("active");
-        }));
-        if (closeCartBtn) closeCartBtn.addEventListener("click", (function() {
+            document.querySelector(".cart-overlay").classList.add("active");
+            document.body.classList.add("body-no-scroll");
+            setTimeout((() => {
+                closeCartBtn.focus();
+            }), 100);
+        }
+        function closeCart() {
             cartModal.classList.remove("active");
-            cartOverlay.classList.remove("active");
-        }));
-        if (cartOverlay) cartOverlay.addEventListener("click", (function() {
-            cartModal.classList.remove("active");
-            cartOverlay.classList.remove("active");
-        }));
-        addToCartButtons.forEach((button => {
-            button.addEventListener("click", (function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const productCard = this.closest(".product__card");
-                if (!productCard) return;
-                const productSubtitle = productCard.querySelector(".product__subtitle");
-                const productTitle = productCard.querySelector(".product__title");
-                const productPrice = productCard.querySelector(".product__price");
-                const quantityInput = productCard.querySelector(".quantity__input");
-                const productImage = productCard.querySelector(".product__image");
-                if (!productSubtitle || !productTitle || !productPrice || !quantityInput || !productImage) {
-                    console.error("Не найдены необходимые элементы в карточке товара");
-                    return;
-                }
-                const productId = productSubtitle.textContent.split(": ")[1] || Date.now().toString();
-                const productTitleText = productTitle.textContent || "Без названия";
-                const productPriceValue = parsePrice(productPrice.textContent);
-                const productQuantity = parseInt(quantityInput.value) || 1;
-                const productImageSrc = productImage.src || "";
-                const existingItem = cart.find((item => item.id === productId));
-                if (existingItem) existingItem.quantity += productQuantity; else cart.push({
-                    id: productId,
-                    title: productTitleText,
-                    price: productPriceValue,
-                    quantity: productQuantity,
-                    image: productImageSrc,
-                    subtitle: productSubtitle.textContent
-                });
-                updateCart();
-                if (cartCount) {
-                    cartCount.classList.add("update");
-                    setTimeout((() => {
-                        cartCount.classList.remove("update");
-                    }), 500);
-                }
+            document.querySelector(".cart-overlay").classList.remove("active");
+            document.body.classList.remove("body-no-scroll");
+        }
+        function generateProductCards() {
+            if (!productsContainer) return;
+            const existingCartModal = productsContainer.querySelector(".cart-modal");
+            productsContainer.innerHTML = "";
+            if (existingCartModal) productsContainer.appendChild(existingCartModal);
+            products.forEach((product => {
+                const productCard = createProductCard(product);
+                productsContainer.insertBefore(productCard, existingCartModal);
             }));
-        }));
+        }
+        function createProductCard(product) {
+            const uniqueSuffix = Date.now();
+            const productCard = document.createElement("article");
+            productCard.className = "product__card";
+            productCard.dataset.title = product.title;
+            productCard.dataset.article = product.article;
+            productCard.setAttribute("itemscope", "");
+            productCard.setAttribute("itemtype", "http://schema.org/Product");
+            let sizeSelectorHTML = "";
+            if (product.sizes) sizeSelectorHTML = `\n                <div class="product__size-selector">\n                    <label for="size-${product.article}-${uniqueSuffix}">${product.sizeLabel}</label>\n                    <select id="size-${product.article}-${uniqueSuffix}" class="product__size-select">\n                        ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                    </select>\n                </div>\n            `;
+            const priceHTML = product.price ? `\n            <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n                <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n                <span itemprop="priceCurrency" content="RUB">₽</span>\n            </p>\n        ` : "";
+            productCard.innerHTML = `\n            <img src="${product.image}" alt="${product.title}" class="product__image" loading="lazy" width="300" height="200" itemprop="image">\n            <div class="product__content">\n                <h3 class="product__title" itemprop="name">${product.title}</h3>\n                <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                ${sizeSelectorHTML}\n                <div class="product__footer">\n                    ${priceHTML}\n                    <div class="quantity__controls">\n                        <button type="button" class="quantity__btn minus" aria-label="Уменьшить количество" data-target="quantity-${product.article}-${uniqueSuffix}">-</button>\n                        <input type="number" id="quantity-${product.article}-${uniqueSuffix}" class="quantity__input" value="1" min="1" aria-label="Количество товара">\n                        <button type="button" class="quantity__btn plus" aria-label="Увеличить количество" data-target="quantity-${product.article}-${uniqueSuffix}">+</button>\n                    </div>\n                    <button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">\n                        Добавить в корзину\n                        <span class="visually-hidden">товар ${product.title}</span>\n                    </button>\n                </div>\n            </div>\n        `;
+            return productCard;
+        }
+        function addToCart(productCard) {
+            const productSubtitle = productCard.querySelector(".product__subtitle");
+            const productTitle = productCard.querySelector(".product__title");
+            const productPriceElement = productCard.querySelector('.product__price span[itemprop="price"]');
+            const quantityInput = productCard.querySelector(".quantity__input");
+            const productImage = productCard.querySelector(".product__image");
+            const sizeSelect = productCard.querySelector(".product__size-select");
+            if (!productSubtitle || !productTitle || !quantityInput || !productImage) return;
+            const productPriceValue = productPriceElement ? parseFloat(productPriceElement.getAttribute("content")) || 0 : 0;
+            const productId = productSubtitle.textContent.split(": ")[1] || Date.now().toString();
+            const productTitleText = productTitle.textContent || "Без названия";
+            const productQuantity = parseInt(quantityInput.value) || 1;
+            const productImageSrc = productImage.src || "";
+            const optionValue = sizeSelect ? sizeSelect.value : null;
+            const optionType = sizeSelect ? productCard.querySelector(".product__size-selector label")?.textContent.replace(":", "").trim() : null;
+            const uniqueProductId = `${productId}-${optionValue || "default"}`;
+            const existingItem = cart.find((item => item.id === uniqueProductId));
+            if (existingItem) existingItem.quantity += productQuantity; else cart.push({
+                id: uniqueProductId,
+                baseId: productId,
+                title: productTitleText,
+                price: productPriceValue,
+                quantity: productQuantity,
+                image: productImageSrc,
+                subtitle: productSubtitle.textContent,
+                optionType,
+                optionValue
+            });
+            updateCart();
+            animateCartCounter();
+        }
         function updateCart() {
             if (!cartItemsContainer || !cartTotal || !cartCount || !cartFooter) return;
             cartItemsContainer.innerHTML = "";
@@ -470,57 +526,22 @@
                 totalPrice += itemTotal;
                 const cartItemElement = document.createElement("div");
                 cartItemElement.className = "cart-item";
-                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h3 class="cart-item-title">${item.title}</h3>\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    <p class="cart-item-price">${formatPrice(item.price)} ₽</p>\n                    <div class="cart-item-quantity">\n                        <button class="quantity-btn minus" data-id="${item.id}" aria-label="Уменьшить количество">-</button>\n                        <input type="number" class="cart-quantity-input" value="${item.quantity}" min="1" \n                               data-id="${item.id}" aria-label="Количество товара">\n                        <button class="quantity-btn plus" data-id="${item.id}" aria-label="Увеличить количество">+</button>\n                        <button class="cart-item-remove" data-id="${item.id}" aria-label="Удалить товар">×</button>\n                    </div>\n                </div>\n            `;
+                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h3 class="cart-item-title">${item.title}</h3>\n                    ${item.optionValue ? `<p class="cart-item-option">${item.optionType}: ${item.optionValue}</p>` : ""}\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    ${item.price > 0 ? `<p class="cart-item-price">${formatPrice(item.price)} ₽</p>` : ""}\n                    <div class="cart-item-quantity">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" data-id="${item.id}">-</button>\n                            <input type="number" class="quantity__input" value="${item.quantity}" min="1" data-id="${item.id}">\n                            <button type="button" class="quantity__btn plus" data-id="${item.id}">+</button>\n                        </div>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
                 cartItemsContainer.appendChild(cartItemElement);
             }));
+            if (submitOrderBtn) submitOrderBtn.setAttribute("aria-label", `Отправить заказ на сумму ${formatPrice(totalPrice)} руб`);
             cartTotal.textContent = formatPrice(totalPrice);
             const totalItems = cart.reduce(((sum, item) => sum + item.quantity), 0);
             cartCount.textContent = totalItems;
             cartFooter.style.display = cart.length > 0 ? "block" : "none";
-            document.querySelectorAll(".cart-item-quantity .minus").forEach((btn => {
-                btn.addEventListener("click", (function() {
-                    const id = this.getAttribute("data-id");
-                    const item = cart.find((item => item.id === id));
-                    if (item && item.quantity > 1) {
-                        item.quantity--;
-                        updateCart();
-                    }
-                }));
-            }));
-            document.querySelectorAll(".cart-item-quantity .plus").forEach((btn => {
-                btn.addEventListener("click", (function() {
-                    const id = this.getAttribute("data-id");
-                    const item = cart.find((item => item.id === id));
-                    if (item) {
-                        item.quantity++;
-                        updateCart();
-                    }
-                }));
-            }));
-            document.querySelectorAll(".cart-quantity-input").forEach((input => {
-                input.addEventListener("change", (function() {
-                    const id = this.getAttribute("data-id");
-                    const item = cart.find((item => item.id === id));
-                    const newQuantity = parseInt(this.value) || 1;
-                    if (item && newQuantity >= 1) {
-                        item.quantity = newQuantity;
-                        updateCart();
-                    } else this.value = item.quantity;
-                }));
-                input.addEventListener("input", (function() {
-                    this.value = this.value.replace(/[^0-9]/g, "");
-                }));
-            }));
-            document.querySelectorAll(".cart-item-remove").forEach((btn => {
-                btn.addEventListener("click", (function() {
-                    const id = this.getAttribute("data-id");
-                    cart = cart.filter((item => item.id !== id));
-                    updateCart();
-                }));
-            }));
         }
-        function formatPrice(price) {
-            return new Intl.NumberFormat("ru-RU").format(price);
+        function animateCartCounter() {
+            if (cartCount) {
+                cartCount.classList.add("update");
+                setTimeout((() => {
+                    cartCount.classList.remove("update");
+                }), 500);
+            }
         }
         function submitOrder() {
             if (cart.length === 0) {
@@ -536,45 +557,212 @@
             alert(`Ваш заказ на сумму ${formatPrice(totalPrice)} ₽ успешно отправлен!`);
             cart = [];
             updateCart();
-            cartModal.classList.remove("active");
-            cartOverlay.classList.remove("active");
+            closeCart();
         }
-        const searchForm = document.querySelector(".search-form");
-        if (searchForm) {
+        function performSearch() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout((() => {
+                if (!searchInput || !productsContainer) return;
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                const productCards = document.querySelectorAll(".product__card");
+                let hasMatches = false;
+                const existingNoResults = document.querySelector(".no-results-message");
+                if (existingNoResults) existingNoResults.remove();
+                productsContainer.classList.add("searching");
+                productCards.forEach((card => {
+                    const title = card.dataset.title.toLowerCase();
+                    const article = card.dataset.article.toLowerCase();
+                    const matches = title.includes(searchTerm) || article.includes(searchTerm);
+                    if (matches || !searchTerm) {
+                        hasMatches = true;
+                        card.classList.remove("hidden");
+                    } else card.classList.add("hidden");
+                }));
+                setTimeout((() => {
+                    productsContainer.classList.remove("searching");
+                    if (!hasMatches && searchTerm) showNoResultsMessage();
+                }), 300);
+            }), 300);
+        }
+        function showNoResultsMessage() {
+            const noResults = document.createElement("div");
+            noResults.className = "no-results-message";
+            noResults.innerHTML = `<p>Товары не найдены</p>`;
+            productsContainer.appendChild(noResults);
+        }
+        function initSearchFunctionality() {
+            if (!searchForm) return;
             const searchIcon = searchForm.querySelector(".search-form__icon");
             const searchItem = searchForm.querySelector(".search-form__item");
-            const searchInput = searchForm.querySelector(".search-form__input");
-            const searchClear = searchForm.querySelector(".search-form__clear");
-            const productCards = document.querySelectorAll(".product__card");
-            if (searchIcon && searchItem && searchInput && searchClear) {
-                searchIcon.addEventListener("click", (function(e) {
-                    e.stopPropagation();
-                    searchItem.classList.toggle("active");
-                    if (searchItem.classList.contains("active")) searchInput.focus();
+            function toggleClearButton() {
+                if (searchInput && searchClear) searchClear.style.display = searchInput.value ? "block" : "none";
+            }
+            if (searchInput) {
+                searchInput.addEventListener("input", (function() {
+                    toggleClearButton();
+                    performSearch();
                 }));
-                searchClear.addEventListener("click", (function() {
+                searchInput.addEventListener("keydown", (function(e) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        performSearch();
+                    }
+                }));
+            }
+            if (searchClear) searchClear.addEventListener("click", (function(e) {
+                e.preventDefault();
+                if (searchInput) {
                     searchInput.value = "";
                     searchInput.focus();
+                    toggleClearButton();
                     performSearch();
-                }));
-                document.addEventListener("click", (function(e) {
-                    if (!searchForm.contains(e.target)) searchItem.classList.remove("active");
-                }));
-                searchInput.addEventListener("input", (function() {
-                    searchClear.style.display = this.value ? "block" : "none";
-                    performSearch();
-                }));
-                function performSearch() {
-                    const searchTerm = searchInput.value.trim().toLowerCase();
-                    productCards.forEach((function(card) {
-                        const title = card.querySelector(".product__title")?.textContent.toLowerCase() || "";
-                        const article = card.querySelector(".product__subtitle")?.textContent.toLowerCase() || "";
-                        const isVisible = title.includes(searchTerm) || article.includes(searchTerm);
-                        card.style.display = isVisible ? "block" : "none";
-                    }));
                 }
+            }));
+            if (searchIcon && searchItem) searchIcon.addEventListener("click", (function(e) {
+                e.stopPropagation();
+                searchItem.classList.toggle("active");
+                if (searchItem.classList.contains("active") && searchInput) searchInput.focus();
+            }));
+            document.addEventListener("click", (function(e) {
+                if (!searchForm.contains(e.target)) searchItem?.classList.remove("active");
+            }));
+            toggleClearButton();
+        }
+        function initEventHandlers() {
+            document.addEventListener("click", (function(e) {
+                if (e.target.classList.contains("quantity__btn")) {
+                    const controls = e.target.closest(".quantity__controls");
+                    if (!controls) return;
+                    const input = controls.querySelector(".quantity__input");
+                    if (!input) return;
+                    let value = parseInt(input.value) || 1;
+                    if (e.target.classList.contains("minus") && value > 1) value--; else if (e.target.classList.contains("plus")) value++;
+                    input.value = value;
+                }
+                if (e.target.classList.contains("add-to-cart")) {
+                    const productCard = e.target.closest(".product__card");
+                    if (productCard) addToCart(productCard);
+                }
+                if (e.target.closest("#cart-icon")) {
+                    e.preventDefault();
+                    openCart();
+                }
+            }));
+            if (closeCartBtn) closeCartBtn.addEventListener("click", closeCart);
+            if (submitOrderBtn) submitOrderBtn.addEventListener("click", submitOrder);
+            document.addEventListener("click", (function(e) {
+                if (e.target.classList.contains("quantity__btn") && e.target.closest(".cart-item")) {
+                    const id = e.target.getAttribute("data-id");
+                    const item = cart.find((item => item.id === id));
+                    if (!item) return;
+                    if (e.target.classList.contains("minus") && item.quantity > 1) item.quantity--; else if (e.target.classList.contains("plus")) item.quantity++;
+                    updateCart();
+                }
+                if (e.target.classList.contains("cart-item-remove")) {
+                    const id = e.target.getAttribute("data-id");
+                    cart = cart.filter((item => item.id !== id));
+                    updateCart();
+                }
+            }));
+            document.addEventListener("change", (function(e) {
+                if (e.target.classList.contains("quantity__input") && e.target.closest(".cart-item")) {
+                    const id = e.target.getAttribute("data-id");
+                    const newQuantity = parseInt(e.target.value) || 1;
+                    const item = cart.find((item => item.id === id));
+                    if (item && newQuantity >= 1) {
+                        item.quantity = newQuantity;
+                        updateCart();
+                    }
+                }
+            }));
+            const focusStart = document.querySelector(".focus-trap-start");
+            const focusEnd = document.querySelector(".focus-trap-end");
+            if (cartModal && focusEnd && focusStart) {
+                focusEnd.addEventListener("focus", (() => {
+                    closeCartBtn.focus();
+                }));
+                focusStart.addEventListener("focus", (() => {
+                    submitOrderBtn.focus();
+                }));
             }
         }
+        function formatPrice(price) {
+            return new Intl.NumberFormat("ru-RU").format(price);
+        }
+        function init() {
+            generateProductCards();
+            setupCartOverlay();
+            initEventHandlers();
+            if (searchForm) initSearchFunctionality();
+        }
+        init();
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        const header = document.querySelector(".header");
+        if (!header) return;
+        const logoText = header.querySelector(".header__logo-text");
+        const logoTextShort = header.querySelector(".header__logo-text-short");
+        const headerBody = header.querySelector(".header__body");
+        const phoneItems = header.querySelectorAll(".phones__item");
+        const emailItems = header.querySelectorAll(".emails__item");
+        const phoneLinks = header.querySelectorAll(".phones__link");
+        const emailLinks = header.querySelectorAll(".emails__link");
+        const actionsContacts = header.querySelector(".actions__contacts");
+        function isDesktop() {
+            return window.innerWidth > 991.98;
+        }
+        function handleScrollStyles() {
+            const isScrolled = window.scrollY > 0;
+            const shouldApplyStyles = isDesktop() && isScrolled;
+            if (logoText) {
+                logoText.style.display = shouldApplyStyles ? "none" : "";
+                if (!isDesktop()) logoText.style.display = "";
+            }
+            if (logoTextShort) {
+                logoTextShort.style.opacity = shouldApplyStyles ? "1" : "";
+                logoTextShort.style.visibility = shouldApplyStyles ? "visible" : "";
+                if (!isDesktop()) {
+                    logoTextShort.style.opacity = "";
+                    logoTextShort.style.visibility = "";
+                }
+            }
+            phoneItems.forEach((item => {
+                item.style.display = shouldApplyStyles ? "flex" : "";
+                item.style.flexDirection = shouldApplyStyles ? "row" : "";
+            }));
+            emailItems.forEach((item => {
+                item.style.display = shouldApplyStyles ? "flex" : "";
+                item.style.flexDirection = shouldApplyStyles ? "row" : "";
+            }));
+            phoneLinks.forEach((link => {
+                link.style.marginRight = shouldApplyStyles ? "10px" : "";
+            }));
+            emailLinks.forEach((link => {
+                link.style.marginRight = shouldApplyStyles ? "10px" : "";
+            }));
+            if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
+            if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
+            if (shouldApplyStyles) header.classList.add("scrolled"); else header.classList.remove("scrolled");
+        }
+        let isTicking = false;
+        function requestTick() {
+            if (!isTicking) {
+                requestAnimationFrame((function() {
+                    handleScrollStyles();
+                    isTicking = false;
+                }));
+                isTicking = true;
+            }
+        }
+        window.addEventListener("scroll", requestTick);
+        window.addEventListener("resize", (function() {
+            if (!isDesktop()) {
+                [ logoText, logoTextShort, ...phoneItems, ...emailItems, ...phoneLinks, ...emailLinks, actionsContacts, headerBody ].filter(Boolean).forEach((el => el.style = ""));
+                header.classList.remove("scrolled");
+            }
+            requestTick();
+        }));
+        handleScrollStyles();
     }));
     window["FLS"] = true;
     isWebp();
