@@ -585,20 +585,33 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-
-/* Иконка поиска (скрыта на десктопе) */
 
 .search-form__icon {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
+  width: 36px;
+  height: 36px;
   padding: 8px;
   font-size: 20px;
+  color: rgba(56, 56, 56, 0.8);
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-/* Форма поиска */
+.search-form__icon::before {
+  font-size: 1.375rem;
+  color: #000;
+}
+
+.search-form__icon:hover {
+  color: rgba(99, 99, 99, 0.7);
+}
 
 .search-form__item {
   display: -webkit-box;
@@ -612,9 +625,16 @@ a {
   padding: 5px 15px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  width: 100%;
-  max-width: 400px;
+  width: auto;
+  min-width: 300px;
   border: 1px solid rgba(122, 122, 122, 0.5);
+  position: relative;
+}
+
+.search-form__item:focus-within {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-color: rgba(122, 122, 122, 0.5);
 }
 
 .search-form__input {
@@ -623,13 +643,24 @@ a {
           flex-grow: 1;
   border: none;
   background: transparent;
-  padding: 2px 20px;
+  padding: 2px 20px 2px 10px;
   outline: none;
   font-size: 14px;
+  width: 100%;
 }
 
-.search-form__btn,
-.search-form__clear {
+.search-form__input:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+.search-form__input:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.search-form__btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -639,13 +670,27 @@ a {
 
 .search-form__clear {
   display: none;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #666;
+  margin-left: auto;
 }
 
 .search-form__clear::before {
   font-size: 1.25rem;
 }
 
-/* Адаптация для мобильных */
+.search-form__clear:hover {
+  color: #333;
+}
 
 .actions-header__phones-numbers {
   display: -webkit-box;
@@ -1711,28 +1756,55 @@ a {
 }
 
 @media (max-width: 1040px) {
+  .search-form {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
   .search-form__icon {
-    display: block;
-    -webkit-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-  }
-
-  .search-form__item {
-    position: absolute;
-    top: 135%;
-    right: 0;
-    width: 300px;
-    display: none;
-    z-index: 100;
-    background: white;
-    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .search-form__item.active {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .search-form__item {
+    position: fixed;
+    left: 50%;
+    top: -60px;
+    width: 90vw;
+    max-width: 500px;
+    min-width: auto;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateX(-50%) translateY(-20px);
+        -ms-transform: translateX(-50%) translateY(-20px);
+            transform: translateX(-50%) translateY(-20px);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 110;
+    background: white;
+    -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding-right: 35px;
+  }
+
+  .search-form__item.active {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateX(-50%) translateY(0);
+        -ms-transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0);
+    top: 80px;
   }
 
   .search-form__input:not(:-moz-placeholder-shown) + .search-form__clear {
@@ -1745,6 +1817,20 @@ a {
 
   .search-form__input:not(:placeholder-shown) + .search-form__clear {
     display: block;
+  }
+}
+
+@media (max-width: 1040px) and (max-width: 600px) {
+  .search-form__item {
+    width: 95vw;
+    max-width: none;
+  }
+}
+
+@media (max-width: 1040px) and (max-width: 400px) {
+  .search-form__item {
+    width: 95vw;
+    padding: 5px 30px 5px 15px;
   }
 }
 
