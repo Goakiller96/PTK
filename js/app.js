@@ -694,6 +694,26 @@
             setupCartOverlay();
             initEventHandlers();
             if (searchForm) initSearchFunctionality();
+            fixMobileViewportIssues();
+        }
+        function fixMobileViewportIssues() {
+            function setRealViewportHeight() {
+                const vh = window.innerHeight * .01;
+                document.documentElement.style.setProperty("--vh", `${vh}px`);
+                const cartModal = document.querySelector(".cart-modal");
+                if (cartModal) cartModal.style.height = window.innerHeight + "px";
+            }
+            setRealViewportHeight();
+            window.addEventListener("resize", setRealViewportHeight);
+            window.addEventListener("orientationchange", setRealViewportHeight);
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                document.body.style.overflow = "hidden";
+                document.body.style.position = "fixed";
+                document.body.style.top = "0";
+                document.body.style.left = "0";
+                document.body.style.right = "0";
+                document.body.style.bottom = "0";
+            }
         }
         init();
     }));
