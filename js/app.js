@@ -408,6 +408,14 @@
         price: 1999,
         sizes: [ "2.5", "3.0", "3.5", "4.0" ],
         sizeLabel: "Размер:"
+    }, {
+        id: 7,
+        title: "Сопло 402",
+        article: "12351",
+        image: "img/cards/flamingo.png",
+        price: 1999,
+        sizes: [ "2.5", "3.0", "3.5", "4.0" ],
+        sizeLabel: "Размер:"
     } ];
     const products = productsData;
     window.onload = function() {
