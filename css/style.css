@@ -2227,7 +2227,7 @@ a {
   }
 
   .cart-modal .cart-total {
-    padding-bottom: 80px;
+    padding-bottom: 20px;
     /* Дополнительный отступ перед кнопкой */
   }
 }
