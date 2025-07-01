@@ -222,17 +222,29 @@
 			</div>
 		</header>
 		<main class="page">
-			<!-- Хлебные крошки для главной страницы -->
+
+			<!-- Хлебные крошки для страницы каталога -->
 			<div class="breadcrumbs__container">
 				<nav class="breadcrumbs" aria-label="Хлебные крошки">
 					<ul class="breadcrumbs__list">
 						<li class="breadcrumbs__item">
-							<span class="breadcrumbs__current">Главная</span>
+							<a href="/" class="breadcrumbs__link">Главная</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<span class="breadcrumbs__current">Каталог</span>
 						</li>
 					</ul>
 				</nav>
 			</div>
-			<!-- Основной контент главной страницы -->
+
+			<section class="catalog">
+				<div class="catalog__container">
+					<h1 class="catalog__title title">Каталог</h1>
+					<div class="catalog__wrapper" id="products-container">
+						<!-- Карточки товаров будут генерироваться здесь -->
+					</div>
+				</div>
+			</section>
 		</main>
 		<footer class="footer">
 			<div class="footer__container">
@@ -363,7 +375,7 @@
 			</div>
 		</footer>
 	</div>
-	<!-- Общие элементы корзины -->
+	<!-- Общие элементы корзины (такие же как на index.html) -->
 	<aside class="cart-modal" aria-modal="true" aria-labelledby="cart-title" role="dialog" tabindex="-1" aria-describedby="cart-description">
 		<div id="cart-description" class="visually-hidden">
 			Управление товарами в корзине
