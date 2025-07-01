@@ -366,58 +366,85 @@
     da.init();
     const productsData = [ {
         id: 1,
-        title: "Фламинго",
-        article: "12345",
-        image: "img/cards/flamingo.png",
-        price: 1999,
-        sizeLabel: "Размер:"
+        title: "Горелка плазменная Фламинго для резки металла",
+        article: "FL-12345",
+        image: "img/cards/flamingo.webp",
+        alt: "Горелка Фламинго для плазменной резки металлов",
+        description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом"
     }, {
         id: 2,
-        title: "Сопло 410",
-        article: "410011",
+        title: "Сопло плазменное 410 для резки нержавеющей стали",
+        article: "SP-410011",
         image: "img/cards/soplo-410.png",
-        sizes: [ "2.5", "3.0", "3.5", "4.0" ],
-        sizeLabel: "Размер:"
+        price: 348.64,
+        sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+        sizeLabel: "Диаметр сопла:",
+        alt: "Сопло 410 для плазмотрона",
+        description: "Сопла для плазменной резки серии 410 с медным охлаждением"
     }, {
         id: 3,
-        title: "Сопло 402",
-        article: "402011",
+        title: "Сопло плазменное 402 для резки алюминия",
+        article: "SP-402011",
         image: "img/cards/soplo-402.png",
-        sizes: [ "2.5", "3.0", "3.5", "4.0" ],
-        sizeLabel: "Размер:"
+        sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+        sizeLabel: "Диаметр сопла:",
+        alt: "Сопло 402 для резки цветных металлов",
+        description: "Износостойкие сопла для резки алюминия и цветных металлов"
     }, {
         id: 4,
-        title: "Электрод",
-        article: "4014",
+        title: "Электрод для плазмотрона конусный",
+        article: "EL-4014",
         image: "img/cards/electrod.png",
         sizes: [ "Гафний", "Биметалл" ],
-        sizeLabel: "Вставка:"
+        sizeLabel: "Тип вставки:",
+        alt: "Электроды для плазменной резки",
+        description: "Катоды для плазмотронов с различными типами вставок"
     }, {
         id: 5,
-        title: "Сопло 210",
-        article: "1512",
+        title: "Сопло плазменное 210 для тонколистового металла",
+        article: "SP-1512",
         image: "img/cards/soplo-210.png",
         price: 242.56,
-        sizes: [ "1.3", "1.5", "1.8", "2.0" ],
-        sizeLabel: "Размер:"
+        sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
+        sizeLabel: "Диаметр сопла:",
+        alt: "Сопло 210 для тонкой резки",
+        description: "Сопла малого диаметра для точной резки тонколистового металла"
     }, {
         id: 6,
-        title: "Сопло 402",
-        article: "12350",
+        title: "Ремкомплект для горелки Фламинго",
+        article: "RK-12350",
         image: "img/cards/flamingo.png",
         price: 1999,
-        sizes: [ "2.5", "3.0", "3.5", "4.0" ],
-        sizeLabel: "Размер:"
+        sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
+        sizeLabel: "Вариант:",
+        alt: "Ремкомплект для плазменной горелки",
+        description: "Ремонтный комплект для горелок серии Фламинго"
     }, {
         id: 7,
-        title: "Сопло 402",
-        article: "12351",
+        title: "Запасные части для горелки Фламинго",
+        article: "ZCH-12351",
         image: "img/cards/flamingo.png",
-        price: 1999,
-        sizes: [ "2.5", "3.0", "3.5", "4.0" ],
-        sizeLabel: "Размер:"
+        alt: "Запчасти для плазменного оборудования",
+        description: "Оригинальные запасные части для ремонта горелок"
     } ];
-    const products = productsData;
+    const withSeoMeta = productsData.map((product => ({
+        ...product,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.title,
+            description: product.description || `${product.title} - профессиональное оборудование для плазменной резки`,
+            image: product.image,
+            ...product.price && {
+                offers: {
+                    "@type": "Offer",
+                    price: product.price,
+                    priceCurrency: "RUB"
+                }
+            }
+        }
+    })));
+    const products = withSeoMeta;
     window.onload = function() {
         document.addEventListener("click", documentActions);
         function documentActions(e) {
@@ -449,27 +476,59 @@
         let totalPrice = 0;
         let searchTimeout;
         function setupCartOverlay() {
-            const cartOverlay = document.createElement("div");
-            cartOverlay.className = "cart-overlay";
-            document.body.appendChild(cartOverlay);
+            let cartOverlay = document.querySelector(".cart-overlay");
+            if (!cartOverlay) {
+                cartOverlay = document.createElement("div");
+                cartOverlay.className = "cart-overlay";
+                document.body.appendChild(cartOverlay);
+            }
             cartOverlay.addEventListener("click", closeCart);
             document.addEventListener("click", (e => {
-                if (!cartModal.contains(e.target) && !e.target.closest("#cart-icon") && cartModal.classList.contains("active")) closeCart();
+                const cartModal = document.querySelector(".cart-modal");
+                if (!cartModal || !cartModal.classList.contains("active")) return;
+                const isClickInsideCart = cartModal.contains(e.target);
+                const isClickOnCartIcon = e.target.closest("#cart-icon");
+                if (!isClickInsideCart && !isClickOnCartIcon) closeCart();
             }));
         }
         function openCart() {
+            const cartModal = document.querySelector(".cart-modal");
+            const closeCartBtn = document.querySelector(".close-cart");
+            const cartOverlay = document.querySelector(".cart-overlay");
+            if (!cartModal || !closeCartBtn || !cartOverlay) {
+                console.error("Не найдены необходимые элементы корзины");
+                return;
+            }
             cartModal.classList.add("active");
-            document.querySelector(".cart-overlay").classList.add("active");
+            cartOverlay.classList.add("active");
             document.body.classList.add("body-no-scroll");
             setTimeout((() => {
                 closeCartBtn.focus();
             }), 100);
         }
         function closeCart() {
-            cartModal.classList.remove("active");
-            document.querySelector(".cart-overlay").classList.remove("active");
+            const cartModal = document.querySelector(".cart-modal");
+            const cartOverlay = document.querySelector(".cart-overlay");
+            if (cartModal) cartModal.classList.remove("active");
+            if (cartOverlay) cartOverlay.classList.remove("active");
             document.body.classList.remove("body-no-scroll");
         }
+        function initCart() {
+            const cartModal = document.querySelector(".cart-modal");
+            const cartIcon = document.getElementById("cart-icon");
+            if (!cartModal || !cartIcon) return;
+            setupCartOverlay();
+            cartIcon.addEventListener("click", (e => {
+                e.preventDefault();
+                openCart();
+            }));
+        }
+        function init() {
+            initCart();
+        }
+        document.addEventListener("DOMContentLoaded", (function() {
+            init();
+        }));
         function generateProductCards() {
             if (!productsContainer) return;
             const existingCartModal = productsContainer.querySelector(".cart-modal");
@@ -491,7 +550,7 @@
             let sizeSelectorHTML = "";
             if (product.sizes) sizeSelectorHTML = `\n                <div class="product__size-selector">\n                    <label for="size-${product.article}-${uniqueSuffix}">${product.sizeLabel}</label>\n                    <select id="size-${product.article}-${uniqueSuffix}" class="product__size-select">\n                        ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                    </select>\n                </div>\n            `;
             const priceHTML = product.price ? `\n            <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n                <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n                <span itemprop="priceCurrency" content="RUB">₽</span>\n            </p>\n        ` : "";
-            productCard.innerHTML = `\n            <img src="${product.image}" alt="${product.title}" class="product__image" loading="lazy" width="300" height="200" itemprop="image">\n            <div class="product__content">\n                <h3 class="product__title" itemprop="name">${product.title}</h3>\n                <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                ${sizeSelectorHTML}\n                <div class="product__footer">\n                    ${priceHTML}\n                    <div class="quantity__controls">\n                        <button type="button" class="quantity__btn minus" aria-label="Уменьшить количество" data-target="quantity-${product.article}-${uniqueSuffix}">-</button>\n                        <input type="number" id="quantity-${product.article}-${uniqueSuffix}" class="quantity__input" value="1" min="1" aria-label="Количество товара">\n                        <button type="button" class="quantity__btn plus" aria-label="Увеличить количество" data-target="quantity-${product.article}-${uniqueSuffix}">+</button>\n                    </div>\n                    <button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">\n                        Добавить в корзину\n                        <span class="visually-hidden">товар ${product.title}</span>\n                    </button>\n                </div>\n            </div>\n        `;
+            productCard.innerHTML = `\n    <img src="${product.image}" alt="${product.title}" class="product__image" loading="lazy" width="300" height="200" itemprop="image">\n    <div class="product__content">\n        <h3 class="product__title" itemprop="name">${product.title}</h3>\n        <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n        \n        <div class="product__bottom-section">\n            ${priceHTML}\n            ${sizeSelectorHTML}\n            \n            <div class="product__footer">\n                <div class="quantity__controls">\n                    <button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>\n                    <input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">\n                    <button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>\n                </div>\n                <button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">\n                    Добавить в корзину\n                    <span class="visually-hidden">товар ${product.title}</span>\n                </button>\n            </div>\n        </div>\n    </div>\n`;
             return productCard;
         }
         function addToCart(productCard) {
@@ -542,6 +601,7 @@
             const totalItems = cart.reduce(((sum, item) => sum + item.quantity), 0);
             cartCount.textContent = totalItems;
             cartFooter.style.display = cart.length > 0 ? "block" : "none";
+            saveCartToStorage();
         }
         function animateCartCounter() {
             if (cartCount) {
@@ -566,6 +626,20 @@
             cart = [];
             updateCart();
             closeCart();
+            localStorage.removeItem("cart");
+        }
+        function loadCartFromStorage() {
+            const savedCart = localStorage.getItem("cart");
+            if (savedCart) try {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            } catch (e) {
+                console.error("Ошибка при загрузке корзины:", e);
+                localStorage.removeItem("cart");
+            }
+        }
+        function saveCartToStorage() {
+            localStorage.setItem("cart", JSON.stringify(cart));
         }
         function performSearch() {
             clearTimeout(searchTimeout);
@@ -595,7 +669,7 @@
         function showNoResultsMessage() {
             const noResults = document.createElement("div");
             noResults.className = "no-results-message";
-            noResults.innerHTML = `<p>Товары не найдены</p>`;
+            noResults.innerHTML = `<p>Товары не найдены!</p>`;
             productsContainer.appendChild(noResults);
         }
         function initSearchFunctionality() {
@@ -697,13 +771,6 @@
         function formatPrice(price) {
             return new Intl.NumberFormat("ru-RU").format(price);
         }
-        function init() {
-            generateProductCards();
-            setupCartOverlay();
-            initEventHandlers();
-            if (searchForm) initSearchFunctionality();
-            fixMobileViewportIssues();
-        }
         function fixMobileViewportIssues() {
             function setRealViewportHeight() {
                 const vh = window.innerHeight * .01;
@@ -722,6 +789,16 @@
                 document.body.style.right = "0";
                 document.body.style.bottom = "0";
             }
+        }
+        function init() {
+            setupCartOverlay();
+            initEventHandlers();
+            loadCartFromStorage();
+            if (productsContainer) {
+                generateProductCards();
+                if (searchForm) initSearchFunctionality();
+            }
+            fixMobileViewportIssues();
         }
         init();
     }));
@@ -742,16 +819,23 @@
         function handleScrollStyles() {
             const isScrolled = window.scrollY > 0;
             const shouldApplyStyles = isDesktop() && isScrolled;
-            if (logoText) {
-                logoText.style.display = shouldApplyStyles ? "none" : "";
-                if (!isDesktop()) logoText.style.display = "";
-            }
-            if (logoTextShort) {
-                logoTextShort.style.opacity = shouldApplyStyles ? "1" : "";
-                logoTextShort.style.visibility = shouldApplyStyles ? "visible" : "";
+            if (logoText && logoTextShort) {
+                if (shouldApplyStyles) {
+                    logoText.style.display = "none";
+                    logoTextShort.style.display = "block";
+                    logoTextShort.style.opacity = "1";
+                    logoTextShort.style.visibility = "visible";
+                } else {
+                    logoText.style.display = "block";
+                    logoText.style.opacity = "1";
+                    logoText.style.visibility = "visible";
+                    logoTextShort.style.display = "none";
+                }
                 if (!isDesktop()) {
-                    logoTextShort.style.opacity = "";
-                    logoTextShort.style.visibility = "";
+                    logoText.style.display = "none";
+                    logoTextShort.style.display = "block";
+                    logoTextShort.style.opacity = "1";
+                    logoTextShort.style.visibility = "visible";
                 }
             }
             phoneItems.forEach((item => {
