@@ -274,6 +274,16 @@ a {
   transition: all 0.3s ease 0s;
 }
 
+.page {
+  padding-top: 7.5rem;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: rgba(56, 56, 56, 0.8);
+}
+
 .actions__contacts {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -377,6 +387,61 @@ a {
   margin-bottom: 0.3125rem;
 }
 
+.no-results-message p {
+  text-align: center;
+}
+
+.breadcrumbs {
+  padding: 15px 0;
+  background: #f5f5f5;
+}
+
+.breadcrumbs__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs__item {
+  margin-right: 10px;
+  padding-right: 15px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.breadcrumbs__item:not(:last-child)::after {
+  content: "/";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #999;
+}
+
+.breadcrumbs__link {
+  color: #2ecc71;
+  text-decoration: none;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs__current {
+  color: #666;
+  pointer-events: none;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -408,6 +473,9 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
@@ -441,16 +509,18 @@ a {
 .header__logo-text {
   font-weight: 500;
   color: rgba(56, 56, 56, 0.8);
+  padding-bottom: 0.25rem;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
 
 .header__logo-text-short {
-  font-size: 1.25rem;
+  font-size: 1.625rem;
   position: relative;
   z-index: 10;
   opacity: 0;
   visibility: hidden;
+  font-size: 1.375rem;
   font-weight: 500;
   color: rgba(56, 56, 56, 0.8);
 }
@@ -1010,10 +1080,6 @@ a {
   margin-bottom: 1.5625rem;
 }
 
-.catalog {
-  padding-top: 120px;
-}
-
 .catalog__wrapper {
   display: -ms-grid;
   display: grid;
@@ -1067,7 +1133,7 @@ a {
 
 .product__content {
   text-align: center;
-  padding: 0px 10px 0px 10px;
+  padding: 0 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1078,12 +1144,12 @@ a {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  height: 100%;
 }
 
 .product__title {
-  font-size: 18px;
   margin: 0 0 8px 0;
-  color: #333;
+  color: rgba(56, 56, 56, 0.8);
   font-weight: 600;
 }
 
@@ -1093,20 +1159,41 @@ a {
   margin: 0 0 8px 0;
 }
 
+.product__bottom-section {
+  margin-top: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+}
+
 .product__size-selector {
-  margin-bottom: 8px;
+  margin-bottom: 0;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
 }
 
 .product__price {
   font-size: 16px;
   font-weight: 700;
   color: #2c3e50;
-  margin: 0px 0px 10px 0px;
+  margin: 0;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
 }
 
 .product__footer {
-  margin-top: auto;
-  padding: 10px 10px 0px;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+  margin-top: 10px;
 }
 
 .quantity__controls {
@@ -1223,7 +1310,7 @@ a {
 .cart-count {
   position: absolute;
   top: -5px;
-  right: 0px;
+  right: -5px;
   background: #e74c3c;
   color: white;
   border-radius: 50%;
@@ -1646,6 +1733,14 @@ a {
 }
 
 @media (min-width: 79.375em) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    margin-bottom: 3.125rem;
+  }
+
   .phones__icon::before {
     font-size: 1.25rem;
   }
@@ -1733,11 +1828,15 @@ a {
   }
 
   .catalog__container {
-    padding-top: 3.75rem;
+    padding-top: 3.125rem;
   }
 
   .catalog__container {
-    padding-bottom: 3.75rem;
+    padding-bottom: 3.125rem;
+  }
+
+  .product__title {
+    font-size: 1rem;
   }
 }
 
@@ -1755,7 +1854,7 @@ a {
   }
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1110px) {
   .search-form {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
@@ -1820,17 +1919,29 @@ a {
   }
 }
 
-@media (max-width: 1040px) and (max-width: 600px) {
+@media (max-width: 1110px) and (max-width: 600px) {
   .search-form__item {
     width: 95vw;
     max-width: none;
   }
 }
 
-@media (max-width: 1040px) and (max-width: 400px) {
+@media (max-width: 1110px) and (max-width: 400px) {
   .search-form__item {
     width: 95vw;
     padding: 5px 30px 5px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs {
+    padding: 10px 0;
+  }
+
+  .breadcrumbs__item {
+    font-size: 14px;
+    margin-right: 8px;
+    padding-right: 12px;
   }
 }
 
@@ -1891,6 +2002,14 @@ a {
 }
 
 @media (max-width: 20em) {
+  .title {
+    font-size: 1rem;
+  }
+
+  .title {
+    margin-bottom: 0.9375rem;
+  }
+
   .phones__icon::before {
     font-size: 1rem;
   }
@@ -1983,6 +2102,10 @@ a {
 
   .catalog__container {
     padding-bottom: 1.875rem;
+  }
+
+  .product__title {
+    font-size: 0.875rem;
   }
 }
 
@@ -2347,6 +2470,30 @@ a {
 }
 
 @media (min-width: 20em) and (max-width: 79.375em) {
+@supports (font-size: clamp( 1rem , 0.8315789474rem  +  0.8421052632vw , 1.5rem )) {
+    .title {
+      font-size: clamp( 1rem , 0.8315789474rem  +  0.8421052632vw , 1.5rem );
+    }
+}
+
+@supports not (font-size: clamp( 1rem , 0.8315789474rem  +  0.8421052632vw , 1.5rem )) {
+    .title {
+      font-size: calc(1rem + 0.5 * (100vw - 20rem) / 59.375);
+    }
+}
+
+@supports (margin-bottom: clamp( 0.9375rem , 0.2006578947rem  +  3.6842105263vw , 3.125rem )) {
+    .title {
+      margin-bottom: clamp( 0.9375rem , 0.2006578947rem  +  3.6842105263vw , 3.125rem );
+    }
+}
+
+@supports not (margin-bottom: clamp( 0.9375rem , 0.2006578947rem  +  3.6842105263vw , 3.125rem )) {
+    .title {
+      margin-bottom: calc(0.9375rem + 2.1875 * (100vw - 20rem) / 59.375);
+    }
+}
+
 @supports (font-size: clamp( 1rem , 0.9157894737rem  +  0.4210526316vw , 1.25rem )) {
     .phones__icon::before {
       font-size: clamp( 1rem , 0.9157894737rem  +  0.4210526316vw , 1.25rem );
@@ -2603,27 +2750,39 @@ a {
     }
 }
 
-@supports (padding-top: clamp( 1.875rem , 1.2434210526rem  +  3.1578947368vw , 3.75rem )) {
+@supports (padding-top: clamp( 1.875rem , 1.4539473684rem  +  2.1052631579vw , 3.125rem )) {
     .catalog__container {
-      padding-top: clamp( 1.875rem , 1.2434210526rem  +  3.1578947368vw , 3.75rem );
+      padding-top: clamp( 1.875rem , 1.4539473684rem  +  2.1052631579vw , 3.125rem );
     }
 }
 
-@supports not (padding-top: clamp( 1.875rem , 1.2434210526rem  +  3.1578947368vw , 3.75rem )) {
+@supports not (padding-top: clamp( 1.875rem , 1.4539473684rem  +  2.1052631579vw , 3.125rem )) {
     .catalog__container {
-      padding-top: calc(1.875rem + 1.875 * (100vw - 20rem) / 59.375);
+      padding-top: calc(1.875rem + 1.25 * (100vw - 20rem) / 59.375);
     }
 }
 
-@supports (padding-bottom: clamp( 1.875rem , 1.2434210526rem  +  3.1578947368vw , 3.75rem )) {
+@supports (padding-bottom: clamp( 1.875rem , 1.4539473684rem  +  2.1052631579vw , 3.125rem )) {
     .catalog__container {
-      padding-bottom: clamp( 1.875rem , 1.2434210526rem  +  3.1578947368vw , 3.75rem );
+      padding-bottom: clamp( 1.875rem , 1.4539473684rem  +  2.1052631579vw , 3.125rem );
     }
 }
 
-@supports not (padding-bottom: clamp( 1.875rem , 1.2434210526rem  +  3.1578947368vw , 3.75rem )) {
+@supports not (padding-bottom: clamp( 1.875rem , 1.4539473684rem  +  2.1052631579vw , 3.125rem )) {
     .catalog__container {
-      padding-bottom: calc(1.875rem + 1.875 * (100vw - 20rem) / 59.375);
+      padding-bottom: calc(1.875rem + 1.25 * (100vw - 20rem) / 59.375);
+    }
+}
+
+@supports (font-size: clamp( 0.875rem , 0.8328947368rem  +  0.2105263158vw , 1rem )) {
+    .product__title {
+      font-size: clamp( 0.875rem , 0.8328947368rem  +  0.2105263158vw , 1rem );
+    }
+}
+
+@supports not (font-size: clamp( 0.875rem , 0.8328947368rem  +  0.2105263158vw , 1rem )) {
+    .product__title {
+      font-size: calc(0.875rem + 0.125 * (100vw - 20rem) / 59.375);
     }
 }
 }
@@ -2707,6 +2866,10 @@ a {
 
   .emails__link:hover {
     color: rgba(99, 99, 99, 0.7);
+  }
+
+  .breadcrumbs__link:hover {
+    color: #27ae60;
   }
 
   .header__logo-img svg path:hover {
