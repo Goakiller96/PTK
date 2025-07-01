@@ -364,87 +364,204 @@
     }
     const da = new DynamicAdapt("max");
     da.init();
-    const productsData = [ {
-        id: 1,
-        title: "Горелка плазменная Фламинго для резки металла",
-        article: "FL-12345",
-        image: "img/cards/flamingo.webp",
-        alt: "Горелка Фламинго для плазменной резки металлов",
-        description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом"
-    }, {
-        id: 2,
-        title: "Сопло плазменное 410 для резки нержавеющей стали",
-        article: "SP-410011",
-        image: "img/cards/soplo-410.png",
-        price: 348.64,
-        sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-        sizeLabel: "Диаметр сопла:",
-        alt: "Сопло 410 для плазмотрона",
-        description: "Сопла для плазменной резки серии 410 с медным охлаждением"
-    }, {
-        id: 3,
-        title: "Сопло плазменное 402 для резки алюминия",
-        article: "SP-402011",
-        image: "img/cards/soplo-402.png",
-        sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-        sizeLabel: "Диаметр сопла:",
-        alt: "Сопло 402 для резки цветных металлов",
-        description: "Износостойкие сопла для резки алюминия и цветных металлов"
-    }, {
-        id: 4,
-        title: "Электрод для плазмотрона конусный",
-        article: "EL-4014",
-        image: "img/cards/electrod.png",
-        sizes: [ "Гафний", "Биметалл" ],
-        sizeLabel: "Тип вставки:",
-        alt: "Электроды для плазменной резки",
-        description: "Катоды для плазмотронов с различными типами вставок"
-    }, {
-        id: 5,
-        title: "Сопло плазменное 210 для тонколистового металла",
-        article: "SP-1512",
-        image: "img/cards/soplo-210.png",
-        price: 242.56,
-        sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
-        sizeLabel: "Диаметр сопла:",
-        alt: "Сопло 210 для тонкой резки",
-        description: "Сопла малого диаметра для точной резки тонколистового металла"
-    }, {
-        id: 6,
-        title: "Ремкомплект для горелки Фламинго",
-        article: "RK-12350",
-        image: "img/cards/flamingo.png",
-        price: 1999,
-        sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
-        sizeLabel: "Вариант:",
-        alt: "Ремкомплект для плазменной горелки",
-        description: "Ремонтный комплект для горелок серии Фламинго"
-    }, {
-        id: 7,
-        title: "Запасные части для горелки Фламинго",
-        article: "ZCH-12351",
-        image: "img/cards/flamingo.png",
-        alt: "Запчасти для плазменного оборудования",
-        description: "Оригинальные запасные части для ремонта горелок"
-    } ];
-    const withSeoMeta = productsData.map((product => ({
-        ...product,
-        schema: {
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: product.title,
-            description: product.description || `${product.title} - профессиональное оборудование для плазменной резки`,
-            image: product.image,
-            ...product.price && {
-                offers: {
-                    "@type": "Offer",
-                    price: product.price,
-                    priceCurrency: "RUB"
+    function createInitialProducts() {
+        const initialProducts = [ {
+            title: "Горелка плазменная Фламинго для резки металла",
+            article: "FL-12345",
+            image: "img/cards/flamingo.webp",
+            price: 1999,
+            alt: "Горелка Фламинго для плазменной резки металлов",
+            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом"
+        }, {
+            title: "Сопло плазменное 410 для резки нержавеющей стали",
+            article: "SP-410011",
+            image: "img/cards/soplo-410.png",
+            price: 348.64,
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 410 для плазмотрона",
+            description: "Сопла для плазменной резки серии 410 с медным охлаждением"
+        }, {
+            title: "Сопло плазменное 402 для резки алюминия",
+            article: "SP-402011",
+            image: "img/cards/soplo-402.png",
+            price: 242.56,
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 402 для резки цветных металлов",
+            description: "Износостойкие сопла для резки алюминия и цветных металлов"
+        }, {
+            title: "Электрод для плазмотрона конусный",
+            article: "EL-4014",
+            image: "img/cards/electrod.png",
+            price: 420,
+            sizes: [ "Гафний", "Биметалл" ],
+            sizeLabel: "Тип вставки:",
+            alt: "Электроды для плазменной резки",
+            description: "Катоды для плазмотронов с различными типами вставок"
+        }, {
+            title: "Сопло плазменное 210 для тонколистового металла",
+            article: "SP-1512",
+            image: "img/cards/soplo-210.png",
+            price: 242.56,
+            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 210 для тонкой резки",
+            description: "Сопла малого диаметра для точной резки тонколистового металла"
+        }, {
+            title: "Ремкомплект для горелки Фламинго",
+            article: "RK-12350",
+            image: "img/cards/flamingo.png",
+            price: 1999,
+            sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
+            sizeLabel: "Вариант:",
+            alt: "Ремкомплект для плазменной горелки",
+            description: "Ремонтный комплект для горелок серии Фламинго"
+        }, {
+            title: "Горелка плазменная Фламинго для резки металла",
+            article: "FL-12345",
+            image: "img/cards/flamingo.webp",
+            price: 1999,
+            alt: "Горелка Фламинго для плазменной резки металлов",
+            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом"
+        }, {
+            title: "Сопло плазменное 410 для резки нержавеющей стали",
+            article: "SP-410011",
+            image: "img/cards/soplo-410.png",
+            price: 348.64,
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 410 для плазмотрона",
+            description: "Сопла для плазменной резки серии 410 с медным охлаждением"
+        }, {
+            title: "Сопло плазменное 402 для резки алюминия",
+            article: "SP-402011",
+            image: "img/cards/soplo-402.png",
+            price: 242.56,
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 402 для резки цветных металлов",
+            description: "Износостойкие сопла для резки алюминия и цветных металлов"
+        }, {
+            title: "Электрод для плазмотрона конусный",
+            article: "EL-4014",
+            image: "img/cards/electrod.png",
+            price: 420,
+            sizes: [ "Гафний", "Биметалл" ],
+            sizeLabel: "Тип вставки:",
+            alt: "Электроды для плазменной резки",
+            description: "Катоды для плазмотронов с различными типами вставок"
+        }, {
+            title: "Сопло плазменное 210 для тонколистового металла",
+            article: "SP-1512",
+            image: "img/cards/soplo-210.png",
+            price: 242.56,
+            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 210 для тонкой резки",
+            description: "Сопла малого диаметра для точной резки тонколистового металла"
+        }, {
+            title: "Ремкомплект для горелки Фламинго",
+            article: "RK-12350",
+            image: "img/cards/flamingo.png",
+            price: 1999,
+            sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
+            sizeLabel: "Вариант:",
+            alt: "Ремкомплект для плазменной горелки",
+            description: "Ремонтный комплект для горелок серии Фламинго"
+        }, {
+            title: "Горелка плазменная Фламинго для резки металла",
+            article: "FL-12345",
+            image: "img/cards/flamingo.webp",
+            price: 1999,
+            alt: "Горелка Фламинго для плазменной резки металлов",
+            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом"
+        }, {
+            title: "Сопло плазменное 410 для резки нержавеющей стали",
+            article: "SP-410011",
+            image: "img/cards/soplo-410.png",
+            price: 348.64,
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 410 для плазмотрона",
+            description: "Сопла для плазменной резки серии 410 с медным охлаждением"
+        }, {
+            title: "Сопло плазменное 402 для резки алюминия",
+            article: "SP-402011",
+            image: "img/cards/soplo-402.png",
+            price: 242.56,
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 402 для резки цветных металлов",
+            description: "Износостойкие сопла для резки алюминия и цветных металлов"
+        }, {
+            title: "Электрод для плазмотрона конусный",
+            article: "EL-4014",
+            image: "img/cards/electrod.png",
+            price: 420,
+            sizes: [ "Гафний", "Биметалл" ],
+            sizeLabel: "Тип вставки:",
+            alt: "Электроды для плазменной резки",
+            description: "Катоды для плазмотронов с различными типами вставок"
+        }, {
+            title: "Сопло плазменное 210 для тонколистового металла",
+            article: "SP-1512",
+            image: "img/cards/soplo-210.png",
+            price: 242.56,
+            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 210 для тонкой резки",
+            description: "Сопла малого диаметра для точной резки тонколистового металла"
+        }, {
+            title: "Ремкомплект для горелки Фламинго",
+            article: "RK-12350",
+            image: "img/cards/flamingo.png",
+            price: 1999,
+            sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
+            sizeLabel: "Вариант:",
+            alt: "Ремкомплект для плазменной горелки",
+            description: "Ремонтный комплект для горелок серии Фламинго"
+        }, {
+            title: "Ремкомплект для горелки Фламинго",
+            article: "RK-12350",
+            image: "img/cards/flamingo.png",
+            price: 1999,
+            sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
+            sizeLabel: "Вариант:",
+            alt: "Ремкомплект для плазменной горелки",
+            description: "Ремонтный комплект для горелок серии Фламинго"
+        } ];
+        const productsData = [];
+        initialProducts.forEach((product => {
+            const newId = productsData.length > 0 ? Math.max(...productsData.map((p => p.id))) + 1 : 1;
+            productsData.push({
+                id: newId,
+                ...product
+            });
+        }));
+        return productsData;
+    }
+    const productsData = createInitialProducts();
+    function getProductsWithSeoMeta() {
+        return productsData.map((product => ({
+            ...product,
+            schema: {
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: product.title,
+                description: product.description || `${product.title} - профессиональное оборудование для плазменной резки`,
+                image: product.image,
+                ...product.price && {
+                    offers: {
+                        "@type": "Offer",
+                        price: product.price,
+                        priceCurrency: "RUB"
+                    }
                 }
             }
-        }
-    })));
-    const products = withSeoMeta;
+        })));
+    }
+    const products = getProductsWithSeoMeta();
     window.onload = function() {
         document.addEventListener("click", documentActions);
         function documentActions(e) {
@@ -472,9 +589,61 @@
         const searchForm = document.querySelector(".search-form");
         const searchInput = document.querySelector(".search-form__input");
         const searchClear = document.querySelector(".search-form__clear");
+        const lazyLoadConfig = {
+            initialItems: 10,
+            loadMoreItems: 5,
+            scrollThreshold: 300
+        };
         let cart = [];
         let totalPrice = 0;
         let searchTimeout;
+        let displayedProducts = 0;
+        let isLoading = false;
+        let allProductsLoaded = false;
+        function initLazyLoad() {
+            if (!productsContainer) return;
+            loadMoreProducts(lazyLoadConfig.initialItems);
+            window.addEventListener("scroll", handleScroll);
+        }
+        function handleScroll() {
+            if (isLoading || allProductsLoaded) return;
+            const scrollPosition = window.innerHeight + window.scrollY;
+            const pageHeight = document.documentElement.scrollHeight;
+            const threshold = pageHeight - lazyLoadConfig.scrollThreshold;
+            if (scrollPosition >= threshold) loadMoreProducts(lazyLoadConfig.loadMoreItems);
+        }
+        function loadMoreProducts(count) {
+            if (isLoading || allProductsLoaded) return;
+            isLoading = true;
+            setTimeout((() => {
+                const endIndex = Math.min(displayedProducts + count, products.length);
+                const productsToAdd = products.slice(displayedProducts, endIndex);
+                const fragment = document.createDocumentFragment();
+                productsToAdd.forEach((product => {
+                    const productCard = createProductCard(product);
+                    fragment.appendChild(productCard);
+                }));
+                productsContainer.appendChild(fragment);
+                displayedProducts = endIndex;
+                allProductsLoaded = displayedProducts >= products.length;
+                isLoading = false;
+                if (!allProductsLoaded && shouldLoadMoreImmediately()) loadMoreProducts(lazyLoadConfig.loadMoreItems);
+            }), 300);
+        }
+        function shouldLoadMoreImmediately() {
+            const pageHeight = document.documentElement.scrollHeight;
+            const viewportHeight = window.innerHeight;
+            const scrollPosition = window.scrollY;
+            return pageHeight - viewportHeight - scrollPosition < lazyLoadConfig.scrollThreshold;
+        }
+        function resetLazyLoad() {
+            displayedProducts = 0;
+            allProductsLoaded = false;
+            isLoading = false;
+            const productCards = productsContainer.querySelectorAll(".product__card");
+            productCards.forEach((card => card.remove()));
+            loadMoreProducts(lazyLoadConfig.initialItems);
+        }
         function setupCartOverlay() {
             let cartOverlay = document.querySelector(".cart-overlay");
             if (!cartOverlay) {
@@ -513,31 +682,12 @@
             if (cartOverlay) cartOverlay.classList.remove("active");
             document.body.classList.remove("body-no-scroll");
         }
-        function initCart() {
-            const cartModal = document.querySelector(".cart-modal");
-            const cartIcon = document.getElementById("cart-icon");
-            if (!cartModal || !cartIcon) return;
-            setupCartOverlay();
-            cartIcon.addEventListener("click", (e => {
-                e.preventDefault();
-                openCart();
-            }));
-        }
-        function init() {
-            initCart();
-        }
-        document.addEventListener("DOMContentLoaded", (function() {
-            init();
-        }));
         function generateProductCards() {
             if (!productsContainer) return;
             const existingCartModal = productsContainer.querySelector(".cart-modal");
             productsContainer.innerHTML = "";
             if (existingCartModal) productsContainer.appendChild(existingCartModal);
-            products.forEach((product => {
-                const productCard = createProductCard(product);
-                productsContainer.insertBefore(productCard, existingCartModal);
-            }));
+            initLazyLoad();
         }
         function createProductCard(product) {
             const uniqueSuffix = Date.now();
@@ -550,7 +700,7 @@
             let sizeSelectorHTML = "";
             if (product.sizes) sizeSelectorHTML = `\n                <div class="product__size-selector">\n                    <label for="size-${product.article}-${uniqueSuffix}">${product.sizeLabel}</label>\n                    <select id="size-${product.article}-${uniqueSuffix}" class="product__size-select">\n                        ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                    </select>\n                </div>\n            `;
             const priceHTML = product.price ? `\n            <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n                <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n                <span itemprop="priceCurrency" content="RUB">₽</span>\n            </p>\n        ` : "";
-            productCard.innerHTML = `\n    <img src="${product.image}" alt="${product.title}" class="product__image" loading="lazy" width="300" height="200" itemprop="image">\n    <div class="product__content">\n        <h3 class="product__title" itemprop="name">${product.title}</h3>\n        <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n        \n        <div class="product__bottom-section">\n            ${priceHTML}\n            ${sizeSelectorHTML}\n            \n            <div class="product__footer">\n                <div class="quantity__controls">\n                    <button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>\n                    <input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">\n                    <button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>\n                </div>\n                <button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">\n                    Добавить в корзину\n                    <span class="visually-hidden">товар ${product.title}</span>\n                </button>\n            </div>\n        </div>\n    </div>\n`;
+            productCard.innerHTML = `\n            <img src="${product.image}" alt="${product.title}" class="product__image" loading="lazy" width="300" height="200" itemprop="image">\n            <div class="product__content">\n                <h3 class="product__title" itemprop="name">${product.title}</h3>\n                <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                \n                <div class="product__bottom-section">\n                    ${priceHTML}\n                    ${sizeSelectorHTML}\n                    \n                    <div class="product__footer">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>\n                            <input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">\n                            <button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>\n                        </div>\n                        <button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">\n                            Добавить в корзину\n                            <span class="visually-hidden">товар ${product.title}</span>\n                        </button>\n                    </div>\n                </div>\n            </div>\n        `;
             return productCard;
         }
         function addToCart(productCard) {
@@ -698,6 +848,7 @@
                     searchInput.focus();
                     toggleClearButton();
                     performSearch();
+                    resetLazyLoad();
                 }
             }));
             if (searchIcon && searchItem) searchIcon.addEventListener("click", (function(e) {
@@ -875,6 +1026,19 @@
             requestTick();
         }));
         handleScrollStyles();
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        const scrollTopBtn = document.querySelector(".scroll-top");
+        window.addEventListener("scroll", (function() {
+            if (window.pageYOffset > window.innerHeight / 2) scrollTopBtn.classList.add("visible"); else scrollTopBtn.classList.remove("visible");
+        }));
+        scrollTopBtn.addEventListener("click", (function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }));
     }));
     window["FLS"] = true;
     isWebp();
