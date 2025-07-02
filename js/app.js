@@ -369,18 +369,20 @@
             title: "Горелка плазменная Фламинго для резки металла",
             article: "FL-12345",
             image: "img/cards/flamingo.webp",
-            price: 1999,
             alt: "Горелка Фламинго для плазменной резки металлов",
-            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом"
+            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом",
+            hasDetails: true,
+            detailsUrl: "index.html"
         }, {
-            title: "Сопло плазменное 410 для резки нержавеющей стали",
+            title: "Плазмотрон ВПР-410 в сборе",
             article: "SP-410011",
-            image: "img/cards/soplo-410.png",
-            price: 348.64,
+            image: "img/plazmotron/vpr-410.png",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 410 для плазмотрона",
-            description: "Сопла для плазменной резки серии 410 с медным охлаждением"
+            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
+            hasDetails: true,
+            detailsUrl: "plazmotron-vpr-410.html"
         }, {
             title: "Сопло плазменное 402 для резки алюминия",
             article: "SP-402011",
@@ -698,10 +700,14 @@
             productCard.setAttribute("itemscope", "");
             productCard.setAttribute("itemtype", "http://schema.org/Product");
             let sizeSelectorHTML = "";
-            if (product.sizes) sizeSelectorHTML = `\n                <div class="product__size-selector">\n                    <label for="size-${product.article}-${uniqueSuffix}">${product.sizeLabel}</label>\n                    <select id="size-${product.article}-${uniqueSuffix}" class="product__size-select">\n                        ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                    </select>\n                </div>\n            `;
-            const priceHTML = product.price ? `\n            <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n                <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n                <span itemprop="priceCurrency" content="RUB">₽</span>\n            </p>\n        ` : "";
-            productCard.innerHTML = `\n            <img src="${product.image}" alt="${product.title}" class="product__image" loading="lazy" width="300" height="200" itemprop="image">\n            <div class="product__content">\n                <h3 class="product__title" itemprop="name">${product.title}</h3>\n                <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                \n                <div class="product__bottom-section">\n                    ${priceHTML}\n                    ${sizeSelectorHTML}\n                    \n                    <div class="product__footer">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">-</button>\n                            <input type="number" class="quantity__input" value="1" min="1" aria-label="Количество товара">\n                            <button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>\n                        </div>\n                        <button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer">\n                            Добавить в корзину\n                            <span class="visually-hidden">товар ${product.title}</span>\n                        </button>\n                    </div>\n                </div>\n            </div>\n        `;
+            if (product.sizes && product.sizes.length > 0) sizeSelectorHTML = `\n            <div class="product__size-selector">\n                <label for="size-${product.article}-${uniqueSuffix}">${product.sizeLabel || "Размер:"}</label>\n                <select id="size-${product.article}-${uniqueSuffix}" class="product__size-select">\n                    ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                </select>\n            </div>\n        `;
+            const priceHTML = product.price ? `\n        <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n            <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n            <span itemprop="priceCurrency" content="RUB">₽</span>\n        </p>\n    ` : "";
+            const detailsLinkHTML = product.hasDetails || product.detailsUrl ? `\n        <a href="${product.detailsUrl || "#"}" class="product__details-link" aria-label="Подробнее о товаре ${product.title}">\n            Подробнее\n        </a>\n    ` : "";
+            productCard.innerHTML = `\n        <img src="${product.image}" \n             alt="${product.alt || product.title}" \n             class="product__image" \n             loading="lazy" \n             width="300" \n             height="200" \n             itemprop="image">\n\n        <div class="product__content">\n            <h3 class="product__title" itemprop="name">${product.title}</h3>\n            \n            <div class="product__meta">\n                <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                ${detailsLinkHTML}\n            </div>\n            \n            <div class="product__bottom-section">\n                ${priceHTML}\n                ${sizeSelectorHTML}\n                \n                <div class="product__footer">\n                    <div class="quantity__controls">\n                        <button type="button" \n                                class="quantity__btn minus" \n                                aria-label="Уменьшить количество">\n                            −\n                        </button>\n                        <input type="number" \n                               class="quantity__input" \n                               value="1" \n                               min="1" \n                               aria-label="Количество товара">\n                        <button type="button" \n                                class="quantity__btn plus" \n                                aria-label="Увеличить количество">\n                            +\n                        </button>\n                    </div>\n                    \n                    <button type="button" \n                            class="add-to-cart" \n                            itemprop="offers" \n                            itemtype="http://schema.org/Offer"\n                            aria-label="Добавить ${product.title} в корзину">\n                        Добавить в корзину\n                    </button>\n                </div>\n            </div>\n        </div>\n    `;
             return productCard;
+        }
+        function formatPrice(price) {
+            return new Intl.NumberFormat("ru-RU").format(price);
         }
         function addToCart(productCard) {
             const productSubtitle = productCard.querySelector(".product__subtitle");
@@ -743,7 +749,7 @@
                 totalPrice += itemTotal;
                 const cartItemElement = document.createElement("div");
                 cartItemElement.className = "cart-item";
-                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h3 class="cart-item-title">${item.title}</h3>\n                    ${item.optionValue ? `<p class="cart-item-option">${item.optionType}: ${item.optionValue}</p>` : ""}\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    ${item.price > 0 ? `<p class="cart-item-price">${formatPrice(item.price)} ₽</p>` : ""}\n                    <div class="cart-item-quantity">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" data-id="${item.id}">-</button>\n                            <input type="number" class="quantity__input" value="${item.quantity}" min="1" data-id="${item.id}">\n                            <button type="button" class="quantity__btn plus" data-id="${item.id}">+</button>\n                        </div>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
+                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h4 class="cart-item-title">${item.title}</h4>\n                    ${item.optionValue ? `<p class="cart-item-option">${item.optionType}: ${item.optionValue}</p>` : ""}\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    ${item.price > 0 ? `<p class="cart-item-price">${formatPrice(item.price)} ₽</p>` : ""}\n                    <div class="cart-item-quantity">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" data-id="${item.id}">-</button>\n                            <input type="number" class="quantity__input" value="${item.quantity}" min="1" data-id="${item.id}">\n                            <button type="button" class="quantity__btn plus" data-id="${item.id}">+</button>\n                        </div>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
                 cartItemsContainer.appendChild(cartItemElement);
             }));
             if (submitOrderBtn) submitOrderBtn.setAttribute("aria-label", `Отправить заказ на сумму ${formatPrice(totalPrice)} руб`);
@@ -881,8 +887,8 @@
                     openCart();
                 }
             }));
-            if (closeCartBtn) closeCartBtn.addEventListener("click", closeCart);
-            if (submitOrderBtn) submitOrderBtn.addEventListener("click", submitOrder);
+            if (closeCartBtn) closeCartBtn.addEventListener("click", closeCart); else console.warn("Элемент .close-cart не найден");
+            if (submitOrderBtn) submitOrderBtn.addEventListener("click", submitOrder); else console.warn("Элемент .submit-order не найден");
             document.addEventListener("click", (function(e) {
                 if (e.target.classList.contains("quantity__btn") && e.target.closest(".cart-item")) {
                     const id = e.target.getAttribute("data-id");
@@ -912,13 +918,30 @@
             const focusEnd = document.querySelector(".focus-trap-end");
             if (cartModal && focusEnd && focusStart) {
                 focusEnd.addEventListener("focus", (() => {
-                    closeCartBtn.focus();
+                    if (closeCartBtn) closeCartBtn.focus();
                 }));
                 focusStart.addEventListener("focus", (() => {
-                    submitOrderBtn.focus();
+                    if (submitOrderBtn) submitOrderBtn.focus();
                 }));
-            }
+            } else console.warn("Элементы фокус-ловушки (.focus-trap-start, .focus-trap-end) или .cart-modal не найдены");
         }
+        document.addEventListener("DOMContentLoaded", (function() {
+            const scrollTopBtn = document.querySelector(".scroll-top");
+            if (!scrollTopBtn) {
+                console.warn("Элемент .scroll-top не найден");
+                return;
+            }
+            window.addEventListener("scroll", (function() {
+                if (window.pageYOffset > window.innerHeight / 2) scrollTopBtn.classList.add("visible"); else scrollTopBtn.classList.remove("visible");
+            }));
+            scrollTopBtn.addEventListener("click", (function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }));
+        }));
         function formatPrice(price) {
             return new Intl.NumberFormat("ru-RU").format(price);
         }
@@ -1029,6 +1052,10 @@
     }));
     document.addEventListener("DOMContentLoaded", (function() {
         const scrollTopBtn = document.querySelector(".scroll-top");
+        if (!scrollTopBtn) {
+            console.warn("Элемент .scroll-top не найден на странице:", window.location.pathname);
+            return;
+        }
         window.addEventListener("scroll", (function() {
             if (window.pageYOffset > window.innerHeight / 2) scrollTopBtn.classList.add("visible"); else scrollTopBtn.classList.remove("visible");
         }));
@@ -1039,6 +1066,17 @@
                 behavior: "smooth"
             });
         }));
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        const table = document.querySelector(".specs-table");
+        if (table) {
+            const headers = Array.from(table.querySelectorAll(".specs-table__header")).map((header => header.textContent));
+            table.querySelectorAll(".specs-table__row").forEach((row => {
+                Array.from(row.querySelectorAll("td")).forEach(((cell, index) => {
+                    cell.setAttribute("data-label", headers[index]);
+                }));
+            }));
+        }
     }));
     window["FLS"] = true;
     isWebp();
