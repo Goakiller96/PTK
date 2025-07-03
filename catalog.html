@@ -22,7 +22,8 @@
 	<meta name="theme-color" content="#005f87">
 
 	<!-- Основные стили -->
-	<link rel="preload" href="./css/style.min.css?_v=20250703013444" as="style" onload="this.rel='stylesheet'">
+	<!-- <link rel="preload" href="./css/style.min.css?_v=20250703143739" as="style" onload="this.rel='stylesheet'"> -->
+	<link rel="stylesheet" href="./css/style.min.css?_v=20250703143739">
 
 
 
@@ -254,10 +255,26 @@
 			<section class="catalog">
 				<div class="catalog__container">
 					<h2 class="catalog__title title">Каталог</h2>
+
+					<div class="catalog__filter">
+						<label for="category-select">Фильтр по категории:</label>
+						<div class="custom-select" id="category-filter">
+							<div class="custom-select__trigger" tabindex="0" aria-expanded="false">
+								<span class="custom-select__value">Все товары</span>
+								<span class="custom-select__arrow"></span>
+							</div>
+							<ul class="custom-select__options" role="listbox">
+								<!-- Опции будут добавлены через JavaScript -->
+							</ul>
+							<select id="category-select" class="hidden-select" aria-hidden="true">
+								<!-- Опции будут синхронизированы с кастомным селектом -->
+							</select>
+						</div>
+					</div>
+
 					<div class="catalog__wrapper" id="products-container">
 						<!-- Карточки товаров будут генерироваться здесь -->
 					</div>
-
 				</div>
 			</section>
 		</main>
@@ -416,7 +433,7 @@
 		<i class="_icon-arrow-down"></i>
 	</button>
 
-	<script src="js/app.min.js?_v=20250703013444"></script>
+	<script src="js/app.min.js?_v=20250703143739"></script>
 </body>
 
 </html>
