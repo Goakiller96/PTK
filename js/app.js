@@ -13,26 +13,6 @@
             document.documentElement.classList.add(className);
         }));
     }
-    let isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function() {
-            return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
-        }
-    };
     let _slideUp = (target, duration = 500, showmore = 0) => {
         if (!target.classList.contains("_slide")) {
             target.classList.add("_slide");
@@ -366,23 +346,27 @@
     da.init();
     function createInitialProducts() {
         const initialProducts = [ {
-            title: "Горелка плазменная Фламинго для резки металла",
+            title: "Плазмотрон ВПР-402м в сборе",
             article: "FL-12345",
-            image: "img/cards/flamingo.webp",
+            image: "img/plazmotron/vpr-402m.webp",
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
             alt: "Горелка Фламинго для плазменной резки металлов",
             description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом",
             hasDetails: true,
-            detailsUrl: "index.html"
+            detailsUrl: "plazmotron-vpr-402m.html",
+            category: "Плазмотроны"
         }, {
             title: "Плазмотрон ВПР-410 в сборе",
             article: "SP-410011",
-            image: "img/plazmotron/vpr-410.png",
+            image: "img/plazmotron/vpr-410.webp",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 410 для плазмотрона",
             description: "Сопла для плазменной резки серии 410 с медным охлаждением",
             hasDetails: true,
-            detailsUrl: "plazmotron-vpr-410.html"
+            detailsUrl: "plazmotron-vpr-410.html",
+            category: "Плазмотроны"
         }, {
             title: "Сопло плазменное 402 для резки алюминия",
             article: "SP-402011",
@@ -391,7 +375,8 @@
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 402 для резки цветных металлов",
-            description: "Износостойкие сопла для резки алюминия и цветных металлов"
+            description: "Износостойкие сопла для резки алюминия и цветных металлов",
+            category: "Сопла"
         }, {
             title: "Электрод для плазмотрона конусный",
             article: "EL-4014",
@@ -400,7 +385,8 @@
             sizes: [ "Гафний", "Биметалл" ],
             sizeLabel: "Тип вставки:",
             alt: "Электроды для плазменной резки",
-            description: "Катоды для плазмотронов с различными типами вставок"
+            description: "Катоды для плазмотронов с различными типами вставок",
+            category: "Электроды"
         }, {
             title: "Сопло плазменное 210 для тонколистового металла",
             article: "SP-1512",
@@ -409,129 +395,144 @@
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 210 для тонкой резки",
-            description: "Сопла малого диаметра для точной резки тонколистового металла"
+            description: "Сопла малого диаметра для точной резки тонколистового металла",
+            category: "Сопла"
         }, {
             title: "Ремкомплект для горелки Фламинго",
             article: "RK-12350",
-            image: "img/cards/flamingo.png",
+            image: "img/cards/flamingo.webp",
             price: 1999,
             sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
             sizeLabel: "Вариант:",
             alt: "Ремкомплект для плазменной горелки",
-            description: "Ремонтный комплект для горелок серии Фламинго"
+            description: "Ремонтный комплект для горелок серии Фламинго",
+            category: "Комплектующие"
         }, {
             title: "Горелка плазменная Фламинго для резки металла",
-            article: "FL-12345",
+            article: "FL-12345-2",
             image: "img/cards/flamingo.webp",
             price: 1999,
             alt: "Горелка Фламинго для плазменной резки металлов",
-            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом"
+            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом",
+            category: "Плазмотроны"
         }, {
             title: "Сопло плазменное 410 для резки нержавеющей стали",
-            article: "SP-410011",
+            article: "SP-410011-2",
             image: "img/cards/soplo-410.png",
             price: 348.64,
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 410 для плазмотрона",
-            description: "Сопла для плазменной резки серии 410 с медным охлаждением"
+            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
+            category: "Сопла"
         }, {
             title: "Сопло плазменное 402 для резки алюминия",
-            article: "SP-402011",
+            article: "SP-402011-2",
             image: "img/cards/soplo-402.png",
             price: 242.56,
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 402 для резки цветных металлов",
-            description: "Износостойкие сопла для резки алюминия и цветных металлов"
+            description: "Износостойкие сопла для резки алюминия и цветных металлов",
+            category: "Сопла"
         }, {
             title: "Электрод для плазмотрона конусный",
-            article: "EL-4014",
+            article: "EL-4014-2",
             image: "img/cards/electrod.png",
             price: 420,
             sizes: [ "Гафний", "Биметалл" ],
             sizeLabel: "Тип вставки:",
             alt: "Электроды для плазменной резки",
-            description: "Катоды для плазмотронов с различными типами вставок"
+            description: "Катоды для плазмотронов с различными типами вставок",
+            category: "Электроды"
         }, {
             title: "Сопло плазменное 210 для тонколистового металла",
-            article: "SP-1512",
+            article: "SP-1512-2",
             image: "img/cards/soplo-210.png",
             price: 242.56,
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 210 для тонкой резки",
-            description: "Сопла малого диаметра для точной резки тонколистового металла"
+            description: "Сопла малого диаметра для точной резки тонколистового металла",
+            category: "Сопла"
         }, {
             title: "Ремкомплект для горелки Фламинго",
-            article: "RK-12350",
-            image: "img/cards/flamingo.png",
+            article: "RK-12350-2",
+            image: "img/cards/flamingo.webp",
             price: 1999,
             sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
             sizeLabel: "Вариант:",
             alt: "Ремкомплект для плазменной горелки",
-            description: "Ремонтный комплект для горелок серии Фламинго"
+            description: "Ремонтный комплект для горелок серии Фламинго",
+            category: "Комплектующие"
         }, {
             title: "Горелка плазменная Фламинго для резки металла",
-            article: "FL-12345",
+            article: "FL-12345-3",
             image: "img/cards/flamingo.webp",
             price: 1999,
             alt: "Горелка Фламинго для плазменной резки металлов",
-            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом"
+            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом",
+            category: "Плазмотроны"
         }, {
             title: "Сопло плазменное 410 для резки нержавеющей стали",
-            article: "SP-410011",
+            article: "SP-410011-3",
             image: "img/cards/soplo-410.png",
             price: 348.64,
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 410 для плазмотрона",
-            description: "Сопла для плазменной резки серии 410 с медным охлаждением"
+            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
+            category: "Сопла"
         }, {
             title: "Сопло плазменное 402 для резки алюминия",
-            article: "SP-402011",
+            article: "SP-402011-3",
             image: "img/cards/soplo-402.png",
             price: 242.56,
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 402 для резки цветных металлов",
-            description: "Износостойкие сопла для резки алюминия и цветных металлов"
+            description: "Износостойкие сопла для резки алюминия и цветных металлов",
+            category: "Сопла"
         }, {
             title: "Электрод для плазмотрона конусный",
-            article: "EL-4014",
+            article: "EL-4014-3",
             image: "img/cards/electrod.png",
             price: 420,
             sizes: [ "Гафний", "Биметалл" ],
             sizeLabel: "Тип вставки:",
             alt: "Электроды для плазменной резки",
-            description: "Катоды для плазмотронов с различными типами вставок"
+            description: "Катоды для плазмотронов с различными типами вставок",
+            category: "Электроды"
         }, {
             title: "Сопло плазменное 210 для тонколистового металла",
-            article: "SP-1512",
+            article: "SP-1512-3",
             image: "img/cards/soplo-210.png",
             price: 242.56,
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 210 для тонкой резки",
-            description: "Сопла малого диаметра для точной резки тонколистового металла"
+            description: "Сопла малого диаметра для точной резки тонколистового металла",
+            category: "Сопла"
         }, {
             title: "Ремкомплект для горелки Фламинго",
-            article: "RK-12350",
-            image: "img/cards/flamingo.png",
+            article: "RK-12350-3",
+            image: "img/cards/flamingo.webp",
             price: 1999,
             sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
             sizeLabel: "Вариант:",
             alt: "Ремкомплект для плазменной горелки",
-            description: "Ремонтный комплект для горелок серии Фламинго"
+            description: "Ремонтный комплект для горелок серии Фламинго",
+            category: "Комплектующие"
         }, {
             title: "Ремкомплект для горелки Фламинго",
-            article: "RK-12350",
-            image: "img/cards/flamingo.png",
+            article: "RK-12350-4",
+            image: "img/cards/flamingo.webp",
             price: 1999,
             sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
             sizeLabel: "Вариант:",
             alt: "Ремкомплект для плазменной горелки",
-            description: "Ремонтный комплект для горелок серии Фламинго"
+            description: "Ремонтный комплект для горелок серии Фламинго",
+            category: "Комплектующие"
         } ];
         const productsData = [];
         initialProducts.forEach((product => {
@@ -544,32 +545,16 @@
         return productsData;
     }
     const productsData = createInitialProducts();
-    function getProductsWithSeoMeta() {
-        return productsData.map((product => ({
-            ...product,
-            schema: {
-                "@context": "https://schema.org",
-                "@type": "Product",
-                name: product.title,
-                description: product.description || `${product.title} - профессиональное оборудование для плазменной резки`,
-                image: product.image,
-                ...product.price && {
-                    offers: {
-                        "@type": "Offer",
-                        price: product.price,
-                        priceCurrency: "RUB"
-                    }
-                }
-            }
-        })));
-    }
-    const products = getProductsWithSeoMeta();
+    let uniqueIdCounter = 0;
+    const script_isMobile = {
+        any: () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    };
     window.onload = function() {
         document.addEventListener("click", documentActions);
         function documentActions(e) {
             const targetElement = e.target;
-            if (window.innerWidth > 767.98 && isMobile.any()) if (targetElement.classList.contains("menu__arrow")) targetElement.closest(".menu__item").classList.toggle("_hover");
-            if (targetElement.classList.contains("search-form__icon")) document.querySelector(".search-form").classList.toggle("_active"); else if (!targetElement.closest(".search-form") && document.querySelector(".search-form._active")) document.querySelector(".search-form").classList.remove("_active");
+            if (window.innerWidth > 767.98 && script_isMobile.any()) if (targetElement.classList.contains("menu__arrow")) targetElement.closest(".menu__item").classList.toggle("_hover");
+            if (targetElement.classList.contains("search-form__btn") && targetElement.classList.contains("_icon-search")) document.querySelector(".search-form__item").classList.toggle("_active"); else if (!targetElement.closest(".search-form__item") && document.querySelector(".search-form__item._active")) document.querySelector(".search-form__item").classList.remove("_active");
         }
         const headerElement = document.querySelector(".header");
         const callback = function(entries, observer) {
@@ -588,9 +573,12 @@
         const cartCount = document.querySelector(".cart-count");
         const cartFooter = document.querySelector(".cart-footer");
         const submitOrderBtn = document.querySelector(".submit-order");
-        const searchForm = document.querySelector(".search-form");
+        const searchForm = document.querySelector(".search-form__item");
         const searchInput = document.querySelector(".search-form__input");
-        const searchClear = document.querySelector(".search-form__clear");
+        document.querySelector(".search-form__clear");
+        const categoryFilter = document.querySelector("#category-filter");
+        console.log("productsData:", productsData);
+        console.log("productsContainer:", productsContainer);
         const lazyLoadConfig = {
             initialItems: 10,
             loadMoreItems: 5,
@@ -598,12 +586,66 @@
         };
         let cart = [];
         let totalPrice = 0;
-        let searchTimeout;
         let displayedProducts = 0;
         let isLoading = false;
         let allProductsLoaded = false;
+        let currentCategory = "all";
+        function initCategoryFilter() {
+            if (!categoryFilter) {
+                console.warn("Элемент #category-filter не найден");
+                return;
+            }
+            const selectTrigger = categoryFilter.querySelector(".custom-select__trigger");
+            const selectValue = categoryFilter.querySelector(".custom-select__value");
+            const optionsList = categoryFilter.querySelector(".custom-select__options");
+            if (!selectTrigger || !selectValue || !optionsList) {
+                console.error("Не найдены элементы кастомного селекта");
+                return;
+            }
+            const categories = [ ...new Set(productsData.map((product => product.category)).filter((category => category))) ];
+            console.log("Категории:", categories);
+            const allOption = document.createElement("li");
+            allOption.textContent = "Все товары";
+            allOption.dataset.value = "all";
+            optionsList.appendChild(allOption);
+            categories.forEach((category => {
+                const option = document.createElement("li");
+                option.textContent = category;
+                option.dataset.value = category;
+                optionsList.appendChild(option);
+            }));
+            selectTrigger.addEventListener("click", (function(e) {
+                e.stopPropagation();
+                categoryFilter.classList.toggle("open");
+            }));
+            optionsList.addEventListener("click", (function(e) {
+                const option = e.target.closest("li");
+                if (!option) return;
+                const value = option.dataset.value;
+                currentCategory = value;
+                selectValue.textContent = option.textContent;
+                optionsList.querySelectorAll("li").forEach((opt => opt.classList.remove("selected")));
+                option.classList.add("selected");
+                categoryFilter.classList.remove("open");
+                console.log("Выбрана категория:", currentCategory);
+                resetLazyLoad();
+            }));
+            document.addEventListener("click", (function(e) {
+                if (!categoryFilter.contains(e.target)) categoryFilter.classList.remove("open");
+            }));
+            selectTrigger.addEventListener("keydown", (function(e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    categoryFilter.classList.toggle("open");
+                }
+            }));
+        }
         function initLazyLoad() {
-            if (!productsContainer) return;
+            if (!productsContainer) {
+                console.error("Контейнер #products-container не найден");
+                return;
+            }
+            console.log("Инициализация ленивой загрузки");
             loadMoreProducts(lazyLoadConfig.initialItems);
             window.addEventListener("scroll", handleScroll);
         }
@@ -612,25 +654,43 @@
             const scrollPosition = window.innerHeight + window.scrollY;
             const pageHeight = document.documentElement.scrollHeight;
             const threshold = pageHeight - lazyLoadConfig.scrollThreshold;
-            if (scrollPosition >= threshold) loadMoreProducts(lazyLoadConfig.loadMoreItems);
+            if (scrollPosition >= threshold) {
+                console.log("Подгрузка дополнительных товаров");
+                loadMoreProducts(lazyLoadConfig.loadMoreItems);
+            }
         }
         function loadMoreProducts(count) {
             if (isLoading || allProductsLoaded) return;
             isLoading = true;
-            setTimeout((() => {
-                const endIndex = Math.min(displayedProducts + count, products.length);
-                const productsToAdd = products.slice(displayedProducts, endIndex);
-                const fragment = document.createDocumentFragment();
-                productsToAdd.forEach((product => {
-                    const productCard = createProductCard(product);
-                    fragment.appendChild(productCard);
-                }));
-                productsContainer.appendChild(fragment);
-                displayedProducts = endIndex;
-                allProductsLoaded = displayedProducts >= products.length;
-                isLoading = false;
-                if (!allProductsLoaded && shouldLoadMoreImmediately()) loadMoreProducts(lazyLoadConfig.loadMoreItems);
-            }), 300);
+            console.log("Загрузка товаров, текущий индекс:", displayedProducts);
+            const filteredProducts = getFilteredProducts();
+            console.log("Отфильтрованные товары:", filteredProducts.length);
+            const endIndex = Math.min(displayedProducts + count, filteredProducts.length);
+            const productsToAdd = filteredProducts.slice(displayedProducts, endIndex);
+            const fragment = document.createDocumentFragment();
+            productsToAdd.forEach((product => {
+                const productCard = createProductCard(product);
+                fragment.appendChild(productCard);
+            }));
+            productsContainer.appendChild(fragment);
+            displayedProducts = endIndex;
+            allProductsLoaded = displayedProducts >= filteredProducts.length;
+            console.log("Товары загружены, новый индекс:", displayedProducts, "Все загружено:", allProductsLoaded);
+            isLoading = false;
+            if (!allProductsLoaded && shouldLoadMoreImmediately()) loadMoreProducts(lazyLoadConfig.loadMoreItems);
+        }
+        function getFilteredProducts() {
+            if (!productsData || !Array.isArray(productsData)) {
+                console.error("productsData не является массивом:", productsData);
+                return [];
+            }
+            let filtered = productsData;
+            if (currentCategory !== "all") filtered = filtered.filter((product => product.category === currentCategory));
+            if (searchInput && searchInput.value.trim()) {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                filtered = filtered.filter((product => product.title?.toLowerCase().includes(searchTerm) || product.article?.toLowerCase().includes(searchTerm)));
+            }
+            return filtered;
         }
         function shouldLoadMoreImmediately() {
             const pageHeight = document.documentElement.scrollHeight;
@@ -644,6 +704,7 @@
             isLoading = false;
             const productCards = productsContainer.querySelectorAll(".product__card");
             productCards.forEach((card => card.remove()));
+            console.log("Очистка контейнера, перезагрузка товаров");
             loadMoreProducts(lazyLoadConfig.initialItems);
         }
         function setupCartOverlay() {
@@ -685,14 +746,24 @@
             document.body.classList.remove("body-no-scroll");
         }
         function generateProductCards() {
-            if (!productsContainer) return;
+            if (!productsContainer) {
+                console.error("Контейнер #products-container не найден");
+                productsContainer.innerHTML = "<p>Контейнер для товаров не найден</p>";
+                return;
+            }
+            if (!productsData || !Array.isArray(productsData) || productsData.length === 0) {
+                console.error("productsData пуст или не является массивом:", productsData);
+                productsContainer.innerHTML = "<p>Товары отсутствуют</p>";
+                return;
+            }
+            console.log("Генерация карточек товаров, количество:", productsData.length);
             const existingCartModal = productsContainer.querySelector(".cart-modal");
             productsContainer.innerHTML = "";
             if (existingCartModal) productsContainer.appendChild(existingCartModal);
             initLazyLoad();
         }
         function createProductCard(product) {
-            const uniqueSuffix = Date.now();
+            const uniqueSuffix = `${product.article}-${uniqueIdCounter++}`;
             const productCard = document.createElement("article");
             productCard.className = "product__card";
             productCard.dataset.title = product.title;
@@ -700,10 +771,10 @@
             productCard.setAttribute("itemscope", "");
             productCard.setAttribute("itemtype", "http://schema.org/Product");
             let sizeSelectorHTML = "";
-            if (product.sizes && product.sizes.length > 0) sizeSelectorHTML = `\n            <div class="product__size-selector">\n                <label for="size-${product.article}-${uniqueSuffix}">${product.sizeLabel || "Размер:"}</label>\n                <select id="size-${product.article}-${uniqueSuffix}" class="product__size-select">\n                    ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                </select>\n            </div>\n        `;
+            if (product.sizes && product.sizes.length > 0) sizeSelectorHTML = `\n            <div class="product__size-selector">\n                <label for="size-${uniqueSuffix}">${product.sizeLabel || "Размер:"}</label>\n                <select id="size-${uniqueSuffix}" name="size-${uniqueSuffix}" class="product__size-select">\n                    ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                </select>\n            </div>\n        `;
             const priceHTML = product.price ? `\n        <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n            <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n            <span itemprop="priceCurrency" content="RUB">₽</span>\n        </p>\n    ` : "";
             const detailsLinkHTML = product.hasDetails || product.detailsUrl ? `\n        <a href="${product.detailsUrl || "#"}" class="product__details-link" aria-label="Подробнее о товаре ${product.title}">\n            Подробнее\n        </a>\n    ` : "";
-            productCard.innerHTML = `\n        <img src="${product.image}" \n             alt="${product.alt || product.title}" \n             class="product__image" \n             loading="lazy" \n             width="300" \n             height="200" \n             itemprop="image">\n\n        <div class="product__content">\n            <h3 class="product__title" itemprop="name">${product.title}</h3>\n            \n            <div class="product__meta">\n                <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                ${detailsLinkHTML}\n            </div>\n            \n            <div class="product__bottom-section">\n                ${priceHTML}\n                ${sizeSelectorHTML}\n                \n                <div class="product__footer">\n                    <div class="quantity__controls">\n                        <button type="button" \n                                class="quantity__btn minus" \n                                aria-label="Уменьшить количество">\n                            −\n                        </button>\n                        <input type="number" \n                               class="quantity__input" \n                               value="1" \n                               min="1" \n                               aria-label="Количество товара">\n                        <button type="button" \n                                class="quantity__btn plus" \n                                aria-label="Увеличить количество">\n                            +\n                        </button>\n                    </div>\n                    \n                    <button type="button" \n                            class="add-to-cart" \n                            itemprop="offers" \n                            itemtype="http://schema.org/Offer"\n                            aria-label="Добавить ${product.title} в корзину">\n                        Добавить в корзину\n                    </button>\n                </div>\n            </div>\n        </div>\n    `;
+            productCard.innerHTML = `\n        <div class="product__image-wrapper">\n            <img src="${product.image}" \n                 alt="${product.alt || product.title}" \n                 class="product__image" \n                 loading="lazy" \n                 width="300" \n                 height="200" \n                 itemprop="image">\n        </div>\n        <div class="product__content">\n            <h3 class="product__title" itemprop="name">${product.title}</h3>\n            <div class="product__meta">\n                <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                ${detailsLinkHTML}\n            </div>\n            <div class="product__bottom-section">\n                ${priceHTML}\n                ${sizeSelectorHTML}\n                <div class="product__footer">\n                    <div class="quantity__controls">\n                        <button type="button" \n                                class="quantity__btn minus" \n                                aria-label="Уменьшить количество">\n                            −\n                        </button>\n                        <input type="number" \n                               class="quantity__input" \n                               id="quantity-${uniqueSuffix}" \n                               name="quantity-${uniqueSuffix}" \n                               value="1" \n                               min="1" \n                               aria-label="Количество товара">\n                        <button type="button" \n                                class="quantity__btn plus" \n                                aria-label="Увеличить количество">\n                            +\n                        </button>\n                    </div>\n                    <button type="button" \n                            class="add-to-cart" \n                            itemprop="offers" \n                            itemtype="http://schema.org/Offer"\n                            aria-label="Добавить ${product.title} в корзину">\n                        Добавить в корзину\n                    </button>\n                </div>\n            </div>\n        </div>\n    `;
             return productCard;
         }
         function formatPrice(price) {
@@ -724,7 +795,7 @@
             const productImageSrc = productImage.src || "";
             const optionValue = sizeSelect ? sizeSelect.value : null;
             const optionType = sizeSelect ? productCard.querySelector(".product__size-selector label")?.textContent.replace(":", "").trim() : null;
-            const uniqueProductId = `${productId}-${optionValue || "default"}`;
+            const uniqueProductId = `${productId}-${optionValue || "default"}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
             const existingItem = cart.find((item => item.id === uniqueProductId));
             if (existingItem) existingItem.quantity += productQuantity; else cart.push({
                 id: uniqueProductId,
@@ -749,7 +820,7 @@
                 totalPrice += itemTotal;
                 const cartItemElement = document.createElement("div");
                 cartItemElement.className = "cart-item";
-                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h4 class="cart-item-title">${item.title}</h4>\n                    ${item.optionValue ? `<p class="cart-item-option">${item.optionType}: ${item.optionValue}</p>` : ""}\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    ${item.price > 0 ? `<p class="cart-item-price">${formatPrice(item.price)} ₽</p>` : ""}\n                    <div class="cart-item-quantity">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" data-id="${item.id}">-</button>\n                            <input type="number" class="quantity__input" value="${item.quantity}" min="1" data-id="${item.id}">\n                            <button type="button" class="quantity__btn plus" data-id="${item.id}">+</button>\n                        </div>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
+                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h4 class="cart-item-title">${item.title}</h4>\n                    ${item.optionValue ? `<p class="cart-item-option">${item.optionType}: ${item.optionValue}</p>` : ""}\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    ${item.price > 0 ? `<p class="cart-item-price">${formatPrice(item.price)} ₽</p>` : ""}\n                    <div class="cart-item-quantity">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" data-id="${item.id}">-</button>\n                            <input type="number" \n                                   class="quantity__input" \n                                   id="cart-quantity-${item.id}" \n                                   name="cart-quantity-${item.id}" \n                                   value="${item.quantity}" \n                                   min="1" \n                                   data-id="${item.id}">\n                            <button type="button" class="quantity__btn plus" data-id="${item.id}">+</button>\n                        </div>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
                 cartItemsContainer.appendChild(cartItemElement);
             }));
             if (submitOrderBtn) submitOrderBtn.setAttribute("aria-label", `Отправить заказ на сумму ${formatPrice(totalPrice)} руб`);
@@ -797,53 +868,29 @@
         function saveCartToStorage() {
             localStorage.setItem("cart", JSON.stringify(cart));
         }
-        function performSearch() {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout((() => {
-                if (!searchInput || !productsContainer) return;
-                const searchTerm = searchInput.value.trim().toLowerCase();
-                const productCards = document.querySelectorAll(".product__card");
-                let hasMatches = false;
-                const existingNoResults = document.querySelector(".no-results-message");
-                if (existingNoResults) existingNoResults.remove();
-                productsContainer.classList.add("searching");
-                productCards.forEach((card => {
-                    const title = card.dataset.title.toLowerCase();
-                    const article = card.dataset.article.toLowerCase();
-                    const matches = title.includes(searchTerm) || article.includes(searchTerm);
-                    if (matches || !searchTerm) {
-                        hasMatches = true;
-                        card.classList.remove("hidden");
-                    } else card.classList.add("hidden");
-                }));
-                setTimeout((() => {
-                    productsContainer.classList.remove("searching");
-                    if (!hasMatches && searchTerm) showNoResultsMessage();
-                }), 300);
-            }), 300);
-        }
-        function showNoResultsMessage() {
-            const noResults = document.createElement("div");
-            noResults.className = "no-results-message";
-            noResults.innerHTML = `<p>Товары не найдены!</p>`;
-            productsContainer.appendChild(noResults);
-        }
         function initSearchFunctionality() {
-            if (!searchForm) return;
-            const searchIcon = searchForm.querySelector(".search-form__icon");
-            const searchItem = searchForm.querySelector(".search-form__item");
+            if (!searchForm) {
+                console.warn("Форма поиска (.search-form__item) не найдена");
+                return;
+            }
+            const searchIcon = searchForm.querySelector(".search-form__btn._icon-search");
+            const searchItem = searchForm;
+            const searchInput = searchForm.querySelector(".search-form__input");
+            const searchClear = searchForm.querySelector(".search-form__clear");
+            if (searchInput && !searchInput.id) searchInput.id = "search-input";
+            if (searchInput && !searchInput.name) searchInput.name = "search";
             function toggleClearButton() {
                 if (searchInput && searchClear) searchClear.style.display = searchInput.value ? "block" : "none";
             }
             if (searchInput) {
                 searchInput.addEventListener("input", (function() {
                     toggleClearButton();
-                    performSearch();
+                    resetLazyLoad();
                 }));
                 searchInput.addEventListener("keydown", (function(e) {
                     if (e.key === "Enter") {
                         e.preventDefault();
-                        performSearch();
+                        resetLazyLoad();
                     }
                 }));
             }
@@ -853,7 +900,6 @@
                     searchInput.value = "";
                     searchInput.focus();
                     toggleClearButton();
-                    performSearch();
                     resetLazyLoad();
                 }
             }));
@@ -925,10 +971,84 @@
                 }));
             } else console.warn("Элементы фокус-ловушки (.focus-trap-start, .focus-trap-end) или .cart-modal не найдены");
         }
-        document.addEventListener("DOMContentLoaded", (function() {
+        function initHeaderTransformation() {
+            const header = document.querySelector(".header");
+            if (!header) return;
+            const logoText = header.querySelector(".header__logo-text");
+            const logoTextShort = header.querySelector(".header__logo-text-short");
+            const headerBody = header.querySelector(".header__body");
+            const phoneItems = header.querySelectorAll(".phones__item");
+            const emailItems = header.querySelectorAll(".emails__item");
+            const phoneLinks = header.querySelectorAll(".phones__link");
+            const emailLinks = header.querySelectorAll(".emails__link");
+            const actionsContacts = header.querySelector(".actions__contacts");
+            function isDesktop() {
+                return window.innerWidth > 991.98;
+            }
+            function handleScrollStyles() {
+                const isScrolled = window.scrollY > 0;
+                const shouldApplyStyles = isDesktop() && isScrolled;
+                if (logoText && logoTextShort) {
+                    if (shouldApplyStyles) {
+                        logoText.style.display = "none";
+                        logoTextShort.style.display = "block";
+                        logoTextShort.style.opacity = "1";
+                        logoTextShort.style.visibility = "visible";
+                    } else {
+                        logoText.style.display = "block";
+                        logoText.style.opacity = "1";
+                        logoText.style.visibility = "visible";
+                        logoTextShort.style.display = "none";
+                    }
+                    if (!isDesktop()) {
+                        logoText.style.display = "none";
+                        logoTextShort.style.display = "block";
+                        logoTextShort.style.opacity = "1";
+                        logoTextShort.style.visibility = "visible";
+                    }
+                }
+                phoneItems.forEach((item => {
+                    item.style.display = shouldApplyStyles ? "flex" : "";
+                    item.style.flexDirection = shouldApplyStyles ? "row" : "";
+                }));
+                emailItems.forEach((item => {
+                    item.style.display = shouldApplyStyles ? "flex" : "";
+                    item.style.flexDirection = shouldApplyStyles ? "row" : "";
+                }));
+                phoneLinks.forEach((link => {
+                    link.style.marginRight = shouldApplyStyles ? "10px" : "";
+                }));
+                emailLinks.forEach((link => {
+                    link.style.marginRight = shouldApplyStyles ? "10px" : "";
+                }));
+                if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
+                if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
+                if (shouldApplyStyles) header.classList.add("scrolled"); else header.classList.remove("scrolled");
+            }
+            let isTicking = false;
+            function requestTick() {
+                if (!isTicking) {
+                    requestAnimationFrame((function() {
+                        handleScrollStyles();
+                        isTicking = false;
+                    }));
+                    isTicking = true;
+                }
+            }
+            window.addEventListener("scroll", requestTick);
+            window.addEventListener("resize", (function() {
+                if (!isDesktop()) {
+                    [ logoText, logoTextShort, ...phoneItems, ...emailItems, ...phoneLinks, ...emailLinks, actionsContacts, headerBody ].filter(Boolean).forEach((el => el.style = ""));
+                    header.classList.remove("scrolled");
+                }
+                requestTick();
+            }));
+            handleScrollStyles();
+        }
+        function initScrollTopButton() {
             const scrollTopBtn = document.querySelector(".scroll-top");
             if (!scrollTopBtn) {
-                console.warn("Элемент .scroll-top не найден");
+                console.warn("Элемент .scroll-top не найден на странице:", window.location.pathname);
                 return;
             }
             window.addEventListener("scroll", (function() {
@@ -941,9 +1061,17 @@
                     behavior: "smooth"
                 });
             }));
-        }));
-        function formatPrice(price) {
-            return new Intl.NumberFormat("ru-RU").format(price);
+        }
+        function initTableMobileAdaptation() {
+            const table = document.querySelector(".specs-table");
+            if (table) {
+                const headers = Array.from(table.querySelectorAll(".specs-table__header")).map((header => header.textContent));
+                table.querySelectorAll(".specs-table__row").forEach((row => {
+                    Array.from(row.querySelectorAll("td")).forEach(((cell, index) => {
+                        cell.setAttribute("data-label", headers[index]);
+                    }));
+                }));
+            }
         }
         function fixMobileViewportIssues() {
             function setRealViewportHeight() {
@@ -971,112 +1099,14 @@
             if (productsContainer) {
                 generateProductCards();
                 if (searchForm) initSearchFunctionality();
-            }
+                if (categoryFilter) initCategoryFilter();
+            } else console.error("Контейнер #products-container не найден на странице");
+            initHeaderTransformation();
+            initScrollTopButton();
+            initTableMobileAdaptation();
             fixMobileViewportIssues();
         }
         init();
-    }));
-    document.addEventListener("DOMContentLoaded", (function() {
-        const header = document.querySelector(".header");
-        if (!header) return;
-        const logoText = header.querySelector(".header__logo-text");
-        const logoTextShort = header.querySelector(".header__logo-text-short");
-        const headerBody = header.querySelector(".header__body");
-        const phoneItems = header.querySelectorAll(".phones__item");
-        const emailItems = header.querySelectorAll(".emails__item");
-        const phoneLinks = header.querySelectorAll(".phones__link");
-        const emailLinks = header.querySelectorAll(".emails__link");
-        const actionsContacts = header.querySelector(".actions__contacts");
-        function isDesktop() {
-            return window.innerWidth > 991.98;
-        }
-        function handleScrollStyles() {
-            const isScrolled = window.scrollY > 0;
-            const shouldApplyStyles = isDesktop() && isScrolled;
-            if (logoText && logoTextShort) {
-                if (shouldApplyStyles) {
-                    logoText.style.display = "none";
-                    logoTextShort.style.display = "block";
-                    logoTextShort.style.opacity = "1";
-                    logoTextShort.style.visibility = "visible";
-                } else {
-                    logoText.style.display = "block";
-                    logoText.style.opacity = "1";
-                    logoText.style.visibility = "visible";
-                    logoTextShort.style.display = "none";
-                }
-                if (!isDesktop()) {
-                    logoText.style.display = "none";
-                    logoTextShort.style.display = "block";
-                    logoTextShort.style.opacity = "1";
-                    logoTextShort.style.visibility = "visible";
-                }
-            }
-            phoneItems.forEach((item => {
-                item.style.display = shouldApplyStyles ? "flex" : "";
-                item.style.flexDirection = shouldApplyStyles ? "row" : "";
-            }));
-            emailItems.forEach((item => {
-                item.style.display = shouldApplyStyles ? "flex" : "";
-                item.style.flexDirection = shouldApplyStyles ? "row" : "";
-            }));
-            phoneLinks.forEach((link => {
-                link.style.marginRight = shouldApplyStyles ? "10px" : "";
-            }));
-            emailLinks.forEach((link => {
-                link.style.marginRight = shouldApplyStyles ? "10px" : "";
-            }));
-            if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
-            if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
-            if (shouldApplyStyles) header.classList.add("scrolled"); else header.classList.remove("scrolled");
-        }
-        let isTicking = false;
-        function requestTick() {
-            if (!isTicking) {
-                requestAnimationFrame((function() {
-                    handleScrollStyles();
-                    isTicking = false;
-                }));
-                isTicking = true;
-            }
-        }
-        window.addEventListener("scroll", requestTick);
-        window.addEventListener("resize", (function() {
-            if (!isDesktop()) {
-                [ logoText, logoTextShort, ...phoneItems, ...emailItems, ...phoneLinks, ...emailLinks, actionsContacts, headerBody ].filter(Boolean).forEach((el => el.style = ""));
-                header.classList.remove("scrolled");
-            }
-            requestTick();
-        }));
-        handleScrollStyles();
-    }));
-    document.addEventListener("DOMContentLoaded", (function() {
-        const scrollTopBtn = document.querySelector(".scroll-top");
-        if (!scrollTopBtn) {
-            console.warn("Элемент .scroll-top не найден на странице:", window.location.pathname);
-            return;
-        }
-        window.addEventListener("scroll", (function() {
-            if (window.pageYOffset > window.innerHeight / 2) scrollTopBtn.classList.add("visible"); else scrollTopBtn.classList.remove("visible");
-        }));
-        scrollTopBtn.addEventListener("click", (function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }));
-    }));
-    document.addEventListener("DOMContentLoaded", (function() {
-        const table = document.querySelector(".specs-table");
-        if (table) {
-            const headers = Array.from(table.querySelectorAll(".specs-table__header")).map((header => header.textContent));
-            table.querySelectorAll(".specs-table__row").forEach((row => {
-                Array.from(row.querySelectorAll("td")).forEach(((cell, index) => {
-                    cell.setAttribute("data-label", headers[index]);
-                }));
-            }));
-        }
     }));
     window["FLS"] = true;
     isWebp();
