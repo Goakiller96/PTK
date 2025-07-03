@@ -554,14 +554,15 @@
         function documentActions(e) {
             const targetElement = e.target;
             if (window.innerWidth > 767.98 && script_isMobile.any()) if (targetElement.classList.contains("menu__arrow")) targetElement.closest(".menu__item").classList.toggle("_hover");
-            if (targetElement.classList.contains("search-form__btn") && targetElement.classList.contains("_icon-search")) document.querySelector(".search-form__item").classList.toggle("_active"); else if (!targetElement.closest(".search-form__item") && document.querySelector(".search-form__item._active")) document.querySelector(".search-form__item").classList.remove("_active");
         }
         const headerElement = document.querySelector(".header");
-        const callback = function(entries, observer) {
-            if (entries[0].isIntersecting) headerElement.classList.remove("_scroll"); else headerElement.classList.add("_scroll");
-        };
-        const headerObserver = new IntersectionObserver(callback);
-        headerObserver.observe(headerElement);
+        if (headerElement) {
+            const callback = function(entries) {
+                if (entries[0].isIntersecting) headerElement.classList.remove("_scroll"); else headerElement.classList.add("_scroll");
+            };
+            const headerObserver = new IntersectionObserver(callback);
+            headerObserver.observe(headerElement);
+        }
     };
     document.addEventListener("DOMContentLoaded", (function() {
         const productsContainer = document.getElementById("products-container");
@@ -575,10 +576,8 @@
         const submitOrderBtn = document.querySelector(".submit-order");
         const searchForm = document.querySelector(".search-form__item");
         const searchInput = document.querySelector(".search-form__input");
-        document.querySelector(".search-form__clear");
+        const searchClear = document.querySelector(".search-form__clear");
         const categoryFilter = document.querySelector("#category-filter");
-        console.log("productsData:", productsData);
-        console.log("productsContainer:", productsContainer);
         const lazyLoadConfig = {
             initialItems: 10,
             loadMoreItems: 5,
@@ -591,19 +590,12 @@
         let allProductsLoaded = false;
         let currentCategory = "all";
         function initCategoryFilter() {
-            if (!categoryFilter) {
-                console.warn("Элемент #category-filter не найден");
-                return;
-            }
+            if (!categoryFilter) return;
             const selectTrigger = categoryFilter.querySelector(".custom-select__trigger");
             const selectValue = categoryFilter.querySelector(".custom-select__value");
             const optionsList = categoryFilter.querySelector(".custom-select__options");
-            if (!selectTrigger || !selectValue || !optionsList) {
-                console.error("Не найдены элементы кастомного селекта");
-                return;
-            }
+            if (!selectTrigger || !selectValue || !optionsList) return;
             const categories = [ ...new Set(productsData.map((product => product.category)).filter((category => category))) ];
-            console.log("Категории:", categories);
             const allOption = document.createElement("li");
             allOption.textContent = "Все товары";
             allOption.dataset.value = "all";
@@ -614,26 +606,24 @@
                 option.dataset.value = category;
                 optionsList.appendChild(option);
             }));
-            selectTrigger.addEventListener("click", (function(e) {
+            selectTrigger.addEventListener("click", (e => {
                 e.stopPropagation();
                 categoryFilter.classList.toggle("open");
             }));
-            optionsList.addEventListener("click", (function(e) {
+            optionsList.addEventListener("click", (e => {
                 const option = e.target.closest("li");
                 if (!option) return;
-                const value = option.dataset.value;
-                currentCategory = value;
+                currentCategory = option.dataset.value;
                 selectValue.textContent = option.textContent;
                 optionsList.querySelectorAll("li").forEach((opt => opt.classList.remove("selected")));
                 option.classList.add("selected");
                 categoryFilter.classList.remove("open");
-                console.log("Выбрана категория:", currentCategory);
                 resetLazyLoad();
             }));
-            document.addEventListener("click", (function(e) {
+            document.addEventListener("click", (e => {
                 if (!categoryFilter.contains(e.target)) categoryFilter.classList.remove("open");
             }));
-            selectTrigger.addEventListener("keydown", (function(e) {
+            selectTrigger.addEventListener("keydown", (e => {
                 if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
                     categoryFilter.classList.toggle("open");
@@ -645,7 +635,6 @@
                 console.error("Контейнер #products-container не найден");
                 return;
             }
-            console.log("Инициализация ленивой загрузки");
             loadMoreProducts(lazyLoadConfig.initialItems);
             window.addEventListener("scroll", handleScroll);
         }
@@ -654,33 +643,27 @@
             const scrollPosition = window.innerHeight + window.scrollY;
             const pageHeight = document.documentElement.scrollHeight;
             const threshold = pageHeight - lazyLoadConfig.scrollThreshold;
-            if (scrollPosition >= threshold) {
-                console.log("Подгрузка дополнительных товаров");
-                loadMoreProducts(lazyLoadConfig.loadMoreItems);
-            }
+            if (scrollPosition >= threshold) loadMoreProducts(lazyLoadConfig.loadMoreItems);
         }
         function loadMoreProducts(count) {
             if (isLoading || allProductsLoaded) return;
             isLoading = true;
-            console.log("Загрузка товаров, текущий индекс:", displayedProducts);
             const filteredProducts = getFilteredProducts();
-            console.log("Отфильтрованные товары:", filteredProducts.length);
             const endIndex = Math.min(displayedProducts + count, filteredProducts.length);
             const productsToAdd = filteredProducts.slice(displayedProducts, endIndex);
             const fragment = document.createDocumentFragment();
-            productsToAdd.forEach((product => {
-                const productCard = createProductCard(product);
+            productsToAdd.forEach(((product, index) => {
+                const productCard = createProductCard(product, displayedProducts + index < lazyLoadConfig.initialItems);
                 fragment.appendChild(productCard);
             }));
             productsContainer.appendChild(fragment);
             displayedProducts = endIndex;
             allProductsLoaded = displayedProducts >= filteredProducts.length;
-            console.log("Товары загружены, новый индекс:", displayedProducts, "Все загружено:", allProductsLoaded);
             isLoading = false;
             if (!allProductsLoaded && shouldLoadMoreImmediately()) loadMoreProducts(lazyLoadConfig.loadMoreItems);
         }
         function getFilteredProducts() {
-            if (!productsData || !Array.isArray(productsData)) {
+            if (!Array.isArray(productsData)) {
                 console.error("productsData не является массивом:", productsData);
                 return [];
             }
@@ -702,10 +685,10 @@
             displayedProducts = 0;
             allProductsLoaded = false;
             isLoading = false;
-            const productCards = productsContainer.querySelectorAll(".product__card");
-            productCards.forEach((card => card.remove()));
-            console.log("Очистка контейнера, перезагрузка товаров");
-            loadMoreProducts(lazyLoadConfig.initialItems);
+            if (productsContainer) {
+                productsContainer.innerHTML = "";
+                loadMoreProducts(lazyLoadConfig.initialItems);
+            }
         }
         function setupCartOverlay() {
             let cartOverlay = document.querySelector(".cart-overlay");
@@ -716,53 +699,62 @@
             }
             cartOverlay.addEventListener("click", closeCart);
             document.addEventListener("click", (e => {
-                const cartModal = document.querySelector(".cart-modal");
                 if (!cartModal || !cartModal.classList.contains("active")) return;
-                const isClickInsideCart = cartModal.contains(e.target);
-                const isClickOnCartIcon = e.target.closest("#cart-icon");
-                if (!isClickInsideCart && !isClickOnCartIcon) closeCart();
+                if (!cartModal.contains(e.target) && !e.target.closest("#cart-icon")) closeCart();
             }));
         }
         function openCart() {
-            const cartModal = document.querySelector(".cart-modal");
-            const closeCartBtn = document.querySelector(".close-cart");
-            const cartOverlay = document.querySelector(".cart-overlay");
-            if (!cartModal || !closeCartBtn || !cartOverlay) {
-                console.error("Не найдены необходимые элементы корзины");
-                return;
-            }
+            if (!cartModal || !closeCartBtn || !document.querySelector(".cart-overlay")) return;
             cartModal.classList.add("active");
-            cartOverlay.classList.add("active");
+            document.querySelector(".cart-overlay").classList.add("active");
             document.body.classList.add("body-no-scroll");
-            setTimeout((() => {
-                closeCartBtn.focus();
-            }), 100);
+            setTimeout((() => closeCartBtn.focus()), 100);
         }
         function closeCart() {
-            const cartModal = document.querySelector(".cart-modal");
-            const cartOverlay = document.querySelector(".cart-overlay");
             if (cartModal) cartModal.classList.remove("active");
-            if (cartOverlay) cartOverlay.classList.remove("active");
+            if (document.querySelector(".cart-overlay")) document.querySelector(".cart-overlay").classList.remove("active");
             document.body.classList.remove("body-no-scroll");
         }
         function generateProductCards() {
             if (!productsContainer) {
-                console.error("Контейнер #products-container не найден");
                 productsContainer.innerHTML = "<p>Контейнер для товаров не найден</p>";
                 return;
             }
-            if (!productsData || !Array.isArray(productsData) || productsData.length === 0) {
-                console.error("productsData пуст или не является массивом:", productsData);
+            if (!Array.isArray(productsData) || productsData.length === 0) {
                 productsContainer.innerHTML = "<p>Товары отсутствуют</p>";
                 return;
             }
-            console.log("Генерация карточек товаров, количество:", productsData.length);
-            const existingCartModal = productsContainer.querySelector(".cart-modal");
             productsContainer.innerHTML = "";
-            if (existingCartModal) productsContainer.appendChild(existingCartModal);
+            productsContainer.style.opacity = "0";
             initLazyLoad();
+            const checkImagesLoaded = () => {
+                const images = productsContainer.querySelectorAll(".product__image");
+                let loadedImages = 0;
+                const totalImages = images.length;
+                if (totalImages === 0) {
+                    productsContainer.style.opacity = "1";
+                    return;
+                }
+                images.forEach((img => {
+                    if (img.complete) {
+                        loadedImages++;
+                        if (loadedImages === totalImages) productsContainer.style.opacity = "1";
+                    } else {
+                        img.addEventListener("load", (() => {
+                            loadedImages++;
+                            if (loadedImages === totalImages) productsContainer.style.opacity = "1";
+                        }));
+                        img.addEventListener("error", (() => {
+                            console.error(`Ошибка загрузки изображения: ${img.src}`);
+                            loadedImages++;
+                            if (loadedImages === totalImages) productsContainer.style.opacity = "1";
+                        }));
+                    }
+                }));
+            };
+            setTimeout(checkImagesLoaded, 0);
         }
-        function createProductCard(product) {
+        function createProductCard(product, isInitial = false) {
             const uniqueSuffix = `${product.article}-${uniqueIdCounter++}`;
             const productCard = document.createElement("article");
             productCard.className = "product__card";
@@ -771,10 +763,10 @@
             productCard.setAttribute("itemscope", "");
             productCard.setAttribute("itemtype", "http://schema.org/Product");
             let sizeSelectorHTML = "";
-            if (product.sizes && product.sizes.length > 0) sizeSelectorHTML = `\n            <div class="product__size-selector">\n                <label for="size-${uniqueSuffix}">${product.sizeLabel || "Размер:"}</label>\n                <select id="size-${uniqueSuffix}" name="size-${uniqueSuffix}" class="product__size-select">\n                    ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                </select>\n            </div>\n        `;
-            const priceHTML = product.price ? `\n        <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n            <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n            <span itemprop="priceCurrency" content="RUB">₽</span>\n        </p>\n    ` : "";
-            const detailsLinkHTML = product.hasDetails || product.detailsUrl ? `\n        <a href="${product.detailsUrl || "#"}" class="product__details-link" aria-label="Подробнее о товаре ${product.title}">\n            Подробнее\n        </a>\n    ` : "";
-            productCard.innerHTML = `\n        <div class="product__image-wrapper">\n            <img src="${product.image}" \n                 alt="${product.alt || product.title}" \n                 class="product__image" \n                 loading="lazy" \n                 width="300" \n                 height="200" \n                 itemprop="image">\n        </div>\n        <div class="product__content">\n            <h3 class="product__title" itemprop="name">${product.title}</h3>\n            <div class="product__meta">\n                <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                ${detailsLinkHTML}\n            </div>\n            <div class="product__bottom-section">\n                ${priceHTML}\n                ${sizeSelectorHTML}\n                <div class="product__footer">\n                    <div class="quantity__controls">\n                        <button type="button" \n                                class="quantity__btn minus" \n                                aria-label="Уменьшить количество">\n                            −\n                        </button>\n                        <input type="number" \n                               class="quantity__input" \n                               id="quantity-${uniqueSuffix}" \n                               name="quantity-${uniqueSuffix}" \n                               value="1" \n                               min="1" \n                               aria-label="Количество товара">\n                        <button type="button" \n                                class="quantity__btn plus" \n                                aria-label="Увеличить количество">\n                            +\n                        </button>\n                    </div>\n                    <button type="button" \n                            class="add-to-cart" \n                            itemprop="offers" \n                            itemtype="http://schema.org/Offer"\n                            aria-label="Добавить ${product.title} в корзину">\n                        Добавить в корзину\n                    </button>\n                </div>\n            </div>\n        </div>\n    `;
+            if (product.sizes && product.sizes.length > 0) sizeSelectorHTML = `\n                <div class="product__size-selector">\n                    <label for="size-${uniqueSuffix}">${product.sizeLabel || "Размер:"}</label>\n                    <select id="size-${uniqueSuffix}" name="size-${uniqueSuffix}" class="product__size-select">\n                        ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                    </select>\n                </div>\n            `;
+            const priceHTML = product.price ? `\n            <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n                <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n                <span itemprop="priceCurrency" content="RUB">₽</span>\n            </p>\n        ` : "";
+            const detailsLinkHTML = product.hasDetails || product.detailsUrl ? `\n            <a href="${product.detailsUrl || "#"}" class="product__details-link" aria-label="Подробнее о товаре ${product.title}">\n                Подробнее\n            </a>\n        ` : "";
+            productCard.innerHTML = `\n            <div class="product__image-wrapper">\n                <img src="${product.image}" \n                     alt="${product.alt || product.title}" \n                     class="product__image" \n                     loading="${isInitial ? "eager" : "lazy"}" \n                     width="300" \n                     height="200" \n                     itemprop="image">\n            </div>\n            <div class="product__content">\n                <h3 class="product__title" itemprop="name">${product.title}</h3>\n                <div class="product__meta">\n                    <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                    ${detailsLinkHTML}\n                </div>\n                <div class="product__bottom-section">\n                    ${priceHTML}\n                    ${sizeSelectorHTML}\n                    <div class="product__footer">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">−</button>\n                            <input type="number" class="quantity__input" id="quantity-${uniqueSuffix}" name="quantity-${uniqueSuffix}" value="1" min="1" aria-label="Количество товара">\n                            <button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>\n                        </div>\n                        <button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer" aria-label="Добавить ${product.title} в корзину">Добавить в корзину</button>\n                    </div>\n                </div>\n            </div>\n        `;
             return productCard;
         }
         function formatPrice(price) {
@@ -820,22 +812,19 @@
                 totalPrice += itemTotal;
                 const cartItemElement = document.createElement("div");
                 cartItemElement.className = "cart-item";
-                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h4 class="cart-item-title">${item.title}</h4>\n                    ${item.optionValue ? `<p class="cart-item-option">${item.optionType}: ${item.optionValue}</p>` : ""}\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    ${item.price > 0 ? `<p class="cart-item-price">${formatPrice(item.price)} ₽</p>` : ""}\n                    <div class="cart-item-quantity">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" data-id="${item.id}">-</button>\n                            <input type="number" \n                                   class="quantity__input" \n                                   id="cart-quantity-${item.id}" \n                                   name="cart-quantity-${item.id}" \n                                   value="${item.quantity}" \n                                   min="1" \n                                   data-id="${item.id}">\n                            <button type="button" class="quantity__btn plus" data-id="${item.id}">+</button>\n                        </div>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
+                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h4 class="cart-item-title">${item.title}</h4>\n                    ${item.optionValue ? `<p class="cart-item-option">${item.optionType}: ${item.optionValue}</p>` : ""}\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    ${item.price > 0 ? `<p class="cart-item-price">${formatPrice(item.price)} ₽</p>` : ""}\n                    <div class="cart-item-quantity">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" data-id="${item.id}">-</button>\n                            <input type="number" class="quantity__input" id="cart-quantity-${item.id}" name="cart-quantity-${item.id}" value="${item.quantity}" min="1" data-id="${item.id}">\n                            <button type="button" class="quantity__btn plus" data-id="${item.id}">+</button>\n                        </div>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
                 cartItemsContainer.appendChild(cartItemElement);
             }));
             if (submitOrderBtn) submitOrderBtn.setAttribute("aria-label", `Отправить заказ на сумму ${formatPrice(totalPrice)} руб`);
             cartTotal.textContent = formatPrice(totalPrice);
-            const totalItems = cart.reduce(((sum, item) => sum + item.quantity), 0);
-            cartCount.textContent = totalItems;
+            cartCount.textContent = cart.reduce(((sum, item) => sum + item.quantity), 0);
             cartFooter.style.display = cart.length > 0 ? "block" : "none";
             saveCartToStorage();
         }
         function animateCartCounter() {
             if (cartCount) {
                 cartCount.classList.add("update");
-                setTimeout((() => {
-                    cartCount.classList.remove("update");
-                }), 500);
+                setTimeout((() => cartCount.classList.remove("update")), 500);
             }
         }
         function submitOrder() {
@@ -869,52 +858,42 @@
             localStorage.setItem("cart", JSON.stringify(cart));
         }
         function initSearchFunctionality() {
-            if (!searchForm) {
-                console.warn("Форма поиска (.search-form__item) не найдена");
-                return;
-            }
-            const searchIcon = searchForm.querySelector(".search-form__btn._icon-search");
-            const searchItem = searchForm;
-            const searchInput = searchForm.querySelector(".search-form__input");
-            const searchClear = searchForm.querySelector(".search-form__clear");
-            if (searchInput && !searchInput.id) searchInput.id = "search-input";
-            if (searchInput && !searchInput.name) searchInput.name = "search";
+            if (!searchForm || !searchInput || !searchClear) return;
+            if (!searchInput.id) searchInput.id = "search-input";
+            if (!searchInput.name) searchInput.name = "search";
             function toggleClearButton() {
-                if (searchInput && searchClear) searchClear.style.display = searchInput.value ? "block" : "none";
+                searchClear.style.display = searchInput.value ? "block" : "none";
             }
-            if (searchInput) {
-                searchInput.addEventListener("input", (function() {
-                    toggleClearButton();
-                    resetLazyLoad();
-                }));
-                searchInput.addEventListener("keydown", (function(e) {
-                    if (e.key === "Enter") {
-                        e.preventDefault();
-                        resetLazyLoad();
-                    }
-                }));
-            }
-            if (searchClear) searchClear.addEventListener("click", (function(e) {
-                e.preventDefault();
-                if (searchInput) {
-                    searchInput.value = "";
-                    searchInput.focus();
-                    toggleClearButton();
+            searchInput.addEventListener("input", (() => {
+                toggleClearButton();
+                resetLazyLoad();
+            }));
+            searchInput.addEventListener("keydown", (e => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
                     resetLazyLoad();
                 }
             }));
-            if (searchIcon && searchItem) searchIcon.addEventListener("click", (function(e) {
-                e.stopPropagation();
-                searchItem.classList.toggle("active");
-                if (searchItem.classList.contains("active") && searchInput) searchInput.focus();
+            searchClear.addEventListener("click", (e => {
+                e.preventDefault();
+                searchInput.value = "";
+                searchInput.focus();
+                toggleClearButton();
+                resetLazyLoad();
             }));
-            document.addEventListener("click", (function(e) {
-                if (!searchForm.contains(e.target)) searchItem?.classList.remove("active");
+            const searchIcon = document.querySelector(".search-form__icon._icon-search");
+            if (searchIcon) searchIcon.addEventListener("click", (e => {
+                e.stopPropagation();
+                searchForm.classList.toggle("active");
+                if (searchForm.classList.contains("active")) searchInput.focus();
+            }));
+            document.addEventListener("click", (e => {
+                if (!searchForm.contains(e.target) && !e.target.closest(".search-form__icon")) searchForm.classList.remove("active");
             }));
             toggleClearButton();
         }
         function initEventHandlers() {
-            document.addEventListener("click", (function(e) {
+            document.addEventListener("click", (e => {
                 if (e.target.classList.contains("quantity__btn")) {
                     const controls = e.target.closest(".quantity__controls");
                     if (!controls) return;
@@ -932,10 +911,6 @@
                     e.preventDefault();
                     openCart();
                 }
-            }));
-            if (closeCartBtn) closeCartBtn.addEventListener("click", closeCart); else console.warn("Элемент .close-cart не найден");
-            if (submitOrderBtn) submitOrderBtn.addEventListener("click", submitOrder); else console.warn("Элемент .submit-order не найден");
-            document.addEventListener("click", (function(e) {
                 if (e.target.classList.contains("quantity__btn") && e.target.closest(".cart-item")) {
                     const id = e.target.getAttribute("data-id");
                     const item = cart.find((item => item.id === id));
@@ -949,7 +924,9 @@
                     updateCart();
                 }
             }));
-            document.addEventListener("change", (function(e) {
+            if (closeCartBtn) closeCartBtn.addEventListener("click", closeCart);
+            if (submitOrderBtn) submitOrderBtn.addEventListener("click", submitOrder);
+            document.addEventListener("change", (e => {
                 if (e.target.classList.contains("quantity__input") && e.target.closest(".cart-item")) {
                     const id = e.target.getAttribute("data-id");
                     const newQuantity = parseInt(e.target.value) || 1;
@@ -963,13 +940,9 @@
             const focusStart = document.querySelector(".focus-trap-start");
             const focusEnd = document.querySelector(".focus-trap-end");
             if (cartModal && focusEnd && focusStart) {
-                focusEnd.addEventListener("focus", (() => {
-                    if (closeCartBtn) closeCartBtn.focus();
-                }));
-                focusStart.addEventListener("focus", (() => {
-                    if (submitOrderBtn) submitOrderBtn.focus();
-                }));
-            } else console.warn("Элементы фокус-ловушки (.focus-trap-start, .focus-trap-end) или .cart-modal не найдены");
+                focusEnd.addEventListener("focus", (() => closeCartBtn?.focus()));
+                focusStart.addEventListener("focus", (() => submitOrderBtn?.focus()));
+            }
         }
         function initHeaderTransformation() {
             const header = document.querySelector(".header");
@@ -989,16 +962,14 @@
                 const isScrolled = window.scrollY > 0;
                 const shouldApplyStyles = isDesktop() && isScrolled;
                 if (logoText && logoTextShort) {
+                    logoText.style.display = shouldApplyStyles ? "none" : "block";
+                    logoTextShort.style.display = shouldApplyStyles ? "block" : "none";
                     if (shouldApplyStyles) {
-                        logoText.style.display = "none";
-                        logoTextShort.style.display = "block";
                         logoTextShort.style.opacity = "1";
                         logoTextShort.style.visibility = "visible";
                     } else {
-                        logoText.style.display = "block";
                         logoText.style.opacity = "1";
                         logoText.style.visibility = "visible";
-                        logoTextShort.style.display = "none";
                     }
                     if (!isDesktop()) {
                         logoText.style.display = "none";
@@ -1007,28 +978,18 @@
                         logoTextShort.style.visibility = "visible";
                     }
                 }
-                phoneItems.forEach((item => {
-                    item.style.display = shouldApplyStyles ? "flex" : "";
-                    item.style.flexDirection = shouldApplyStyles ? "row" : "";
-                }));
-                emailItems.forEach((item => {
-                    item.style.display = shouldApplyStyles ? "flex" : "";
-                    item.style.flexDirection = shouldApplyStyles ? "row" : "";
-                }));
-                phoneLinks.forEach((link => {
-                    link.style.marginRight = shouldApplyStyles ? "10px" : "";
-                }));
-                emailLinks.forEach((link => {
-                    link.style.marginRight = shouldApplyStyles ? "10px" : "";
-                }));
+                phoneItems.forEach((item => item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : ""));
+                emailItems.forEach((item => item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : ""));
+                phoneLinks.forEach((link => link.style.marginRight = shouldApplyStyles ? "10px" : ""));
+                emailLinks.forEach((link => link.style.marginRight = shouldApplyStyles ? "10px" : ""));
                 if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
                 if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
-                if (shouldApplyStyles) header.classList.add("scrolled"); else header.classList.remove("scrolled");
+                header.classList.toggle("scrolled", shouldApplyStyles);
             }
             let isTicking = false;
             function requestTick() {
                 if (!isTicking) {
-                    requestAnimationFrame((function() {
+                    requestAnimationFrame((() => {
                         handleScrollStyles();
                         isTicking = false;
                     }));
@@ -1036,9 +997,9 @@
                 }
             }
             window.addEventListener("scroll", requestTick);
-            window.addEventListener("resize", (function() {
+            window.addEventListener("resize", (() => {
                 if (!isDesktop()) {
-                    [ logoText, logoTextShort, ...phoneItems, ...emailItems, ...phoneLinks, ...emailLinks, actionsContacts, headerBody ].filter(Boolean).forEach((el => el.style = ""));
+                    [ logoText, logoTextShort, ...phoneItems, ...emailItems, ...phoneLinks, ...emailLinks, actionsContacts, headerBody ].filter(Boolean).forEach((el => el.style.cssText = ""));
                     header.classList.remove("scrolled");
                 }
                 requestTick();
@@ -1047,14 +1008,11 @@
         }
         function initScrollTopButton() {
             const scrollTopBtn = document.querySelector(".scroll-top");
-            if (!scrollTopBtn) {
-                console.warn("Элемент .scroll-top не найден на странице:", window.location.pathname);
-                return;
-            }
-            window.addEventListener("scroll", (function() {
-                if (window.pageYOffset > window.innerHeight / 2) scrollTopBtn.classList.add("visible"); else scrollTopBtn.classList.remove("visible");
+            if (!scrollTopBtn) return;
+            window.addEventListener("scroll", (() => {
+                scrollTopBtn.classList.toggle("visible", window.pageYOffset > window.innerHeight / 2);
             }));
-            scrollTopBtn.addEventListener("click", (function(e) {
+            scrollTopBtn.addEventListener("click", (e => {
                 e.preventDefault();
                 window.scrollTo({
                     top: 0,
@@ -1064,33 +1022,24 @@
         }
         function initTableMobileAdaptation() {
             const table = document.querySelector(".specs-table");
-            if (table) {
-                const headers = Array.from(table.querySelectorAll(".specs-table__header")).map((header => header.textContent));
-                table.querySelectorAll(".specs-table__row").forEach((row => {
-                    Array.from(row.querySelectorAll("td")).forEach(((cell, index) => {
-                        cell.setAttribute("data-label", headers[index]);
-                    }));
+            if (!table) return;
+            const headers = Array.from(table.querySelectorAll(".specs-table__header")).map((header => header.textContent));
+            table.querySelectorAll(".specs-table__row").forEach((row => {
+                Array.from(row.querySelectorAll("td")).forEach(((cell, index) => {
+                    cell.setAttribute("data-label", headers[index]);
                 }));
-            }
+            }));
         }
         function fixMobileViewportIssues() {
             function setRealViewportHeight() {
                 const vh = window.innerHeight * .01;
                 document.documentElement.style.setProperty("--vh", `${vh}px`);
-                const cartModal = document.querySelector(".cart-modal");
                 if (cartModal) cartModal.style.height = window.innerHeight + "px";
             }
             setRealViewportHeight();
             window.addEventListener("resize", setRealViewportHeight);
             window.addEventListener("orientationchange", setRealViewportHeight);
-            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                document.body.style.overflow = "hidden";
-                document.body.style.position = "fixed";
-                document.body.style.top = "0";
-                document.body.style.left = "0";
-                document.body.style.right = "0";
-                document.body.style.bottom = "0";
-            }
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) document.body.style.cssText = "overflow: hidden; position: fixed; top: 0; left: 0; right: 0; bottom: 0;";
         }
         function init() {
             setupCartOverlay();
@@ -1100,7 +1049,7 @@
                 generateProductCards();
                 if (searchForm) initSearchFunctionality();
                 if (categoryFilter) initCategoryFilter();
-            } else console.error("Контейнер #products-container не найден на странице");
+            }
             initHeaderTransformation();
             initScrollTopButton();
             initTableMobileAdaptation();
