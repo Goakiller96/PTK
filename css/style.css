@@ -265,7 +265,7 @@ h6 {
 }
 
 body {
-  background-color: rgba(240, 240, 240, 0.65);
+  background-color: rgba(249, 249, 249, 0.65);
   line-height: 1.5555555556;
 }
 
@@ -409,7 +409,6 @@ h3 {
 
 .breadcrumbs {
   padding: 15px 0;
-  background: #f5f5f5;
 }
 
 .breadcrumbs__list {
@@ -516,16 +515,16 @@ h3 {
 
 .catalog__filter label {
   font-size: 1rem;
-  font-weight: 500;
-  font-family: "YourFont", sans-serif;
   line-height: 1.5;
   min-height: 1.5em;
+  color: rgba(56, 56, 56, 0.8);
 }
 
 .custom-select {
   position: relative;
   width: 200px;
   font-size: 1rem;
+  color: rgba(56, 56, 56, 0.8);
 }
 
 .custom-select__trigger {
@@ -721,7 +720,7 @@ h3 {
 }
 
 .header__bottom {
-  background-color: #efeeee;
+  background-color: #f6f6f6;
 }
 
 .header__bottom-wrapper {
@@ -1414,7 +1413,6 @@ h3 {
      object-fit: contain;
   -o-object-position: center;
      object-position: center;
-  background: #f5f5f5;
   padding: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2060,7 +2058,7 @@ h3 {
   overflow: hidden;
 }
 
-.plazmotron-410__table {
+.plazmotron__table {
   width: 100%;
   margin: 0 auto;
 }
@@ -2163,90 +2161,9 @@ h3 {
           animation: fadeInImage 0.6s ease forwards 0.2s;
 }
 
-.plazmotron-402m__wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 40px;
-}
+/* Переменные */
 
-.plazmotron-402m__content {
-  width: 50%;
-}
-
-.plazmotron-402m__description {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.plazmotron-402m__description p {
-  color: rgba(56, 56, 56, 0.8);
-  text-indent: 0.9375rem;
-  margin-bottom: 0.625rem;
-  text-align: justify;
-}
-
-.plazmotron-402m__description span {
-  font-size: 1.125rem;
-  font-weight: 600;
-}
-
-.plazmotron-402m__description-link {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  gap: 5px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(56, 56, 56, 0.8);
-}
-
-.plazmotron-402m__description-link a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  gap: 5px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(56, 56, 56, 0.8);
-  -webkit-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-}
-
-.plazmotron-402m__image {
-  width: 50%;
-}
-
-.plazmotron-402m__image img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-}
-
-.plazmotron-402m__table {
-  width: 100%;
-  margin: 0 auto;
-}
+/* Specification block */
 
 .specification {
   display: -webkit-box;
@@ -2257,6 +2174,8 @@ h3 {
   margin: 0 auto;
   border: 1px solid rgba(122, 122, 122, 0.1);
 }
+
+/* Image section */
 
 .image-section {
   width: 50%;
@@ -2282,6 +2201,8 @@ h3 {
   border: 1px solid rgba(122, 122, 122, 0.1);
 }
 
+/* Table section */
+
 .table-section {
   width: 50%;
   display: -webkit-box;
@@ -2293,6 +2214,8 @@ h3 {
           flex-direction: column;
   overflow: hidden;
 }
+
+/* Parts table */
 
 .parts-table {
   width: 100%;
@@ -2332,6 +2255,8 @@ h3 {
   line-height: 1.4;
   display: block;
 }
+
+/* Specs table */
 
 .specs-table {
   width: 100%;
@@ -2441,6 +2366,60 @@ h3 {
   }
 }
 
+.specification.equal-height {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.image-section.equal-height-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+}
+
+.image-section.equal-height-image img {
+  max-height: 100%;
+  width: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.table-section.compact-table {
+  padding: 3px;
+  margin: 0;
+}
+
+.parts-table.compact-table {
+  margin: 0;
+  border-spacing: 0;
+}
+
+.parts-table.compact-table td,
+.parts-table.compact-table th {
+  padding: 2px;
+  vertical-align: top;
+}
+
+.part-variant.compact-variant {
+  font-style: italic;
+  display: block;
+  line-height: 1.1;
+  margin: 0;
+  font-size: 1em;
+  padding: 0;
+}
+
 @media (min-width: 47.99875em) {
   .header__bottom-title {
     display: none;
@@ -2523,11 +2502,7 @@ h3 {
 }
 
 @media (min-width: 61.99875em) {
-  .plazmotron-410__table {
-    width: 90%;
-  }
-
-  .plazmotron-402m__table {
+  .plazmotron__table {
     width: 90%;
   }
 }
@@ -2647,11 +2622,11 @@ h3 {
     font-size: 1rem;
   }
 
-  .plazmotron-410__container {
+  .plazmotron__container {
     padding-bottom: 3.125rem;
   }
 
-  .plazmotron-410__container {
+  .plazmotron__container {
     padding-top: 3.125rem;
   }
 
@@ -2660,22 +2635,6 @@ h3 {
   }
 
   .products__wrapper {
-    margin-bottom: 5rem;
-  }
-
-  .plazmotron-402m__container {
-    padding-bottom: 3.125rem;
-  }
-
-  .plazmotron-402m__container {
-    padding-top: 3.125rem;
-  }
-
-  .plazmotron-402m__wrapper {
-    padding-top: 3.75rem;
-  }
-
-  .plazmotron-402m__wrapper {
     margin-bottom: 5rem;
   }
 
@@ -2851,6 +2810,17 @@ h3 {
   }
 }
 
+@media (max-width: 468px) {
+  .parts-table th:nth-child(1),
+  .parts-table th:nth-child(2) {
+    width: 15%;
+  }
+
+  .parts-table th:nth-child(3) {
+    width: 70%;
+  }
+}
+
 @media (max-width: 450px) {
   .actions-header__phones-numbers {
     padding-left: 10px;
@@ -2976,11 +2946,11 @@ h3 {
     font-size: 0.875rem;
   }
 
-  .plazmotron-410__container {
+  .plazmotron__container {
     padding-bottom: 1.25rem;
   }
 
-  .plazmotron-410__container {
+  .plazmotron__container {
     padding-top: 1.25rem;
   }
 
@@ -2989,22 +2959,6 @@ h3 {
   }
 
   .products__wrapper {
-    margin-bottom: 3.125rem;
-  }
-
-  .plazmotron-402m__container {
-    padding-bottom: 1.25rem;
-  }
-
-  .plazmotron-402m__container {
-    padding-top: 1.25rem;
-  }
-
-  .plazmotron-402m__wrapper {
-    padding-top: 3.125rem;
-  }
-
-  .plazmotron-402m__wrapper {
     margin-bottom: 3.125rem;
   }
 
@@ -3136,29 +3090,29 @@ h3 {
     border-bottom: 1px solid rgba(122, 122, 122, 0.1);
   }
 
-  .specs-table__row_dimensions .specs-table__param,
-  .specs-table__row_dimensions .specs-table__value {
+  .specs-table__row-dimensions .specs-table__param,
+  .specs-table__row-dimensions .specs-table__value {
     padding: 0.8rem;
     text-align: left;
   }
 
-  .specs-table__row_dimensions .specs-table__param:before,
-  .specs-table__row_dimensions .specs-table__value:before {
+  .specs-table__row-dimensions .specs-table__param:before,
+  .specs-table__row-dimensions .specs-table__value:before {
     content: none;
   }
 
-  .specs-table__row_dimensions .specs-table__dimensions-grid {
+  .specs-table__row-dimensions .specs-table__dimensions-grid {
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem 1rem;
   }
 
-  .specs-table__row_dimensions .specs-table__dimensions-name:before,
-  .specs-table__row_dimensions .specs-table__dimensions-value:before {
+  .specs-table__row-dimensions .specs-table__dimensions-name:before,
+  .specs-table__row-dimensions .specs-table__dimensions-value:before {
     content: none;
   }
 
-  .specs-table__row_dimensions .specs-table__dimensions-name {
+  .specs-table__row-dimensions .specs-table__dimensions-name {
     font-weight: 500;
     color: rgba(56, 56, 56, 0.8);
   }
@@ -3486,21 +3440,6 @@ h3 {
   }
 
   .products__image {
-    width: 100%;
-  }
-
-  .plazmotron-402m__wrapper {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-
-  .plazmotron-402m__content {
-    width: 100%;
-  }
-
-  .plazmotron-402m__image {
     width: 100%;
   }
 
@@ -3894,25 +3833,25 @@ h3 {
 }
 
 @supports (padding-bottom: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
-    .plazmotron-410__container {
+    .plazmotron__container {
       padding-bottom: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem );
     }
 }
 
 @supports not (padding-bottom: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
-    .plazmotron-410__container {
+    .plazmotron__container {
       padding-bottom: calc(1.25rem + 1.875 * (100vw - 20rem) / 59.375);
     }
 }
 
 @supports (padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
-    .plazmotron-410__container {
+    .plazmotron__container {
       padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem );
     }
 }
 
 @supports not (padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
-    .plazmotron-410__container {
+    .plazmotron__container {
       padding-top: calc(1.25rem + 1.875 * (100vw - 20rem) / 59.375);
     }
 }
@@ -3937,54 +3876,6 @@ h3 {
 
 @supports not (margin-bottom: clamp( 3.125rem , 2.4934210526rem  +  3.1578947368vw , 5rem )) {
     .products__wrapper {
-      margin-bottom: calc(3.125rem + 1.875 * (100vw - 20rem) / 59.375);
-    }
-}
-
-@supports (padding-bottom: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
-    .plazmotron-402m__container {
-      padding-bottom: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem );
-    }
-}
-
-@supports not (padding-bottom: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
-    .plazmotron-402m__container {
-      padding-bottom: calc(1.25rem + 1.875 * (100vw - 20rem) / 59.375);
-    }
-}
-
-@supports (padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
-    .plazmotron-402m__container {
-      padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem );
-    }
-}
-
-@supports not (padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
-    .plazmotron-402m__container {
-      padding-top: calc(1.25rem + 1.875 * (100vw - 20rem) / 59.375);
-    }
-}
-
-@supports (padding-top: clamp( 3.125rem , 2.9144736842rem  +  1.0526315789vw , 3.75rem )) {
-    .plazmotron-402m__wrapper {
-      padding-top: clamp( 3.125rem , 2.9144736842rem  +  1.0526315789vw , 3.75rem );
-    }
-}
-
-@supports not (padding-top: clamp( 3.125rem , 2.9144736842rem  +  1.0526315789vw , 3.75rem )) {
-    .plazmotron-402m__wrapper {
-      padding-top: calc(3.125rem + 0.625 * (100vw - 20rem) / 59.375);
-    }
-}
-
-@supports (margin-bottom: clamp( 3.125rem , 2.4934210526rem  +  3.1578947368vw , 5rem )) {
-    .plazmotron-402m__wrapper {
-      margin-bottom: clamp( 3.125rem , 2.4934210526rem  +  3.1578947368vw , 5rem );
-    }
-}
-
-@supports not (margin-bottom: clamp( 3.125rem , 2.4934210526rem  +  3.1578947368vw , 5rem )) {
-    .plazmotron-402m__wrapper {
       margin-bottom: calc(3.125rem + 1.875 * (100vw - 20rem) / 59.375);
     }
 }
@@ -4202,10 +4093,6 @@ h3 {
   }
 
   .products__description-link a:hover {
-    color: rgba(99, 99, 99, 0.7);
-  }
-
-  .plazmotron-402m__description-link a:hover {
     color: rgba(99, 99, 99, 0.7);
   }
 }
