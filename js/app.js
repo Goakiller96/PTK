@@ -347,25 +347,48 @@
     function createInitialProducts() {
         const initialProducts = [ {
             title: "Плазмотрон ВПР-402м в сборе",
-            article: "FL-12345",
+            article: "402-01",
             image: "img/plazmotron/vpr-402m.webp",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
-            alt: "Горелка Фламинго для плазменной резки металлов",
+            alt: "Плазмотрон ВПР-402м для плазменной резки металлов",
             description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-402m.html",
             category: "Плазмотроны"
         }, {
             title: "Плазмотрон ВПР-410 в сборе",
-            article: "SP-410011",
+            article: "410-01",
             image: "img/plazmotron/vpr-410.webp",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 410 для плазмотрона",
+            alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
             description: "Сопла для плазменной резки серии 410 с медным охлаждением",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-410.html",
+            category: "Плазмотроны"
+        }, {
+            title: "Плазмотрон ВПР-210м в сборе",
+            article: "210-01",
+            image: "img/plazmotron/vpr-210m.webp",
+            price: 1999,
+            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
+            description: "Ремонтный комплект для горелок серии Фламинго",
+            hasDetails: true,
+            detailsUrl: "plazmotron-vpr-210m.html",
+            category: "Плазмотроны"
+        }, {
+            title: "Плазмотрон ВПР-150/400 в сборе",
+            article: "410-01",
+            image: "img/plazmotron/vpr-150-400.webp",
+            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм", "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
+            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
+            hasDetails: true,
+            detailsUrl: "plazmotron-vpr-150-400.html",
             category: "Плазмотроны"
         }, {
             title: "Сопло плазменное 402 для резки алюминия",
@@ -397,16 +420,6 @@
             alt: "Сопло 210 для тонкой резки",
             description: "Сопла малого диаметра для точной резки тонколистового металла",
             category: "Сопла"
-        }, {
-            title: "Ремкомплект для горелки Фламинго",
-            article: "RK-12350",
-            image: "img/cards/flamingo.webp",
-            price: 1999,
-            sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
-            sizeLabel: "Вариант:",
-            alt: "Ремкомплект для плазменной горелки",
-            description: "Ремонтный комплект для горелок серии Фламинго",
-            category: "Комплектующие"
         }, {
             title: "Горелка плазменная Фламинго для резки металла",
             article: "FL-12345-2",
