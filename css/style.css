@@ -678,7 +678,7 @@ h3 {
 }
 
 .header__logo-img {
-  margin-right: 0.1875rem;
+  padding-right: 0.1875rem;
   position: relative;
   z-index: 10;
 }
@@ -703,7 +703,7 @@ h3 {
 }
 
 .header__logo-text-short {
-  font-size: 1.625rem;
+  font-size: 1.5rem;
   font-weight: 500;
   padding-bottom: 0.25rem;
   color: #383838;
@@ -1038,7 +1038,7 @@ h3 {
 }
 
 .footer__logo-img {
-  margin-right: 0.1875rem;
+  padding-right: 0.1875rem;
   position: relative;
   z-index: 4;
 }
@@ -1063,7 +1063,7 @@ h3 {
 }
 
 .footer__logo-text-short {
-  font-size: 1.625rem;
+  font-size: 1.5rem;
   position: relative;
   z-index: 4;
   opacity: 0;
@@ -2161,7 +2161,7 @@ h3 {
   color: #e74c3c;
   cursor: pointer;
   font-size: 26px;
-  padding: 5px;
+  paving: 5px;
   margin-left: 5px;
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
@@ -2225,6 +2225,169 @@ h3 {
 }
 
 .cart-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Стили для модального окна формы заказа */
+
+.order-form-modal {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background: #fff;
+  -webkit-box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  /* Выше корзины */
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+}
+
+.order-form-modal.active {
+  right: 0;
+}
+
+.order-form-modal.active .order-form-header {
+  background-color: #f9f9f9;
+}
+
+.order-form-header {
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.3125rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.order-form-header h2 {
+  margin-left: 15px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.close-order-form {
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+  line-height: 1;
+  padding: 10px;
+  border: none;
+}
+
+.order-form {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.order-form__group {
+  margin-bottom: 20px;
+}
+
+.order-form__group label {
+  display: block;
+  font-size: 16px;
+  color: rgba(56, 56, 56, 0.8);
+  margin-bottom: 8px;
+}
+
+.order-form__group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  -webkit-transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease;
+}
+
+.order-form__group input:focus {
+  border-color: #2ecc71;
+  outline: none;
+}
+
+.order-form__group input.error {
+  border-color: #e74c3c;
+}
+
+.order-form__group .error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+.order-form__group .error-message.active {
+  display: block;
+}
+
+.order-form__footer {
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #f0f0f0;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+
+.submit-order-form {
+  padding: 14px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+  font-weight: 500;
+  width: 100%;
+}
+
+.submit-order-form:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.order-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  /* Между корзиной и формой */
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.order-form-overlay.active {
   opacity: 1;
   visibility: visible;
 }
@@ -3056,7 +3219,8 @@ h3 {
 }
 
 @media (max-width: 480px) {
-  .cart-modal {
+  .cart-modal,
+  .order-form-modal {
     max-width: 100%;
   }
 
@@ -3068,6 +3232,27 @@ h3 {
   .cart-item-image {
     width: 50px;
     height: 50px;
+  }
+
+  .order-form__group {
+    margin-bottom: 15px;
+  }
+
+  .order-form__group label {
+    font-size: 14px;
+  }
+
+  .order-form__group input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .order-form__footer {
+    padding: 15px;
+  }
+
+  .submit-order-form {
+    padding: 12px;
   }
 }
 
@@ -3753,11 +3938,8 @@ h3 {
   .cart-modal .cart-footer {
     position: sticky;
     bottom: 0;
-    background: #fff;
     padding: 15px;
     z-index: 10;
-    -webkit-box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     display: block !important;
   }
 
@@ -3768,6 +3950,34 @@ h3 {
   .cart-modal .cart-total {
     padding-bottom: 20px;
     /* Дополнительный отступ перед кнопкой */
+  }
+
+  .order-form-modal {
+    height: 100vh;
+    height: -webkit-fill-available;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .order-form-modal .order-form {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 80px;
+  }
+
+  .order-form-modal .order-form__footer {
+    position: sticky;
+    bottom: 0;
+    -webkit-box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   }
 
   .products__wrapper {
@@ -4511,6 +4721,14 @@ h3 {
   }
 
   .submit-order:hover {
+    background: #2980b9;
+  }
+
+  .close-order-form:hover {
+    color: #333;
+  }
+
+  .submit-order-form:hover {
     background: #2980b9;
   }
 
