@@ -44,7 +44,7 @@
 	</style>
 
 	<!-- Основные стили -->
-	<link rel="stylesheet" href="./css/style.min.css?_v=20250707122716">
+	<link rel="stylesheet" href="./css/style.min.css?_v=20250708100422">
 
 	<!-- JavaScript для снятия скрытия после загрузки -->
 	<script>
@@ -58,20 +58,77 @@
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
-			"@type": "IndustrialEquipmentStore",
-			"name": "ПлазмаТехКомплект",
-			"url": "https://plazmatk.ru/",
-			"logo": "https://plazmatk.img/logo.png",
-			"description": "Производитель комплектующих для плазменной резки",
-			"address": {
-				"@type": "PostalAddress",
-				"streetAddress": "пр-т Космонавтов 11Б, литера Б",
-				"addressLocality": "Екатеринбург",
-				"postalCode": "620000",
-				"addressCountry": "RU"
-			},
-			"telephone": "+7 (343) 287-96-43",
-			"openingHours": "Mo-Fr 10:00-18:00"
+			"@graph": [{
+					"@type": "IndustrialEquipmentStore",
+					"name": "ПлазмаТехКомплект",
+					"url": "https://plazmatk.ru/",
+					"logo": "https://plazmatk.img/logo.png",
+					"description": "С 1995 года ПлазмаТехКомплект создаёт высококачественные плазмотроны и расходные материалы, такие как электроды и сопла, обеспечивая точность и долговечность. Производитель комплектующих для плазменной резки.",
+					"address": {
+						"@type": "PostalAddress",
+						"streetAddress": "пр-т Космонавтов 11Б, литера Б",
+						"addressLocality": "Екатеринбург",
+						"postalCode": "620000",
+						"addressCountry": "RU"
+					},
+					"telephone": "+7 (343) 287-96-43",
+					"openingHours": "Mo-Fr 10:00-18:00",
+					"sameAs": ["https://plazmatk.ru/catalog.html"]
+				},
+				{
+					"@type": "Product",
+					"name": "Плазмотроны и комплектующие",
+					"description": "Надёжное оборудование и комплектующие для плазменной резки, включая плазмотроны, электроды и сопла.",
+					"image": "https://plazmatk.img/common_parts.png",
+					"url": "https://plazmatk.ru/catalog.html",
+					"brand": {
+						"@type": "Brand",
+						"name": "ПлазмаТехКомплект"
+					},
+					"offers": {
+						"@type": "Offer",
+						"url": "https://plazmatk.ru/catalog.html",
+						"priceCurrency": "RUB",
+						"availability": "https://schema.org/InStock"
+					}
+				},
+				{
+					"@type": "Service",
+					"serviceType": "Производство",
+					"description": "Изготовление и поставка плазмотронов для ручной и механизированной резки, включая электроды и сопла.",
+					"provider": {
+						"@type": "IndustrialEquipmentStore",
+						"name": "ПлазмаТехКомплект"
+					}
+				},
+				{
+					"@type": "Service",
+					"serviceType": "Техническая поддержка",
+					"description": "Помощь в освоении и использовании оборудования для плазменной резки.",
+					"provider": {
+						"@type": "IndustrialEquipmentStore",
+						"name": "ПлазмаТехКомплект"
+					}
+				},
+				{
+					"@type": "Service",
+					"serviceType": "Ремонт и модернизация",
+					"description": "Ремонт источников питания и модернизация аппаратов для плазменной резки.",
+					"provider": {
+						"@type": "IndustrialEquipmentStore",
+						"name": "ПлазмаТехКомплект"
+					}
+				},
+				{
+					"@type": "Service",
+					"serviceType": "Гарантийное обслуживание",
+					"description": "Гарантия на всё поставляемое оборудование и запчасти.",
+					"provider": {
+						"@type": "IndustrialEquipmentStore",
+						"name": "ПлазмаТехКомплект"
+					}
+				}
+			]
 		}
 	</script>
 	undefined (context.product_schema) {
@@ -736,18 +793,52 @@
 			Итого: <span class="total-price">0</span> ₽
 		</div>
 		<div class="cart-footer" style="display: none;">
-			<button type="button" class="submit-order">Отправить заказ</button>
+			<button type="button" class="submit-order">Оформить заказ</button>
 		</div>
 		<span tabindex="0" class="focus-trap-end" aria-hidden="true"></span>
 	</aside>
 	<div class="cart-overlay"></div>
+
+	<!-- Модальное окно формы заказа -->
+	<aside class="order-form-modal" aria-modal="true" aria-labelledby="order-form-title" role="dialog" tabindex="-1" aria-describedby="order-form-description">
+		<div id="order-form-description" class="visually-hidden">
+			Форма для заполнения данных заказа
+		</div>
+		<span tabindex="0" class="focus-trap-start" aria-hidden="true"></span>
+		<div class="order-form-header">
+			<h2 id="order-form-title">Оформление заказа</h2>
+			<button type="button" class="close-order-form" aria-label="Закрыть форму заказа">×</button>
+		</div>
+		<form id="order-form" class="order-form">
+			<div class="order-form__group">
+				<label for="order-name">Имя</label>
+				<input type="text" id="order-name" name="name" placeholder="Введите ваше имя" required>
+				<span class="error-message" id="order-name-error"></span>
+			</div>
+			<div class="order-form__group">
+				<label for="order-phone">Телефон</label>
+				<input type="tel" id="order-phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+				<span class="error-message" id="order-phone-error"></span>
+			</div>
+			<div class="order-form__group">
+				<label for="order-email">Email</label>
+				<input type="email" id="order-email" name="email" placeholder="Введите ваш email" required>
+				<span class="error-message" id="order-email-error"></span>
+			</div>
+			<div class="order-form__footer">
+				<button type="submit" class="submit-order-form">Отправить заказ</button>
+			</div>
+		</form>
+		<span tabindex="0" class="focus-trap-end" aria-hidden="true"></span>
+	</aside>
+	<div class="order-form-overlay"></div>
 
 	<!-- Кнопка наверх -->
 	<button class="scroll-top" aria-label="Наверх">
 		<i class="_icon-arrow-down"></i>
 	</button>
 
-	<script src="js/app.min.js?_v=20250707122716"></script>
+	<script src="js/app.min.js?_v=20250708100422"></script>
 </body>
 
 </html>
