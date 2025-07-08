@@ -4121,7 +4121,7 @@
         da.init();
         function createInitialProducts() {
             const initialProducts = [ {
-                title: "Плазмотрон ВПР-402м в сборе",
+                title: "Плазмотрон ВПР-402м<br> в сборе",
                 article: "402-01",
                 image: "img/plazmotron/vpr-402m.webp",
                 sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
@@ -4132,7 +4132,7 @@
                 detailsUrl: "plazmotron-vpr-402m.html",
                 category: "Плазмотроны"
             }, {
-                title: "Плазмотрон ВПР-410 в сборе",
+                title: "Плазмотрон ВПР-410<br> в сборе",
                 article: "410-01",
                 image: "img/plazmotron/vpr-410.webp",
                 sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
@@ -4143,10 +4143,9 @@
                 detailsUrl: "plazmotron-vpr-410.html",
                 category: "Плазмотроны"
             }, {
-                title: "Плазмотрон ВПР-210м в сборе",
+                title: "Плазмотрон ВПР-210м<br> в сборе",
                 article: "210-01",
                 image: "img/plazmotron/vpr-210m.webp",
-                price: 1999,
                 sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
                 sizeLabel: "Диаметр сопла:",
                 alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
@@ -4155,8 +4154,8 @@
                 detailsUrl: "plazmotron-vpr-210m.html",
                 category: "Плазмотроны"
             }, {
-                title: "Плазмотрон ВПР-150/400 в сборе",
-                article: "410-01",
+                title: "Плазмотрон ВПР-150/400<br> в сборе",
+                article: "150-01/400-01",
                 image: "img/plazmotron/vpr-150-400.webp",
                 sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм", "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
                 sizeLabel: "Диаметр сопла:",
@@ -4164,6 +4163,17 @@
                 description: "Сопла для плазменной резки серии 410 с медным охлаждением",
                 hasDetails: true,
                 detailsUrl: "plazmotron-vpr-150-400.html",
+                category: "Плазмотроны"
+            }, {
+                title: "Плазмотрон ВПР-450р ручной",
+                article: "450-01",
+                image: "img/plazmotron/vpr-450.png",
+                sizes: [ "10 м", "20 м" ],
+                sizeLabel: "Длина кабеля:",
+                alt: "Плазмотрон для ручной резки металлов",
+                description: "Плазмотрон для плазменной ручной резки металлов",
+                hasDetails: true,
+                detailsUrl: "plazmotron-vpr-450.html",
                 category: "Плазмотроны"
             }, {
                 title: "Сопло плазменное 402 для резки алюминия",
@@ -4195,14 +4205,6 @@
                 alt: "Сопло 210 для тонкой резки",
                 description: "Сопла малого диаметра для точной резки тонколистового металла",
                 category: "Сопла"
-            }, {
-                title: "Горелка плазменная Фламинго для резки металла",
-                article: "FL-12345-2",
-                image: "img/cards/flamingo.webp",
-                price: 1999,
-                alt: "Горелка Фламинго для плазменной резки металлов",
-                description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом",
-                category: "Плазмотроны"
             }, {
                 title: "Сопло плазменное 410 для резки нержавеющей стали",
                 article: "SP-410011-2",
