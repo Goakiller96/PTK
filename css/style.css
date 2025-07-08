@@ -285,6 +285,10 @@ h3 {
   margin-bottom: 1.25rem;
 }
 
+.page {
+  padding-top: 7.5rem;
+}
+
 .title {
   font-weight: 600;
   margin-bottom: 1.25rem;
@@ -2921,10 +2925,6 @@ h3 {
     font-size: 1.5rem;
   }
 
-  .page {
-    padding-top: 7.5rem;
-  }
-
   .title {
     font-size: 1.75rem;
   }
@@ -3289,10 +3289,6 @@ h3 {
 
   h3 {
     font-size: 1.125rem;
-  }
-
-  .page {
-    padding-top: 5rem;
   }
 
   .title {
@@ -4078,18 +4074,6 @@ h3 {
 @supports not (font-size: clamp( 1.125rem , 0.9986842105rem  +  0.6315789474vw , 1.5rem )) {
     h3 {
       font-size: calc(1.125rem + 0.375 * (100vw - 20rem) / 59.375);
-    }
-}
-
-@supports (padding-top: clamp( 5rem , 4.1578947368rem  +  4.2105263158vw , 7.5rem )) {
-    .page {
-      padding-top: clamp( 5rem , 4.1578947368rem  +  4.2105263158vw , 7.5rem );
-    }
-}
-
-@supports not (padding-top: clamp( 5rem , 4.1578947368rem  +  4.2105263158vw , 7.5rem )) {
-    .page {
-      padding-top: calc(5rem + 2.5 * (100vw - 20rem) / 59.375);
     }
 }
 
