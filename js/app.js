@@ -4491,6 +4491,7 @@
             EmailJSResponseStatus
         };
         var inputmask = __webpack_require__(382);
+        window.Inputmask = inputmask;
         es.init("75OW2t6IQ_6Orzxue");
         let uniqueIdCounter = 0;
         const script_isMobile = {
