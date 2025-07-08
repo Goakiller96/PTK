@@ -4491,7 +4491,6 @@
             EmailJSResponseStatus
         };
         var inputmask = __webpack_require__(382);
-        window.Inputmask = inputmask;
         es.init("75OW2t6IQ_6Orzxue");
         let uniqueIdCounter = 0;
         const script_isMobile = {
@@ -4847,7 +4846,7 @@
                 };
                 const templateParams = {
                     from_name: nameInput.value || "Интернет-магазин",
-                    to_email: "plazmatk@mail.ru",
+                    to_email: "kiseleffav@gmail.com",
                     order_details: orderData.items,
                     total_price: orderData.total,
                     order_date: orderData.date,
