@@ -784,7 +784,7 @@ h3 {
           justify-content: space-between;
   white-space: nowrap;
   margin: 0 3px;
-  padding: 6px 5px;
+  padding: 5px 5px;
   position: relative;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -1678,10 +1678,11 @@ h3 {
 
 .product__title {
   margin: 0 0 8px 0;
-  color: rgba(56, 56, 56, 0.8);
-  font-weight: 600;
+  color: #383838;
+  font-weight: 500;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
+  letter-spacing: 0.5px;
 }
 
 .product__subtitle {
@@ -2921,7 +2922,7 @@ h3 {
   }
 
   .page {
-    padding-top: 6rem;
+    padding-top: 7.5rem;
   }
 
   .title {
@@ -4080,15 +4081,15 @@ h3 {
     }
 }
 
-@supports (padding-top: clamp( 5rem , 4.6631578947rem  +  1.6842105263vw , 6rem )) {
+@supports (padding-top: clamp( 5rem , 4.1578947368rem  +  4.2105263158vw , 7.5rem )) {
     .page {
-      padding-top: clamp( 5rem , 4.6631578947rem  +  1.6842105263vw , 6rem );
+      padding-top: clamp( 5rem , 4.1578947368rem  +  4.2105263158vw , 7.5rem );
     }
 }
 
-@supports not (padding-top: clamp( 5rem , 4.6631578947rem  +  1.6842105263vw , 6rem )) {
+@supports not (padding-top: clamp( 5rem , 4.1578947368rem  +  4.2105263158vw , 7.5rem )) {
     .page {
-      padding-top: calc(5rem + 1 * (100vw - 20rem) / 59.375);
+      padding-top: calc(5rem + 2.5 * (100vw - 20rem) / 59.375);
     }
 }
 
