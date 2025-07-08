@@ -9,9 +9,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<!-- Заголовок и описание -->
-	<title>Каталог - Плазматехкомплект</title>
-	<meta name="description" content="undefined">
-	<meta name="keywords" content="undefined">
+	<title>ПлазмаТехКомплект</title>
+	<meta name="description" content="Описание продукта">
+	<meta name="keywords" content="плазма, плазмотрон, комплектующие">
 
 	<!-- Favicon -->
 	<link rel="icon" href="./favicon.ico" type="image/x-icon">
@@ -21,9 +21,8 @@
 	<link rel="apple-touch-icon" href="./apple-touch-icon.png">
 	<meta name="theme-color" content="#005f87">
 
-	<!-- Критические стили для предотвращения FOUC -->
+	<!-- Критические стили -->
 	<style>
-		/* Скрываем контент до загрузки CSS */
 		body {
 			visibility: hidden;
 		}
@@ -32,23 +31,18 @@
 			visibility: visible;
 		}
 
-		/* Базовые стили для above-the-fold контента */
 		html,
 		body {
 			margin: 0;
 			font-family: Roboto, sans-serif;
 		}
-
-		/* .header { background: hsl(0, 0%, 100%); color: white; padding: 10px; } */
-		/* Добавьте другие критические стили для ключевых элементов */
 	</style>
 
 	<!-- Основные стили -->
-	<link rel="stylesheet" href="./css/style.min.css?_v=20250708164842">
+	<link rel="stylesheet" href="./css/style.min.css?_v=20250708175739">
 
-	<!-- JavaScript для снятия скрытия после загрузки -->
+	<!-- JavaScript для снятия скрытия -->
 	<script>
-		// Убираем класс hidden после загрузки страницы
 		window.addEventListener('load', function() {
 			document.body.classList.add('loaded');
 		});
@@ -77,108 +71,48 @@
 				},
 				{
 					"@type": "Product",
-					"name": "Плазмотроны и комплектующие",
-					"description": "Надёжное оборудование и комплектующие для плазменной резки, включая плазмотроны, электроды и сопла.",
-					"image": "https://plazmatk.img/common_parts.png",
-					"url": "https://plazmatk.ru/catalog.html",
+					"name": "Название продукта",
+					"description": "Описание конкретного продукта",
+					"image": "https://plazmatk.img/product.png",
+					"url": "https://plazmatk.ru/product.html",
 					"brand": {
 						"@type": "Brand",
 						"name": "ПлазмаТехКомплект"
 					},
 					"offers": {
 						"@type": "Offer",
-						"url": "https://plazmatk.ru/catalog.html",
+						"url": "https://plazmatk.ru/product.html",
 						"priceCurrency": "RUB",
+						"price": "10000",
 						"availability": "https://schema.org/InStock"
-					}
-				},
-				{
-					"@type": "Service",
-					"serviceType": "Производство",
-					"description": "Изготовление и поставка плазмотронов для ручной и механизированной резки, включая электроды и сопла.",
-					"provider": {
-						"@type": "IndustrialEquipmentStore",
-						"name": "ПлазмаТехКомплект"
-					}
-				},
-				{
-					"@type": "Service",
-					"serviceType": "Техническая поддержка",
-					"description": "Помощь в освоении и использовании оборудования для плазменной резки.",
-					"provider": {
-						"@type": "IndustrialEquipmentStore",
-						"name": "ПлазмаТехКомплект"
-					}
-				},
-				{
-					"@type": "Service",
-					"serviceType": "Ремонт и модернизация",
-					"description": "Ремонт источников питания и модернизация аппаратов для плазменной резки.",
-					"provider": {
-						"@type": "IndustrialEquipmentStore",
-						"name": "ПлазмаТехКомплект"
-					}
-				},
-				{
-					"@type": "Service",
-					"serviceType": "Гарантийное обслуживание",
-					"description": "Гарантия на всё поставляемое оборудование и запчасти.",
-					"provider": {
-						"@type": "IndustrialEquipmentStore",
-						"name": "ПлазмаТехКомплект"
 					}
 				}
 			]
 		}
 	</script>
-	undefined (context.product_schema) {
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "Product",
-			"name": "undefined",
-			"image": "undefined",
-			"description": "undefined",
-			"brand": {
-				"@type": "Brand",
-				"name": "ПлазмаТехКомплект"
-			},
-			"offers": {
-				"@type": "Offer",
-				"url": "undefined",
-				"priceCurrency": "RUB",
-				"price": "undefined",
-				"availability": "https://schema.org/InStock"
-			}
-		}
-	</script>
-	}
 
 	<!-- OpenGraph разметка -->
-	<meta property="og:title" content="undefined">
-	<meta property="og:description" content="undefined">
+	<meta property="og:title" content="Название продукта">
+	<meta property="og:description" content="Описание продукта">
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="undefined">
-	<meta property="og:image" content="undefined">
+	<meta property="og:url" content="https://plazmatk.ru/product.html">
+	<meta property="og:image" content="https://plazmatk.img/product.png">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
 	<meta property="og:site_name" content="ПлазмаТехКомплект">
 
 	<!-- Twitter Card разметка -->
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="undefined">
-	<meta name="twitter:description" content="undefined">
-	<meta name="twitter:image" content="undefined">
+	<meta name="twitter:title" content="Название продукта">
+	<meta name="twitter:description" content="Описание продукта">
+	<meta name="twitter:image" content="https://plazmatk.img/product.png">
 
 	<!-- SEO -->
-	<link rel="canonical" href="undefined">
-	<meta name="robots" content="undefined">
+	<link rel="canonical" href="https://plazmatk.ru/product.html">
+	<meta name="robots" content="index, follow">
 
 	<!-- Многоязычность -->
-	<link rel="alternate" hreflang="ru" href="undefined">
-	undefined (context.canonical_url_en) {
-	<link rel="alternate" hreflang="en" href="undefined">
-	}
+	<link rel="alternate" hreflang="ru" href="https://plazmatk.ru/product.html">
 </head>
 
 <body>
@@ -838,7 +772,7 @@
 		<i class="_icon-arrow-down"></i>
 	</button>
 
-	<script src="js/app.min.js?_v=20250708164842"></script>
+	<script src="js/app.min.js?_v=20250708175739"></script>
 </body>
 
 </html>
