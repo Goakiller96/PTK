@@ -633,6 +633,14 @@ h3 {
   pointer-events: none;
 }
 
+#cart-title {
+  margin-bottom: 0rem;
+}
+
+#order-form-title {
+  margin-bottom: 0rem;
+}
+
 .header {
   position: fixed;
   top: 0;
