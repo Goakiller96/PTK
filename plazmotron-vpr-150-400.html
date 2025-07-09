@@ -39,7 +39,7 @@
 	</style>
 
 	<!-- Основные стили -->
-	<link rel="stylesheet" href="./css/style.min.css?_v=20250708175739">
+	<link rel="stylesheet" href="./css/style.min.css?_v=20250709112623">
 
 	<!-- JavaScript для снятия скрытия -->
 	<script>
@@ -806,17 +806,17 @@
 		<form id="order-form" class="order-form">
 			<div class="order-form__group">
 				<label for="order-name">Имя</label>
-				<input type="text" id="order-name" name="name" placeholder="Введите ваше имя" required>
+				<input type="text" id="order-name" name="name" placeholder="Введите ваше имя" required autocomplete="name">
 				<span class="error-message" id="order-name-error"></span>
 			</div>
 			<div class="order-form__group">
 				<label for="order-phone">Телефон</label>
-				<input type="tel" id="order-phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+				<input type="tel" id="order-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
 				<span class="error-message" id="order-phone-error"></span>
 			</div>
 			<div class="order-form__group">
 				<label for="order-email">Email</label>
-				<input type="email" id="order-email" name="email" placeholder="Введите ваш email" required>
+				<input type="email" id="order-email" name="email" placeholder="Введите ваш email" required autocomplete="email">
 				<span class="error-message" id="order-email-error"></span>
 			</div>
 			<div class="order-form__footer">
@@ -826,13 +826,12 @@
 		<span tabindex="0" class="focus-trap-end" aria-hidden="true"></span>
 	</aside>
 	<div class="order-form-overlay"></div>
-
 	<!-- Кнопка наверх -->
 	<button class="scroll-top" aria-label="Наверх">
 		<i class="_icon-arrow-down"></i>
 	</button>
 
-	<script src="js/app.min.js?_v=20250708175739"></script>
+	<script src="js/app.min.js?_v=20250709112623"></script>
 </body>
 
 </html>
