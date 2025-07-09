@@ -3987,6 +3987,11 @@
             initTableMobileAdaptation();
             fixMobileViewportIssues();
             initInputMask();
+            document.querySelectorAll(".order-form input").forEach((input => {
+                input.addEventListener("click", (event => {
+                    event.stopPropagation();
+                }));
+            }));
         }
         init();
     }));
