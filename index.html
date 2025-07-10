@@ -39,7 +39,7 @@
 	</style>
 
 	<!-- Основные стили -->
-	<link rel="stylesheet" href="./css/style.min.css?_v=20250709211735">
+	<link rel="stylesheet" href="./css/style.min.css?_v=20250710160257">
 
 	<!-- JavaScript для снятия скрытия -->
 	<script>
@@ -245,7 +245,7 @@
 									<a href="#" class="menu__link" itemprop="url">Комплектующие</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link" itemprop="url">КОНТАКТЫ</a>
+									<a href="#" class="menu__link" itemprop="url">О компании</a>
 								</li>
 							</ul>
 							<div class="menu__body-decor"></div>
@@ -579,6 +579,11 @@ m331 -156 c233 -32 432 -130 606 -297 440 -423 446 -1116 13 -1547 -136 -135
 								</div>
 							</div>
 
+							<div class="footer__call-back">
+								<button type="button" class="footer__call-back-btn" aria-label="Заказать звонок">Заказать
+									звонок</button>
+							</div>
+
 
 							<div class="footer__content">
 								<div class="footer__opentime">
@@ -592,6 +597,7 @@ m331 -156 c233 -32 432 -130 606 -297 440 -423 446 -1116 13 -1547 -136 -135
 										пр-т Космонавтов 11Б, литера Б</address>
 								</div>
 							</div>
+
 						</div>
 
 					</div>
@@ -728,15 +734,39 @@ m331 -156 c233 -32 432 -130 606 -297 440 -423 446 -1116 13 -1547 -136 -135
 	<div class="order-form-overlay"></div>
 
 
-
-
+	<!-- Модальное окно формы обратного звонка-->
+	<aside class="call-back-modal" aria-modal="true" aria-labelledby="call-back-title" role="dialog" tabindex="-1" aria-describedby="call-back-description">
+		<div id="call-back-description" class="visually-hidden">
+			Форма для заказа обратного звонка
+		</div>
+		<div class="call-back-header">
+			<h2 id="call-back-title">Заказать звонок</h2>
+			<button type="button" class="call-back-close" aria-label="Закрыть форму заказа звонка">×</button>
+		</div>
+		<form id="call-back-form" class="call-back-form">
+			<div class="call-back-form__group">
+				<label for="call-back-name">Имя</label>
+				<input type="text" id="call-back-name" name="name" placeholder="Введите ваше имя" required autocomplete="name">
+				<span class="error-message" id="call-back-name-error"></span>
+			</div>
+			<div class="call-back-form__group">
+				<label for="call-back-phone">Телефон</label>
+				<input type="tel" id="call-back-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+				<span class="error-message" id="call-back-phone-error"></span>
+			</div>
+			<div class="call-back-form__footer">
+				<button type="submit" class="call-back-submit">Отправить</button>
+			</div>
+		</form>
+	</aside>
+	<div class="call-back-overlay"></div>
 
 
 	<!-- Кнопка наверх -->
 	<button class="scroll-top" aria-label="Наверх">
 		<i class="_icon-arrow-down"></i>
 	</button>
-	<script src="js/app.min.js?_v=20250709211735"></script>
+	<script src="js/app.min.js?_v=20250710160257"></script>
 </body>
 
 </html>
