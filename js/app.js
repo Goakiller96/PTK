@@ -346,6 +346,17 @@
     da.init();
     function createInitialProducts() {
         const initialProducts = [ {
+            title: "Плазмотрон ВПР-210м<br> в сборе",
+            article: "210-01",
+            image: "img/plazmotron/vpr-210m.webp",
+            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
+            description: "Ремонтный комплект для горелок серии Фламинго",
+            hasDetails: true,
+            detailsUrl: "plazmotron-vpr-210m.html",
+            category: "Плазмотроны"
+        }, {
             title: "Плазмотрон ВПР-402м<br> в сборе",
             article: "402-01",
             image: "img/plazmotron/vpr-402m.webp",
@@ -366,17 +377,6 @@
             description: "Сопла для плазменной резки серии 410 с медным охлаждением",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-410.html",
-            category: "Плазмотроны"
-        }, {
-            title: "Плазмотрон ВПР-210м<br> в сборе",
-            article: "210-01",
-            image: "img/plazmotron/vpr-210m.webp",
-            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
-            description: "Ремонтный комплект для горелок серии Фламинго",
-            hasDetails: true,
-            detailsUrl: "plazmotron-vpr-210m.html",
             category: "Плазмотроны"
         }, {
             title: "Плазмотрон ВПР-150/400<br> в сборе",
@@ -401,64 +401,58 @@
             detailsUrl: "plazmotron-vpr-450.html",
             category: "Плазмотроны"
         }, {
-            title: "Сопло плазменное 402 для резки алюминия",
-            article: "SP-402011",
-            image: "img/cards/soplo-402.png",
-            price: 242.56,
-            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 402 для резки цветных металлов",
-            description: "Износостойкие сопла для резки алюминия и цветных металлов",
-            category: "Сопла"
-        }, {
-            title: "Электрод для плазмотрона конусный",
-            article: "EL-4014",
-            image: "img/cards/electrod.png",
-            price: 420,
-            sizes: [ "Гафний", "Биметалл" ],
-            sizeLabel: "Тип вставки:",
-            alt: "Электроды для плазменной резки",
-            description: "Катоды для плазмотронов с различными типами вставок",
-            category: "Электроды"
-        }, {
-            title: "Сопло плазменное 210 для тонколистового металла",
-            article: "SP-1512",
+            title: "Сопло плазменное 210",
+            article: "1512",
             image: "img/cards/soplo-210.png",
-            price: 242.56,
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 210 для тонкой резки",
             description: "Сопла малого диаметра для точной резки тонколистового металла",
             category: "Сопла"
         }, {
-            title: "Сопло плазменное 410 для резки нержавеющей стали",
-            article: "SP-410011-2",
-            image: "img/cards/soplo-410.png",
-            price: 348.64,
-            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 410 для плазмотрона",
-            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
-            category: "Сопла"
-        }, {
-            title: "Сопло плазменное 402 для резки алюминия",
-            article: "SP-402011-2",
+            title: "Сопло плазменное 402",
+            article: "402011",
             image: "img/cards/soplo-402.png",
-            price: 242.56,
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 402 для резки цветных металлов",
             description: "Износостойкие сопла для резки алюминия и цветных металлов",
             category: "Сопла"
         }, {
-            title: "Электрод для плазмотрона конусный",
-            article: "EL-4014-2",
+            title: "Сопло плазменное 410",
+            article: "410011",
+            image: "img/cards/soplo-410.png",
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 410 для плазмотрона",
+            description: "Сопла для плазменной резки серии 410",
+            category: "Сопла"
+        }, {
+            title: "Электрод для плазмотрона",
+            article: "1514",
+            image: "img/cards/electrod-ag.png",
+            sizes: [ "Гафний", "Серебро" ],
+            sizeLabel: "Тип вставки:",
+            alt: "Электроды для плазменной резки",
+            description: "Катоды для плазмотронов с различными типами вставок",
+            category: "Электроды"
+        }, {
+            title: "Электрод для плазмотрона конусный ЭП-03",
+            article: "4014",
             image: "img/cards/electrod.png",
-            price: 420,
             sizes: [ "Гафний", "Биметалл" ],
             sizeLabel: "Тип вставки:",
             alt: "Электроды для плазменной резки",
             description: "Катоды для плазмотронов с различными типами вставок",
+            category: "Электроды"
+        }, {
+            title: "Электрод для плазмотрона резьбовой ЭП-05",
+            article: "4014",
+            image: "img/cards/electrod-rezba.png",
+            sizes: [ "Гафний", "Биметалл" ],
+            sizeLabel: "Тип вставки:",
+            alt: "Электроды для плазменной резки",
+            description: "Износостойкие сопла для резки алюминия и цветных металлов",
             category: "Электроды"
         }, {
             title: "Сопло плазменное 210 для тонколистового металла",
@@ -3367,6 +3361,21 @@
     const script_isMobile = {
         any: () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
     };
+    function getScrollbarWidth() {
+        const outer = document.createElement("div");
+        outer.style.visibility = "hidden";
+        outer.style.overflow = "scroll";
+        outer.style.msOverflowStyle = "scrollbar";
+        document.body.appendChild(outer);
+        const inner = document.createElement("div");
+        outer.appendChild(inner);
+        const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+        outer.parentNode.removeChild(outer);
+        return scrollbarWidth;
+    }
+    function hasScrollbar() {
+        return document.documentElement.scrollHeight > window.innerHeight;
+    }
     window.onload = function() {
         document.addEventListener("click", documentActions);
         function documentActions(e) {
@@ -3390,7 +3399,7 @@
         document.getElementById("cart-icon");
         const closeCartBtn = document.querySelector(".close-cart");
         const cartItemsContainer = document.querySelector(".cart-items");
-        const cartTotal = document.querySelector(".total-price");
+        const cartTotal = document.querySelector(".cart-total");
         const cartCount = document.querySelector(".cart-count");
         const cartFooter = document.querySelector(".cart-footer");
         const submitOrderBtn = document.querySelector(".submit-order");
@@ -3409,6 +3418,7 @@
         let isLoading = false;
         let allProductsLoaded = false;
         let currentCategory = "all";
+        const scrollbarWidth = hasScrollbar() ? getScrollbarWidth() : 0;
         function initCategoryFilter() {
             if (!categoryFilter) return;
             const selectTrigger = categoryFilter.querySelector(".custom-select__trigger");
@@ -3524,25 +3534,29 @@
             }));
         }
         function openCart() {
-            console.log("cartModal:", cartModal);
-            console.log("closeCartBtn:", closeCartBtn);
-            console.log("cartOverlay:", document.querySelector(".cart-overlay"));
             if (!cartModal || !closeCartBtn || !document.querySelector(".cart-overlay")) {
                 console.error("Не найдены необходимые элементы для корзины");
                 return;
             }
+            closeOtherModals();
             cartModal.classList.add("active");
             document.querySelector(".cart-overlay").classList.add("active");
             document.body.classList.add("body-no-scroll");
+            if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
             setTimeout((() => closeCartBtn.focus()), 100);
+            console.log("Состояние .cart-overlay:", {
+                hasActiveClass: document.querySelector(".cart-overlay").classList.contains("active"),
+                computedStyle: window.getComputedStyle(document.querySelector(".cart-overlay")).opacity
+            });
         }
         function closeCart() {
             if (cartModal) cartModal.classList.remove("active");
             if (document.querySelector(".cart-overlay")) document.querySelector(".cart-overlay").classList.remove("active");
             document.body.classList.remove("body-no-scroll");
+            document.body.style.paddingRight = "";
+            console.log("Закрытие .cart-modal");
         }
         function generateProductCards() {
-            console.log("productsData:", productsData);
             if (!productsContainer) {
                 console.error("Контейнер #products-container не найден");
                 productsContainer.innerHTML = "<p>Контейнер для товаров не найден</p>";
@@ -3560,7 +3574,6 @@
                 const images = productsContainer.querySelectorAll(".product__image");
                 let loadedImages = 0;
                 const totalImages = images.length;
-                console.log("Total images:", totalImages);
                 if (totalImages === 0) {
                     productsContainer.style.opacity = "1";
                     return;
@@ -3572,7 +3585,6 @@
                     } else {
                         img.addEventListener("load", (() => {
                             loadedImages++;
-                            console.log(`Image loaded: ${img.src}, Loaded: ${loadedImages}/${totalImages}`);
                             if (loadedImages === totalImages) productsContainer.style.opacity = "1";
                         }));
                         img.addEventListener("error", (() => {
@@ -3663,10 +3675,16 @@
             const orderFormOverlay = document.querySelector(".order-form-overlay");
             const closeOrderFormBtn = document.querySelector(".close-order-form");
             if (!orderFormModal || !orderFormOverlay || !closeOrderFormBtn) return;
+            closeOtherModals();
             orderFormModal.classList.add("active");
             orderFormOverlay.classList.add("active");
             document.body.classList.add("body-no-scroll");
+            if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
             setTimeout((() => closeOrderFormBtn.focus()), 100);
+            console.log("Состояние .order-form-overlay:", {
+                hasActiveClass: orderFormOverlay.classList.contains("active"),
+                computedStyle: window.getComputedStyle(orderFormOverlay).opacity
+            });
         }
         function closeOrderForm() {
             const orderFormModal = document.querySelector(".order-form-modal");
@@ -3674,6 +3692,24 @@
             if (orderFormModal) orderFormModal.classList.remove("active");
             if (orderFormOverlay) orderFormOverlay.classList.remove("active");
             document.body.classList.remove("body-no-scroll");
+            document.body.style.paddingRight = "";
+            console.log("Закрытие .order-form-modal");
+        }
+        function closeOtherModals() {
+            const cartModal = document.querySelector(".cart-modal");
+            const cartOverlay = document.querySelector(".cart-overlay");
+            const orderFormModal = document.querySelector(".order-form-modal");
+            const orderFormOverlay = document.querySelector(".order-form-overlay");
+            const callBackModal = document.querySelector(".call-back-modal");
+            const callBackOverlay = document.querySelector(".call-back-overlay");
+            if (cartModal) cartModal.classList.remove("active");
+            if (cartOverlay) cartOverlay.classList.remove("active");
+            if (orderFormModal) orderFormModal.classList.remove("active");
+            if (orderFormOverlay) orderFormOverlay.classList.remove("active");
+            if (callBackModal) callBackModal.classList.remove("active");
+            if (callBackOverlay) callBackOverlay.classList.remove("active");
+            document.body.classList.remove("body-no-scroll");
+            document.body.style.paddingRight = "";
         }
         function validateForm(name, phone, email) {
             const errors = [];
@@ -3700,7 +3736,12 @@
         }
         function submitOrder() {
             if (cart.length === 0) {
-                alert("Корзина пуста!");
+                const errorMessage = document.createElement("div");
+                errorMessage.className = "error-message";
+                errorMessage.textContent = "Корзина пуста!";
+                errorMessage.style.background = "#e74c3c";
+                document.body.appendChild(errorMessage);
+                setTimeout((() => errorMessage.remove()), 2500);
                 return;
             }
             openOrderForm();
@@ -3708,13 +3749,23 @@
         function handleOrderFormSubmit(e) {
             e.preventDefault();
             if (cart.length === 0) {
-                alert("Корзина пуста!");
+                const errorMessage = document.createElement("div");
+                errorMessage.className = "error-message";
+                errorMessage.textContent = "Корзина пуста!";
+                errorMessage.style.background = "#e74c3c";
+                document.body.appendChild(errorMessage);
+                setTimeout((() => errorMessage.remove()), 2500);
                 closeOrderForm();
                 return;
             }
             if (typeof es === "undefined") {
                 console.error("EmailJS не загружен. Проверьте импорт и инициализацию библиотеки.");
-                alert("Ошибка: EmailJS не загружен. Пожалуйста, попробуйте позже.");
+                const errorMessage = document.createElement("div");
+                errorMessage.className = "error-message";
+                errorMessage.textContent = "Ошибка: EmailJS не загружен. Пожалуйста, попробуйте позже.";
+                errorMessage.style.background = "#e74c3c";
+                document.body.appendChild(errorMessage);
+                setTimeout((() => errorMessage.remove()), 2500);
                 return;
             }
             const nameInput = document.getElementById("order-name");
@@ -3736,13 +3787,13 @@
                 user_email: emailInput.value || "",
                 user_phone: phoneInput.value || ""
             };
-            console.log("Отправка параметров:", JSON.stringify(templateParams, null, 2));
-            console.log("EmailJS версия:", es.version);
-            console.log("Service ID:", "service_oozomec");
-            console.log("Template ID:", "template_3gx3kyp");
             es.send("service_oozomec", "template_3gx3kyp", templateParams).then((function(response) {
                 console.log("Заказ успешно отправлен:", response.status, response.text);
-                alert(`Ваш заказ на сумму ${formatPrice(totalPrice)} ₽ успешно отправлен!`);
+                const successMessage = document.createElement("div");
+                successMessage.className = "success-message";
+                successMessage.textContent = `Ваш заказ на сумму ${formatPrice(totalPrice)} ₽ успешно отправлен!`;
+                document.body.appendChild(successMessage);
+                setTimeout((() => successMessage.remove()), 2500);
                 cart = [];
                 updateCart();
                 closeCart();
@@ -3751,7 +3802,12 @@
                 document.getElementById("order-form").reset();
             }), (function(error) {
                 console.error("Ошибка EmailJS:", JSON.stringify(error, null, 2));
-                alert("Произошла ошибка при отправке заказа: " + error.text);
+                const errorMessage = document.createElement("div");
+                errorMessage.className = "error-message";
+                errorMessage.textContent = "Произошла ошибка при отправке заказа";
+                errorMessage.style.background = "#e74c3c";
+                document.body.appendChild(errorMessage);
+                setTimeout((() => errorMessage.remove()), 2500);
             }));
         }
         function loadCartFromStorage() {
@@ -3802,6 +3858,128 @@
             }));
             toggleClearButton();
         }
+        function initCallBackForm() {
+            const callBackBtn = document.querySelector(".footer__call-back-btn");
+            let callBackModal = document.querySelector(".call-back-modal");
+            let callBackOverlay = document.querySelector(".call-back-overlay");
+            const closeCallBackBtn = document.querySelector(".call-back-close");
+            const callBackForm = document.querySelector("#call-back-form");
+            if (!callBackBtn) {
+                console.error("Кнопка .footer__call-back-btn не найдена. Проверьте _footer.htm");
+                return;
+            }
+            if (!callBackModal || !closeCallBackBtn || !callBackForm) {
+                console.error("Элементы формы обратного звонка не найдены:", {
+                    callBackModal: !!callBackModal,
+                    closeCallBackBtn: !!closeCallBackBtn,
+                    callBackForm: !!callBackForm
+                });
+                return;
+            }
+            if (!callBackOverlay) {
+                console.warn("Оверлей .call-back-overlay не найден, создаем новый");
+                callBackOverlay = document.createElement("div");
+                callBackOverlay.className = "call-back-overlay";
+                document.body.appendChild(callBackOverlay);
+            }
+            callBackBtn.addEventListener("click", (() => {
+                console.log("Клик по .footer__call-back-btn");
+                closeOtherModals();
+                console.log("Открытие call-back-modal, добавление .active к .call-back-overlay");
+                callBackModal.classList.add("active");
+                callBackOverlay.classList.add("active");
+                document.body.classList.add("body-no-scroll");
+                if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+                setTimeout((() => document.querySelector("#call-back-name")?.focus()), 100);
+                console.log("Состояние .call-back-overlay:", {
+                    hasActiveClass: callBackOverlay.classList.contains("active"),
+                    computedStyle: window.getComputedStyle(callBackOverlay).opacity
+                });
+            }));
+            const closeModal = () => {
+                console.log("Закрытие call-back-modal");
+                callBackModal.classList.remove("active");
+                callBackOverlay.classList.remove("active");
+                document.body.classList.remove("body-no-scroll");
+                document.body.style.paddingRight = "";
+            };
+            closeCallBackBtn.addEventListener("click", closeModal);
+            callBackOverlay.addEventListener("click", (e => {
+                console.log("Клик по .call-back-overlay, закрытие");
+                closeModal();
+            }));
+            document.addEventListener("click", (e => {
+                if (callBackModal.classList.contains("active") && !callBackModal.contains(e.target) && !e.target.closest(".footer__call-back-btn")) {
+                    console.log("Клик вне call-back-modal, закрытие");
+                    closeModal();
+                }
+            }));
+            document.addEventListener("keydown", (e => {
+                if (e.key === "Escape" && callBackModal.classList.contains("active")) {
+                    console.log("Нажата клавиша Esc, закрытие call-back-modal");
+                    closeModal();
+                }
+            }));
+            callBackForm.querySelectorAll("input").forEach((input => {
+                input.addEventListener("click", (event => {
+                    event.stopPropagation();
+                }));
+            }));
+            callBackForm.addEventListener("submit", (e => {
+                e.preventDefault();
+                const nameInput = document.querySelector("#call-back-name");
+                const phoneInput = document.querySelector("#call-back-phone");
+                const nameError = document.querySelector("#call-back-name-error");
+                const phoneError = document.querySelector("#call-back-phone-error");
+                let isValid = true;
+                nameError.textContent = "";
+                phoneError.textContent = "";
+                nameInput.classList.remove("error");
+                phoneInput.classList.remove("error");
+                nameError.classList.remove("active");
+                phoneError.classList.remove("active");
+                if (!nameInput.value.trim()) {
+                    nameError.textContent = "Пожалуйста, введите имя";
+                    nameInput.classList.add("error");
+                    nameError.classList.add("active");
+                    isValid = false;
+                }
+                const phonePattern = /^\+?\d{10,15}$/;
+                if (!phonePattern.test(phoneInput.value.replace(/\D/g, ""))) {
+                    phoneError.textContent = "Пожалуйста, введите корректный номер телефона";
+                    phoneInput.classList.add("error");
+                    phoneError.classList.add("active");
+                    isValid = false;
+                }
+                if (isValid) {
+                    const templateParams = {
+                        from_name: nameInput.value || "Запрос звонка",
+                        to_email: "kiseleffav@gmail.com",
+                        user_phone: phoneInput.value,
+                        message: `Запрос обратного звонка от ${nameInput.value}, телефон: ${phoneInput.value}`,
+                        request_date: (new Date).toLocaleString("ru-RU")
+                    };
+                    es.send("service_oozomec", "template_3gx3kyp", templateParams).then((response => {
+                        console.log("Запрос звонка отправлен:", response.status, response.text);
+                        const successMessage = document.createElement("div");
+                        successMessage.className = "success-message";
+                        successMessage.textContent = "Заявка на звонок успешно отправлена!";
+                        document.body.appendChild(successMessage);
+                        setTimeout((() => successMessage.remove()), 2500);
+                        callBackForm.reset();
+                        closeModal();
+                    }), (error => {
+                        console.error("Ошибка EmailJS:", error);
+                        const errorMessage = document.createElement("div");
+                        errorMessage.className = "error-message";
+                        errorMessage.textContent = "Произошла ошибка при отправке заявки";
+                        errorMessage.style.background = "#e74c3c";
+                        document.body.appendChild(errorMessage);
+                        setTimeout((() => errorMessage.remove()), 2500);
+                    }));
+                }
+            }));
+        }
         function initEventHandlers() {
             document.addEventListener("click", (e => {
                 if (e.target.classList.contains("quantity__btn")) {
@@ -3818,7 +3996,6 @@
                     if (productCard) addToCart(productCard);
                 }
                 if (e.target.closest("#cart-icon")) {
-                    console.log("Клик по cart-icon");
                     e.preventDefault();
                     openCart();
                 }
@@ -3853,23 +4030,16 @@
                     }
                 }
             }));
-            const focusStart = document.querySelector(".focus-trap-start");
-            const focusEnd = document.querySelector(".focus-trap-end");
-            if (cartModal && focusEnd && focusStart) {
-                focusEnd.addEventListener("focus", (() => closeCartBtn?.focus()));
-                focusStart.addEventListener("focus", (() => submitOrderBtn?.focus()));
-            }
-            if (orderForm && focusEnd && focusStart) {
-                focusEnd.addEventListener("focus", (() => document.querySelector(".close-order-form")?.focus()));
-                focusStart.addEventListener("focus", (() => document.querySelector(".submit-order-form")?.focus()));
-            }
             document.addEventListener("keydown", (e => {
                 if (e.key === "Escape" && document.querySelector(".order-form-modal.active")) closeOrderForm();
             }));
         }
         function initHeaderTransformation() {
             const header = document.querySelector(".header");
-            if (!header) return;
+            if (!header) {
+                console.error("Элемент .header не найден");
+                return;
+            }
             const logoText = header.querySelector(".header__logo-text");
             const logoTextShort = header.querySelector(".header__logo-text-short");
             const headerBody = header.querySelector(".header__body");
@@ -3878,12 +4048,28 @@
             const phoneLinks = header.querySelectorAll(".phones__link");
             const emailLinks = header.querySelectorAll(".emails__link");
             const actionsContacts = header.querySelector(".actions__contacts");
+            console.log("initHeaderTransformation: Элементы найдены:", {
+                header: !!header,
+                logoText: !!logoText,
+                logoTextShort: !!logoTextShort,
+                headerBody: !!headerBody,
+                phoneItems: phoneItems.length,
+                emailItems: emailItems.length,
+                phoneLinks: phoneLinks.length,
+                emailLinks: emailLinks.length,
+                actionsContacts: !!actionsContacts
+            });
             function isDesktop() {
                 return window.innerWidth > 991.98;
             }
             function handleScrollStyles() {
                 const isScrolled = window.scrollY > 0;
                 const shouldApplyStyles = isDesktop() && isScrolled;
+                console.log("handleScrollStyles:", {
+                    isDesktop: isDesktop(),
+                    isScrolled,
+                    shouldApplyStyles
+                });
                 if (logoText && logoTextShort) {
                     logoText.style.display = shouldApplyStyles ? "none" : "block";
                     logoTextShort.style.display = shouldApplyStyles ? "block" : "none";
@@ -3900,14 +4086,33 @@
                         logoTextShort.style.opacity = "1";
                         logoTextShort.style.visibility = "visible";
                     }
+                } else console.warn("logoText или logoTextShort не найдены");
+                phoneItems.forEach((item => {
+                    item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
+                    console.log(".phones__item style:", item.style.cssText);
+                }));
+                emailItems.forEach((item => {
+                    item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
+                    console.log(".emails__item (header) style:", item.style.cssText);
+                }));
+                phoneLinks.forEach((link => {
+                    link.style.marginRight = shouldApplyStyles ? "10px" : "";
+                    console.log(".phones__link marginRight:", link.style.marginRight);
+                }));
+                emailLinks.forEach((link => {
+                    link.style.marginRight = shouldApplyStyles ? "10px" : "";
+                    console.log(".emails__link (header) marginRight:", link.style.marginRight);
+                }));
+                if (actionsContacts) {
+                    actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
+                    console.log(".actions__contacts gap:", actionsContacts.style.gap);
                 }
-                phoneItems.forEach((item => item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : ""));
-                emailItems.forEach((item => item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : ""));
-                phoneLinks.forEach((link => link.style.marginRight = shouldApplyStyles ? "10px" : ""));
-                emailLinks.forEach((link => link.style.marginRight = shouldApplyStyles ? "10px" : ""));
-                if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
-                if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
+                if (headerBody) {
+                    headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
+                    console.log(".header__body padding:", headerBody.style.padding);
+                }
                 header.classList.toggle("scrolled", shouldApplyStyles);
+                console.log(".header classList:", header.classList.toString());
             }
             let isTicking = false;
             function requestTick() {
@@ -3924,6 +4129,7 @@
                 if (!isDesktop()) {
                     [ logoText, logoTextShort, ...phoneItems, ...emailItems, ...phoneLinks, ...emailLinks, actionsContacts, headerBody ].filter(Boolean).forEach((el => el.style.cssText = ""));
                     header.classList.remove("scrolled");
+                    console.log("resize: Стили сброшены, .header.scrolled удалён");
                 }
                 requestTick();
             }));
@@ -3971,6 +4177,10 @@
             if (phoneInput) IMask(phoneInput, {
                 mask: "+7 (000) 000-00-00"
             });
+            const callBackPhoneInput = document.getElementById("call-back-phone");
+            if (callBackPhoneInput) IMask(callBackPhoneInput, {
+                mask: "+7 (000) 000-00-00"
+            });
         }
         function init() {
             console.log("Инициализация приложения");
@@ -3987,6 +4197,7 @@
             initTableMobileAdaptation();
             fixMobileViewportIssues();
             initInputMask();
+            initCallBackForm();
             document.querySelectorAll(".order-form input").forEach((input => {
                 input.addEventListener("click", (event => {
                     event.stopPropagation();
