@@ -4206,6 +4206,21 @@
         }
         init();
     }));
+    document.addEventListener("DOMContentLoaded", (() => {
+        const infoIcon = document.querySelector(".info-icon");
+        if (infoIcon) {
+            infoIcon.addEventListener("click", (e => {
+                e.preventDefault();
+                infoIcon.classList.toggle("active");
+                setTimeout((() => {
+                    infoIcon.classList.remove("active");
+                }), 5e3);
+            }));
+            document.addEventListener("click", (e => {
+                if (!infoIcon.contains(e.target)) infoIcon.classList.remove("active");
+            }));
+        }
+    }));
     window["FLS"] = true;
     isWebp();
     menuInit();
