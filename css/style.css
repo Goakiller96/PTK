@@ -1682,6 +1682,50 @@ h3 {
   }
 }
 
+.catalog__container {
+  position: relative;
+  /* Для позиционирования линии */
+  width: 100%;
+  /* Убедимся, что контейнер занимает всю ширину */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.catalog__title-wrapper {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  /* Компактный контейнер для заголовка и иконки */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  /* Отступ между заголовком и иконкой */
+  /* Адаптивный отступ под блоком */
+  position: relative;
+  width: 100%;
+  /* Растягиваем wrapper на всю ширину контейнера */
+  padding-bottom: 1.25rem;
+  /* Отступ для линии */
+}
+
+.catalog__title-wrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* Линия на всю ширину .catalog__container */
+  height: 0.0625rem;
+  background-color: rgba(104, 104, 104, 0.17);
+  display: block;
+}
+
+.catalog__title {
+  margin: 0;
+  /* Убираем margin, чтобы избежать лишних отступов */
+}
+
 .catalog__wrapper {
   display: -ms-grid;
   display: grid;
@@ -1690,6 +1734,84 @@ h3 {
           justify-content: center;
   gap: 15px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.catalog .info-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 17px;
+  height: 17px;
+  top: -10px;
+  border-radius: 50%;
+  border: 1px solid rgba(56, 56, 56, 0.8);
+  color: rgba(56, 56, 56, 0.8);
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  /* Иконка не сжимается */
+  /* Для мобильных устройств (тап) */
+}
+
+.catalog .info-icon .tooltip {
+  position: absolute;
+  top: -100px;
+  /* Увеличиваем, чтобы вместить две строки */
+  right: -10px;
+  -webkit-transform: translateX(50%);
+      -ms-transform: translateX(50%);
+          transform: translateX(50%);
+  background-color: rgba(51, 51, 51, 0.7725490196);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  /* Две строки */
+  gap: 4px;
+  /* Отступ между строками */
+  min-width: 290px;
+  /* Минимальная ширина для читаемости */
+}
+
+.catalog .info-icon:focus .tooltip,
+.catalog .info-icon.active .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Переопределяем .title для .catalog__title, чтобы убрать линию */
+
+.catalog__title.title {
+  padding-bottom: 0;
+}
+
+.catalog__title.title::after {
+  content: none;
+  /* Убираем линию из .title для .catalog__title */
 }
 
 .product__card {
@@ -2591,9 +2713,7 @@ h3 {
   width: 100%;
   max-width: 420px;
   height: auto;
-  /* Адаптация высоты по содержимому */
   min-height: 150px;
-  /* Минимальная высота уменьшена для малых экранов */
   background: #fff;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -3478,6 +3598,10 @@ h3 {
     padding-bottom: 3.125rem;
   }
 
+  .catalog__title-wrapper {
+    margin-bottom: 2.5rem;
+  }
+
   .product__title {
     font-size: 1rem;
   }
@@ -3661,55 +3785,44 @@ h3 {
 @media (max-width: 480px) {
   .call-back-header h2 {
     font-size: 1.2rem;
-    /* Уменьшение шрифта для малых экранов */
     margin-left: 10px;
   }
 
   .call-back-close {
     font-size: 20px;
-    /* Уменьшение кнопки закрытия */
     padding: 6px;
   }
 
   .call-back-form {
     padding: 15px;
-    /* Уменьшение отступов */
   }
 
   .call-back-form__group {
     margin-bottom: 12px;
-    /* Уменьшение отступов между полями */
   }
 
   .call-back-form__group label {
     font-size: 14px;
-    /* Уменьшение шрифта */
     margin-bottom: 6px;
   }
 
   .call-back-form__group input {
     padding: 8px;
-    /* Уменьшение отступов */
     font-size: 14px;
-    /* Уменьшение шрифта */
   }
 
   .call-back-form__group .error-message {
     font-size: 11px;
-    /* Уменьшение шрифта ошибки */
     margin-top: 4px;
   }
 
   .call-back-form__footer {
     padding: 10px 15px;
-    /* Уменьшение отступов */
   }
 
   .call-back-submit {
     padding: 10px;
-    /* Уменьшение отступов */
     font-size: 14px;
-    /* Уменьшение шрифта */
   }
 
   .cart-modal,
@@ -3752,9 +3865,7 @@ h3 {
     width: 90%;
     max-width: 90%;
     min-height: 120px;
-    /* Уменьшено для компактности */
     max-height: none;
-    /* Убрано ограничение по максимальной высоте */
   }
 
   .call-back-form__group {
@@ -3811,7 +3922,7 @@ h3 {
   }
 
   .title {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
   }
 
   .title {
@@ -3938,6 +4049,10 @@ h3 {
 
   .catalog__container {
     padding-bottom: 1.25rem;
+  }
+
+  .catalog__title-wrapper {
+    margin-bottom: 0.9375rem;
   }
 
   .product__title {
@@ -4524,7 +4639,6 @@ h3 {
     max-width: 90%;
     min-height: 120px;
     max-height: none;
-    /* Убрано ограничение по максимальной высоте */
   }
 
   .products__wrapper {
@@ -4643,15 +4757,15 @@ h3 {
     }
 }
 
-@supports (font-size: clamp( 1.125rem , 0.9144736842rem  +  1.0526315789vw , 1.75rem )) {
+@supports (font-size: clamp( 1.5rem , 1.4157894737rem  +  0.4210526316vw , 1.75rem )) {
     .title {
-      font-size: clamp( 1.125rem , 0.9144736842rem  +  1.0526315789vw , 1.75rem );
+      font-size: clamp( 1.5rem , 1.4157894737rem  +  0.4210526316vw , 1.75rem );
     }
 }
 
-@supports not (font-size: clamp( 1.125rem , 0.9144736842rem  +  1.0526315789vw , 1.75rem )) {
+@supports not (font-size: clamp( 1.5rem , 1.4157894737rem  +  0.4210526316vw , 1.75rem )) {
     .title {
-      font-size: calc(1.125rem + 0.625 * (100vw - 20rem) / 59.375);
+      font-size: calc(1.5rem + 0.25 * (100vw - 20rem) / 59.375);
     }
 }
 
@@ -5031,6 +5145,18 @@ h3 {
     }
 }
 
+@supports (margin-bottom: clamp( 0.9375rem , 0.4111842105rem  +  2.6315789474vw , 2.5rem )) {
+    .catalog__title-wrapper {
+      margin-bottom: clamp( 0.9375rem , 0.4111842105rem  +  2.6315789474vw , 2.5rem );
+    }
+}
+
+@supports not (margin-bottom: clamp( 0.9375rem , 0.4111842105rem  +  2.6315789474vw , 2.5rem )) {
+    .catalog__title-wrapper {
+      margin-bottom: calc(0.9375rem + 1.5625 * (100vw - 20rem) / 59.375);
+    }
+}
+
 @supports (font-size: clamp( 0.875rem , 0.8328947368rem  +  0.2105263158vw , 1rem )) {
     .product__title {
       font-size: clamp( 0.875rem , 0.8328947368rem  +  0.2105263158vw , 1rem );
@@ -5290,6 +5416,15 @@ h3 {
   .submit-call-back-form:hover {
     background-color: var(--hoverColor);
     /* Голубой (#00A3E0) */
+  }
+
+  .catalog .info-icon:hover {
+    background-color: rgba(122, 122, 122, 0.1);
+  }
+
+  .catalog .info-icon:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
   }
 
   .product__card:hover {
