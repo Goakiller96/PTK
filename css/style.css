@@ -2590,7 +2590,10 @@ h3 {
           transform: translate(-50%, -50%);
   width: 100%;
   max-width: 420px;
-  min-height: 200px;
+  height: auto;
+  /* Адаптация высоты по содержимому */
+  min-height: 150px;
+  /* Минимальная высота уменьшена для малых экранов */
   background: #fff;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -2609,9 +2612,6 @@ h3 {
   border-radius: 8px;
   opacity: 0;
   visibility: hidden;
-  max-height: 60vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -3659,6 +3659,59 @@ h3 {
 }
 
 @media (max-width: 480px) {
+  .call-back-header h2 {
+    font-size: 1.2rem;
+    /* Уменьшение шрифта для малых экранов */
+    margin-left: 10px;
+  }
+
+  .call-back-close {
+    font-size: 20px;
+    /* Уменьшение кнопки закрытия */
+    padding: 6px;
+  }
+
+  .call-back-form {
+    padding: 15px;
+    /* Уменьшение отступов */
+  }
+
+  .call-back-form__group {
+    margin-bottom: 12px;
+    /* Уменьшение отступов между полями */
+  }
+
+  .call-back-form__group label {
+    font-size: 14px;
+    /* Уменьшение шрифта */
+    margin-bottom: 6px;
+  }
+
+  .call-back-form__group input {
+    padding: 8px;
+    /* Уменьшение отступов */
+    font-size: 14px;
+    /* Уменьшение шрифта */
+  }
+
+  .call-back-form__group .error-message {
+    font-size: 11px;
+    /* Уменьшение шрифта ошибки */
+    margin-top: 4px;
+  }
+
+  .call-back-form__footer {
+    padding: 10px 15px;
+    /* Уменьшение отступов */
+  }
+
+  .call-back-submit {
+    padding: 10px;
+    /* Уменьшение отступов */
+    font-size: 14px;
+    /* Уменьшение шрифта */
+  }
+
   .cart-modal,
   .order-form-modal {
     max-width: 100%;
@@ -3696,13 +3749,16 @@ h3 {
   }
 
   .call-back-modal {
+    width: 90%;
     max-width: 90%;
-    max-height: 80vh;
-    min-height: 150px;
+    min-height: 120px;
+    /* Уменьшено для компактности */
+    max-height: none;
+    /* Убрано ограничение по максимальной высоте */
   }
 
   .call-back-form__group {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
   .call-back-form__group label {
@@ -4466,8 +4522,9 @@ h3 {
   .call-back-modal {
     width: 90%;
     max-width: 90%;
-    max-height: 80vh;
-    min-height: 150px;
+    min-height: 120px;
+    max-height: none;
+    /* Убрано ограничение по максимальной высоте */
   }
 
   .products__wrapper {
