@@ -582,7 +582,7 @@ h3 {
 }
 
 .custom-select.open .custom-select__options {
-  max-height: 200px;
+  max-height: 300px;
   opacity: 1;
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
@@ -1635,6 +1635,10 @@ h3 {
 .services__item:nth-child(8) {
   -webkit-animation-delay: 0.7s;
           animation-delay: 0.7s;
+}
+
+.services__icon {
+  margin-bottom: 0.375rem;
 }
 
 .services__subtitle {
@@ -3000,6 +3004,45 @@ h3 {
 .body-no-scroll {
   overflow: hidden;
 }
+
+/* Увеличение размера изображения в карточке товара */
+
+/* Базовый масштаб изображения для карточки */
+
+.product__card[data-article="210020"] .product__image {
+  -webkit-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+}
+
+/* Базовый масштаб изображения для карточки */
+
+.product__card[data-article="4012"] .product__image {
+  -webkit-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+}
+
+/* Эффект наведения на карточку для увеличения изображения */
+
+/* Базовый масштаб изображения для карточки */
+
+.product__card[data-article="450009"] .product__image {
+  -webkit-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+}
+
+/* Эффект наведения на карточку для увеличения изображения */
 
 .plazmotron__table {
   width: 100%;
@@ -5428,6 +5471,12 @@ h3 {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
+  .product__image:hover {
+    -webkit-transform: scale(2.05);
+        -ms-transform: scale(2.05);
+            transform: scale(2.05);
+  }
+
   .quantity__btn:hover {
     background: #e0e0e0;
     -webkit-transform: scale(1.1);
@@ -5470,6 +5519,27 @@ h3 {
 
   .footer__call-back-btn:hover {
     background-color: #2980b9;
+  }
+
+  .product__card[data-article="210020"]:hover .product__image {
+    -webkit-transform: scale(1.55);
+        -ms-transform: scale(1.55);
+            transform: scale(1.55);
+    /* Сохраняем тот же масштаб, что в общем правиле наведения для других карточек */
+  }
+
+  .product__card[data-article="4012"]:hover .product__image {
+    -webkit-transform: scale(1.55);
+        -ms-transform: scale(1.55);
+            transform: scale(1.55);
+    /* Сохраняем тот же масштаб, что в общем правиле наведения для других карточек */
+  }
+
+  .product__card[data-article="450009"]:hover .product__image {
+    -webkit-transform: scale(1.55);
+        -ms-transform: scale(1.55);
+            transform: scale(1.55);
+    /* Сохраняем тот же масштаб, что в общем правиле наведения для других карточек */
   }
 
   .products__description-link a:hover {
