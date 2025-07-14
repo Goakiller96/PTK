@@ -455,90 +455,199 @@
             description: "Износостойкие сопла для резки алюминия и цветных металлов",
             category: "Электроды"
         }, {
-            title: "Сопло плазменное 210 для тонколистового металла",
-            article: "SP-1512-2",
-            image: "img/cards/soplo-210.png",
-            price: 242.56,
-            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 210 для тонкой резки",
-            description: "Сопла малого диаметра для точной резки тонколистового металла",
-            category: "Сопла"
-        }, {
-            title: "Ремкомплект для горелки Фламинго",
-            article: "RK-12350-2",
-            image: "img/cards/flamingo.webp",
-            price: 1999,
-            sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
-            sizeLabel: "Вариант:",
-            alt: "Ремкомплект для плазменной горелки",
-            description: "Ремонтный комплект для горелок серии Фламинго",
+            title: "Корпус с изоляционной втулкой ВПР-410",
+            article: "410008",
+            image: "img/cards/korpus-410.png",
+            alt: "Корпус для плазмотрона ВПР-410",
+            description: "Корпус с изоляционной втулкой для плазмотрона ВПР-410",
             category: "Комплектующие"
         }, {
-            title: "Горелка плазменная Фламинго для резки металла",
-            article: "FL-12345-3",
-            image: "img/cards/flamingo.webp",
-            price: 1999,
-            alt: "Горелка Фламинго для плазменной резки металлов",
-            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом",
-            category: "Плазмотроны"
-        }, {
-            title: "Сопло плазменное 410 для резки нержавеющей стали",
-            article: "SP-410011-3",
-            image: "img/cards/soplo-410.png",
-            price: 348.64,
-            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 410 для плазмотрона",
-            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
-            category: "Сопла"
-        }, {
-            title: "Сопло плазменное 402 для резки алюминия",
-            article: "SP-402011-3",
-            image: "img/cards/soplo-402.png",
-            price: 242.56,
-            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 402 для резки цветных металлов",
-            description: "Износостойкие сопла для резки алюминия и цветных металлов",
-            category: "Сопла"
-        }, {
-            title: "Электрод для плазмотрона конусный",
-            article: "EL-4014-3",
-            image: "img/cards/electrod.png",
-            price: 420,
-            sizes: [ "Гафний", "Биметалл" ],
-            sizeLabel: "Тип вставки:",
-            alt: "Электроды для плазменной резки",
-            description: "Катоды для плазмотронов с различными типами вставок",
-            category: "Электроды"
-        }, {
-            title: "Сопло плазменное 210 для тонколистового металла",
-            article: "SP-1512-3",
-            image: "img/cards/soplo-210.png",
-            price: 242.56,
-            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 210 для тонкой резки",
-            description: "Сопла малого диаметра для точной резки тонколистового металла",
-            category: "Сопла"
-        }, {
-            title: "Ремкомплект для горелки Фламинго",
-            article: "RK-12350-3",
-            image: "img/cards/flamingo.webp",
-            price: 1999,
-            sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
-            sizeLabel: "Вариант:",
-            alt: "Ремкомплект для плазменной горелки",
-            description: "Ремонтный комплект для горелок серии Фламинго",
+            title: "Корпус с изоляционной втулкой ВПР-402/400",
+            article: "4009",
+            image: "img/cards/korpus-402-210.png",
+            alt: "Корпус для плазмотрона ВПР-402/400",
+            description: "Корпус с изоляционной втулкой для плазмотрона ВПР-402/400",
             category: "Комплектующие"
         }, {
-            title: "Ремкомплект для горелки Фламинго",
+            title: "Гайка сопловая ВПР-210м/402/400",
+            article: "402007",
+            image: "img/cards/gaika-402.png",
+            alt: "Гайка сопловая для плазмотронов ВПР-210м/402/400",
+            description: "Гайка сопловая для плазмотронов ВПР-210м/402/400",
+            category: "Комплектующие"
+        }, {
+            title: "Гайка изолятора",
+            article: "4006",
+            image: "img/cards/gaika-izol.png",
+            alt: "Гайка изолятора для плазмотрона",
+            description: "Гайка изолятора для плазмотронов ВПР-150/210м/402/400/410",
+            category: "Комплектующие"
+        }, {
+            title: "Распределитель (силовой токоподвод)",
+            article: "4001",
+            image: "img/cards/raspredelitel.png",
+            alt: "Распределитель (силовой токоподвод) для плазмотрона",
+            description: "Распределитель для плазмотронов ВПР-150/210м/402/400/410",
+            category: "Комплектующие"
+        }, {
+            title: "Изолятор",
+            article: "4007",
+            image: "img/cards/izolator.png",
+            alt: "Изолятор для плазмотрона",
+            description: "Изолятор для плазмотронов ВПР-150/210м/402/400/410",
+            category: "Комплектующие"
+        }, {
+            title: "Электрододержатель ВПР-400/402м/410",
+            article: "4003",
+            image: "img/cards/zavihritel.png",
+            sizes: [ "Конус", "Резьба" ],
+            sizeLabel: "Вариант:",
+            alt: "Электрододержатель ВПР-400/402м/410",
+            description: "Электрододержатель/Завихритель для плазмотронов ВПР-400/402м/410",
+            category: "Комплектующие"
+        }, {
+            title: "Электрододержатель ВПР-150/210м",
+            article: "1503",
+            image: "img/cards/zavihritel-210.png",
+            alt: "Электрододержатель ВПР-150/210м",
+            description: "Электрододержатель/Завихритель для плазмотронов ВПР-150/210м",
+            category: "Комплектующие"
+        }, {
+            title: "Гайка",
             article: "RK-12350-4",
-            image: "img/cards/flamingo.webp",
-            price: 1999,
-            sizes: [ "Комплект A", "Комплект B", "Комплект C" ],
+            image: "img/cards/gaika-150.png",
+            alt: "Гайка",
+            description: "Гайка",
+            category: "Комплектующие"
+        }, {
+            title: "Гайка присоединительная",
+            article: "4002",
+            image: "img/cards/gaika-prisoed.png",
+            alt: "Гайка присоединительная",
+            description: "Гайка присоединительная для плазмотрона",
+            category: "Комплектующие"
+        }, {
+            title: "Кольцо изоляционное",
+            article: "4005",
+            image: "img/cards/kolltso-izolatora.png",
+            alt: "Кольцо изоляционное",
+            description: "Кольцо изоляционное для плазмотрона",
+            category: "Комплектующие"
+        }, {
+            title: "Изолятор ВПР-450Р",
+            article: "450003",
+            image: "img/cards/izolator-450.png",
+            alt: "Изолятор ВПР-450Р",
+            description: "Изолятор ВПР-450Р для плазмотрона ВПР-450Р",
+            category: "Комплектующие"
+        }, {
+            title: "Втулка сопла ВПР-450Р",
+            article: "450009",
+            image: "img/cards/vtulka-sopla-450.png",
+            alt: "Втулка сопла ВПР-450Р",
+            description: "Втулка сопла ВПР-450Р для плазмотрона ВПР-450Р",
+            category: "Комплектующие"
+        }, {
+            title: "Втулка сопла ВПР-150/210м",
+            article: "1510",
+            image: "img/cards/vtulka-sopla-210-150.png",
+            alt: "Втулка сопла для ВПР-150/210м",
+            description: "Втулка сопла для плазмотронов ВПР-150/210м",
+            category: "Комплектующие"
+        }, {
+            title: "Втулка сопла ВПР-400/402м",
+            article: "4010-01",
+            image: "img/cards/vtulka-sopla-402-400.png",
+            alt: "Втулка сопла ВПР-400/402м",
+            description: "Втулка сопла для плазмотронов ВПР-400/402м",
+            category: "Комплектующие"
+        }, {
+            title: "Втулка сопла (самоуплотняющаяся) ВПР-410",
+            article: "410009-02",
+            image: "img/cards/vtulka-sopla-su-410.png",
+            alt: "Втулка сопла (самоуплотняющаяся) ВПР-410",
+            description: "Втулка сопла (самоуплотняющаяся) для плазмотрона ВПР-410",
+            category: "Комплектующие"
+        }, {
+            title: "Втулка сопла ВПР-410",
+            article: "410009-01",
+            image: "img/cards/vtulka-sopla-410.png",
+            alt: "Втулка сопла ВПР-410",
+            description: "Втулка сопла для плазмотрона ВПР-410",
+            category: "Комплектующие"
+        }, {
+            title: "Кольцо защитное 450Р",
+            article: "450017",
+            image: "img/cards/koltso-450.png",
+            alt: "Кольцо защитное 450Р",
+            description: "Кольцо защитное для плазмотрона ВПР-450Р",
+            category: "Комплектующие"
+        }, {
+            title: "Прокладка",
+            article: "4015",
+            image: "img/cards/prokladka.png",
+            alt: "Прокладка",
+            description: "Прокладка для плазмотронов ВПР-150/210м/402/400/410",
+            category: "Комплектующие"
+        }, {
+            title: "Втулка изоляционная ВПР-410",
+            article: "410010",
+            image: "img/cards/vtulka-izol-410.png",
+            alt: "Втулка изоляционная ВПР-410",
+            description: "Втулка изоляционнаядля плазмотрона ВПР-410",
+            category: "Комплектующие"
+        }, {
+            title: "Втулка изоляционная ВПР-150/210м/400/402м",
+            article: "4008",
+            image: "img/cards/vtulka-izol-402-210.png",
+            alt: "Втулка изоляционная ВПР-150/210м/400/402м",
+            description: "Втулка изоляционная для плазмотронов ВПР-150/210м/400/402м",
+            category: "Комплектующие"
+        }, {
+            title: "Смазка силиконовая",
+            article: "7734",
+            image: "img/cards/smazka-silicot.png",
+            alt: "Смазка силиконовая",
+            description: "Смазка силиконовая",
+            category: "Прочее"
+        }, {
+            title: "Корпус сопла ВПР-210М",
+            article: "210020",
+            image: "img/cards/korpus-sopla-210.png",
+            alt: "Корпус сопла ВПР-210М",
+            description: "Корпус сопла для плазмотрона ВПР-210м",
+            category: "Комплектующие"
+        }, {
+            title: "Спло ВПР-400",
+            article: "4012",
+            image: "img/cards/soplo-400.png",
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Спло ВПР-400",
+            description: "Сплодля для плазмотрона ВПР-400",
+            category: "Сопла"
+        }, {
+            title: "Ключ универсальный",
+            article: "7725",
+            image: "img/cards/kluch.png",
+            alt: "Ключ универсальный",
+            description: "Ключ универсальный для плазмотронов ВПР-150/210м/400/402м",
+            category: "Прочее"
+        }, {
+            title: "Трубка",
+            article: "1504-4004",
+            image: "img/cards/trubka.png",
+            sizes: [ "ВПР-150/210м", "ВПР-400/402м/410" ],
             sizeLabel: "Вариант:",
+            alt: "Ремкомплект для плазменной горелки",
+            description: "Ремонтный комплект для горелок серии Фламинго",
+            category: "Комплектующие"
+        }, {
+            title: "Кольца",
+            article: "4016-4020",
+            image: "img/cards/koltsa.png",
+            sizes: [ "09х13", "12х16", "18х22", "20х24", "30х35", "32х38", "36х41" ],
+            sizeLabel: "Размер:",
             alt: "Ремкомплект для плазменной горелки",
             description: "Ремонтный комплект для горелок серии Фламинго",
             category: "Комплектующие"
@@ -3544,17 +3653,12 @@
             document.body.classList.add("body-no-scroll");
             if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
             setTimeout((() => closeCartBtn.focus()), 100);
-            console.log("Состояние .cart-overlay:", {
-                hasActiveClass: document.querySelector(".cart-overlay").classList.contains("active"),
-                computedStyle: window.getComputedStyle(document.querySelector(".cart-overlay")).opacity
-            });
         }
         function closeCart() {
             if (cartModal) cartModal.classList.remove("active");
             if (document.querySelector(".cart-overlay")) document.querySelector(".cart-overlay").classList.remove("active");
             document.body.classList.remove("body-no-scroll");
             document.body.style.paddingRight = "";
-            console.log("Закрытие .cart-modal");
         }
         function generateProductCards() {
             if (!productsContainer) {
@@ -3630,19 +3734,21 @@
             const productImageSrc = productImage.src || "";
             const optionValue = sizeSelect ? sizeSelect.value : null;
             const optionType = sizeSelect ? productCard.querySelector(".product__size-selector label")?.textContent.replace(":", "").trim() : null;
-            const uniqueProductId = `${productId}-${optionValue || "default"}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-            const existingItem = cart.find((item => item.id === uniqueProductId));
-            if (existingItem) existingItem.quantity += productQuantity; else cart.push({
-                id: uniqueProductId,
-                baseId: productId,
-                title: productTitleText,
-                price: productPriceValue,
-                quantity: productQuantity,
-                image: productImageSrc,
-                subtitle: productSubtitle.textContent,
-                optionType,
-                optionValue
-            });
+            const existingItem = cart.find((item => item.baseId === productId && item.optionValue === optionValue));
+            if (existingItem) existingItem.quantity += productQuantity; else {
+                const uniqueProductId = `${productId}-${optionValue || "default"}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+                cart.push({
+                    id: uniqueProductId,
+                    baseId: productId,
+                    title: productTitleText,
+                    price: productPriceValue,
+                    quantity: productQuantity,
+                    image: productImageSrc,
+                    subtitle: productSubtitle.textContent,
+                    optionType,
+                    optionValue
+                });
+            }
             updateCart();
             animateCartCounter();
         }
@@ -3681,10 +3787,6 @@
             document.body.classList.add("body-no-scroll");
             if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
             setTimeout((() => closeOrderFormBtn.focus()), 100);
-            console.log("Состояние .order-form-overlay:", {
-                hasActiveClass: orderFormOverlay.classList.contains("active"),
-                computedStyle: window.getComputedStyle(orderFormOverlay).opacity
-            });
         }
         function closeOrderForm() {
             const orderFormModal = document.querySelector(".order-form-modal");
@@ -3693,7 +3795,6 @@
             if (orderFormOverlay) orderFormOverlay.classList.remove("active");
             document.body.classList.remove("body-no-scroll");
             document.body.style.paddingRight = "";
-            console.log("Закрытие .order-form-modal");
         }
         function closeOtherModals() {
             const cartModal = document.querySelector(".cart-modal");
@@ -3736,12 +3837,7 @@
         }
         function submitOrder() {
             if (cart.length === 0) {
-                const errorMessage = document.createElement("div");
-                errorMessage.className = "error-message";
-                errorMessage.textContent = "Корзина пуста!";
-                errorMessage.style.background = "#e74c3c";
-                document.body.appendChild(errorMessage);
-                setTimeout((() => errorMessage.remove()), 2500);
+                showErrorMessage("Корзина пуста!");
                 return;
             }
             openOrderForm();
@@ -3749,23 +3845,13 @@
         function handleOrderFormSubmit(e) {
             e.preventDefault();
             if (cart.length === 0) {
-                const errorMessage = document.createElement("div");
-                errorMessage.className = "error-message";
-                errorMessage.textContent = "Корзина пуста!";
-                errorMessage.style.background = "#e74c3c";
-                document.body.appendChild(errorMessage);
-                setTimeout((() => errorMessage.remove()), 2500);
+                showErrorMessage("Корзина пуста!");
                 closeOrderForm();
                 return;
             }
             if (typeof es === "undefined") {
                 console.error("EmailJS не загружен. Проверьте импорт и инициализацию библиотеки.");
-                const errorMessage = document.createElement("div");
-                errorMessage.className = "error-message";
-                errorMessage.textContent = "Ошибка: EmailJS не загружен. Пожалуйста, попробуйте позже.";
-                errorMessage.style.background = "#e74c3c";
-                document.body.appendChild(errorMessage);
-                setTimeout((() => errorMessage.remove()), 2500);
+                showErrorMessage("Ошибка: EmailJS не загружен. Пожалуйста, попробуйте позже.");
                 return;
             }
             const nameInput = document.getElementById("order-name");
@@ -3789,11 +3875,7 @@
             };
             es.send("service_oozomec", "template_3gx3kyp", templateParams).then((function(response) {
                 console.log("Заказ успешно отправлен:", response.status, response.text);
-                const successMessage = document.createElement("div");
-                successMessage.className = "success-message";
-                successMessage.textContent = `Ваш заказ на сумму ${formatPrice(totalPrice)} ₽ успешно отправлен!`;
-                document.body.appendChild(successMessage);
-                setTimeout((() => successMessage.remove()), 2500);
+                showSuccessMessage(`Ваш заказ на сумму ${formatPrice(totalPrice)} ₽ успешно отправлен!`);
                 cart = [];
                 updateCart();
                 closeCart();
@@ -3802,12 +3884,7 @@
                 document.getElementById("order-form").reset();
             }), (function(error) {
                 console.error("Ошибка EmailJS:", JSON.stringify(error, null, 2));
-                const errorMessage = document.createElement("div");
-                errorMessage.className = "error-message";
-                errorMessage.textContent = "Произошла ошибка при отправке заказа";
-                errorMessage.style.background = "#e74c3c";
-                document.body.appendChild(errorMessage);
-                setTimeout((() => errorMessage.remove()), 2500);
+                showErrorMessage("Произошла ошибка при отправке заказа");
             }));
         }
         function loadCartFromStorage() {
@@ -3883,47 +3960,26 @@
                 document.body.appendChild(callBackOverlay);
             }
             callBackBtn.addEventListener("click", (() => {
-                console.log("Клик по .footer__call-back-btn");
                 closeOtherModals();
-                console.log("Открытие call-back-modal, добавление .active к .call-back-overlay");
                 callBackModal.classList.add("active");
                 callBackOverlay.classList.add("active");
                 document.body.classList.add("body-no-scroll");
                 if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
                 setTimeout((() => document.querySelector("#call-back-name")?.focus()), 100);
-                console.log("Состояние .call-back-overlay:", {
-                    hasActiveClass: callBackOverlay.classList.contains("active"),
-                    computedStyle: window.getComputedStyle(callBackOverlay).opacity
-                });
             }));
             const closeModal = () => {
-                console.log("Закрытие call-back-modal");
                 callBackModal.classList.remove("active");
                 callBackOverlay.classList.remove("active");
                 document.body.classList.remove("body-no-scroll");
                 document.body.style.paddingRight = "";
             };
             closeCallBackBtn.addEventListener("click", closeModal);
-            callBackOverlay.addEventListener("click", (e => {
-                console.log("Клик по .call-back-overlay, закрытие");
-                closeModal();
-            }));
+            callBackOverlay.addEventListener("click", closeModal);
             document.addEventListener("click", (e => {
-                if (callBackModal.classList.contains("active") && !callBackModal.contains(e.target) && !e.target.closest(".footer__call-back-btn")) {
-                    console.log("Клик вне call-back-modal, закрытие");
-                    closeModal();
-                }
+                if (callBackModal.classList.contains("active") && !callBackModal.contains(e.target) && !e.target.closest(".footer__call-back-btn")) closeModal();
             }));
             document.addEventListener("keydown", (e => {
-                if (e.key === "Escape" && callBackModal.classList.contains("active")) {
-                    console.log("Нажата клавиша Esc, закрытие call-back-modal");
-                    closeModal();
-                }
-            }));
-            callBackForm.querySelectorAll("input").forEach((input => {
-                input.addEventListener("click", (event => {
-                    event.stopPropagation();
-                }));
+                if (e.key === "Escape" && callBackModal.classList.contains("active")) closeModal();
             }));
             callBackForm.addEventListener("submit", (e => {
                 e.preventDefault();
@@ -3961,21 +4017,12 @@
                     };
                     es.send("service_oozomec", "template_3gx3kyp", templateParams).then((response => {
                         console.log("Запрос звонка отправлен:", response.status, response.text);
-                        const successMessage = document.createElement("div");
-                        successMessage.className = "success-message";
-                        successMessage.textContent = "Заявка на звонок успешно отправлена!";
-                        document.body.appendChild(successMessage);
-                        setTimeout((() => successMessage.remove()), 2500);
+                        showSuccessMessage("Заявка на звонок успешно отправлена!");
                         callBackForm.reset();
                         closeModal();
                     }), (error => {
                         console.error("Ошибка EmailJS:", error);
-                        const errorMessage = document.createElement("div");
-                        errorMessage.className = "error-message";
-                        errorMessage.textContent = "Произошла ошибка при отправке заявки";
-                        errorMessage.style.background = "#e74c3c";
-                        document.body.appendChild(errorMessage);
-                        setTimeout((() => errorMessage.remove()), 2500);
+                        showErrorMessage("Произошла ошибка при отправке заявки");
                     }));
                 }
             }));
@@ -4048,28 +4095,12 @@
             const phoneLinks = header.querySelectorAll(".phones__link");
             const emailLinks = header.querySelectorAll(".emails__link");
             const actionsContacts = header.querySelector(".actions__contacts");
-            console.log("initHeaderTransformation: Элементы найдены:", {
-                header: !!header,
-                logoText: !!logoText,
-                logoTextShort: !!logoTextShort,
-                headerBody: !!headerBody,
-                phoneItems: phoneItems.length,
-                emailItems: emailItems.length,
-                phoneLinks: phoneLinks.length,
-                emailLinks: emailLinks.length,
-                actionsContacts: !!actionsContacts
-            });
             function isDesktop() {
                 return window.innerWidth > 991.98;
             }
             function handleScrollStyles() {
                 const isScrolled = window.scrollY > 0;
                 const shouldApplyStyles = isDesktop() && isScrolled;
-                console.log("handleScrollStyles:", {
-                    isDesktop: isDesktop(),
-                    isScrolled,
-                    shouldApplyStyles
-                });
                 if (logoText && logoTextShort) {
                     logoText.style.display = shouldApplyStyles ? "none" : "block";
                     logoTextShort.style.display = shouldApplyStyles ? "block" : "none";
@@ -4086,33 +4117,22 @@
                         logoTextShort.style.opacity = "1";
                         logoTextShort.style.visibility = "visible";
                     }
-                } else console.warn("logoText или logoTextShort не найдены");
+                }
                 phoneItems.forEach((item => {
                     item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
-                    console.log(".phones__item style:", item.style.cssText);
                 }));
                 emailItems.forEach((item => {
                     item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
-                    console.log(".emails__item (header) style:", item.style.cssText);
                 }));
                 phoneLinks.forEach((link => {
                     link.style.marginRight = shouldApplyStyles ? "10px" : "";
-                    console.log(".phones__link marginRight:", link.style.marginRight);
                 }));
                 emailLinks.forEach((link => {
                     link.style.marginRight = shouldApplyStyles ? "10px" : "";
-                    console.log(".emails__link (header) marginRight:", link.style.marginRight);
                 }));
-                if (actionsContacts) {
-                    actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
-                    console.log(".actions__contacts gap:", actionsContacts.style.gap);
-                }
-                if (headerBody) {
-                    headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
-                    console.log(".header__body padding:", headerBody.style.padding);
-                }
+                if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
+                if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
                 header.classList.toggle("scrolled", shouldApplyStyles);
-                console.log(".header classList:", header.classList.toString());
             }
             let isTicking = false;
             function requestTick() {
@@ -4129,7 +4149,6 @@
                 if (!isDesktop()) {
                     [ logoText, logoTextShort, ...phoneItems, ...emailItems, ...phoneLinks, ...emailLinks, actionsContacts, headerBody ].filter(Boolean).forEach((el => el.style.cssText = ""));
                     header.classList.remove("scrolled");
-                    console.log("resize: Стили сброшены, .header.scrolled удалён");
                 }
                 requestTick();
             }));
@@ -4181,6 +4200,21 @@
             if (callBackPhoneInput) IMask(callBackPhoneInput, {
                 mask: "+7 (000) 000-00-00"
             });
+        }
+        function showErrorMessage(message) {
+            const errorMessage = document.createElement("div");
+            errorMessage.className = "error-message";
+            errorMessage.textContent = message;
+            errorMessage.style.background = "#e74c3c";
+            document.body.appendChild(errorMessage);
+            setTimeout((() => errorMessage.remove()), 2500);
+        }
+        function showSuccessMessage(message) {
+            const successMessage = document.createElement("div");
+            successMessage.className = "success-message";
+            successMessage.textContent = message;
+            document.body.appendChild(successMessage);
+            setTimeout((() => successMessage.remove()), 2500);
         }
         function init() {
             console.log("Инициализация приложения");
