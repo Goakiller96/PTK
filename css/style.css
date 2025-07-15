@@ -3010,9 +3010,9 @@ h3 {
 /* Базовый масштаб изображения для карточки */
 
 .product__card[data-article="210020"] .product__image {
-  -webkit-transform: scale(1.5);
-      -ms-transform: scale(1.5);
-          transform: scale(1.5);
+  -webkit-transform: scale(1.35);
+      -ms-transform: scale(1.35);
+          transform: scale(1.35);
   -webkit-transform-origin: center;
       -ms-transform-origin: center;
           transform-origin: center;
@@ -3034,6 +3034,32 @@ h3 {
 /* Базовый масштаб изображения для карточки */
 
 .product__card[data-article="450009"] .product__image {
+  -webkit-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+}
+
+/* Эффект наведения на карточку для увеличения изображения */
+
+/* Базовый масштаб изображения для карточки */
+
+.product__card[data-article="1512"] .product__image {
+  -webkit-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+}
+
+/* Эффект наведения на карточку для увеличения изображения */
+
+/* Базовый масштаб изображения для карточки */
+
+.product__card[data-article="410011"] .product__image {
   -webkit-transform: scale(1.5);
       -ms-transform: scale(1.5);
           transform: scale(1.5);
@@ -5522,9 +5548,9 @@ h3 {
   }
 
   .product__card[data-article="210020"]:hover .product__image {
-    -webkit-transform: scale(1.55);
-        -ms-transform: scale(1.55);
-            transform: scale(1.55);
+    -webkit-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+            transform: scale(1.4);
     /* Сохраняем тот же масштаб, что в общем правиле наведения для других карточек */
   }
 
@@ -5536,6 +5562,20 @@ h3 {
   }
 
   .product__card[data-article="450009"]:hover .product__image {
+    -webkit-transform: scale(1.55);
+        -ms-transform: scale(1.55);
+            transform: scale(1.55);
+    /* Сохраняем тот же масштаб, что в общем правиле наведения для других карточек */
+  }
+
+  .product__card[data-article="1512"]:hover .product__image {
+    -webkit-transform: scale(1.55);
+        -ms-transform: scale(1.55);
+            transform: scale(1.55);
+    /* Сохраняем тот же масштаб, что в общем правиле наведения для других карточек */
+  }
+
+  .product__card[data-article="410011"]:hover .product__image {
     -webkit-transform: scale(1.55);
         -ms-transform: scale(1.55);
             transform: scale(1.55);
