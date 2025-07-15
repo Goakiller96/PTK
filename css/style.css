@@ -3707,6 +3707,7 @@ h3 {
         -ms-flex-pack: justify;
             justify-content: space-between;
     padding-bottom: 0.625rem;
+    margin-right: 0rem;
   }
 
   .header__actions {
