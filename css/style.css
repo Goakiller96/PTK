@@ -344,6 +344,7 @@ h3 {
   transition: all 0.3s ease 0s;
   color: rgba(56, 56, 56, 0.8);
   white-space: nowrap;
+  font-size: 0.9375rem;
 }
 
 .emails {
@@ -373,6 +374,7 @@ h3 {
   transition: all 0.3s ease 0s;
   color: rgba(56, 56, 56, 0.8);
   white-space: nowrap;
+  font-size: 0.9375rem;
 }
 
 .body-no-scroll {
@@ -3768,6 +3770,34 @@ h3 {
   }
 }
 
+@media (max-width: 375.9px) {
+  .phones__item {
+    margin-left: 0.3125rem;
+  }
+
+  .emails__item {
+    margin-left: 0.3125rem;
+  }
+}
+
+@media (max-width: 374.9px) {
+  .phones__link {
+    font-size: 0.8125rem;
+  }
+
+  .phones__link:not(:last-child) {
+    margin-bottom: 0.1875rem;
+  }
+
+  .emails__link {
+    font-size: 0.8125rem;
+  }
+
+  .emails__link:not(:last-child) {
+    margin-bottom: 0.1875rem;
+  }
+}
+
 @media (max-width: 20em) {
   h2 {
     font-size: 1.5rem;
@@ -3962,18 +3992,6 @@ h3 {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-
-  .footer__main {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 200px;
-            flex: 1 0 200px;
   }
 
   .hero__wrapper {
@@ -4564,14 +4582,6 @@ h3 {
 @media (max-width: 29.99875em) {
   .actions__contacts {
     gap: 10px;
-  }
-
-  .phones__link {
-    font-size: 0.8125rem;
-  }
-
-  .emails__link {
-    font-size: 0.8125rem;
   }
 
   .call-back-header h2 {
