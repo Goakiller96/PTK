@@ -371,7 +371,8 @@ h3 {
   line-height: 1.5555555556;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  color: #383838;
+  color: rgba(56, 56, 56, 0.8);
+  white-space: nowrap;
 }
 
 .body-no-scroll {
@@ -1355,7 +1356,7 @@ h3 {
   /* Оранжевый (#F97316) */
   color: #383838;
   font-weight: 600;
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1rem;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -2792,7 +2793,6 @@ h3 {
 .footer__call-back-btn {
   background: #3498db;
   color: #fff;
-  font-size: 14px;
   padding: 12px 16px;
   max-width: 290px;
   margin-bottom: 1.25rem;
@@ -3525,10 +3525,6 @@ h3 {
             column-gap: 1.875rem;
   }
 
-  .footer__call-back-btn {
-    font-size: 0.875rem;
-  }
-
   .call-back-header h2 {
     font-size: 1.25rem;
   }
@@ -3724,6 +3720,21 @@ h3 {
     margin-right: 50px;
     margin-left: 20px;
   }
+
+  .footer .actions__contacts-footer {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+
+  .footer__call-back {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -3863,10 +3874,6 @@ h3 {
     -webkit-column-gap: 2.5rem;
        -moz-column-gap: 2.5rem;
             column-gap: 2.5rem;
-  }
-
-  .footer__call-back-btn {
-    font-size: 0.75rem;
   }
 
   .call-back-header h2 {
@@ -4575,12 +4582,16 @@ h3 {
 }
 
 @media (max-width: 29.99875em) {
+  .actions__contacts {
+    gap: 10px;
+  }
+
   .phones__link {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
   }
 
   .emails__link {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
   }
 
   .call-back-header h2 {
@@ -4623,15 +4634,6 @@ h3 {
   .call-back-submit {
     padding: 10px;
     font-size: 14px;
-  }
-
-  .footer__call-back {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
 
   .cart-modal,
@@ -4974,18 +4976,6 @@ h3 {
       -webkit-column-gap: calc(2.5rem + -0.625 * (100vw - 20rem) / 59.375);
          -moz-column-gap: calc(2.5rem + -0.625 * (100vw - 20rem) / 59.375);
               column-gap: calc(2.5rem + -0.625 * (100vw - 20rem) / 59.375);
-    }
-}
-
-@supports (font-size: clamp( 0.75rem , 0.7078947368rem  +  0.2105263158vw , 0.875rem )) {
-    .footer__call-back-btn {
-      font-size: clamp( 0.75rem , 0.7078947368rem  +  0.2105263158vw , 0.875rem );
-    }
-}
-
-@supports not (font-size: clamp( 0.75rem , 0.7078947368rem  +  0.2105263158vw , 0.875rem )) {
-    .footer__call-back-btn {
-      font-size: calc(0.75rem + 0.125 * (100vw - 20rem) / 59.375);
     }
 }
 
