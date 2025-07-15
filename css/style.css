@@ -1200,10 +1200,12 @@ h3 {
 
 .footer__opentime-time {
   font-weight: 700;
+  font-size: 1rem;
 }
 
 .footer__address {
   max-width: 22.875rem;
+  font-size: 1rem;
 }
 
 .footer__address:not(:last-child) {
@@ -1214,6 +1216,7 @@ h3 {
   font-weight: 700;
   font-style: normal;
   margin-bottom: 1.25rem;
+  font-size: 1rem;
 }
 
 .footer__email {
@@ -2782,7 +2785,7 @@ h3 {
   background: #3498db;
   color: #fff;
   padding: 12px 16px;
-  max-width: 290px;
+  max-width: 340px;
   margin-bottom: 1.25rem;
 }
 
