@@ -392,7 +392,7 @@
         }, {
             title: "Плазмотрон ВПР-450р ручной",
             article: "450-01",
-            image: "img/plazmotron/vpr-450.png",
+            image: "img/plazmotron/vpr-450.webp",
             sizes: [ "10 м", "20 м" ],
             sizeLabel: "Длина кабеля:",
             alt: "Плазмотрон для ручной резки металлов",
@@ -403,7 +403,7 @@
         }, {
             title: "Сопло плазменное 210",
             article: "1512",
-            image: "img/cards/soplo-210.png",
+            image: "img/cards/soplo-210_2.webp",
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 210 для тонкой резки",
@@ -412,7 +412,7 @@
         }, {
             title: "Сопло плазменное 402",
             article: "402011",
-            image: "img/cards/soplo-402.png",
+            image: "img/cards/soplo-402.webp",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 402 для резки цветных металлов",
@@ -421,7 +421,7 @@
         }, {
             title: "Сопло плазменное 410",
             article: "410011",
-            image: "img/cards/soplo-410.png",
+            image: "img/cards/soplo-410_2.webp",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Сопло 410 для плазмотрона",
@@ -430,7 +430,7 @@
         }, {
             title: "Электрод для плазмотрона",
             article: "1514",
-            image: "img/cards/electrod-ag.png",
+            image: "img/cards/electrod-ag.webp",
             sizes: [ "Гафний", "Серебро" ],
             sizeLabel: "Тип вставки:",
             alt: "Электроды для плазменной резки",
@@ -439,7 +439,7 @@
         }, {
             title: "Электрод для плазмотрона конусный ЭП-03",
             article: "4014",
-            image: "img/cards/electrod.png",
+            image: "img/cards/electrod.webp",
             sizes: [ "Гафний", "Биметалл" ],
             sizeLabel: "Тип вставки:",
             alt: "Электроды для плазменной резки",
@@ -448,7 +448,7 @@
         }, {
             title: "Электрод для плазмотрона резьбовой ЭП-05",
             article: "4014",
-            image: "img/cards/electrod-rezba.png",
+            image: "img/cards/electrod-rezba.webp",
             sizes: [ "Гафний", "Биметалл" ],
             sizeLabel: "Тип вставки:",
             alt: "Электроды для плазменной резки",
@@ -457,170 +457,173 @@
         }, {
             title: "Корпус с изоляционной втулкой ВПР-410",
             article: "410008",
-            image: "img/cards/korpus-410.png",
+            image: "img/cards/korpus-410.webp",
             alt: "Корпус для плазмотрона ВПР-410",
             description: "Корпус с изоляционной втулкой для плазмотрона ВПР-410",
             category: "Комплектующие"
         }, {
             title: "Корпус с изоляционной втулкой ВПР-402/400",
             article: "4009",
-            image: "img/cards/korpus-402-210.png",
+            image: "img/cards/korpus-402-210.webp",
             alt: "Корпус для плазмотрона ВПР-402/400",
             description: "Корпус с изоляционной втулкой для плазмотрона ВПР-402/400",
             category: "Комплектующие"
         }, {
             title: "Гайка сопловая ВПР-210м/402/400",
             article: "402007",
-            image: "img/cards/gaika-402.png",
+            image: "img/cards/gaika-402.webp",
+            price: 1999,
             alt: "Гайка сопловая для плазмотронов ВПР-210м/402/400",
             description: "Гайка сопловая для плазмотронов ВПР-210м/402/400",
             category: "Комплектующие"
         }, {
             title: "Гайка изолятора",
             article: "4006",
-            image: "img/cards/gaika-izol.png",
+            image: "img/cards/gaika-izol.webp",
             alt: "Гайка изолятора для плазмотрона",
             description: "Гайка изолятора для плазмотронов ВПР-150/210м/402/400/410",
             category: "Комплектующие"
         }, {
             title: "Распределитель (силовой токоподвод)",
             article: "4001",
-            image: "img/cards/raspredelitel.png",
+            image: "img/cards/raspredelitel.webp",
             alt: "Распределитель (силовой токоподвод) для плазмотрона",
             description: "Распределитель для плазмотронов ВПР-150/210м/402/400/410",
             category: "Комплектующие"
         }, {
             title: "Изолятор",
             article: "4007",
-            image: "img/cards/izolator.png",
+            image: "img/cards/izolator.webp",
             alt: "Изолятор для плазмотрона",
             description: "Изолятор для плазмотронов ВПР-150/210м/402/400/410",
             category: "Комплектующие"
         }, {
             title: "Электрододержатель ВПР-400/402м/410",
             article: "4003",
-            image: "img/cards/zavihritel.png",
+            image: "img/cards/zavihritel.webp",
             sizes: [ "Конус", "Резьба" ],
-            sizeLabel: "Вариант:",
+            sizeLabel: "Тип:",
             alt: "Электрододержатель ВПР-400/402м/410",
             description: "Электрододержатель/Завихритель для плазмотронов ВПР-400/402м/410",
             category: "Комплектующие"
         }, {
             title: "Электрододержатель ВПР-150/210м",
             article: "1503",
-            image: "img/cards/zavihritel-210.png",
+            image: "img/cards/zavihritel-210.webp",
             alt: "Электрододержатель ВПР-150/210м",
             description: "Электрододержатель/Завихритель для плазмотронов ВПР-150/210м",
             category: "Комплектующие"
         }, {
-            title: "Гайка",
-            article: "RK-12350-4",
-            image: "img/cards/gaika-150.png",
+            title: "Гайка сопловая",
+            article: "4013",
+            image: "img/cards/gaika-150.webp",
+            sizes: [ "Основная", "Усиленная", "Угловой рез" ],
+            sizeLabel: "Тип:",
             alt: "Гайка",
             description: "Гайка",
             category: "Комплектующие"
         }, {
             title: "Гайка присоединительная",
             article: "4002",
-            image: "img/cards/gaika-prisoed.png",
+            image: "img/cards/gaika-prisoed.webp",
             alt: "Гайка присоединительная",
             description: "Гайка присоединительная для плазмотрона",
             category: "Комплектующие"
         }, {
             title: "Кольцо изоляционное",
             article: "4005",
-            image: "img/cards/kolltso-izolatora.png",
+            image: "img/cards/kolltso-izolatora.webp",
             alt: "Кольцо изоляционное",
             description: "Кольцо изоляционное для плазмотрона",
             category: "Комплектующие"
         }, {
             title: "Изолятор ВПР-450Р",
             article: "450003",
-            image: "img/cards/izolator-450.png",
+            image: "img/cards/izolator-450.webp",
             alt: "Изолятор ВПР-450Р",
             description: "Изолятор ВПР-450Р для плазмотрона ВПР-450Р",
             category: "Комплектующие"
         }, {
             title: "Втулка сопла ВПР-450Р",
             article: "450009",
-            image: "img/cards/vtulka-sopla-450.png",
+            image: "img/cards/vtulka-sopla-450.webp",
             alt: "Втулка сопла ВПР-450Р",
             description: "Втулка сопла ВПР-450Р для плазмотрона ВПР-450Р",
             category: "Комплектующие"
         }, {
             title: "Втулка сопла ВПР-150/210м",
             article: "1510",
-            image: "img/cards/vtulka-sopla-210-150.png",
+            image: "img/cards/vtulka-sopla-210-150.webp",
             alt: "Втулка сопла для ВПР-150/210м",
             description: "Втулка сопла для плазмотронов ВПР-150/210м",
             category: "Комплектующие"
         }, {
             title: "Втулка сопла ВПР-400/402м",
             article: "4010-01",
-            image: "img/cards/vtulka-sopla-402-400.png",
+            image: "img/cards/vtulka-sopla-402-400.webp",
             alt: "Втулка сопла ВПР-400/402м",
             description: "Втулка сопла для плазмотронов ВПР-400/402м",
             category: "Комплектующие"
         }, {
             title: "Втулка сопла (самоуплотняющаяся) ВПР-410",
             article: "410009-02",
-            image: "img/cards/vtulka-sopla-su-410.png",
+            image: "img/cards/vtulka-sopla-su-410.webp",
             alt: "Втулка сопла (самоуплотняющаяся) ВПР-410",
             description: "Втулка сопла (самоуплотняющаяся) для плазмотрона ВПР-410",
             category: "Комплектующие"
         }, {
             title: "Втулка сопла ВПР-410",
             article: "410009-01",
-            image: "img/cards/vtulka-sopla-410.png",
+            image: "img/cards/vtulka-sopla-410.webp",
             alt: "Втулка сопла ВПР-410",
             description: "Втулка сопла для плазмотрона ВПР-410",
             category: "Комплектующие"
         }, {
             title: "Кольцо защитное 450Р",
             article: "450017",
-            image: "img/cards/koltso-450.png",
+            image: "img/cards/koltso-450.webp",
             alt: "Кольцо защитное 450Р",
             description: "Кольцо защитное для плазмотрона ВПР-450Р",
             category: "Комплектующие"
         }, {
             title: "Прокладка",
             article: "4015",
-            image: "img/cards/prokladka.png",
+            image: "img/cards/prokladka.webp",
             alt: "Прокладка",
             description: "Прокладка для плазмотронов ВПР-150/210м/402/400/410",
             category: "Комплектующие"
         }, {
             title: "Втулка изоляционная ВПР-410",
             article: "410010",
-            image: "img/cards/vtulka-izol-410.png",
+            image: "img/cards/vtulka-izol-410.webp",
             alt: "Втулка изоляционная ВПР-410",
             description: "Втулка изоляционнаядля плазмотрона ВПР-410",
             category: "Комплектующие"
         }, {
             title: "Втулка изоляционная ВПР-150/210м/400/402м",
             article: "4008",
-            image: "img/cards/vtulka-izol-402-210.png",
+            image: "img/cards/vtulka-izol-402-210.webp",
             alt: "Втулка изоляционная ВПР-150/210м/400/402м",
             description: "Втулка изоляционная для плазмотронов ВПР-150/210м/400/402м",
             category: "Комплектующие"
         }, {
             title: "Смазка силиконовая",
             article: "7734",
-            image: "img/cards/smazka-silicot.png",
+            image: "img/cards/smazka-silicot.webp",
             alt: "Смазка силиконовая",
             description: "Смазка силиконовая",
             category: "Прочее"
         }, {
             title: "Корпус сопла ВПР-210М",
             article: "210020",
-            image: "img/cards/korpus-sopla-210.png",
+            image: "img/cards/korpus-sopla-210.webp",
             alt: "Корпус сопла ВПР-210М",
             description: "Корпус сопла для плазмотрона ВПР-210м",
             category: "Комплектующие"
         }, {
             title: "Спло ВПР-400",
             article: "4012",
-            image: "img/cards/soplo-400.png",
+            image: "img/cards/soplo-400.webp",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Спло ВПР-400",
@@ -629,23 +632,23 @@
         }, {
             title: "Ключ универсальный",
             article: "7725",
-            image: "img/cards/kluch.png",
+            image: "img/cards/kluch.webp",
             alt: "Ключ универсальный",
             description: "Ключ универсальный для плазмотронов ВПР-150/210м/400/402м",
             category: "Прочее"
         }, {
             title: "Трубка",
             article: "1504-4004",
-            image: "img/cards/trubka.png",
+            image: "img/cards/trubka.webp",
             sizes: [ "ВПР-150/210м", "ВПР-400/402м/410" ],
-            sizeLabel: "Вариант:",
+            sizeLabel: "Тип:",
             alt: "Ремкомплект для плазменной горелки",
             description: "Ремонтный комплект для горелок серии Фламинго",
             category: "Комплектующие"
         }, {
-            title: "Кольца",
+            title: "Кольца уплотнительные",
             article: "4016-4020",
-            image: "img/cards/koltsa.png",
+            image: "img/cards/koltsa.webp",
             sizes: [ "09х13", "12х16", "18х22", "20х24", "30х35", "32х38", "36х41" ],
             sizeLabel: "Размер:",
             alt: "Ремкомплект для плазменной горелки",
