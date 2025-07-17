@@ -3469,6 +3469,102 @@
     } catch {}
     es.init("75OW2t6IQ_6Orzxue");
     let uniqueIdCounter = 0;
+    let isModalOpen = false;
+    let headerScrollState = false;
+    let savedHeaderState = false;
+    const header = document.querySelector(".header");
+    const logoText = header ? header.querySelector(".header__logo-text") : null;
+    const logoTextShort = header ? header.querySelector(".header__logo-text-short") : null;
+    const headerBody = header ? header.querySelector(".header__body") : null;
+    const phoneItems = header ? header.querySelectorAll(".phones__item") : [];
+    const emailItems = header ? header.querySelectorAll(".emails__item") : [];
+    const phoneLinks = header ? header.querySelectorAll(".phones__link") : [];
+    const emailLinks = header ? header.querySelectorAll(".emails__link") : [];
+    const actionsContacts = header ? header.querySelector(".actions__contacts") : null;
+    function isDesktop() {
+        return window.innerWidth > 991.98;
+    }
+    function handleScrollStyles() {
+        if (isModalOpen) return;
+        if (!header) {
+            console.error("Элемент .header не найден");
+            return;
+        }
+        const isScrolled = window.scrollY > 0;
+        const shouldApplyStyles = isDesktop() && isScrolled;
+        headerScrollState = shouldApplyStyles;
+        if (logoText && logoTextShort) {
+            logoText.style.display = shouldApplyStyles ? "none" : "block";
+            logoTextShort.style.display = shouldApplyStyles ? "block" : "none";
+            if (shouldApplyStyles) {
+                logoTextShort.style.opacity = "1";
+                logoTextShort.style.visibility = "visible";
+            } else {
+                logoText.style.opacity = "1";
+                logoText.style.visibility = "visible";
+            }
+            if (!isDesktop()) {
+                logoText.style.display = "none";
+                logoTextShort.style.display = "block";
+                logoTextShort.style.opacity = "1";
+                logoTextShort.style.visibility = "visible";
+            }
+        }
+        phoneItems.forEach((item => {
+            item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
+        }));
+        emailItems.forEach((item => {
+            item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
+        }));
+        phoneLinks.forEach((link => {
+            link.style.marginRight = shouldApplyStyles ? "10px" : "";
+        }));
+        emailLinks.forEach((link => {
+            link.style.marginRight = shouldApplyStyles ? "10px" : "";
+        }));
+        if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
+        if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
+        header.classList.toggle("scrolled", shouldApplyStyles);
+    }
+    function restoreHeaderState() {
+        if (!header) {
+            console.error("Элемент .header не найден");
+            return;
+        }
+        const shouldApplyStyles = savedHeaderState && isDesktop();
+        if (logoText && logoTextShort) {
+            logoText.style.display = shouldApplyStyles ? "none" : "block";
+            logoTextShort.style.display = shouldApplyStyles ? "block" : "none";
+            if (shouldApplyStyles) {
+                logoTextShort.style.opacity = "1";
+                logoTextShort.style.visibility = "visible";
+            } else {
+                logoText.style.opacity = "1";
+                logoText.style.visibility = "visible";
+            }
+            if (!isDesktop()) {
+                logoText.style.display = "none";
+                logoTextShort.style.display = "block";
+                logoTextShort.style.opacity = "1";
+                logoTextShort.style.visibility = "visible";
+            }
+        }
+        phoneItems.forEach((item => {
+            item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
+        }));
+        emailItems.forEach((item => {
+            item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
+        }));
+        phoneLinks.forEach((link => {
+            link.style.marginRight = shouldApplyStyles ? "10px" : "";
+        }));
+        emailLinks.forEach((link => {
+            link.style.marginRight = shouldApplyStyles ? "10px" : "";
+        }));
+        if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
+        if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
+        header.classList.toggle("scrolled", shouldApplyStyles);
+    }
     const script_isMobile = {
         any: () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
     };
@@ -3529,7 +3625,7 @@
         let isLoading = false;
         let allProductsLoaded = false;
         let currentCategory = "all";
-        const scrollbarWidth = hasScrollbar() ? getScrollbarWidth() : 0;
+        hasScrollbar() && getScrollbarWidth();
         function initCategoryFilter() {
             if (!categoryFilter) return;
             const selectTrigger = categoryFilter.querySelector(".custom-select__trigger");
@@ -3612,7 +3708,7 @@
             if (currentCategory !== "all") filtered = filtered.filter((product => product.category === currentCategory));
             if (searchInput && searchInput.value.trim()) {
                 const searchTerm = searchInput.value.trim().toLowerCase();
-                filtered = filtered.filter((product => product.title?.toLowerCase().includes(searchTerm) || product.article?.toLowerCase().includes(searchTerm)));
+                filtered = filtered.filter((product => product.title && product.title.toLowerCase().includes(searchTerm) || product.article && product.article.toLowerCase().includes(searchTerm)));
             }
             return filtered;
         }
@@ -3649,18 +3745,36 @@
                 console.error("Не найдены необходимые элементы для корзины");
                 return;
             }
+            const scrollPosition = window.scrollY;
+            document.body.dataset.scrollPosition = scrollPosition;
+            savedHeaderState = headerScrollState;
             closeOtherModals();
             cartModal.classList.add("active");
             document.querySelector(".cart-overlay").classList.add("active");
             document.body.classList.add("body-no-scroll");
-            if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+            isModalOpen = true;
+            document.body.style.position = "fixed";
+            document.body.style.top = `-${scrollPosition}px`;
+            document.body.style.width = "100%";
+            document.body.style.overflowY = "scroll";
             setTimeout((() => closeCartBtn.focus()), 100);
         }
         function closeCart() {
             if (cartModal) cartModal.classList.remove("active");
             if (document.querySelector(".cart-overlay")) document.querySelector(".cart-overlay").classList.remove("active");
+            const scrollPosition = parseInt(document.body.dataset.scrollPosition || "0");
             document.body.classList.remove("body-no-scroll");
-            document.body.style.paddingRight = "";
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.width = "";
+            document.body.style.overflowY = "";
+            delete document.body.dataset.scrollPosition;
+            window.scrollTo({
+                top: scrollPosition,
+                behavior: "instant"
+            });
+            isModalOpen = false;
+            restoreHeaderState();
         }
         function generateProductCards() {
             if (!productsContainer) {
@@ -3783,11 +3897,18 @@
             const orderFormOverlay = document.querySelector(".order-form-overlay");
             const closeOrderFormBtn = document.querySelector(".close-order-form");
             if (!orderFormModal || !orderFormOverlay || !closeOrderFormBtn) return;
+            const scrollPosition = window.scrollY;
+            document.body.dataset.scrollPosition = scrollPosition;
+            savedHeaderState = headerScrollState;
             closeOtherModals();
             orderFormModal.classList.add("active");
             orderFormOverlay.classList.add("active");
             document.body.classList.add("body-no-scroll");
-            if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+            isModalOpen = true;
+            document.body.style.position = "fixed";
+            document.body.style.top = `-${scrollPosition}px`;
+            document.body.style.width = "100%";
+            document.body.style.overflowY = "scroll";
             setTimeout((() => closeOrderFormBtn.focus()), 100);
         }
         function closeOrderForm() {
@@ -3795,8 +3916,19 @@
             const orderFormOverlay = document.querySelector(".order-form-overlay");
             if (orderFormModal) orderFormModal.classList.remove("active");
             if (orderFormOverlay) orderFormOverlay.classList.remove("active");
+            const scrollPosition = parseInt(document.body.dataset.scrollPosition || "0");
             document.body.classList.remove("body-no-scroll");
-            document.body.style.paddingRight = "";
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.width = "";
+            document.body.style.overflowY = "";
+            delete document.body.dataset.scrollPosition;
+            window.scrollTo({
+                top: scrollPosition,
+                behavior: "instant"
+            });
+            isModalOpen = false;
+            restoreHeaderState();
         }
         function closeOtherModals() {
             const cartModal = document.querySelector(".cart-modal");
@@ -3805,14 +3937,28 @@
             const orderFormOverlay = document.querySelector(".order-form-overlay");
             const callBackModal = document.querySelector(".call-back-modal");
             const callBackOverlay = document.querySelector(".call-back-overlay");
+            const orderFormWillRemainOpen = orderFormModal && orderFormModal.classList.contains("active");
             if (cartModal) cartModal.classList.remove("active");
             if (cartOverlay) cartOverlay.classList.remove("active");
-            if (orderFormModal) orderFormModal.classList.remove("active");
-            if (orderFormOverlay) orderFormOverlay.classList.remove("active");
+            if (orderFormModal && !orderFormWillRemainOpen) orderFormModal.classList.remove("active");
+            if (orderFormOverlay && !orderFormWillRemainOpen) orderFormOverlay.classList.remove("active");
             if (callBackModal) callBackModal.classList.remove("active");
             if (callBackOverlay) callBackOverlay.classList.remove("active");
-            document.body.classList.remove("body-no-scroll");
-            document.body.style.paddingRight = "";
+            if (!orderFormWillRemainOpen && document.body.classList.contains("body-no-scroll")) {
+                const scrollPosition = parseInt(document.body.dataset.scrollPosition || "0");
+                document.body.classList.remove("body-no-scroll");
+                document.body.style.position = "";
+                document.body.style.top = "";
+                document.body.style.width = "";
+                document.body.style.overflowY = "";
+                delete document.body.dataset.scrollPosition;
+                window.scrollTo({
+                    top: scrollPosition,
+                    behavior: "instant"
+                });
+                isModalOpen = false;
+                restoreHeaderState();
+            }
         }
         function validateForm(name, phone, email) {
             const errors = [];
@@ -3962,18 +4108,36 @@
                 document.body.appendChild(callBackOverlay);
             }
             callBackBtn.addEventListener("click", (() => {
+                const scrollPosition = window.scrollY;
+                document.body.dataset.scrollPosition = scrollPosition;
+                savedHeaderState = headerScrollState;
                 closeOtherModals();
                 callBackModal.classList.add("active");
                 callBackOverlay.classList.add("active");
                 document.body.classList.add("body-no-scroll");
-                if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+                isModalOpen = true;
+                document.body.style.position = "fixed";
+                document.body.style.top = `-${scrollPosition}px`;
+                document.body.style.width = "100%";
+                document.body.style.overflowY = "scroll";
                 setTimeout((() => document.querySelector("#call-back-name")?.focus()), 100);
             }));
             const closeModal = () => {
                 callBackModal.classList.remove("active");
                 callBackOverlay.classList.remove("active");
+                const scrollPosition = parseInt(document.body.dataset.scrollPosition || "0");
                 document.body.classList.remove("body-no-scroll");
-                document.body.style.paddingRight = "";
+                document.body.style.position = "";
+                document.body.style.top = "";
+                document.body.style.width = "";
+                document.body.style.overflowY = "";
+                delete document.body.dataset.scrollPosition;
+                window.scrollTo({
+                    top: scrollPosition,
+                    behavior: "instant"
+                });
+                isModalOpen = false;
+                restoreHeaderState();
             };
             closeCallBackBtn.addEventListener("click", closeModal);
             callBackOverlay.addEventListener("click", closeModal);
@@ -4084,57 +4248,9 @@
             }));
         }
         function initHeaderTransformation() {
-            const header = document.querySelector(".header");
             if (!header) {
                 console.error("Элемент .header не найден");
                 return;
-            }
-            const logoText = header.querySelector(".header__logo-text");
-            const logoTextShort = header.querySelector(".header__logo-text-short");
-            const headerBody = header.querySelector(".header__body");
-            const phoneItems = header.querySelectorAll(".phones__item");
-            const emailItems = header.querySelectorAll(".emails__item");
-            const phoneLinks = header.querySelectorAll(".phones__link");
-            const emailLinks = header.querySelectorAll(".emails__link");
-            const actionsContacts = header.querySelector(".actions__contacts");
-            function isDesktop() {
-                return window.innerWidth > 991.98;
-            }
-            function handleScrollStyles() {
-                const isScrolled = window.scrollY > 0;
-                const shouldApplyStyles = isDesktop() && isScrolled;
-                if (logoText && logoTextShort) {
-                    logoText.style.display = shouldApplyStyles ? "none" : "block";
-                    logoTextShort.style.display = shouldApplyStyles ? "block" : "none";
-                    if (shouldApplyStyles) {
-                        logoTextShort.style.opacity = "1";
-                        logoTextShort.style.visibility = "visible";
-                    } else {
-                        logoText.style.opacity = "1";
-                        logoText.style.visibility = "visible";
-                    }
-                    if (!isDesktop()) {
-                        logoText.style.display = "none";
-                        logoTextShort.style.display = "block";
-                        logoTextShort.style.opacity = "1";
-                        logoTextShort.style.visibility = "visible";
-                    }
-                }
-                phoneItems.forEach((item => {
-                    item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
-                }));
-                emailItems.forEach((item => {
-                    item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
-                }));
-                phoneLinks.forEach((link => {
-                    link.style.marginRight = shouldApplyStyles ? "10px" : "";
-                }));
-                emailLinks.forEach((link => {
-                    link.style.marginRight = shouldApplyStyles ? "10px" : "";
-                }));
-                if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
-                if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
-                header.classList.toggle("scrolled", shouldApplyStyles);
             }
             let isTicking = false;
             function requestTick() {
@@ -4151,6 +4267,8 @@
                 if (!isDesktop()) {
                     [ logoText, logoTextShort, ...phoneItems, ...emailItems, ...phoneLinks, ...emailLinks, actionsContacts, headerBody ].filter(Boolean).forEach((el => el.style.cssText = ""));
                     header.classList.remove("scrolled");
+                    headerScrollState = false;
+                    savedHeaderState = false;
                 }
                 requestTick();
             }));
@@ -4191,7 +4309,6 @@
             setRealViewportHeight();
             window.addEventListener("resize", setRealViewportHeight);
             window.addEventListener("orientationchange", setRealViewportHeight);
-            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) document.body.style.cssText = "overflow: hidden; position: fixed; top: 0; left: 0; right: 0; bottom: 0;";
         }
         function initInputMask() {
             const phoneInput = document.getElementById("order-phone");
