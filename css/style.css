@@ -378,9 +378,12 @@ h3 {
 }
 
 .body-no-scroll {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
+  -ms-touch-action: none;
+      touch-action: none;
+  /* Предотвращает скролл на мобильных устройствах */
 }
 
 .product__size-selector {
@@ -1196,6 +1199,7 @@ h3 {
   max-width: 7.3125rem;
   width: 100%;
   margin-right: 1.625rem;
+  font-size: 1rem;
 }
 
 .footer__opentime-time {
@@ -2956,10 +2960,6 @@ h3 {
     opacity: 0;
     visibility: hidden;
   }
-}
-
-.body-no-scroll {
-  overflow: hidden;
 }
 
 .plazmotron__table {
