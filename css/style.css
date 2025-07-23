@@ -3346,9 +3346,9 @@ h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
   color: #fff;
   overflow: hidden;
@@ -3382,16 +3382,12 @@ h3 {
 }
 
 .delivery__banner-subtitle {
-  max-width: 34.375rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  max-width: 43.75rem;
 }
 
 .terms__wrapper {
   background-color: rgba(230, 230, 230, 0.4);
-}
-
-.terms__item {
-  max-width: 650px;
-  padding: 40px 20px;
 }
 
 .terms__item-top {
@@ -3421,6 +3417,59 @@ h3 {
 
 .terms__text:not(:last-child) {
   margin-bottom: 1.25rem;
+}
+
+.terms__content-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.3125rem;
+}
+
+.terms__items:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+
+.terms__contact-text {
+  font-weight: 500;
+  margin-top: 1.25rem;
+}
+
+.terms__contact-link:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+
+.terms__list {
+  text-align: justify;
+}
+
+.actions__contacts-delivery {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  gap: 5px;
+}
+
+.terms__map {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding-bottom: 60%;
+  border: 1px solid rgba(122, 122, 122, 0.1);
+  margin: 1.25rem 0rem;
+}
+
+.terms__map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .companies__wrapper {
@@ -3605,17 +3654,22 @@ h3 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
   }
 
   .terms__item {
     max-width: 50%;
   }
+
+  .item-terms {
+    width: 37.5rem;
+  }
 }
 
 @media (min-width: 61.99875em) and (min-width: 79.375em) {
+  .terms__wrapper {
+    gap: 6.25rem;
+  }
+
   .terms__wrapper {
     padding-left: 2.5rem;
   }
@@ -3805,16 +3859,28 @@ h3 {
     font-size: 1.875rem;
   }
 
-  .delivery__banner-title {
-    padding-top: 6.25rem;
-  }
-
   .delivery__banner-subtitle {
     font-size: 1.25rem;
   }
 
   .terms__wrapper {
     margin-bottom: 3.125rem;
+  }
+
+  .terms__item {
+    padding-top: 2.5rem;
+  }
+
+  .terms__item {
+    padding-bottom: 2.5rem;
+  }
+
+  .terms__item {
+    padding-left: 1.25rem;
+  }
+
+  .terms__item {
+    padding-right: 1.25rem;
   }
 
   .terms__title {
@@ -4218,16 +4284,28 @@ h3 {
     font-size: 1.5rem;
   }
 
-  .delivery__banner-title {
-    padding-top: 1.875rem;
-  }
-
   .delivery__banner-subtitle {
     font-size: 1rem;
   }
 
   .terms__wrapper {
     margin-bottom: 1.25rem;
+  }
+
+  .terms__item {
+    padding-top: 1.875rem;
+  }
+
+  .terms__item {
+    padding-bottom: 0.0000000625rem;
+  }
+
+  .terms__item {
+    padding-left: 0.9375rem;
+  }
+
+  .terms__item {
+    padding-right: 0.9375rem;
   }
 
   .terms__title {
@@ -5500,18 +5578,6 @@ h3 {
     }
 }
 
-@supports (padding-top: clamp( 1.875rem , 0.4013157895rem  +  7.3684210526vw , 6.25rem )) {
-    .delivery__banner-title {
-      padding-top: clamp( 1.875rem , 0.4013157895rem  +  7.3684210526vw , 6.25rem );
-    }
-}
-
-@supports not (padding-top: clamp( 1.875rem , 0.4013157895rem  +  7.3684210526vw , 6.25rem )) {
-    .delivery__banner-title {
-      padding-top: calc(1.875rem + 4.375 * (100vw - 20rem) / 59.375);
-    }
-}
-
 @supports (font-size: clamp( 1rem , 0.9157894737rem  +  0.4210526316vw , 1.25rem )) {
     .delivery__banner-subtitle {
       font-size: clamp( 1rem , 0.9157894737rem  +  0.4210526316vw , 1.25rem );
@@ -5533,6 +5599,54 @@ h3 {
 @supports not (margin-bottom: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
     .terms__wrapper {
       margin-bottom: calc(1.25rem + 1.875 * (100vw - 20rem) / 59.375);
+    }
+}
+
+@supports (padding-top: clamp( 1.875rem , 1.6644736842rem  +  1.0526315789vw , 2.5rem )) {
+    .terms__item {
+      padding-top: clamp( 1.875rem , 1.6644736842rem  +  1.0526315789vw , 2.5rem );
+    }
+}
+
+@supports not (padding-top: clamp( 1.875rem , 1.6644736842rem  +  1.0526315789vw , 2.5rem )) {
+    .terms__item {
+      padding-top: calc(1.875rem + 0.625 * (100vw - 20rem) / 59.375);
+    }
+}
+
+@supports (padding-bottom: clamp( 0.0000000625rem , -0.8421051796rem  +  4.2105262105vw , 2.5rem )) {
+    .terms__item {
+      padding-bottom: clamp( 0.0000000625rem , -0.8421051796rem  +  4.2105262105vw , 2.5rem );
+    }
+}
+
+@supports not (padding-bottom: clamp( 0.0000000625rem , -0.8421051796rem  +  4.2105262105vw , 2.5rem )) {
+    .terms__item {
+      padding-bottom: calc(0.0000000625rem + 2.4999999375 * (100vw - 20rem) / 59.375);
+    }
+}
+
+@supports (padding-left: clamp( 0.9375rem , 0.8322368421rem  +  0.5263157895vw , 1.25rem )) {
+    .terms__item {
+      padding-left: clamp( 0.9375rem , 0.8322368421rem  +  0.5263157895vw , 1.25rem );
+    }
+}
+
+@supports not (padding-left: clamp( 0.9375rem , 0.8322368421rem  +  0.5263157895vw , 1.25rem )) {
+    .terms__item {
+      padding-left: calc(0.9375rem + 0.3125 * (100vw - 20rem) / 59.375);
+    }
+}
+
+@supports (padding-right: clamp( 0.9375rem , 0.8322368421rem  +  0.5263157895vw , 1.25rem )) {
+    .terms__item {
+      padding-right: clamp( 0.9375rem , 0.8322368421rem  +  0.5263157895vw , 1.25rem );
+    }
+}
+
+@supports not (padding-right: clamp( 0.9375rem , 0.8322368421rem  +  0.5263157895vw , 1.25rem )) {
+    .terms__item {
+      padding-right: calc(0.9375rem + 0.3125 * (100vw - 20rem) / 59.375);
     }
 }
 
@@ -5630,6 +5744,18 @@ h3 {
 }
 
 @media (min-width: 61.99875em) and (min-width: 20em) and (max-width: 79.375em) {
+@supports (gap: clamp( 0.0000000625rem , -2.1052630743rem  +  10.5263156842vw , 6.25rem )) {
+    .terms__wrapper {
+      gap: clamp( 0.0000000625rem , -2.1052630743rem  +  10.5263156842vw , 6.25rem );
+    }
+}
+
+@supports not (gap: clamp( 0.0000000625rem , -2.1052630743rem  +  10.5263156842vw , 6.25rem )) {
+    .terms__wrapper {
+      gap: calc(0.0000000625rem + 6.2499999375 * (100vw - 20rem) / 59.375);
+    }
+}
+
 @supports (padding-left: clamp( 0.9375rem , 0.4111842105rem  +  2.6315789474vw , 2.5rem )) {
     .terms__wrapper {
       padding-left: clamp( 0.9375rem , 0.4111842105rem  +  2.6315789474vw , 2.5rem );
@@ -5656,6 +5782,10 @@ h3 {
 }
 
 @media (min-width: 61.99875em) and (max-width: 20em) {
+  .terms__wrapper {
+    gap: 0.0000000625rem;
+  }
+
   .terms__wrapper {
     padding-left: 0.9375rem;
   }
