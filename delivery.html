@@ -39,7 +39,7 @@
 	</style>
 
 	<!-- Основные стили -->
-	<link rel="stylesheet" href="./css/style.min.css?_v=20250722162733">
+	<link rel="stylesheet" href="./css/style.min.css?_v=20250723162407">
 
 	<!-- JavaScript для снятия скрытия -->
 	<script>
@@ -272,82 +272,140 @@
 			</div>
 
 
-			<section class="delivery">
+			<section class="delivery" itemscope itemtype="http://schema.org/ShippingDeliveryTime">
 				<div class="delivery__container">
 					<div class="delivery__title-wrapper">
-						<h2 class="delivery__title title">Доставка</h2>
+						<h2 class="delivery__title title" itemprop="name">Доставка</h2>
 					</div>
 					<div class="delivery__banner">
-						<h3 class="delivery__banner-title">Осуществляем отправку
-							оборудования и комплектующих по всей России</h3>
-						<p class="delivery__banner-subtitle">Доставляем ваш заказ через проверенных транспортных
-							партнёров — быстро, безопасно и с возможностью отслеживания.</p>
+						<h3 class="delivery__banner-title">Отправка оборудования со склада в Екатеринбурге</h3>
+						<p class="delivery__banner-subtitle" itemprop="description">
+							Как производитель промышленного оборудования, мы бережно упаковываем заказы и
+							отправляем их через проверенных транспортных партнёров. Выбирайте удобную ТК — мы организуем
+							доставку по всей России.
+						</p>
+						<meta itemprop="transitTime" content="P3D" />
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Monday" />
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Tuesday" />
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Wednesday" />
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Thursday" />
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Friday" />
+						<meta itemprop="cutOffTime" content="18:00:00+05:00" />
 					</div>
 				</div>
 			</section>
 
 			<section class="terms">
 				<div class="terms__container">
+					<h2 class="visually-hidden">Условия доставки и самовывоза промышленного оборудования</h2>
 					<div class="terms__wrapper">
-						<div class="terms__item">
+						<div class="terms__item" itemscope itemtype="http://schema.org/OfferShippingDetails">
 							<div class="terms__item-top">
 								<div class="terms__item-image">
-									<img class="terms__item-img" src="img/icons/truck.svg" alt="Доставка">
+									<img class="terms__item-img" src="img/icons/truck.svg" alt="Доставка промышленного оборудования по России" title="Условия доставки промышленного оборудования" loading="lazy" itemprop="image" width="40" height="40">
 								</div>
-								<h4 class="terms__title">Условия доставки</h4>
+								<h3 class="terms__title" itemprop="name">Условия доставки промышленного оборудования
+								</h3>
 							</div>
-
-							<div class="terms__content">
-								<p class="terms__text"><strong>1. Отправка заказов</strong><br>
-									Подтверждённый заказ отправляется в <strong>рабочие дни до 18:00</strong> в
-									согласованный с менеджером день доставки.
-								</p>
-
-								<p class="terms__text"><strong>2. Доставка по России</strong><br>
-									Доставка осуществляется через транспортные компании (ТК) по их тарифам.
-								</p>
-
-								<p class="terms__text"><strong>3. Стоимость доставки</strong><br>
-									Зависит от выбранной транспортной компании, габаритов и веса груза, а также
-									расстояния до пункта назначения.<br>
-									Вы можете <strong>самостоятельно рассчитать стоимость</strong> с помощью
-									онлайн-калькулятора на сайте ТК или запросить расчёт у нашего менеджера.
-								</p>
-
-								<p class="terms__text"><strong>4. Подбор перевозчика</strong><br>
-									После оформления заказа мы свяжемся с вами, чтобы предложить оптимальную ТК и
-									выгодные условия доставки.
-								</p>
-
-								<p class="terms__text"><strong>5. Сроки доставки</strong><br>
-									Зависят от выбранной транспортной компании, удалённости региона, а также веса и
-									габаритов груза.
-								</p>
+							<div class="terms__content" itemprop="shippingDetails">
+								<ul class="terms__list">
+									<li class="terms__items">
+										<h4 class="terms__content-title">1. Отправка заказов</h4>
+										<p class="terms__content-text">
+											Подтверждённый заказ отправляется в <strong itemprop="deliveryLeadTime">рабочие дни
+												до 18:00</strong> в согласованный с менеджером день доставки.
+										</p>
+									</li>
+									<li class="terms__items">
+										<h4 class="terms__content-title">2. Доставка по России</h4>
+										<p class="terms__content-text">
+											Доставка промышленного оборудования осуществляется через транспортные
+											компании (ТК) по их тарифам.
+											<meta itemprop="shippingDestination" content="Россия">
+										</p>
+									</li>
+									<li class="terms__items">
+										<h4 class="terms__content-title">3. Стоимость доставки оборудования</h4>
+										<p class="terms__content-text">
+											Зависит от выбранной транспортной компании, габаритов и веса груза, а также
+											расстояния до пункта назначения.<br>
+											Вы можете <strong>самостоятельно рассчитать стоимость доставки</strong> с
+											помощью
+											онлайн-калькулятора на сайте ТК или запросить расчёт у нашего менеджера.
+											<span itemprop="shippingRate" itemscope itemtype="http://schema.org/MonetaryAmount">
+												<meta itemprop="currency" content="RUB">
+												<meta itemprop="value" content="По тарифам ТК">
+											</span>
+										</p>
+									</li>
+									<li class="terms__items">
+										<h4 class="terms__content-title">4. Подбор перевозчика</h4>
+										<p class="terms__content-text">
+											После оформления заказа мы подберём оптимальную транспортную компанию
+											и предложим выгодные условия доставки вашего оборудования.
+										</p>
+									</li>
+									<li class="terms__items">
+										<h4 class="terms__content-title">5. Сроки доставки оборудования</h4>
+										<p class="terms__content-text">
+											Зависят от выбранной транспортной компании, удалённости региона, а также
+											веса и габаритов груза.
+											<meta itemprop="deliveryTime" content="P1-7D">
+										</p>
+									</li>
+								</ul>
 							</div>
 						</div>
 
-						<div class="terms__item">
+						<div class="terms__item item-terms" itemscope itemtype="http://schema.org/PickupLocation">
 							<div class="terms__item-top">
 								<div class="terms__item-image" aria-hidden="true">
-									<img class="terms__item-img" src="img/icons/warehouse.svg" alt="Самовывоз" role="presentation">
+									<img class="terms__item-img" src="img/icons/warehouse.svg" alt="Самовывоз промышленного оборудования в Екатеринбурге" loading="lazy" role="presentation" width="40" height="40">
 								</div>
-								<h4 class="terms__title">Самовывоз</h4>
+								<h3 class="terms__title" itemprop="name">Самовывоз оборудования</h3>
 							</div>
 
 							<div class="terms__content">
 								<p class="terms__text">
-									Вы можете получить заказ на нашем складе:
+									Вы можете самостоятельно забрать заказ на нашем складе в Екатеринбурге:
 								</p>
 
-								<div class="terms__info-block">
+								<div class="terms__info-block" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
 									<address class="terms__address">
-										г. Екатеринбург, пр-т Космонавтов 11Б, литера Б
+										<span itemprop="addressLocality">г. Екатеринбург</span>,
+										<span itemprop="streetAddress">пр-т Космонавтов 11Б, литера Б</span>
 									</address>
 
-									<p class="terms__schedule">
+									<p class="terms__schedule" itemprop="openingHours" content="Mo-Fr 10:00-17:00">
 										<span class="terms__days">Пн–Пт</span>
 										<span class="terms__time">10:00–17:00</span>
 									</p>
+								</div>
+							</div>
+
+							<div class="actions__contacts actions__contacts-delivery">
+								<p class="terms__contact-text">Отдел отгрузки промышленного оборудования:</p>
+								<div class="phones" itemprop="telephone">
+									<div class="phones__icon _icon-phone"></div>
+									<div class="phones__item">
+										<a href="tel:+73432879643" class="phones__link" itemprop="telephone">+7 (343)
+											287-96-43</a>
+										<a href="tel:+79089020509" class="phones__link" itemprop="telephone">+7 (908)
+											902-05-09</a>
+									</div>
+								</div>
+
+								<div class="emails" itemprop="email">
+									<div class="emails__icon _icon-mail"></div>
+									<div class="emails__item">
+										<a href="mailto:promplazma@mail.ru" class="emails__link" itemprop="email">promplazma@mail.ru</a>
+										<a href="mailto:plazmatk@mail.ru" class="emails__link" itemprop="email">plazmatk@mail.ru</a>
+									</div>
+								</div>
+
+								<div class="terms__map">
+									<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A6ee453af400c8e1629b87358e7a2dd0053d17cfe22e12c694959b372fcebe2fc&amp;source=constructor" width="600" height="400" frameborder="0" title="Карта проезда к складу промышленного оборудования в Екатеринбурге" aria-label="Карта проезда">
+									</iframe>
 								</div>
 							</div>
 						</div>
@@ -357,46 +415,55 @@
 
 			<section class="companies">
 				<div class="companies__container">
+					<h2 class="visually-hidden">Партнеры по доставке оборудования</h2>
 					<div class="companies__wrapper">
-						<div class="companies__item">
+						<div class="companies__item" itemscope itemtype="http://schema.org/Organization">
 							<div class="companies__image">
-								<picture><source srcset="img/tk/dl.webp" type="image/webp"><img src="img/tk/dl.png" alt="Деловые линии" class="companies__img"></picture>
+								<picture><source srcset="img/tk/dl.webp" type="image/webp"><img src="img/tk/dl.png" alt="Деловые линии - транспортный партнер" class="companies__img" loading="lazy" itemprop="logo"></picture>
 							</div>
-							<a target="_blank" href="https://www.dellin.ru/requests/?utm_referrer=https%3A%2F%2Fsvarnoff.ru%2F&step=freight&requestType=cargo-single" class="companies__link">Онлайн-калькулятор</a>
+							<span class="visually-hidden" itemprop="name">Деловые линии</span>
+							<a target="_blank" rel="nofollow" href="https://www.dellin.ru/requests/?utm_referrer=https%3A%2F%2Fsvarnoff.ru%2F&step=freight&requestType=cargo-single" class="companies__link">Онлайн-калькулятор</a>
 						</div>
-						<div class="companies__item">
+						<div class="companies__item" itemscope itemtype="http://schema.org/Organization">
 							<div class="companies__image">
-								<img src="img/tk/cdek .png" alt="СДЕК" class="companies__img">
+								<picture><source srcset="img/tk/cdek.webp" type="image/webp"><img src="img/tk/cdek.png" alt="СДЕК - транспортный партнер" class="companies__img" loading="lazy" itemprop="logo"></picture>
 							</div>
-							<a target="_blank" href="https://my.cdek.ru/lkfl/delivery?utm_source=cdekru&utm_campaign=calc" class="companies__link">Онлайн-калькулятор</a>
+							<span class="visually-hidden" itemprop="name">СДЕК</span>
+							<a target="_blank" rel="nofollow" href="https://my.cdek.ru/lkfl/delivery?utm_source=cdekru&utm_campaign=calc" class="companies__link">Онлайн-калькулятор</a>
 						</div>
-						<div class="companies__item">
+						<div class="companies__item" itemscope itemtype="http://schema.org/Organization">
 							<div class="companies__image">
-								<picture><source srcset="img/tk/pek.webp" type="image/webp"><img src="img/tk/pek.png" alt="ПЭК" class="companies__img"></picture>
+								<picture><source srcset="img/tk/pek.webp" type="image/webp"><img src="img/tk/pek.png" alt="ПЭК - транспортный партнер" class="companies__img" loading="lazy" itemprop="logo"></picture>
 							</div>
-							<a target="_blank" href="https://pecom.ru/services-are/shipping-request/" class="companies__link">Онлайн-калькулятор</a>
+							<span class="visually-hidden" itemprop="name">ПЭК</span>
+							<a target="_blank" rel="nofollow" href="https://pecom.ru/services-are/shipping-request/" class="companies__link">Онлайн-калькулятор</a>
 						</div>
-						<div class="companies__item">
+						<div class="companies__item" itemscope itemtype="http://schema.org/Organization">
 							<div class="companies__image">
-								<picture><source srcset="img/tk/bkl.webp" type="image/webp"><img src="img/tk/bkl.png" alt="Байкал сервис" class="companies__img"></picture>
+								<picture><source srcset="img/tk/bkl.webp" type="image/webp"><img src="img/tk/bkl.png" alt="Байкал сервис - транспортный партнер" class="companies__img" loading="lazy" itemprop="logo"></picture>
 							</div>
-							<a target="_blank" href="https://request.baikalsr.ru/calculator/?guid=d6f0fad1-e269-1fbd-8d68-e430853a6721" class="companies__link">Онлайн-калькулятор</a>
+							<span class="visually-hidden" itemprop="name">Байкал сервис</span>
+							<a target="_blank" rel="nofollow" href="https://request.baikalsr.ru/calculator/?guid=d6f0fad1-e269-1fbd-8d68-e430853a6721" class="companies__link">Онлайн-калькулятор</a>
 						</div>
-						<div class="companies__item">
+						<div class="companies__item" itemscope itemtype="http://schema.org/Organization">
 							<div class="companies__image">
-								<picture><source srcset="img/tk/jld.webp" type="image/webp"><img src="img/tk/jld.png" alt="Желдорэкспедиция" class="companies__img"></picture>
+								<picture><source srcset="img/tk/jld.webp" type="image/webp"><img src="img/tk/jld.png" alt="Желдорэкспедиция - транспортный партнер" class="companies__img" loading="lazy" itemprop="logo"></picture>
 							</div>
-							<a target="_blank" href="https://www.jde.ru/online/calculator.html" class="companies__link">Онлайн-калькулятор</a>
+							<span class="visually-hidden" itemprop="name">Желдорэкспедиция</span>
+							<a target="_blank" rel="nofollow" href="https://www.jde.ru/online/calculator.html" class="companies__link">Онлайн-калькулятор</a>
 						</div>
-						<div class="companies__item">
+						<div class="companies__item" itemscope itemtype="http://schema.org/Organization">
 							<div class="companies__image">
-								<img src="img/tk/kit.svg" alt="Кит" class="companies__img">
+								<img src="img/tk/kit.svg" alt="Кит - транспортный партнер" class="companies__img" loading="lazy" itemprop="logo">
 							</div>
-							<a target="_blank" href="https://tk-kit.ru/order" class="companies__link">Онлайн-калькулятор</a>
+							<span class="visually-hidden" itemprop="name">Кит</span>
+							<a target="_blank" rel="nofollow" href="https://tk-kit.ru/order" class="companies__link">Онлайн-калькулятор</a>
 						</div>
 					</div>
 				</div>
 			</section>
+
+
 
 
 		</main>
@@ -609,7 +676,7 @@
 	<button class="scroll-top" aria-label="Наверх">
 		<i class="_icon-arrow-down"></i>
 	</button>
-	<script src="js/app.min.js?_v=20250722162733"></script>
+	<script src="js/app.min.js?_v=20250723162407"></script>
 </body>
 
 </html>
