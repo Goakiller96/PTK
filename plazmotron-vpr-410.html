@@ -8,6 +8,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+
 	<!-- Заголовок и описание -->
 	<title>ПлазмаТехКомплект</title>
 	<meta name="description" content="Описание продукта">
@@ -20,6 +21,11 @@
 	<link rel="icon" href="./favicon-192x192.png" sizes="192x192">
 	<link rel="apple-touch-icon" href="./apple-touch-icon.png">
 	<meta name="theme-color" content="#005f87">
+
+
+	<!-- Предварительное подключение к Яндекс.Картам -->
+	<link rel="preconnect" href="https://yandex.ru">
+	<link rel="dns-prefetch" href="https://yandex.ru">
 
 	<!-- Критические стили -->
 	<style>
@@ -36,10 +42,50 @@
 			margin: 0;
 			font-family: Roboto, sans-serif;
 		}
+
+		.delivery__banner {
+			position: relative;
+			min-height: 500px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: #fff;
+			overflow: hidden;
+		}
+
+		.delivery__banner::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(230, 148, 16, 0.3)), url('img/sklad.webp');
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			z-index: -1;
+		}
+
+		.delivery__banner-title,
+		.delivery__banner-subtitle {
+			text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+			color: #fff;
+			padding: 0 5px;
+			position: relative;
+			z-index: 1;
+		}
 	</style>
 
 	<!-- Основные стили -->
-	<link rel="stylesheet" href="./css/style.min.css?_v=20250721163116">
+	<!-- <link  rel="stylesheet" href="./css/style.min.css?_v=20250724125539"> -->
+	<link rel="preload" href="./css/style.min.css?_v=20250723163836" as="style">
+	<link rel="stylesheet" href="./css/style.min.css?_v=20250723163836">
+
+
 
 	<!-- JavaScript для снятия скрытия -->
 	<script>
@@ -615,6 +661,9 @@
 							<nav class="footer-menu__body">
 								<ul data-spollers="767.98,max" class="footer__menu-list">
 									<li class="footer-menu__item">
+										<a href="catalog.html" class="footer-menu__link">Каталог</a>
+									</li>
+									<li class="footer-menu__item">
 										<a href="#" class="footer-menu__link">ПЛАЗМОТРОНЫ</a>
 										<button data-spoller type="button" class="footer-menu__arrow menu__arrow _icon-arrow-down"></button>
 										<ul class="footer__sub-list">
@@ -657,7 +706,7 @@
 										<a href="delivery.html" class="footer-menu__link">Доставка</a>
 									</li>
 									<li class="footer-menu__item">
-										<a href="#" class="footer-menu__link">ПУНКТ МЕНЮ</a>
+										<a href="#" class="footer-menu__link">О компании</a>
 									</li>
 								</ul>
 							</nav>
@@ -756,7 +805,7 @@
 		<i class="_icon-arrow-down"></i>
 	</button>
 
-	<script src="js/app.min.js?_v=20250721163116"></script>
+	<script src="js/app.min.js?_v=20250724125539"></script>
 </body>
 
 </html>
