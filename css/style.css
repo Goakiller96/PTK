@@ -1786,6 +1786,7 @@ h3 {
   gap: 10px;
   position: relative;
   width: 100%;
+  padding: 0px 0px 20px 0px;
 }
 
 .catalog__title-wrapper::after {
@@ -1832,11 +1833,11 @@ h3 {
   border-radius: 50%;
   border: 1px solid rgba(56, 56, 56, 0.8);
   color: rgba(56, 56, 56, 0.8);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
   position: relative;
-  top: -20px;
+  top: -10px;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
   -ms-flex-negative: 0;
@@ -3328,10 +3329,6 @@ h3 {
   padding: 0;
 }
 
-.delivery__title-wrapper {
-  padding: 20px 0;
-}
-
 .delivery__banner-subtitle {
   max-width: 43.75rem;
 }
@@ -3387,25 +3384,6 @@ h3 {
 
 .terms__list {
   text-align: justify;
-}
-
-.terms__map {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  overflow: hidden;
-  padding-bottom: 60%;
-  border: 1px solid rgba(122, 122, 122, 0.1);
-  margin: 1.25rem 0rem;
-}
-
-.terms__map iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
 }
 
 .actions__contacts-delivery {
@@ -3486,6 +3464,11 @@ h3 {
   cursor: pointer;
   width: auto;
   white-space: nowrap;
+}
+
+#map {
+  margin: 1.25rem 0rem;
+  border: 1px solid rgba(122, 122, 122, 0.1);
 }
 
 @media (min-width: 47.99875em) {
@@ -3759,7 +3742,7 @@ h3 {
   }
 
   .catalog__container {
-    padding-top: 3.125rem;
+    padding-top: 1.875rem;
   }
 
   .catalog__container {
@@ -3779,7 +3762,7 @@ h3 {
   }
 
   .plazmotron__container {
-    padding-top: 3.125rem;
+    padding-top: 1.875rem;
   }
 
   .products__wrapper {
@@ -3796,6 +3779,10 @@ h3 {
 
   .specification {
     margin-bottom: 5rem;
+  }
+
+  .delivery {
+    padding-top: 1.875rem;
   }
 
   .delivery {
@@ -3927,10 +3914,6 @@ h3 {
     font-size: 14px;
     margin-right: 8px;
     padding-right: 12px;
-  }
-
-  .terms__map iframe {
-    height: 300px;
   }
 }
 
@@ -4188,7 +4171,7 @@ h3 {
   }
 
   .catalog__container {
-    padding-top: 1.25rem;
+    padding-top: 0.9375rem;
   }
 
   .catalog__container {
@@ -4208,7 +4191,7 @@ h3 {
   }
 
   .plazmotron__container {
-    padding-top: 1.25rem;
+    padding-top: 0.9375rem;
   }
 
   .products__wrapper {
@@ -4225,6 +4208,10 @@ h3 {
 
   .specification {
     margin-bottom: 2.5rem;
+  }
+
+  .delivery {
+    padding-top: 0.9375rem;
   }
 
   .delivery {
@@ -5385,15 +5372,15 @@ h3 {
     }
 }
 
-@supports (padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
+@supports (padding-top: clamp( 0.9375rem , 0.6217105263rem  +  1.5789473684vw , 1.875rem )) {
     .catalog__container {
-      padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem );
+      padding-top: clamp( 0.9375rem , 0.6217105263rem  +  1.5789473684vw , 1.875rem );
     }
 }
 
-@supports not (padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
+@supports not (padding-top: clamp( 0.9375rem , 0.6217105263rem  +  1.5789473684vw , 1.875rem )) {
     .catalog__container {
-      padding-top: calc(1.25rem + 1.875 * (100vw - 20rem) / 59.375);
+      padding-top: calc(0.9375rem + 0.9375 * (100vw - 20rem) / 59.375);
     }
 }
 
@@ -5445,15 +5432,15 @@ h3 {
     }
 }
 
-@supports (padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
+@supports (padding-top: clamp( 0.9375rem , 0.6217105263rem  +  1.5789473684vw , 1.875rem )) {
     .plazmotron__container {
-      padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem );
+      padding-top: clamp( 0.9375rem , 0.6217105263rem  +  1.5789473684vw , 1.875rem );
     }
 }
 
-@supports not (padding-top: clamp( 1.25rem , 0.6184210526rem  +  3.1578947368vw , 3.125rem )) {
+@supports not (padding-top: clamp( 0.9375rem , 0.6217105263rem  +  1.5789473684vw , 1.875rem )) {
     .plazmotron__container {
-      padding-top: calc(1.25rem + 1.875 * (100vw - 20rem) / 59.375);
+      padding-top: calc(0.9375rem + 0.9375 * (100vw - 20rem) / 59.375);
     }
 }
 
@@ -5502,6 +5489,18 @@ h3 {
 @supports not (margin-bottom: clamp( 2.5rem , 1.6578947368rem  +  4.2105263158vw , 5rem )) {
     .specification {
       margin-bottom: calc(2.5rem + 2.5 * (100vw - 20rem) / 59.375);
+    }
+}
+
+@supports (padding-top: clamp( 0.9375rem , 0.6217105263rem  +  1.5789473684vw , 1.875rem )) {
+    .delivery {
+      padding-top: clamp( 0.9375rem , 0.6217105263rem  +  1.5789473684vw , 1.875rem );
+    }
+}
+
+@supports not (padding-top: clamp( 0.9375rem , 0.6217105263rem  +  1.5789473684vw , 1.875rem )) {
+    .delivery {
+      padding-top: calc(0.9375rem + 0.9375 * (100vw - 20rem) / 59.375);
     }
 }
 
