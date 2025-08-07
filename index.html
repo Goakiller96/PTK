@@ -81,7 +81,7 @@
 	</style>
 
 	<!-- Основные стили -->
-	<!-- <link  rel="stylesheet" href="./css/style.min.css?_v=20250725190537"> -->
+	<!-- <link  rel="stylesheet" href="./css/style.min.css?_v=20250807154044"> -->
 	<link rel="preload" href="./css/style.min.css?_v=20250723163836" as="style">
 	<link rel="stylesheet" href="./css/style.min.css?_v=20250723163836">
 
@@ -303,8 +303,7 @@
 		<main class="page">
 
 
-			<!-- Hero Section with Schema.org markup -->
-			<section class="hero" itemscope itemtype="https://schema.org/Service">
+			<!-- <section class="hero" itemscope itemtype="https://schema.org/Service">
 				<div class="hero__container">
 					<div class="hero__wrapper">
 						<div class="hero__content">
@@ -315,8 +314,9 @@
 							<p class="hero__description" itemprop="description">С 1995 года мы создаём
 								высококачественные плазмотроны и расходные материалы, такие как электроды и сопла,
 								обеспечивая точность и долговечность</p>
-							<div class="hero__link products__description-link">
-								<a href="catalog.html" class="_icon-arrow-right" aria-label="Перейти в каталог продукции" itemprop="url">
+							<div class="hero__link products__description-link btn">
+								<a href="catalog.html" class="_icon-arrow-right"
+									aria-label="Перейти в каталог продукции" itemprop="url">
 									<span>Перейти в каталог</span>
 								</a>
 							</div>
@@ -328,13 +328,128 @@
 							<div class="hero__image">
 								<picture>
 									<source srcset="img/common_parts.webp" type="image/webp">
-									<img src="img/common_parts.png" alt="Комплектующие для плазменной резки: плазмотроны, электроды и сопла" class="hero__img" loading="lazy" width="600" height="400" itemprop="image">
+									<img src="img/common_parts.png"
+										alt="Комплектующие для плазменной резки: плазмотроны, электроды и сопла"
+										class="hero__img" loading="lazy" width="600" height="400" itemprop="image">
 								</picture>
 							</div>
 						</div>
 					</div>
 				</div>
+			</section> -->
+
+
+			<section class="page__main-slider main-slider">
+				<div class="main-slider__container">
+					<div class="main-slider__body">
+
+						<!-- Основной контент (без изменений текста) -->
+						<div class="main-slider__content content-main">
+							<h1 class="content-main__title">Решения для плазменной резки</h1>
+							<p class="content-main__subtitle" itemprop="description">
+								Надёжное оборудование и комплектующие для плазменной резки от производителя
+							</p>
+							<p class="content-main__description" itemprop="description">
+								С 1995 года мы создаём высококачественные плазмотроны и расходные материалы, такие как
+								электроды и сопла, обеспечивая точность и долговечность
+							</p>
+							<div class="content-main__link btn">
+								<a href="catalog.html" class="_icon-arrow-right" aria-label="Перейти в каталог продукции" itemprop="url">
+									<span>Перейти в каталог</span>
+								</a>
+							</div>
+						</div>
+
+						<!-- Слайдер (полностью сохранена оригинальная структура) -->
+						<div class="slider-main__body slider__slider swiper">
+							<div class="main-slider__slider slider-main">
+								<div class="slider-main__controls controls-slider-main">
+									<div class="controls-slider-main__dots"></div>
+									<div class="controls-slider-main__arrows slider-arrows">
+										<button type="button" class="slider-arrow slider-arrow_prev _icon-arrow-down"></button>
+										<button type="button" class="slider-arrow slider-arrow_next _icon-arrow-down"></button>
+									</div>
+								</div>
+							</div>
+
+							<div class="slider1__wrapper swiper-wrapper">
+
+								<!-- Слайд 1 (без изменения текста) -->
+								<div class="slider-main__slide slider__slide swiper-slide">
+									<div class="slider-main__image">
+										<picture><source srcset="img/common_parts.webp" type="image/webp"><img src="img/common_parts.webp" alt="Плазмотрон ВПР-410 в сборе" loading="lazy"></picture>
+									</div>
+									<a href="#" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
+										<div class="slider-main__title">Комплектующие</div>
+										<div class="slider-main__text _icon-arrow-right">Всегда в наличии</div>
+									</a>
+								</div>
+
+								<!-- Слайд 2 -->
+								<div class="slider-main__slide slider__slide swiper-slide">
+									<div class="slider-main__image">
+										<picture><source srcset="img/plazmotron/vpr-410.webp" type="image/webp"><img src="img/plazmotron/vpr-410.webp" alt="Комплектующие для плазмотронов" loading="lazy"></picture>
+									</div>
+									<a href="plazmotron-vpr-410.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
+										<div class="slider-main__title">Плазмотрон</div>
+										<div class="slider-main__text _icon-arrow-right">ВПР-410 в сборе</div>
+									</a>
+								</div>
+
+								<!-- Слайд 3 -->
+								<div class="slider-main__slide slider__slide swiper-slide">
+									<div class="slider-main__image">
+										<picture><source srcset="img/plazmotron/vpr-210m.webp" type="image/webp"><img src="img/plazmotron/vpr-210m.webp" alt="Плазмотрон ВПР-210М" loading="lazy"></picture>
+									</div>
+									<a href="plazmotron-vpr-210m.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
+										<div class="slider-main__title">Плазмотрон</div>
+										<div class="slider-main__text _icon-arrow-right">ВПР-210М в сборе</div>
+									</a>
+								</div>
+
+								<!-- Слайд 4 -->
+								<div class="slider-main__slide slider__slide swiper-slide">
+									<div class="slider-main__image">
+										<picture><source srcset="img/plazmotron/vpr-402m.webp" type="image/webp"><img src="img/plazmotron/vpr-402m.webp" alt="Плазмотрон ВПР-402М" loading="lazy"></picture>
+									</div>
+									<a href="plazmotron-vpr-402m.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
+										<div class="slider-main__title">Плазмотрон</div>
+										<div class="slider-main__text _icon-arrow-right">ВПР-402М в сборе</div>
+									</a>
+								</div>
+
+								<!-- Слайд 5 -->
+								<div class="slider-main__slide slider__slide swiper-slide">
+									<div class="slider-main__image">
+										<picture><source srcset="img/plazmotron/vpr-150-400.webp" type="image/webp"><img src="img/plazmotron/vpr-150-400.webp" alt="Комплектующие серии 150-400" loading="lazy"></picture>
+									</div>
+									<a href="plazmotron-vpr-150-400.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
+										<div class="slider-main__title">Плазмотрон</div>
+										<div class="slider-main__text _icon-arrow-right">ВПР-150/400</div>
+									</a>
+								</div>
+
+								<!-- Слайд 6 -->
+								<div class="slider-main__slide slider__slide swiper-slide">
+									<div class="slider-main__image">
+										<picture><source srcset="img/plazmotron/vpr-450.webp" type="image/webp"><img src="img/plazmotron/vpr-450.webp" alt="Плазмотрон ВПР-450" loading="lazy"></picture>
+									</div>
+									<a href="plazmotron-vpr-450.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
+										<div class="slider-main__title">Плазмотрон</div>
+										<div class="slider-main__text _icon-arrow-right">ВПР-450P</div>
+									</a>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
 			</section>
+
+
+
+
 
 			<!-- Services Section with Schema.org markup -->
 			<section class="services" itemscope itemtype="https://schema.org/ItemList">
@@ -614,7 +729,7 @@
 	<button class="scroll-top" aria-label="Наверх">
 		<i class="_icon-arrow-down"></i>
 	</button>
-	<script src="js/app.min.js?_v=20250725190537"></script>
+	<script src="js/app.min.js?_v=20250807154044"></script>
 </body>
 
 </html>
