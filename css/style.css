@@ -854,12 +854,13 @@ h3 {
   -o-object-fit: contain;
      object-fit: contain;
   width: 100%;
-  max-height: 435px;
+  max-height: 400px;
 }
 
 .slider-main__content {
   min-width: 295px;
   max-height: 300px;
+  max-width: 200px;
   overflow: auto;
   position: absolute;
   color: inherit;
@@ -870,12 +871,13 @@ h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: rgba(255, 255, 255, 0.72);
+  background: #fff8d5;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
 
-.slider-main__content .slider-main__text {
+.slider-main__content .slider-main__text,
+.slider-main__content .slider-main__title {
   -webkit-transition: color 0.3s ease 0s;
   transition: color 0.3s ease 0s;
 }
@@ -1265,7 +1267,7 @@ h3 {
   color: inherit;
   line-height: 120%;
   padding: 10px 30px;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .search-form {
@@ -3782,6 +3784,52 @@ h3 {
   border: 1px solid rgba(122, 122, 122, 0.1);
 }
 
+.delivery__banner {
+  position: relative;
+  min-height: 500px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.delivery__banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(230, 148, 16, 0.3))), url("../img/sklad.webp");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(230, 148, 16, 0.3)), url("../img/sklad.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.delivery__banner-title,
+.delivery__banner-subtitle {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 0 5px;
+  position: relative;
+  z-index: 1;
+}
+
 /**
  * Swiper 11.2.10
  * Most modern mobile touch slider and framework with hardware accelerated transitions
@@ -4122,6 +4170,7 @@ h3 {
   .slider-main__content {
     position: absolute;
     min-width: 300px;
+    background: rgba(255, 255, 255, 0.72);
   }
 
   .header__bottom-title {
@@ -4169,7 +4218,7 @@ h3 {
 
   .menu__item._hover:hover .menu__arrow,
   .menu__item._hover:hover .menu__link {
-    color: #999;
+    color: #383838;
   }
 
   .menu__item._hover:hover .menu__arrow {
@@ -5323,7 +5372,12 @@ h3 {
 
   .menu__list {
     border-radius: 5px;
-    background-color: rgba(230, 230, 230, 0.4);
+    background-color: #fff8d5;
+    padding: 20px 10px;
+  }
+
+  .menu__item:not(:last-child) {
+    margin-bottom: 0.625rem;
   }
 
   .menu__item .menu__arrow {
@@ -5348,12 +5402,20 @@ h3 {
             transform: rotate(-180deg);
   }
 
+  .menu__arrow::before {
+    font-weight: 700;
+  }
+
+  .menu__sub-list {
+    margin-top: 0.9375rem;
+  }
+
   .menu__sub-item {
     padding: 10px 0;
   }
 
   .menu__sub-link {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 400;
   }
 
