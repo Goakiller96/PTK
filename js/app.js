@@ -4102,13 +4102,11 @@
             spaceBetween: 40,
             watchOverflow: true,
             speed: 800,
+            initialSlide: 1,
             autoplay: {
                 delay: 9e3,
                 disableOnInteraction: true
             },
-            watchSlidesProgress: true,
-            watchSlidesVisibility: true,
-            preloadImages: false,
             parallax: true,
             pagination: {
                 el: ".controls-slider-main__dots",
@@ -4135,11 +4133,7 @@
                     slidesPerView: "auto"
                 }
             },
-            on: {
-                init: function() {
-                    console.log("Swiper initialized");
-                }
-            }
+            on: {}
         });
     }
     window.addEventListener("load", (function() {
