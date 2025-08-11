@@ -4504,7 +4504,7 @@ h3 {
   }
 
   .services {
-    padding-top: 2.5rem;
+    padding-top: 3.75rem;
   }
 
   .services {
@@ -5274,7 +5274,7 @@ h3 {
 
 @media (max-width: 47.99875em) {
   .main-slider__body {
-    padding: 50px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
   }
 
   .content-main__subtitle {
@@ -6331,15 +6331,15 @@ h3 {
     }
 }
 
-@supports (padding-top: clamp( 1.875rem , 1.6644736842rem  +  1.0526315789vw , 2.5rem )) {
+@supports (padding-top: clamp( 1.875rem , 1.2434210526rem  +  3.1578947368vw , 3.75rem )) {
     .services {
-      padding-top: clamp( 1.875rem , 1.6644736842rem  +  1.0526315789vw , 2.5rem );
+      padding-top: clamp( 1.875rem , 1.2434210526rem  +  3.1578947368vw , 3.75rem );
     }
 }
 
-@supports not (padding-top: clamp( 1.875rem , 1.6644736842rem  +  1.0526315789vw , 2.5rem )) {
+@supports not (padding-top: clamp( 1.875rem , 1.2434210526rem  +  3.1578947368vw , 3.75rem )) {
     .services {
-      padding-top: calc(1.875rem + 0.625 * (100vw - 20rem) / 59.375);
+      padding-top: calc(1.875rem + 1.875 * (100vw - 20rem) / 59.375);
     }
 }
 
