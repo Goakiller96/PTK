@@ -45,7 +45,7 @@
 	</style>
 
 	<!-- Основные стили -->
-	<!-- <link  rel="stylesheet" href="./css/style.min.css?_v=20250808155215"> -->
+	<!-- <link  rel="stylesheet" href="./css/style.min.css?_v=20250811105719"> -->
 	<link rel="preload" href="./css/style.min.css?_v=20250723163836" as="style">
 	<link rel="stylesheet" href="./css/style.min.css?_v=20250723163836">
 
@@ -266,50 +266,14 @@
 		</header>
 		<main class="page">
 
-
-			<!-- <section class="hero" itemscope itemtype="https://schema.org/Service">
-				<div class="hero__container">
-					<div class="hero__wrapper">
-						<div class="hero__content">
-							<meta itemprop="category" content="Оборудование для плазменной резки">
-							<h1 class="hero__title" itemprop="name">Решения для плазменной резки</h1>
-							<p class="hero__subtitle" itemprop="description">Надёжное оборудование и комплектующие для
-								плазменной резки от производителя</p>
-							<p class="hero__description" itemprop="description">С 1995 года мы создаём
-								высококачественные плазмотроны и расходные материалы, такие как электроды и сопла,
-								обеспечивая точность и долговечность</p>
-							<div class="hero__link products__description-link btn">
-								<a href="catalog.html" class="_icon-arrow-right"
-									aria-label="Перейти в каталог продукции" itemprop="url">
-									<span>Перейти в каталог</span>
-								</a>
-							</div>
-							<div itemprop="provider" itemscope itemtype="https://schema.org/Organization">
-								<meta itemprop="name" content="Плазматехкомплект">
-							</div>
-						</div>
-						<div class="hero__media">
-							<div class="hero__image">
-								<picture>
-									<source srcset="img/common_parts.webp" type="image/webp">
-									<img src="img/common_parts.png"
-										alt="Комплектующие для плазменной резки: плазмотроны, электроды и сопла"
-										class="hero__img" loading="lazy" width="600" height="400" itemprop="image">
-								</picture>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section> -->
-
-
-			<section class="page__main-slider main-slider">
+			<section class="page__main-slider main-slider" itemscope itemtype="https://schema.org/Service">
 				<div class="main-slider__container">
 					<div class="main-slider__body">
 
-						<!-- Основной контент (без изменений текста) -->
+						<!-- Основной контент -->
 						<div class="main-slider__content content-main">
-							<h1 class="content-main__title">Решения для плазменной резки</h1>
+							<meta itemprop="serviceType" content="Оборудование для плазменной резки">
+							<h1 class="content-main__title" itemprop="name">Решения для плазменной резки</h1>
 							<p class="content-main__subtitle" itemprop="description">
 								Надёжное оборудование и комплектующие для плазменной резки от производителя
 							</p>
@@ -318,13 +282,16 @@
 								электроды и сопла, обеспечивая точность и долговечность
 							</p>
 							<div class="content-main__link btn">
-								<a href="catalog.html" class="_icon-arrow-right" aria-label="Перейти в каталог продукции" itemprop="url">
+								<a href="catalog.html" class="_icon-arrow-right" aria-label="Перейти в каталог продукции">
 									<span>Перейти в каталог</span>
 								</a>
 							</div>
+							<div itemprop="provider" itemscope itemtype="https://schema.org/Organization">
+								<meta itemprop="name" content="Плазматехкомплект">
+							</div>
 						</div>
 
-						<!-- Слайдер (полностью сохранена оригинальная структура) -->
+						<!-- Слайдер -->
 						<div class="slider-main__body slider__slider swiper">
 							<div class="main-slider__slider slider-main">
 								<div class="slider-main__controls controls-slider-main">
@@ -338,21 +305,23 @@
 
 							<div class="slider1__wrapper swiper-wrapper">
 
-								<!-- Слайд 1 (без изменения текста) -->
+
+
+								<!-- Слайд 1 -->
 								<div class="slider-main__slide slider__slide swiper-slide">
 									<div class="slider-main__image">
-										<picture><source srcset="img/common_parts.webp" type="image/webp"><img src="img/common_parts.webp" alt="Плазмотрон ВПР-410 в сборе" loading="lazy"></picture>
+										<picture><source srcset="img/plazmotron/vpr-210m.webp" type="image/webp"><img src="img/plazmotron/vpr-210m.webp" alt="Плазмотрон ВПР-210М" loading="lazy" itemprop="image"></picture>
 									</div>
-									<a href="#" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
-										<div class="slider-main__title">Комплектующие</div>
-										<div class="slider-main__text _icon-arrow-right">Всегда в наличии</div>
+									<a href="plazmotron-vpr-210m.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
+										<div class="slider-main__title">Плазмотрон</div>
+										<div class="slider-main__text _icon-arrow-right">ВПР-210М в сборе</div>
 									</a>
 								</div>
 
 								<!-- Слайд 2 -->
 								<div class="slider-main__slide slider__slide swiper-slide">
 									<div class="slider-main__image">
-										<picture><source srcset="img/plazmotron/vpr-410.webp" type="image/webp"><img src="img/plazmotron/vpr-410.webp" alt="Комплектующие для плазмотронов" loading="lazy"></picture>
+										<picture><source srcset="img/plazmotron/vpr-410.webp" type="image/webp"><img src="img/plazmotron/vpr-410.webp" alt="Комплектующие для плазмотронов" loading="lazy" itemprop="image"></picture>
 									</div>
 									<a href="plazmotron-vpr-410.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
 										<div class="slider-main__title">Плазмотрон</div>
@@ -363,18 +332,7 @@
 								<!-- Слайд 3 -->
 								<div class="slider-main__slide slider__slide swiper-slide">
 									<div class="slider-main__image">
-										<picture><source srcset="img/plazmotron/vpr-210m.webp" type="image/webp"><img src="img/plazmotron/vpr-210m.webp" alt="Плазмотрон ВПР-210М" loading="lazy"></picture>
-									</div>
-									<a href="plazmotron-vpr-210m.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
-										<div class="slider-main__title">Плазмотрон</div>
-										<div class="slider-main__text _icon-arrow-right">ВПР-210М в сборе</div>
-									</a>
-								</div>
-
-								<!-- Слайд 4 -->
-								<div class="slider-main__slide slider__slide swiper-slide">
-									<div class="slider-main__image">
-										<picture><source srcset="img/plazmotron/vpr-402m.webp" type="image/webp"><img src="img/plazmotron/vpr-402m.webp" alt="Плазмотрон ВПР-402М" loading="lazy"></picture>
+										<picture><source srcset="img/plazmotron/vpr-402m.webp" type="image/webp"><img src="img/plazmotron/vpr-402m.webp" alt="Плазмотрон ВПР-402М" loading="lazy" itemprop="image"></picture>
 									</div>
 									<a href="plazmotron-vpr-402m.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
 										<div class="slider-main__title">Плазмотрон</div>
@@ -382,10 +340,10 @@
 									</a>
 								</div>
 
-								<!-- Слайд 5 -->
+								<!-- Слайд 4 -->
 								<div class="slider-main__slide slider__slide swiper-slide">
 									<div class="slider-main__image">
-										<picture><source srcset="img/plazmotron/vpr-150-400.webp" type="image/webp"><img src="img/plazmotron/vpr-150-400.webp" alt="Комплектующие серии 150-400" loading="lazy"></picture>
+										<picture><source srcset="img/plazmotron/vpr-150-400.webp" type="image/webp"><img src="img/plazmotron/vpr-150-400.webp" alt="Комплектующие серии 150-400" loading="lazy" itemprop="image"></picture>
 									</div>
 									<a href="plazmotron-vpr-150-400.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
 										<div class="slider-main__title">Плазмотрон</div>
@@ -393,27 +351,32 @@
 									</a>
 								</div>
 
-								<!-- Слайд 6 -->
+								<!-- Слайд 5 -->
 								<div class="slider-main__slide slider__slide swiper-slide">
 									<div class="slider-main__image">
-										<picture><source srcset="img/plazmotron/vpr-450.webp" type="image/webp"><img src="img/plazmotron/vpr-450.webp" alt="Плазмотрон ВПР-450" loading="lazy"></picture>
+										<picture><source srcset="img/plazmotron/vpr-450.webp" type="image/webp"><img src="img/plazmotron/vpr-450.webp" alt="Плазмотрон ВПР-450" loading="lazy" itemprop="image"></picture>
 									</div>
 									<a href="plazmotron-vpr-450.html" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
 										<div class="slider-main__title">Плазмотрон</div>
 										<div class="slider-main__text _icon-arrow-right">ВПР-450P</div>
 									</a>
 								</div>
+								<!-- Слайд 6 -->
+								<div class="slider-main__slide slider__slide swiper-slide">
+									<div class="slider-main__image">
+										<picture><source srcset="img/common_parts.webp" type="image/webp"><img src="img/common_parts.webp" alt="Плазмотрон ВПР-410 в сборе" loading="lazy" itemprop="image"></picture>
+									</div>
+									<a href="#" class="slider-main__content" data-swiper-parallax-x="-100%" data-swiper-parallax-opacity="0">
+										<div class="slider-main__title">Комплектующие</div>
+										<div class="slider-main__text _icon-arrow-right">Всегда в наличии</div>
+									</a>
+								</div>
 
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</section>
-
-
-
-
 
 			<!-- Services Section with Schema.org markup -->
 			<section class="services" itemscope itemtype="https://schema.org/ItemList">
@@ -423,7 +386,7 @@
 						<!-- Service 1 -->
 						<div class="services__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Service">
 							<div class="services__icon" aria-hidden="true">
-								<img src="img/icons/plasma.svg" alt="Иконка плазмотрона" role="presentation">
+								<img src="img/icons/plasma.svg" alt="Иконка плазмотрона">
 							</div>
 							<h3 class="services__card-title" itemprop="name">Производство</h3>
 							<p class="services__text" itemprop="description">Изготовление и поставка плазмотронов для
@@ -436,15 +399,13 @@
 						<!-- Service 2 -->
 						<div class="services__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Service">
 							<div class="services__icon" aria-hidden="true">
-								<img src="img/icons/support.svg" alt="Иконка технической поддержки" role="presentation">
+								<img src="img/icons/support.svg" alt="Иконка технической поддержки">
 							</div>
 							<h3 class="services__card-title" itemprop="name">Техническая поддержка</h3>
 							<p class="services__text" itemprop="description">Помощь в освоении и использовании
 								оборудования для плазменной резки.</p>
 							<meta itemprop="serviceType" content="Техническая поддержка">
 							<meta itemprop="provider" content="Плазматехкомплект">
-
-							<!-- Новый блок ServiceChannel вместо ссылки -->
 							<div itemprop="availableChannel" itemscope itemtype="https://schema.org/ServiceChannel">
 								<meta itemprop="servicePhone" content="+7 343 287-96-43">
 								<link itemprop="serviceUrl" href="/contacts.html">
@@ -454,7 +415,7 @@
 						<!-- Service 3 -->
 						<div class="services__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Service">
 							<div class="services__icon" aria-hidden="true">
-								<img src="img/icons/repair.svg" alt="Иконка услуги по ремонту" role="presentation">
+								<img src="img/icons/repair.svg" alt="Иконка услуги по ремонту">
 							</div>
 							<h3 class="services__card-title" itemprop="name">Ремонт и модернизация</h3>
 							<p class="services__text" itemprop="description">Ремонт источников питания и модернизация
@@ -466,7 +427,7 @@
 						<!-- Service 4 -->
 						<div class="services__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/Service">
 							<div class="services__icon" aria-hidden="true">
-								<img src="img/icons/guarantie.svg" alt="Иконка гарантийного обслуживания" role="presentation">
+								<img src="img/icons/guarantie.svg" alt="Иконка гарантийного обслуживания">
 							</div>
 							<h3 class="services__card-title" itemprop="name">Гарантийное обслуживание</h3>
 							<p class="services__text" itemprop="description">Гарантия на всё поставляемое оборудование и
@@ -478,10 +439,6 @@
 					</div>
 				</div>
 			</section>
-
-
-
-
 
 		</main>
 		<footer class="footer">
@@ -605,7 +562,7 @@
 		</footer>
 	</div>
 	<!-- Общие элементы корзины -->
-	<aside class="cart-modal" aria-modal="true" aria-labelledby="cart-title" role="dialog" tabindex="-1" aria-describedby="cart-description">
+	<div class="cart-modal" aria-labelledby="cart-title" tabindex="-1" aria-describedby="cart-description">
 		<div id="cart-description" class="visually-hidden">
 			Управление товарами в корзине
 		</div>
@@ -622,12 +579,11 @@
 			<button type="button" class="submit-order">Оформить заказ</button>
 		</div>
 		<span tabindex="0" class="focus-trap-end" aria-hidden="true"></span>
-	</aside>
+	</div>
 	<div class="cart-overlay"></div>
 
-
 	<!-- Модальное окно формы заказа -->
-	<aside class="order-form-modal" aria-modal="true" aria-labelledby="order-form-title" role="dialog" tabindex="-1" aria-describedby="order-form-description">
+	<div class="order-form-modal" aria-labelledby="order-form-title" tabindex="-1" aria-describedby="order-form-description">
 		<div id="order-form-description" class="visually-hidden">
 			Форма для заполнения данных заказа
 		</div>
@@ -657,12 +613,11 @@
 			</div>
 		</form>
 		<span tabindex="0" class="focus-trap-end" aria-hidden="true"></span>
-	</aside>
+	</div>
 	<div class="order-form-overlay"></div>
 
-
-	<!-- Модальное окно формы обратного звонка-->
-	<aside class="call-back-modal" aria-modal="true" aria-labelledby="call-back-title" role="dialog" tabindex="-1" aria-describedby="call-back-description">
+	<!-- Модальное окно формы обратного звонка -->
+	<div class="call-back-modal" aria-labelledby="call-back-title" aria-describedby="call-back-description" tabindex="-1">
 		<div id="call-back-description" class="visually-hidden">
 			Форма для заказа обратного звонка
 		</div>
@@ -685,15 +640,14 @@
 				<button type="submit" class="call-back-submit">Отправить</button>
 			</div>
 		</form>
-	</aside>
+	</div>
 	<div class="call-back-overlay"></div>
-
 
 	<!-- Кнопка наверх -->
 	<button class="scroll-top" aria-label="Наверх">
 		<i class="_icon-arrow-down"></i>
 	</button>
-	<script src="js/app.min.js?_v=20250808155215"></script>
+	<script src="js/app.min.js?_v=20250811105719"></script>
 </body>
 
 </html>
