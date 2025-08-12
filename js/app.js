@@ -4337,6 +4337,17 @@
             detailsUrl: "plazmotron-vpr-410.html",
             category: "Плазмотроны"
         }, {
+            title: "Плазмотрон ВПР-150/400<br> в сборе",
+            article: "150-01/400-01",
+            image: "img/plazmotron/vpr-150-400.webp",
+            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм", "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
+            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
+            hasDetails: true,
+            detailsUrl: "plazmotron-vpr-150-400.html",
+            category: "Плазмотроны"
+        }, {
             title: "Плазмотрон ВПР-210м<br> без распределителя",
             article: "210-02",
             image: "img/plazmotron/vpr-210-golovka.webp",
@@ -4370,17 +4381,6 @@
             detailsUrl: "plazmotron-vpr-410.html",
             category: "Плазмотроны"
         }, {
-            title: "Плазмотрон ВПР-150/400<br> в сборе",
-            article: "150-01/400-01",
-            image: "img/plazmotron/vpr-150-400.webp",
-            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм", "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
-            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
-            hasDetails: true,
-            detailsUrl: "plazmotron-vpr-150-400.html",
-            category: "Плазмотроны"
-        }, {
             title: "Плазмотрон ВПР-450р ручной",
             article: "450-01",
             image: "img/plazmotron/vpr-450.webp",
@@ -4392,7 +4392,7 @@
             detailsUrl: "plazmotron-vpr-450.html",
             category: "Плазмотроны"
         }, {
-            title: "Сопло плазменное 210",
+            title: "Сопло плазменное 150/210",
             article: "1512",
             image: "img/cards/soplo-210_2.webp",
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
@@ -4419,7 +4419,7 @@
             description: "Сопла для плазменной резки серии 410",
             category: "Сопла"
         }, {
-            title: "Сопло ВПР-400",
+            title: "Сопло плазменное ВПР-400",
             article: "4012",
             image: "img/cards/soplo-400.webp",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
@@ -4655,7 +4655,7 @@
         }));
         return productsData;
     }
-    const productsData = createInitialProducts();
+    const products_productsData = createInitialProducts();
     class EmailJSResponseStatus {
         constructor(_status = 0, _text = "Network Error") {
             this.status = _status;
@@ -7458,913 +7458,859 @@
     try {
         globalThis.IMask = IMask;
     } catch {}
-    es.init("75OW2t6IQ_6Orzxue");
-    let uniqueIdCounter = 0;
-    let isModalOpen = false;
-    let headerScrollState = false;
-    let savedHeaderState = false;
-    const header = document.querySelector(".header");
-    const logoText = header ? header.querySelector(".header__logo-text") : null;
-    const logoTextShort = header ? header.querySelector(".header__logo-text-short") : null;
-    const headerBody = header ? header.querySelector(".header__body") : null;
-    const phoneItems = header ? header.querySelectorAll(".phones__item") : [];
-    const emailItems = header ? header.querySelectorAll(".emails__item") : [];
-    const phoneLinks = header ? header.querySelectorAll(".phones__link") : [];
-    const emailLinks = header ? header.querySelectorAll(".emails__link") : [];
-    const actionsContacts = header ? header.querySelector(".actions__contacts") : null;
+    const emailConfig = {
+        serviceId: "service_oozomec",
+        templateId: "template_3gx3kyp",
+        publicKey: "75OW2t6IQ_6Orzxue"
+    };
+    es.init(emailConfig.publicKey);
+    const translations = {
+        ru: {
+            allProducts: "Все товары",
+            emptyCart: "Корзина пуста!",
+            nameRequired: "Пожалуйста, введите ваше имя.",
+            phoneRequired: "Пожалуйста, введите корректный номер телефона.",
+            emailRequired: "Пожалуйста, введите корректный email.",
+            callBackSuccess: "Заявка на звонок успешно отправлена!",
+            orderSuccess: "Ваш заказ на сумму {total} ₽ успешно отправлен!",
+            emailJsError: "Ошибка: EmailJS не загружен. Пожалуйста, попробуйте позже.",
+            orderError: "Произошла ошибка при отправке заказа",
+            callBackError: "Произошла ошибка при отправке заявки",
+            productsNotLoaded: "Данные товаров не загружены",
+            containerNotFound: "Контейнер товаров не найден",
+            productsError: "Ошибка загрузки товаров",
+            productsEmpty: "Товары отсутствуют"
+        }
+    };
+    const AppState = {
+        uniqueIdCounter: 0,
+        isModalOpen: false,
+        headerScrollState: false,
+        savedHeaderState: false,
+        cart: [],
+        totalPrice: 0,
+        displayedProducts: 0,
+        isLoading: false,
+        allProductsLoaded: false,
+        currentCategory: "all",
+        searchTimeout: null,
+        savedScrollPosition: 0,
+        scrollbarWidth: 0,
+        filteredProducts: null
+    };
+    const DOM = {
+        header: document.querySelector(".header"),
+        productsContainer: document.getElementById("products-container"),
+        cartModal: document.querySelector(".cart-modal"),
+        cartIcon: document.getElementById("cart-icon"),
+        closeCartBtn: document.querySelector(".close-cart"),
+        cartItemsContainer: document.querySelector(".cart-items"),
+        cartTotal: document.querySelector(".cart-total"),
+        cartCount: document.querySelector(".cart-count"),
+        cartFooter: document.querySelector(".cart-footer"),
+        submitOrderBtn: document.querySelector(".submit-order"),
+        searchForm: document.querySelector(".search-form__item"),
+        searchInput: document.querySelector(".search-form__input"),
+        searchClear: document.querySelector(".search-form__clear"),
+        categoryFilter: document.querySelector("#category-filter"),
+        orderFormModal: document.querySelector(".order-form-modal"),
+        orderFormOverlay: document.querySelector(".order-form-overlay"),
+        callBackModal: document.querySelector(".call-back-modal"),
+        callBackOverlay: document.querySelector(".call-back-overlay")
+    };
+    function initDOMElements() {
+        if (!DOM.header) {
+            console.warn("Элемент header не найден");
+            return;
+        }
+        DOM.logoText = DOM.header.querySelector(".header__logo-text");
+        DOM.logoTextShort = DOM.header.querySelector(".header__logo-text-short");
+        DOM.headerBody = DOM.header.querySelector(".header__body");
+        DOM.phoneItems = Array.from(DOM.header.querySelectorAll(".phones__item"));
+        DOM.emailItems = Array.from(DOM.header.querySelectorAll(".emails__item"));
+        DOM.phoneLinks = Array.from(DOM.header.querySelectorAll(".phones__link"));
+        DOM.emailLinks = Array.from(DOM.header.querySelectorAll(".emails__link"));
+        DOM.actionsContacts = DOM.header.querySelector(".actions__contacts");
+        if (!DOM.logoText || !DOM.logoTextShort) console.warn("Логотипы header__logo-text или header__logo-text-short не найдены");
+        if (!DOM.headerBody) console.warn("Элемент header__body не найден");
+        if (DOM.phoneItems.length === 0) console.warn("Элементы phones__item не найдены");
+        if (DOM.emailItems.length === 0) console.warn("Элементы emails__item не найдены");
+        if (DOM.phoneLinks.length === 0) console.warn("Элементы phones__link не найдены");
+        if (DOM.emailLinks.length === 0) console.warn("Элементы emails__link не найдены");
+        if (!DOM.actionsContacts) console.warn("Элемент actions__contacts не найден");
+    }
+    function checkRequiredStyles() {
+        const requiredClasses = [ "body-no-scroll", "error-message", "success-message", "cart-modal", "order-form-modal", "call-back-modal" ];
+        requiredClasses.forEach((className => {
+            const testElement = document.createElement("div");
+            testElement.className = className;
+            document.body.appendChild(testElement);
+            const styles = window.getComputedStyle(testElement);
+            if (styles.display === "none" && styles.position === "static") console.warn(`CSS-класс ${className} не определен или имеет некорректные стили`);
+            testElement.remove();
+        }));
+    }
+    function calculateScrollbarWidth() {
+        if (AppState.scrollbarWidth === 0) {
+            const outer = document.createElement("div");
+            outer.style.visibility = "hidden";
+            outer.style.overflow = "scroll";
+            document.body.appendChild(outer);
+            const inner = document.createElement("div");
+            outer.appendChild(inner);
+            AppState.scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+            outer.parentNode.removeChild(outer);
+        }
+        return AppState.scrollbarWidth;
+    }
+    function lockBodyScroll() {
+        if (!document.body.classList.contains("body-no-scroll")) {
+            AppState.savedScrollPosition = window.scrollY;
+            const hasScrollbar = document.documentElement.scrollHeight > window.innerHeight;
+            if (hasScrollbar) ;
+            document.body.classList.add("body-no-scroll");
+            document.body.style.top = `-${AppState.savedScrollPosition}px`;
+        }
+    }
+    function unlockBodyScroll() {
+        if (document.body.classList.contains("body-no-scroll")) {
+            document.body.classList.remove("body-no-scroll");
+            document.body.style.top = "";
+            window.scrollTo(0, AppState.savedScrollPosition);
+        }
+    }
     function isDesktop() {
         return window.innerWidth > 991.98;
     }
     function handleScrollStyles() {
-        if (isModalOpen) return;
-        if (!header) {
-            console.error("Элемент .header не найден");
-            return;
-        }
+        if (AppState.isModalOpen || !DOM.header) return;
         const isScrolled = window.scrollY > 0;
         const shouldApplyStyles = isDesktop() && isScrolled;
-        headerScrollState = shouldApplyStyles;
-        if (logoText && logoTextShort) {
-            logoText.style.display = shouldApplyStyles ? "none" : "block";
-            logoTextShort.style.display = shouldApplyStyles ? "block" : "none";
+        AppState.headerScrollState = shouldApplyStyles;
+        if (DOM.logoText && DOM.logoTextShort) {
+            DOM.logoText.style.display = shouldApplyStyles ? "none" : "block";
+            DOM.logoTextShort.style.display = shouldApplyStyles ? "block" : "none";
             if (shouldApplyStyles) {
-                logoTextShort.style.opacity = "1";
-                logoTextShort.style.visibility = "visible";
+                DOM.logoTextShort.style.opacity = "1";
+                DOM.logoTextShort.style.visibility = "visible";
             } else {
-                logoText.style.opacity = "1";
-                logoText.style.visibility = "visible";
+                DOM.logoText.style.opacity = "1";
+                DOM.logoText.style.visibility = "visible";
             }
             if (!isDesktop()) {
-                logoText.style.display = "none";
-                logoTextShort.style.display = "block";
-                logoTextShort.style.opacity = "1";
-                logoTextShort.style.visibility = "visible";
+                DOM.logoText.style.display = "none";
+                DOM.logoTextShort.style.display = "block";
+                DOM.logoTextShort.style.opacity = "1";
+                DOM.logoTextShort.style.visibility = "visible";
             }
         }
-        phoneItems.forEach((item => {
-            item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
-        }));
-        emailItems.forEach((item => {
-            item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
-        }));
-        phoneLinks.forEach((link => {
-            link.style.marginRight = shouldApplyStyles ? "10px" : "";
-        }));
-        emailLinks.forEach((link => {
-            link.style.marginRight = shouldApplyStyles ? "10px" : "";
-        }));
-        if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
-        if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
-        header.classList.toggle("scrolled", shouldApplyStyles);
+        const applyStyles = (elements, style) => {
+            elements.forEach((el => el && (el.style.cssText = shouldApplyStyles ? style : "")));
+        };
+        applyStyles(DOM.phoneItems, "display: flex; flex-direction: row;");
+        applyStyles(DOM.emailItems, "display: flex; flex-direction: row;");
+        applyStyles(DOM.phoneLinks, "margin-right: 10px");
+        applyStyles(DOM.emailLinks, "margin-right: 10px");
+        if (DOM.actionsContacts) DOM.actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
+        if (DOM.headerBody) DOM.headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
+        DOM.header.classList.toggle("scrolled", shouldApplyStyles);
     }
     function restoreHeaderState() {
-        if (!header) {
-            console.error("Элемент .header не найден");
-            return;
-        }
-        const shouldApplyStyles = savedHeaderState && isDesktop();
-        if (logoText && logoTextShort) {
-            logoText.style.display = shouldApplyStyles ? "none" : "block";
-            logoTextShort.style.display = shouldApplyStyles ? "block" : "none";
-            if (shouldApplyStyles) {
-                logoTextShort.style.opacity = "1";
-                logoTextShort.style.visibility = "visible";
-            } else {
-                logoText.style.opacity = "1";
-                logoText.style.visibility = "visible";
+        if (!DOM.header) return;
+        handleScrollStyles();
+    }
+    function trapFocus(modal) {
+        const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        modal.addEventListener("keydown", (e => {
+            if (e.key === "Tab") if (e.shiftKey && document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
             }
-            if (!isDesktop()) {
-                logoText.style.display = "none";
-                logoTextShort.style.display = "block";
-                logoTextShort.style.opacity = "1";
-                logoTextShort.style.visibility = "visible";
-            }
-        }
-        phoneItems.forEach((item => {
-            item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
         }));
-        emailItems.forEach((item => {
-            item.style.cssText = shouldApplyStyles ? "display: flex; flex-direction: row;" : "";
-        }));
-        phoneLinks.forEach((link => {
-            link.style.marginRight = shouldApplyStyles ? "10px" : "";
-        }));
-        emailLinks.forEach((link => {
-            link.style.marginRight = shouldApplyStyles ? "10px" : "";
-        }));
-        if (actionsContacts) actionsContacts.style.gap = shouldApplyStyles ? "5px" : "";
-        if (headerBody) headerBody.style.padding = shouldApplyStyles ? "5px 0" : "";
-        header.classList.toggle("scrolled", shouldApplyStyles);
     }
-    const script_isMobile = {
-        any: () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-    };
-    function getScrollbarWidth() {
-        const outer = document.createElement("div");
-        outer.style.visibility = "hidden";
-        outer.style.overflow = "scroll";
-        outer.style.msOverflowStyle = "scrollbar";
-        document.body.appendChild(outer);
-        const inner = document.createElement("div");
-        outer.appendChild(inner);
-        const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
-        outer.parentNode.removeChild(outer);
-        return scrollbarWidth;
+    function openModal(modal, overlay, focusElementSelector) {
+        if (!modal || !overlay) return;
+        closeOtherModals();
+        modal.classList.add("active");
+        overlay.classList.add("active");
+        AppState.isModalOpen = true;
+        lockBodyScroll();
+        setTimeout((() => {
+            const focusElement = document.querySelector(focusElementSelector);
+            if (focusElement) focusElement.focus();
+        }), 100);
+        trapFocus(modal);
     }
-    function hasScrollbar() {
-        return document.documentElement.scrollHeight > window.innerHeight;
+    function closeModal(modal, overlay) {
+        if (!modal || !overlay) return;
+        modal.classList.remove("active");
+        overlay.classList.remove("active");
+        AppState.isModalOpen = false;
+        unlockBodyScroll();
+        restoreHeaderState();
     }
-    window.onload = function() {
-        document.addEventListener("click", documentActions);
-        function documentActions(e) {
-            const targetElement = e.target;
-            if (window.innerWidth > 767.98 && script_isMobile.any()) if (targetElement.classList.contains("menu__arrow")) targetElement.closest(".menu__item").classList.toggle("_hover");
-        }
-        const headerElement = document.querySelector(".header");
-        if (headerElement) {
-            const callback = function(entries) {
-                if (entries[0].isIntersecting) headerElement.classList.remove("_scroll"); else headerElement.classList.add("_scroll");
-            };
-            const headerObserver = new IntersectionObserver(callback);
-            headerObserver.observe(headerElement);
-        }
-    };
-    document.addEventListener("DOMContentLoaded", (function() {
-        console.log("EmailJS:", typeof es);
-        console.log("IMask:", IMask);
-        const productsContainer = document.getElementById("products-container");
-        const cartModal = document.querySelector(".cart-modal");
-        document.getElementById("cart-icon");
-        const closeCartBtn = document.querySelector(".close-cart");
-        const cartItemsContainer = document.querySelector(".cart-items");
-        const cartTotal = document.querySelector(".cart-total");
-        const cartCount = document.querySelector(".cart-count");
-        const cartFooter = document.querySelector(".cart-footer");
-        const submitOrderBtn = document.querySelector(".submit-order");
-        const searchForm = document.querySelector(".search-form__item");
-        const searchInput = document.querySelector(".search-form__input");
-        const searchClear = document.querySelector(".search-form__clear");
-        const categoryFilter = document.querySelector("#category-filter");
-        const lazyLoadConfig = {
+    const LazyLoad = {
+        config: {
             initialItems: 10,
             loadMoreItems: 5,
             scrollThreshold: 300
-        };
-        let cart = [];
-        let totalPrice = 0;
-        let displayedProducts = 0;
-        let isLoading = false;
-        let allProductsLoaded = false;
-        let currentCategory = "all";
-        hasScrollbar() && getScrollbarWidth();
-        function initCategoryFilter() {
-            if (!categoryFilter) return;
-            const selectTrigger = categoryFilter.querySelector(".custom-select__trigger");
-            const selectValue = categoryFilter.querySelector(".custom-select__value");
-            const optionsList = categoryFilter.querySelector(".custom-select__options");
-            if (!selectTrigger || !selectValue || !optionsList) return;
-            const categories = [ ...new Set(productsData.map((product => product.category)).filter((category => category))) ];
-            const allOption = document.createElement("li");
-            allOption.textContent = "Все товары";
-            allOption.dataset.value = "all";
-            optionsList.appendChild(allOption);
-            categories.forEach((category => {
-                const option = document.createElement("li");
-                option.textContent = category;
-                option.dataset.value = category;
-                optionsList.appendChild(option);
-            }));
-            selectTrigger.addEventListener("click", (e => {
-                e.stopPropagation();
-                categoryFilter.classList.toggle("open");
-            }));
-            optionsList.addEventListener("click", (e => {
-                const option = e.target.closest("li");
-                if (!option) return;
-                currentCategory = option.dataset.value;
-                selectValue.textContent = option.textContent;
-                optionsList.querySelectorAll("li").forEach((opt => opt.classList.remove("selected")));
-                option.classList.add("selected");
-                categoryFilter.classList.remove("open");
-                resetLazyLoad();
-            }));
-            document.addEventListener("click", (e => {
-                if (!categoryFilter.contains(e.target)) categoryFilter.classList.remove("open");
-            }));
-            selectTrigger.addEventListener("keydown", (e => {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    categoryFilter.classList.toggle("open");
-                }
-            }));
-        }
-        function initLazyLoad() {
-            if (!productsContainer) {
-                console.error("Контейнер #products-container не найден");
-                return;
-            }
-            loadMoreProducts(lazyLoadConfig.initialItems);
-            window.addEventListener("scroll", handleScroll);
-        }
-        function handleScroll() {
-            if (isLoading || allProductsLoaded) return;
+        },
+        init() {
+            if (!DOM.productsContainer) return;
+            this.loadMoreProducts(this.config.initialItems);
+            window.addEventListener("scroll", this.handleScroll.bind(this));
+        },
+        handleScroll() {
+            if (AppState.isLoading || AppState.allProductsLoaded) return;
             const scrollPosition = window.innerHeight + window.scrollY;
             const pageHeight = document.documentElement.scrollHeight;
-            const threshold = pageHeight - lazyLoadConfig.scrollThreshold;
-            if (scrollPosition >= threshold) loadMoreProducts(lazyLoadConfig.loadMoreItems);
-        }
-        function loadMoreProducts(count) {
-            if (isLoading || allProductsLoaded) return;
-            isLoading = true;
+            const threshold = pageHeight - this.config.scrollThreshold;
+            if (scrollPosition >= threshold) this.loadMoreProducts(this.config.loadMoreItems);
+        },
+        loadMoreProducts(count) {
+            if (AppState.isLoading || AppState.allProductsLoaded) return;
+            AppState.isLoading = true;
             const filteredProducts = getFilteredProducts();
-            const endIndex = Math.min(displayedProducts + count, filteredProducts.length);
-            const productsToAdd = filteredProducts.slice(displayedProducts, endIndex);
+            const endIndex = Math.min(AppState.displayedProducts + count, filteredProducts.length);
+            const productsToAdd = filteredProducts.slice(AppState.displayedProducts, endIndex);
             const fragment = document.createDocumentFragment();
             productsToAdd.forEach(((product, index) => {
-                const productCard = createProductCard(product, displayedProducts + index < lazyLoadConfig.initialItems);
+                const productCard = createProductCard(product, AppState.displayedProducts + index < this.config.initialItems);
                 fragment.appendChild(productCard);
             }));
-            productsContainer.appendChild(fragment);
-            displayedProducts = endIndex;
-            allProductsLoaded = displayedProducts >= filteredProducts.length;
-            isLoading = false;
-            if (!allProductsLoaded && shouldLoadMoreImmediately()) loadMoreProducts(lazyLoadConfig.loadMoreItems);
-        }
-        function getFilteredProducts() {
-            if (!Array.isArray(productsData)) {
-                console.error("productsData не является массивом:", productsData);
-                return [];
-            }
-            let filtered = productsData;
-            if (currentCategory !== "all") filtered = filtered.filter((product => product.category === currentCategory));
-            if (searchInput && searchInput.value.trim()) {
-                const searchTerm = searchInput.value.trim().toLowerCase();
-                filtered = filtered.filter((product => product.title && product.title.toLowerCase().includes(searchTerm) || product.article && product.article.toLowerCase().includes(searchTerm)));
-            }
-            return filtered;
-        }
-        function shouldLoadMoreImmediately() {
+            DOM.productsContainer.appendChild(fragment);
+            AppState.displayedProducts = endIndex;
+            AppState.allProductsLoaded = AppState.displayedProducts >= filteredProducts.length;
+            AppState.isLoading = false;
+            if (!AppState.allProductsLoaded && this.shouldLoadMoreImmediately()) this.loadMoreProducts(this.config.loadMoreItems);
+        },
+        shouldLoadMoreImmediately() {
             const pageHeight = document.documentElement.scrollHeight;
             const viewportHeight = window.innerHeight;
             const scrollPosition = window.scrollY;
-            return pageHeight - viewportHeight - scrollPosition < lazyLoadConfig.scrollThreshold;
-        }
-        function resetLazyLoad() {
-            displayedProducts = 0;
-            allProductsLoaded = false;
-            isLoading = false;
-            if (productsContainer) {
-                productsContainer.innerHTML = "";
-                loadMoreProducts(lazyLoadConfig.initialItems);
+            return pageHeight - viewportHeight - scrollPosition < this.config.scrollThreshold;
+        },
+        reset() {
+            AppState.displayedProducts = 0;
+            AppState.allProductsLoaded = false;
+            AppState.isLoading = false;
+            if (DOM.productsContainer) {
+                DOM.productsContainer.innerHTML = "";
+                this.loadMoreProducts(this.config.initialItems);
             }
         }
-        function setupCartOverlay() {
-            let cartOverlay = document.querySelector(".cart-overlay");
-            if (!cartOverlay) {
-                cartOverlay = document.createElement("div");
-                cartOverlay.className = "cart-overlay";
-                document.body.appendChild(cartOverlay);
-            }
-            cartOverlay.addEventListener("click", closeCart);
-            document.addEventListener("click", (e => {
-                if (!cartModal || !cartModal.classList.contains("active")) return;
-                if (!cartModal.contains(e.target) && !e.target.closest("#cart-icon")) closeCart();
-            }));
+    };
+    function validateProduct(product) {
+        return product && typeof product.title === "string" && typeof product.article === "string" && (typeof product.price === "number" || product.price === void 0) && (typeof product.category === "string" || product.category === void 0) && (typeof product.image === "string" || product.image === void 0);
+    }
+    function getFilteredProducts() {
+        if (AppState.filteredProducts) return AppState.filteredProducts;
+        if (!Array.isArray(products_productsData)) {
+            console.error(translations.ru.productsNotLoaded);
+            return [];
         }
-        function openCart() {
-            if (!cartModal || !closeCartBtn || !document.querySelector(".cart-overlay")) {
-                console.error("Не найдены необходимые элементы для корзины");
-                return;
-            }
-            const scrollPosition = window.scrollY;
-            document.body.dataset.scrollPosition = scrollPosition;
-            savedHeaderState = headerScrollState;
-            closeOtherModals();
-            cartModal.classList.add("active");
-            document.querySelector(".cart-overlay").classList.add("active");
-            document.body.classList.add("body-no-scroll");
-            isModalOpen = true;
-            document.body.style.position = "fixed";
-            document.body.style.top = `-${scrollPosition}px`;
-            document.body.style.width = "100%";
-            document.body.style.overflowY = "scroll";
-            setTimeout((() => closeCartBtn.focus()), 100);
+        let filtered = products_productsData.filter(validateProduct);
+        if (AppState.currentCategory !== "all") filtered = filtered.filter((product => product.category === AppState.currentCategory));
+        if (DOM.searchInput && DOM.searchInput.value.trim()) {
+            const searchTerm = DOM.searchInput.value.trim().toLowerCase();
+            filtered = filtered.filter((product => product.title && product.title.toLowerCase().includes(searchTerm) || product.article && product.article.toLowerCase().includes(searchTerm)));
         }
-        function closeCart() {
-            if (cartModal) cartModal.classList.remove("active");
-            if (document.querySelector(".cart-overlay")) document.querySelector(".cart-overlay").classList.remove("active");
-            const scrollPosition = parseInt(document.body.dataset.scrollPosition || "0");
-            document.body.classList.remove("body-no-scroll");
-            document.body.style.position = "";
-            document.body.style.top = "";
-            document.body.style.width = "";
-            document.body.style.overflowY = "";
-            delete document.body.dataset.scrollPosition;
-            window.scrollTo({
-                top: scrollPosition,
-                behavior: "instant"
+        AppState.filteredProducts = filtered;
+        return filtered;
+    }
+    function createProductCard(product, isInitial = false) {
+        if (!validateProduct(product)) {
+            console.warn(`Некорректные данные продукта: ${JSON.stringify(product)}`);
+            showErrorMessage(translations.ru.productsError);
+            return document.createElement("div");
+        }
+        const uniqueSuffix = `${product.article}-${AppState.uniqueIdCounter++}`;
+        const productCard = document.createElement("article");
+        productCard.className = "product__card";
+        productCard.dataset.title = product.title;
+        productCard.dataset.article = product.article;
+        productCard.setAttribute("itemscope", "");
+        productCard.setAttribute("itemtype", "http://schema.org/Product");
+        let sizeSelectorHTML = "";
+        if (product.sizes && Array.isArray(product.sizes) && product.sizes.length > 0) sizeSelectorHTML = `\n      <div class="product__size-selector">\n        <label for="size-${uniqueSuffix}">${product.sizeLabel || "Размер:"}</label>\n        <select id="size-${uniqueSuffix}" name="size-${uniqueSuffix}" class="product__size-select">\n          ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n        </select>\n      </div>\n    `;
+        const priceHTML = product.price ? `\n    <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n      <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n      <span itemprop="priceCurrency" content="RUB">₽</span>\n    </p>\n  ` : "";
+        const detailsLinkHTML = product.hasDetails || product.detailsUrl ? `\n    <a href="${product.detailsUrl || "#"}" class="product__details-link" aria-label="Подробнее о товаре ${product.title}">\n      Подробнее\n    </a>\n  ` : "";
+        productCard.innerHTML = `\n    <div class="product__image-wrapper">\n      <img src="${product.image || ""}" \n           alt="${product.alt || product.title}" \n           class="product__image" \n           loading="${isInitial ? "eager" : "lazy"}" \n           width="300" \n           height="200" \n           itemprop="image">\n    </div>\n    <div class="product__content">\n      <h3 class="product__title" itemprop="name">${product.title}</h3>\n      <div class="product__meta">\n        <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n        ${detailsLinkHTML}\n      </div>\n      <div class="product__bottom-section">\n        ${priceHTML}\n        ${sizeSelectorHTML}\n        <div class="product__footer">\n          <div class="quantity__controls">\n            <button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">−</button>\n            <input type="number" class="quantity__input" id="quantity-${uniqueSuffix}" name="quantity-${uniqueSuffix}" value="1" min="1" aria-label="Количество товара">\n            <button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>\n          </div>\n          <button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer" aria-label="Добавить ${product.title} в корзину">Добавить в корзину</button>\n        </div>\n      </div>\n    </div>\n  `;
+        return productCard;
+    }
+    function formatPrice(price) {
+        return new Intl.NumberFormat("ru-RU").format(price);
+    }
+    function sanitizeInput(input) {
+        return input.replace(/[<>&'"]/g, (char => ({
+            "<": "&lt;",
+            ">": "&gt;",
+            "&": "&amp;",
+            '"': "&quot;",
+            "'": "&#39;"
+        }[char])));
+    }
+    function addToCart(productCard) {
+        const productSubtitle = productCard.querySelector(".product__subtitle");
+        const productTitle = productCard.querySelector(".product__title");
+        const productPriceElement = productCard.querySelector('.product__price span[itemprop="price"]');
+        const quantityInput = productCard.querySelector(".quantity__input");
+        const productImage = productCard.querySelector(".product__image");
+        const sizeSelect = productCard.querySelector(".product__size-select");
+        if (!productSubtitle || !productTitle || !quantityInput || !productImage) return;
+        const productPriceValue = productPriceElement ? parseFloat(productPriceElement.getAttribute("content")) || 0 : 0;
+        const productId = productSubtitle.textContent.split(": ")[1] || Date.now().toString();
+        const productTitleText = sanitizeInput(productTitle.textContent || "Без названия");
+        const productQuantity = parseInt(quantityInput.value) || 1;
+        const productImageSrc = productImage.src || "";
+        const optionValue = sizeSelect ? sanitizeInput(sizeSelect.value) : null;
+        const optionType = sizeSelect ? sanitizeInput(productCard.querySelector(".product__size-selector label")?.textContent.replace(":", "").trim()) : null;
+        const existingItem = AppState.cart.find((item => item.baseId === productId && item.optionValue === optionValue));
+        if (existingItem) existingItem.quantity += productQuantity; else {
+            const uniqueProductId = `${productId}-${optionValue || "default"}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            AppState.cart.push({
+                id: uniqueProductId,
+                baseId: productId,
+                title: productTitleText,
+                price: productPriceValue,
+                quantity: productQuantity,
+                image: productImageSrc,
+                subtitle: sanitizeInput(productSubtitle.textContent),
+                optionType,
+                optionValue
             });
-            isModalOpen = false;
-            restoreHeaderState();
         }
-        function generateProductCards() {
-            if (!productsContainer) {
-                console.error("Контейнер #products-container не найден");
-                productsContainer.innerHTML = "<p>Контейнер для товаров не найден</p>";
-                return;
-            }
-            if (!Array.isArray(productsData) || productsData.length === 0) {
-                console.error("productsData не является массивом или пуст:", productsData);
-                productsContainer.innerHTML = "<p>Товары отсутствуют</p>";
-                return;
-            }
-            productsContainer.innerHTML = "";
-            productsContainer.style.opacity = "0";
-            initLazyLoad();
-            const checkImagesLoaded = () => {
-                const images = productsContainer.querySelectorAll(".product__image");
-                let loadedImages = 0;
-                const totalImages = images.length;
-                if (totalImages === 0) {
-                    productsContainer.style.opacity = "1";
-                    return;
-                }
-                images.forEach((img => {
-                    if (img.complete) {
-                        loadedImages++;
-                        if (loadedImages === totalImages) productsContainer.style.opacity = "1";
-                    } else {
-                        img.addEventListener("load", (() => {
-                            loadedImages++;
-                            if (loadedImages === totalImages) productsContainer.style.opacity = "1";
-                        }));
-                        img.addEventListener("error", (() => {
-                            console.error(`Ошибка загрузки изображения: ${img.src}`);
-                            loadedImages++;
-                            if (loadedImages === totalImages) productsContainer.style.opacity = "1";
-                        }));
-                    }
-                }));
-            };
-            setTimeout(checkImagesLoaded, 0);
+        updateCart();
+        animateCartCounter();
+    }
+    function updateCart() {
+        if (!DOM.cartItemsContainer || !DOM.cartTotal || !DOM.cartCount || !DOM.cartFooter) return;
+        DOM.cartItemsContainer.innerHTML = "";
+        AppState.totalPrice = 0;
+        AppState.cart.forEach((item => {
+            const itemTotal = item.price * item.quantity;
+            AppState.totalPrice += itemTotal;
+            const cartItemElement = document.createElement("div");
+            cartItemElement.className = "cart-item";
+            cartItemElement.innerHTML = `\n      <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n      <div class="cart-item-details">\n        <h4 class="cart-item-title">${item.title}</h4>\n        ${item.optionValue ? `<p class="cart-item-option">${item.optionType}: ${item.optionValue}</p>` : ""}\n        <p class="cart-item-subtitle">${item.subtitle}</p>\n        ${item.price > 0 ? `<p class="cart-item-price">${formatPrice(item.price)} ₽</p>` : ""}\n        <div class="cart-item-quantity">\n          <div class="quantity__controls">\n            <button type="button" class="quantity__btn minus" data-id="${item.id}">-</button>\n            <input type="number" class="quantity__input" id="cart-quantity-${item.id}" name="cart-quantity-${item.id}" value="${item.quantity}" min="1" data-id="${item.id}">\n            <button type="button" class="quantity__btn plus" data-id="${item.id}">+</button>\n          </div>\n          <button class="cart-item-remove" data-id="${item.id}">×</button>\n        </div>\n      </div>\n    `;
+            DOM.cartItemsContainer.appendChild(cartItemElement);
+        }));
+        if (DOM.submitOrderBtn) DOM.submitOrderBtn.setAttribute("aria-label", `Отправить заказ на сумму ${formatPrice(AppState.totalPrice)} руб`);
+        DOM.cartTotal.textContent = formatPrice(AppState.totalPrice);
+        DOM.cartCount.textContent = AppState.cart.reduce(((sum, item) => sum + item.quantity), 0);
+        DOM.cartFooter.style.display = AppState.cart.length > 0 ? "block" : "none";
+        saveCartToStorage();
+    }
+    function animateCartCounter() {
+        if (DOM.cartCount) {
+            DOM.cartCount.classList.add("update");
+            setTimeout((() => DOM.cartCount.classList.remove("update")), 500);
         }
-        function createProductCard(product, isInitial = false) {
-            const uniqueSuffix = `${product.article}-${uniqueIdCounter++}`;
-            const productCard = document.createElement("article");
-            productCard.className = "product__card";
-            productCard.dataset.title = product.title;
-            productCard.dataset.article = product.article;
-            productCard.setAttribute("itemscope", "");
-            productCard.setAttribute("itemtype", "http://schema.org/Product");
-            let sizeSelectorHTML = "";
-            if (product.sizes && product.sizes.length > 0) sizeSelectorHTML = `\n                <div class="product__size-selector">\n                    <label for="size-${uniqueSuffix}">${product.sizeLabel || "Размер:"}</label>\n                    <select id="size-${uniqueSuffix}" name="size-${uniqueSuffix}" class="product__size-select">\n                        ${product.sizes.map((size => `<option value="${size}">${size}</option>`)).join("")}\n                    </select>\n                </div>\n            `;
-            const priceHTML = product.price ? `\n            <p class="product__price" itemprop="offers" itemtype="http://schema.org/Offer">\n                <span itemprop="price" content="${product.price}">${formatPrice(product.price)}</span>\n                <span itemprop="priceCurrency" content="RUB">₽</span>\n            </p>\n        ` : "";
-            const detailsLinkHTML = product.hasDetails || product.detailsUrl ? `\n            <a href="${product.detailsUrl || "#"}" class="product__details-link" aria-label="Подробнее о товаре ${product.title}">\n                Подробнее\n            </a>\n        ` : "";
-            productCard.innerHTML = `\n            <div class="product__image-wrapper">\n                <img src="${product.image}" \n                     alt="${product.alt || product.title}" \n                     class="product__image" \n                     loading="${isInitial ? "eager" : "lazy"}" \n                     width="300" \n                     height="200" \n                     itemprop="image">\n            </div>\n            <div class="product__content">\n                <h3 class="product__title" itemprop="name">${product.title}</h3>\n                <div class="product__meta">\n                    <p class="product__subtitle" itemprop="sku">Артикул: ${product.article}</p>\n                    ${detailsLinkHTML}\n                </div>\n                <div class="product__bottom-section">\n                    ${priceHTML}\n                    ${sizeSelectorHTML}\n                    <div class="product__footer">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" aria-label="Уменьшить количество">−</button>\n                            <input type="number" class="quantity__input" id="quantity-${uniqueSuffix}" name="quantity-${uniqueSuffix}" value="1" min="1" aria-label="Количество товара">\n                            <button type="button" class="quantity__btn plus" aria-label="Увеличить количество">+</button>\n                        </div>\n                        <button type="button" class="add-to-cart" itemprop="offers" itemtype="http://schema.org/Offer" aria-label="Добавить ${product.title} в корзину">Добавить в корзину</button>\n                    </div>\n                </div>\n            </div>\n        `;
-            return productCard;
+    }
+    function setupCartOverlay() {
+        let cartOverlay = document.querySelector(".cart-overlay");
+        if (!cartOverlay) {
+            cartOverlay = document.createElement("div");
+            cartOverlay.className = "cart-overlay";
+            document.body.appendChild(cartOverlay);
         }
-        function formatPrice(price) {
-            return new Intl.NumberFormat("ru-RU").format(price);
+        cartOverlay.addEventListener("click", (() => closeModal(DOM.cartModal, cartOverlay)));
+    }
+    function openCart() {
+        AppState.savedHeaderState = AppState.headerScrollState;
+        openModal(DOM.cartModal, document.querySelector(".cart-overlay"), ".close-cart");
+    }
+    function closeCart() {
+        closeModal(DOM.cartModal, document.querySelector(".cart-overlay"));
+    }
+    function openOrderForm() {
+        openModal(DOM.orderFormModal, DOM.orderFormOverlay, ".close-order-form");
+    }
+    function closeOrderForm() {
+        closeModal(DOM.orderFormModal, DOM.orderFormOverlay);
+    }
+    function closeOtherModals() {
+        const modals = [ {
+            element: DOM.cartModal,
+            overlay: document.querySelector(".cart-overlay")
+        }, {
+            element: DOM.orderFormModal,
+            overlay: DOM.orderFormOverlay
+        }, {
+            element: DOM.callBackModal,
+            overlay: DOM.callBackOverlay
+        } ];
+        modals.forEach((({element, overlay}) => {
+            if (element && overlay) closeModal(element, overlay);
+        }));
+    }
+    function script_validateForm(name, phone, email) {
+        const errors = [];
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phonePattern = /^\+?\d{10,15}$/;
+        if (!name.trim()) errors.push({
+            field: "order-name",
+            message: translations.ru.nameRequired
+        });
+        const sanitizedPhone = phone.replace(/\D/g, "");
+        if (!phone.trim() || !phonePattern.test(sanitizedPhone) || sanitizedPhone.length < 10) errors.push({
+            field: "order-phone",
+            message: translations.ru.phoneRequired
+        });
+        if (!email.trim() || !emailPattern.test(email)) errors.push({
+            field: "order-email",
+            message: translations.ru.emailRequired
+        });
+        document.querySelectorAll(".error-message").forEach((span => span.textContent = ""));
+        errors.forEach((error => {
+            const errorSpan = document.getElementById(`${error.field}-error`);
+            if (errorSpan) errorSpan.textContent = error.message;
+        }));
+        return errors.length === 0;
+    }
+    function submitOrder() {
+        if (AppState.cart.length === 0) {
+            showErrorMessage(translations.ru.emptyCart);
+            return;
         }
-        function addToCart(productCard) {
-            const productSubtitle = productCard.querySelector(".product__subtitle");
-            const productTitle = productCard.querySelector(".product__title");
-            const productPriceElement = productCard.querySelector('.product__price span[itemprop="price"]');
-            const quantityInput = productCard.querySelector(".quantity__input");
-            const productImage = productCard.querySelector(".product__image");
-            const sizeSelect = productCard.querySelector(".product__size-select");
-            if (!productSubtitle || !productTitle || !quantityInput || !productImage) return;
-            const productPriceValue = productPriceElement ? parseFloat(productPriceElement.getAttribute("content")) || 0 : 0;
-            const productId = productSubtitle.textContent.split(": ")[1] || Date.now().toString();
-            const productTitleText = productTitle.textContent || "Без названия";
-            const productQuantity = parseInt(quantityInput.value) || 1;
-            const productImageSrc = productImage.src || "";
-            const optionValue = sizeSelect ? sizeSelect.value : null;
-            const optionType = sizeSelect ? productCard.querySelector(".product__size-selector label")?.textContent.replace(":", "").trim() : null;
-            const existingItem = cart.find((item => item.baseId === productId && item.optionValue === optionValue));
-            if (existingItem) existingItem.quantity += productQuantity; else {
-                const uniqueProductId = `${productId}-${optionValue || "default"}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-                cart.push({
-                    id: uniqueProductId,
-                    baseId: productId,
-                    title: productTitleText,
-                    price: productPriceValue,
-                    quantity: productQuantity,
-                    image: productImageSrc,
-                    subtitle: productSubtitle.textContent,
-                    optionType,
-                    optionValue
-                });
-            }
-            updateCart();
-            animateCartCounter();
+        openOrderForm();
+    }
+    function handleOrderFormSubmit(e) {
+        e.preventDefault();
+        if (AppState.cart.length === 0) {
+            showErrorMessage(translations.ru.emptyCart);
+            closeOrderForm();
+            return;
         }
-        function updateCart() {
-            if (!cartItemsContainer || !cartTotal || !cartCount || !cartFooter) return;
-            cartItemsContainer.innerHTML = "";
-            totalPrice = 0;
-            cart.forEach((item => {
-                const itemTotal = item.price * item.quantity;
-                totalPrice += itemTotal;
-                const cartItemElement = document.createElement("div");
-                cartItemElement.className = "cart-item";
-                cartItemElement.innerHTML = `\n                <img src="${item.image}" alt="${item.title}" class="cart-item-image">\n                <div class="cart-item-details">\n                    <h4 class="cart-item-title">${item.title}</h4>\n                    ${item.optionValue ? `<p class="cart-item-option">${item.optionType}: ${item.optionValue}</p>` : ""}\n                    <p class="cart-item-subtitle">${item.subtitle}</p>\n                    ${item.price > 0 ? `<p class="cart-item-price">${formatPrice(item.price)} ₽</p>` : ""}\n                    <div class="cart-item-quantity">\n                        <div class="quantity__controls">\n                            <button type="button" class="quantity__btn minus" data-id="${item.id}">-</button>\n                            <input type="number" class="quantity__input" id="cart-quantity-${item.id}" name="cart-quantity-${item.id}" value="${item.quantity}" min="1" data-id="${item.id}">\n                            <button type="button" class="quantity__btn plus" data-id="${item.id}">+</button>\n                        </div>\n                        <button class="cart-item-remove" data-id="${item.id}">×</button>\n                    </div>\n                </div>\n            `;
-                cartItemsContainer.appendChild(cartItemElement);
-            }));
-            if (submitOrderBtn) submitOrderBtn.setAttribute("aria-label", `Отправить заказ на сумму ${formatPrice(totalPrice)} руб`);
-            cartTotal.textContent = formatPrice(totalPrice);
-            cartCount.textContent = cart.reduce(((sum, item) => sum + item.quantity), 0);
-            cartFooter.style.display = cart.length > 0 ? "block" : "none";
-            saveCartToStorage();
+        if (typeof es === "undefined") {
+            showErrorMessage(translations.ru.emailJsError);
+            return;
         }
-        function animateCartCounter() {
-            if (cartCount) {
-                cartCount.classList.add("update");
-                setTimeout((() => cartCount.classList.remove("update")), 500);
-            }
-        }
-        function openOrderForm() {
-            const orderFormModal = document.querySelector(".order-form-modal");
-            const orderFormOverlay = document.querySelector(".order-form-overlay");
-            const closeOrderFormBtn = document.querySelector(".close-order-form");
-            if (!orderFormModal || !orderFormOverlay || !closeOrderFormBtn) return;
-            const scrollPosition = window.scrollY;
-            document.body.dataset.scrollPosition = scrollPosition;
-            savedHeaderState = headerScrollState;
-            closeOtherModals();
-            orderFormModal.classList.add("active");
-            orderFormOverlay.classList.add("active");
-            document.body.classList.add("body-no-scroll");
-            isModalOpen = true;
-            document.body.style.position = "fixed";
-            document.body.style.top = `-${scrollPosition}px`;
-            document.body.style.width = "100%";
-            document.body.style.overflowY = "scroll";
-            setTimeout((() => closeOrderFormBtn.focus()), 100);
-        }
-        function closeOrderForm() {
-            const orderFormModal = document.querySelector(".order-form-modal");
-            const orderFormOverlay = document.querySelector(".order-form-overlay");
-            if (orderFormModal) orderFormModal.classList.remove("active");
-            if (orderFormOverlay) orderFormOverlay.classList.remove("active");
-            const scrollPosition = parseInt(document.body.dataset.scrollPosition || "0");
-            document.body.classList.remove("body-no-scroll");
-            document.body.style.position = "";
-            document.body.style.top = "";
-            document.body.style.width = "";
-            document.body.style.overflowY = "";
-            delete document.body.dataset.scrollPosition;
-            window.scrollTo({
-                top: scrollPosition,
-                behavior: "instant"
-            });
-            isModalOpen = false;
-            restoreHeaderState();
-        }
-        function closeOtherModals() {
-            const cartModal = document.querySelector(".cart-modal");
-            const cartOverlay = document.querySelector(".cart-overlay");
-            const orderFormModal = document.querySelector(".order-form-modal");
-            const orderFormOverlay = document.querySelector(".order-form-overlay");
-            const callBackModal = document.querySelector(".call-back-modal");
-            const callBackOverlay = document.querySelector(".call-back-overlay");
-            const orderFormWillRemainOpen = orderFormModal && orderFormModal.classList.contains("active");
-            if (cartModal) cartModal.classList.remove("active");
-            if (cartOverlay) cartOverlay.classList.remove("active");
-            if (orderFormModal && !orderFormWillRemainOpen) orderFormModal.classList.remove("active");
-            if (orderFormOverlay && !orderFormWillRemainOpen) orderFormOverlay.classList.remove("active");
-            if (callBackModal) callBackModal.classList.remove("active");
-            if (callBackOverlay) callBackOverlay.classList.remove("active");
-            if (!orderFormWillRemainOpen && document.body.classList.contains("body-no-scroll")) {
-                const scrollPosition = parseInt(document.body.dataset.scrollPosition || "0");
-                document.body.classList.remove("body-no-scroll");
-                document.body.style.position = "";
-                document.body.style.top = "";
-                document.body.style.width = "";
-                document.body.style.overflowY = "";
-                delete document.body.dataset.scrollPosition;
-                window.scrollTo({
-                    top: scrollPosition,
-                    behavior: "instant"
-                });
-                isModalOpen = false;
-                restoreHeaderState();
-            }
-        }
-        function validateForm(name, phone, email) {
-            const errors = [];
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const phonePattern = /^\+?\d{10,15}$/;
-            if (!name.trim()) errors.push({
-                field: "order-name",
-                message: "Пожалуйста, введите ваше имя."
-            });
-            if (!phone.trim() || !phonePattern.test(phone.replace(/\D/g, ""))) errors.push({
-                field: "order-phone",
-                message: "Пожалуйста, введите корректный номер телефона."
-            });
-            if (!email.trim() || !emailPattern.test(email)) errors.push({
-                field: "order-email",
-                message: "Пожалуйста, введите корректный email."
-            });
-            document.querySelectorAll(".error-message").forEach((span => span.textContent = ""));
-            errors.forEach((error => {
-                const errorSpan = document.getElementById(`${error.field}-error`);
-                if (errorSpan) errorSpan.textContent = error.message;
-            }));
-            return errors.length === 0;
-        }
-        function submitOrder() {
-            if (cart.length === 0) {
-                showErrorMessage("Корзина пуста!");
-                return;
-            }
-            openOrderForm();
-        }
-        function handleOrderFormSubmit(e) {
-            e.preventDefault();
-            if (cart.length === 0) {
-                showErrorMessage("Корзина пуста!");
-                closeOrderForm();
-                return;
-            }
-            if (typeof es === "undefined") {
-                console.error("EmailJS не загружен. Проверьте импорт и инициализацию библиотеки.");
-                showErrorMessage("Ошибка: EmailJS не загружен. Пожалуйста, попробуйте позже.");
-                return;
-            }
-            const nameInput = document.getElementById("order-name");
-            const phoneInput = document.getElementById("order-phone");
-            const emailInput = document.getElementById("order-email");
-            if (!validateForm(nameInput.value, phoneInput.value, emailInput.value)) return;
-            const orderItems = cart.map((item => `\n            Товар: ${item.title}\n            Артикул: ${item.subtitle}\n            ${item.optionValue ? `Опция: ${item.optionType}: ${item.optionValue}` : ""}\n            Количество: ${item.quantity}\n            Цена за единицу: ${formatPrice(item.price)} ₽\n            Общая стоимость: ${formatPrice(item.price * item.quantity)} ₽\n        `)).join("\n--------------------------------\n");
-            const orderData = {
-                items: orderItems,
-                total: formatPrice(totalPrice),
-                date: (new Date).toLocaleString("ru-RU")
-            };
-            const templateParams = {
-                from_name: nameInput.value || "Интернет-магазин",
-                to_email: "kiseleffav@gmail.com",
-                order_details: orderData.items,
-                total_price: orderData.total,
-                order_date: orderData.date,
-                user_email: emailInput.value || "",
-                user_phone: phoneInput.value || ""
-            };
-            es.send("service_oozomec", "template_3gx3kyp", templateParams).then((function(response) {
-                console.log("Заказ успешно отправлен:", response.status, response.text);
-                showSuccessMessage(`Ваш заказ на сумму ${formatPrice(totalPrice)} ₽ успешно отправлен!`);
-                cart = [];
+        const nameInput = document.getElementById("order-name");
+        const phoneInput = document.getElementById("order-phone");
+        const emailInput = document.getElementById("order-email");
+        if (!script_validateForm(nameInput.value, phoneInput.value, emailInput.value)) return;
+        const orderItems = AppState.cart.map((item => `\n    Товар: ${sanitizeInput(item.title)}\n    Артикул: ${sanitizeInput(item.subtitle)}\n    ${item.optionValue ? `Опция: ${sanitizeInput(item.optionType)}: ${sanitizeInput(item.optionValue)}` : ""}\n    Количество: ${item.quantity}\n    Цена за единицу: ${formatPrice(item.price)} ₽\n    Общая стоимость: ${formatPrice(item.price * item.quantity)} ₽\n  `)).join("\n--------------------------------\n");
+        const orderData = {
+            items: orderItems,
+            total: formatPrice(AppState.totalPrice),
+            date: (new Date).toLocaleString("ru-RU")
+        };
+        const templateParams = {
+            from_name: sanitizeInput(nameInput.value) || "Интернет-магазин",
+            to_email: "kiseleffav@gmail.com",
+            order_details: orderData.items,
+            total_price: orderData.total,
+            order_date: orderData.date,
+            user_email: sanitizeInput(emailInput.value) || "",
+            user_phone: sanitizeInput(phoneInput.value) || ""
+        };
+        const sendEmail = (retries = 3, delay = 2e3) => {
+            es.send(emailConfig.serviceId, emailConfig.templateId, templateParams).then((response => {
+                showSuccessMessage(translations.ru.orderSuccess.replace("{total}", formatPrice(AppState.totalPrice)));
+                AppState.cart = [];
                 updateCart();
                 closeCart();
                 closeOrderForm();
                 localStorage.removeItem("cart");
                 document.getElementById("order-form").reset();
-            }), (function(error) {
-                console.error("Ошибка EmailJS:", JSON.stringify(error, null, 2));
-                showErrorMessage("Произошла ошибка при отправке заказа");
+            })).catch((error => {
+                if (retries > 0) setTimeout((() => sendEmail(retries - 1, delay * 2)), delay); else showErrorMessage(translations.ru.orderError);
             }));
-        }
-        function loadCartFromStorage() {
-            const savedCart = localStorage.getItem("cart");
-            if (savedCart) try {
-                cart = JSON.parse(savedCart);
+        };
+        sendEmail();
+    }
+    function validateCartItem(item) {
+        return item && typeof item.id === "string" && typeof item.baseId === "string" && typeof item.title === "string" && typeof item.price === "number" && typeof item.quantity === "number" && typeof item.image === "string" && typeof item.subtitle === "string";
+    }
+    function loadCartFromStorage() {
+        const savedCart = localStorage.getItem("cart");
+        if (savedCart) try {
+            const parsedCart = JSON.parse(savedCart);
+            if (Array.isArray(parsedCart)) {
+                AppState.cart = parsedCart.filter(validateCartItem);
                 updateCart();
-            } catch (e) {
-                console.error("Ошибка при загрузке корзины:", e);
-                localStorage.removeItem("cart");
-            }
+            } else throw new Error("Некорректный формат корзины");
+        } catch (e) {
+            console.error("Ошибка при загрузке корзины:", e);
+            localStorage.removeItem("cart");
         }
-        function saveCartToStorage() {
-            localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    function saveCartToStorage() {
+        localStorage.setItem("cart", JSON.stringify(AppState.cart));
+    }
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout((() => func.apply(this, args)), wait);
+        };
+    }
+    function initSearchFunctionality() {
+        if (!DOM.searchForm || !DOM.searchInput || !DOM.searchClear) return;
+        if (!DOM.searchInput.id) DOM.searchInput.id = "search-input";
+        if (!DOM.searchInput.name) DOM.searchInput.name = "search";
+        function toggleClearButton() {
+            DOM.searchClear.style.display = DOM.searchInput.value ? "block" : "none";
         }
-        function initSearchFunctionality() {
-            if (!searchForm || !searchInput || !searchClear) return;
-            if (!searchInput.id) searchInput.id = "search-input";
-            if (!searchInput.name) searchInput.name = "search";
-            function toggleClearButton() {
-                searchClear.style.display = searchInput.value ? "block" : "none";
-            }
-            searchInput.addEventListener("input", (() => {
-                toggleClearButton();
-                resetLazyLoad();
-            }));
-            searchInput.addEventListener("keydown", (e => {
-                if (e.key === "Enter") {
-                    e.preventDefault();
-                    resetLazyLoad();
-                }
-            }));
-            searchClear.addEventListener("click", (e => {
-                e.preventDefault();
-                searchInput.value = "";
-                searchInput.focus();
-                toggleClearButton();
-                resetLazyLoad();
-            }));
-            const searchIcon = document.querySelector(".search-form__icon._icon-search");
-            if (searchIcon) searchIcon.addEventListener("click", (e => {
-                e.stopPropagation();
-                searchForm.classList.toggle("active");
-                if (searchForm.classList.contains("active")) searchInput.focus();
-            }));
-            document.addEventListener("click", (e => {
-                if (!searchForm.contains(e.target) && !e.target.closest(".search-form__icon")) searchForm.classList.remove("active");
-            }));
+        DOM.searchInput.addEventListener("input", debounce((() => {
+            AppState.filteredProducts = null;
             toggleClearButton();
-        }
-        function initCallBackForm() {
-            const callBackBtn = document.querySelector(".footer__call-back-btn");
-            let callBackModal = document.querySelector(".call-back-modal");
-            let callBackOverlay = document.querySelector(".call-back-overlay");
-            const closeCallBackBtn = document.querySelector(".call-back-close");
-            const callBackForm = document.querySelector("#call-back-form");
-            if (!callBackBtn) {
-                console.error("Кнопка .footer__call-back-btn не найдена. Проверьте _footer.htm");
-                return;
-            }
-            if (!callBackModal || !closeCallBackBtn || !callBackForm) {
-                console.error("Элементы формы обратного звонка не найдены:", {
-                    callBackModal: !!callBackModal,
-                    closeCallBackBtn: !!closeCallBackBtn,
-                    callBackForm: !!callBackForm
-                });
-                return;
-            }
-            if (!callBackOverlay) {
-                console.warn("Оверлей .call-back-overlay не найден, создаем новый");
-                callBackOverlay = document.createElement("div");
-                callBackOverlay.className = "call-back-overlay";
-                document.body.appendChild(callBackOverlay);
-            }
-            callBackBtn.addEventListener("click", (() => {
-                const scrollPosition = window.scrollY;
-                document.body.dataset.scrollPosition = scrollPosition;
-                savedHeaderState = headerScrollState;
-                closeOtherModals();
-                callBackModal.classList.add("active");
-                callBackOverlay.classList.add("active");
-                document.body.classList.add("body-no-scroll");
-                isModalOpen = true;
-                document.body.style.position = "fixed";
-                document.body.style.top = `-${scrollPosition}px`;
-                document.body.style.width = "100%";
-                document.body.style.overflowY = "scroll";
-                setTimeout((() => document.querySelector("#call-back-name")?.focus()), 100);
-            }));
-            const closeModal = () => {
-                callBackModal.classList.remove("active");
-                callBackOverlay.classList.remove("active");
-                const scrollPosition = parseInt(document.body.dataset.scrollPosition || "0");
-                document.body.classList.remove("body-no-scroll");
-                document.body.style.position = "";
-                document.body.style.top = "";
-                document.body.style.width = "";
-                document.body.style.overflowY = "";
-                delete document.body.dataset.scrollPosition;
-                window.scrollTo({
-                    top: scrollPosition,
-                    behavior: "instant"
-                });
-                isModalOpen = false;
-                restoreHeaderState();
-            };
-            closeCallBackBtn.addEventListener("click", closeModal);
-            callBackOverlay.addEventListener("click", closeModal);
-            document.addEventListener("click", (e => {
-                if (callBackModal.classList.contains("active") && !callBackModal.contains(e.target) && !e.target.closest(".footer__call-back-btn")) closeModal();
-            }));
-            document.addEventListener("keydown", (e => {
-                if (e.key === "Escape" && callBackModal.classList.contains("active")) closeModal();
-            }));
-            callBackForm.addEventListener("submit", (e => {
+            LazyLoad.reset();
+        }), 300));
+        DOM.searchInput.addEventListener("keydown", (e => {
+            if (e.key === "Enter") {
                 e.preventDefault();
-                const nameInput = document.querySelector("#call-back-name");
-                const phoneInput = document.querySelector("#call-back-phone");
-                const nameError = document.querySelector("#call-back-name-error");
-                const phoneError = document.querySelector("#call-back-phone-error");
-                let isValid = true;
-                nameError.textContent = "";
-                phoneError.textContent = "";
-                nameInput.classList.remove("error");
-                phoneInput.classList.remove("error");
-                nameError.classList.remove("active");
-                phoneError.classList.remove("active");
-                if (!nameInput.value.trim()) {
-                    nameError.textContent = "Пожалуйста, введите имя";
-                    nameInput.classList.add("error");
-                    nameError.classList.add("active");
-                    isValid = false;
-                }
-                const phonePattern = /^\+?\d{10,15}$/;
-                if (!phonePattern.test(phoneInput.value.replace(/\D/g, ""))) {
-                    phoneError.textContent = "Пожалуйста, введите корректный номер телефона";
-                    phoneInput.classList.add("error");
-                    phoneError.classList.add("active");
-                    isValid = false;
-                }
-                if (isValid) {
-                    const templateParams = {
-                        from_name: nameInput.value || "Запрос звонка",
-                        to_email: "kiseleffav@gmail.com",
-                        user_phone: phoneInput.value,
-                        message: `Запрос обратного звонка от ${nameInput.value}, телефон: ${phoneInput.value}`,
-                        request_date: (new Date).toLocaleString("ru-RU")
-                    };
-                    es.send("service_oozomec", "template_3gx3kyp", templateParams).then((response => {
-                        console.log("Запрос звонка отправлен:", response.status, response.text);
-                        showSuccessMessage("Заявка на звонок успешно отправлена!");
-                        callBackForm.reset();
-                        closeModal();
-                    }), (error => {
-                        console.error("Ошибка EmailJS:", error);
-                        showErrorMessage("Произошла ошибка при отправке заявки");
-                    }));
-                }
-            }));
+                AppState.filteredProducts = null;
+                LazyLoad.reset();
+            }
+        }));
+        DOM.searchClear.addEventListener("click", (e => {
+            e.preventDefault();
+            DOM.searchInput.value = "";
+            DOM.searchInput.focus();
+            AppState.filteredProducts = null;
+            toggleClearButton();
+            LazyLoad.reset();
+        }));
+        const searchIcon = document.querySelector(".search-form__icon._icon-search");
+        if (searchIcon) searchIcon.addEventListener("click", (e => {
+            e.stopPropagation();
+            DOM.searchForm.classList.toggle("active");
+            if (DOM.searchForm.classList.contains("active")) DOM.searchInput.focus();
+        }));
+        document.addEventListener("click", (e => {
+            if (!DOM.searchForm.contains(e.target)) DOM.searchForm.classList.remove("active");
+        }));
+        toggleClearButton();
+    }
+    function initCategoryFilter() {
+        if (!DOM.categoryFilter) return;
+        const selectTrigger = DOM.categoryFilter.querySelector(".custom-select__trigger");
+        const selectValue = DOM.categoryFilter.querySelector(".custom-select__value");
+        const optionsList = DOM.categoryFilter.querySelector(".custom-select__options");
+        if (!selectTrigger || !selectValue || !optionsList) return;
+        if (!Array.isArray(products_productsData)) {
+            console.error(translations.ru.productsNotLoaded);
+            return;
         }
-        function initEventHandlers() {
-            document.addEventListener("click", (e => {
-                if (e.target.classList.contains("quantity__btn")) {
-                    const controls = e.target.closest(".quantity__controls");
-                    if (!controls) return;
-                    const input = controls.querySelector(".quantity__input");
-                    if (!input) return;
-                    let value = parseInt(input.value) || 1;
-                    if (e.target.classList.contains("minus") && value > 1) value--; else if (e.target.classList.contains("plus")) value++;
-                    input.value = value;
-                }
-                if (e.target.classList.contains("add-to-cart")) {
-                    const productCard = e.target.closest(".product__card");
-                    if (productCard) addToCart(productCard);
-                }
-                if (e.target.closest("#cart-icon")) {
-                    e.preventDefault();
-                    openCart();
-                }
-                if (e.target.classList.contains("quantity__btn") && e.target.closest(".cart-item")) {
-                    const id = e.target.getAttribute("data-id");
-                    const item = cart.find((item => item.id === id));
-                    if (!item) return;
-                    if (e.target.classList.contains("minus") && item.quantity > 1) item.quantity--; else if (e.target.classList.contains("plus")) item.quantity++;
+        const customCategoryOrder = [ "Плазмотроны", "Сопла", "Электроды", "Комплектующие", "Прочее" ];
+        const categoryOrderMap = new Map(customCategoryOrder.map(((cat, index) => [ cat, index ])));
+        const categories = [ ...new Set(products_productsData.map((product => product.category)).filter((category => category))) ];
+        const sortedCategories = categories.sort(((a, b) => {
+            const indexA = categoryOrderMap.has(a) ? categoryOrderMap.get(a) : customCategoryOrder.length;
+            const indexB = categoryOrderMap.has(b) ? categoryOrderMap.get(b) : customCategoryOrder.length;
+            return indexA - indexB;
+        }));
+        const allOption = document.createElement("li");
+        allOption.textContent = translations.ru.allProducts;
+        allOption.dataset.value = "all";
+        allOption.classList.toggle("selected", AppState.currentCategory === "all");
+        optionsList.appendChild(allOption);
+        sortedCategories.forEach((category => {
+            const option = document.createElement("li");
+            option.textContent = category;
+            option.dataset.value = category;
+            option.classList.toggle("selected", AppState.currentCategory === category);
+            optionsList.appendChild(option);
+        }));
+        selectTrigger.addEventListener("click", (e => {
+            e.stopPropagation();
+            DOM.categoryFilter.classList.toggle("open");
+        }));
+        optionsList.addEventListener("click", (e => {
+            const option = e.target.closest("li");
+            if (!option) return;
+            AppState.currentCategory = option.dataset.value;
+            selectValue.textContent = option.textContent;
+            optionsList.querySelectorAll("li").forEach((opt => opt.classList.remove("selected")));
+            option.classList.add("selected");
+            DOM.categoryFilter.classList.remove("open");
+            AppState.filteredProducts = null;
+            LazyLoad.reset();
+        }));
+        document.addEventListener("click", (e => {
+            if (!DOM.categoryFilter.contains(e.target)) DOM.categoryFilter.classList.remove("open");
+        }));
+        selectTrigger.addEventListener("keydown", (e => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                DOM.categoryFilter.classList.toggle("open");
+            }
+        }));
+    }
+    function initCallBackForm() {
+        const callBackBtn = document.querySelector(".footer__call-back-btn");
+        if (!callBackBtn) return;
+        const callBackForm = document.querySelector("#call-back-form");
+        const closeCallBackBtn = document.querySelector(".call-back-close");
+        if (!DOM.callBackModal || !closeCallBackBtn || !callBackForm) return;
+        if (!DOM.callBackOverlay) {
+            DOM.callBackOverlay = document.createElement("div");
+            DOM.callBackOverlay.className = "call-back-overlay";
+            document.body.appendChild(DOM.callBackOverlay);
+        }
+        callBackBtn.addEventListener("click", (() => {
+            AppState.savedHeaderState = AppState.headerScrollState;
+            openModal(DOM.callBackModal, DOM.callBackOverlay, "#call-back-name");
+        }));
+        const closeModalHandler = () => closeModal(DOM.callBackModal, DOM.callBackOverlay);
+        closeCallBackBtn.addEventListener("click", closeModalHandler);
+        DOM.callBackOverlay.addEventListener("click", closeModalHandler);
+        document.addEventListener("click", (e => {
+            if (DOM.callBackModal.classList.contains("active") && !DOM.callBackModal.contains(e.target) && !e.target.closest(".footer__call-back-btn")) closeModalHandler();
+        }));
+        document.addEventListener("keydown", (e => {
+            if (e.key === "Escape" && DOM.callBackModal.classList.contains("active")) closeModalHandler();
+        }));
+        callBackForm.addEventListener("submit", (e => {
+            e.preventDefault();
+            const nameInput = document.querySelector("#call-back-name");
+            const phoneInput = document.querySelector("#call-back-phone");
+            const nameError = document.querySelector("#call-back-name-error");
+            const phoneError = document.querySelector("#call-back-phone-error");
+            let isValid = true;
+            nameError.textContent = "";
+            phoneError.textContent = "";
+            nameInput.classList.remove("error");
+            phoneInput.classList.remove("error");
+            nameError.classList.remove("active");
+            phoneError.classList.remove("active");
+            if (!nameInput.value.trim()) {
+                nameError.textContent = translations.ru.nameRequired;
+                nameInput.classList.add("error");
+                nameError.classList.add("active");
+                isValid = false;
+            }
+            const phonePattern = /^\+?\d{10,15}$/;
+            const sanitizedPhone = phoneInput.value.replace(/\D/g, "");
+            if (!phonePattern.test(sanitizedPhone) || sanitizedPhone.length < 10) {
+                phoneError.textContent = translations.ru.phoneRequired;
+                phoneInput.classList.add("error");
+                phoneError.classList.add("active");
+                isValid = false;
+            }
+            if (isValid) {
+                const templateParams = {
+                    from_name: sanitizeInput(nameInput.value) || "Запрос звонка",
+                    to_email: "kiseleffav@gmail.com",
+                    user_phone: sanitizeInput(phoneInput.value),
+                    message: `Запрос обратного звонка от ${sanitizeInput(nameInput.value)}, телефон: ${sanitizeInput(phoneInput.value)}`,
+                    request_date: (new Date).toLocaleString("ru-RU")
+                };
+                es.send(emailConfig.serviceId, emailConfig.templateId, templateParams).then((response => {
+                    showSuccessMessage(translations.ru.callBackSuccess);
+                    callBackForm.reset();
+                    closeModalHandler();
+                }), (error => {
+                    showErrorMessage(translations.ru.callBackError);
+                }));
+            }
+        }));
+    }
+    function initEventHandlers() {
+        document.addEventListener("click", (e => {
+            if (e.target.classList.contains("quantity__btn")) {
+                const controls = e.target.closest(".quantity__controls");
+                if (!controls) return;
+                const input = controls.querySelector(".quantity__input");
+                if (!input) return;
+                let value = parseInt(input.value) || 1;
+                if (e.target.classList.contains("minus") && value > 1) value--; else if (e.target.classList.contains("plus")) value++;
+                input.value = value;
+            }
+            if (e.target.classList.contains("add-to-cart")) {
+                const productCard = e.target.closest(".product__card");
+                if (productCard) addToCart(productCard);
+            }
+            if (e.target.closest("#cart-icon")) {
+                e.preventDefault();
+                openCart();
+            }
+            if (e.target.classList.contains("quantity__btn") && e.target.closest(".cart-item")) {
+                const id = e.target.getAttribute("data-id");
+                const item = AppState.cart.find((item => item.id === id));
+                if (!item) return;
+                if (e.target.classList.contains("minus") && item.quantity > 1) item.quantity--; else if (e.target.classList.contains("plus")) item.quantity++;
+                updateCart();
+            }
+            if (e.target.classList.contains("cart-item-remove")) {
+                const id = e.target.getAttribute("data-id");
+                AppState.cart = AppState.cart.filter((item => item.id !== id));
+                updateCart();
+            }
+            if (e.target.classList.contains("close-order-form")) closeOrderForm();
+        }));
+        if (DOM.closeCartBtn) DOM.closeCartBtn.addEventListener("click", closeCart);
+        if (DOM.submitOrderBtn) DOM.submitOrderBtn.addEventListener("click", submitOrder);
+        const orderForm = document.getElementById("order-form");
+        if (orderForm) orderForm.addEventListener("submit", handleOrderFormSubmit);
+        if (DOM.orderFormOverlay) DOM.orderFormOverlay.addEventListener("click", closeOrderForm);
+        document.addEventListener("change", (e => {
+            if (e.target.classList.contains("quantity__input") && e.target.closest(".cart-item")) {
+                const id = e.target.getAttribute("data-id");
+                const newQuantity = parseInt(e.target.value) || 1;
+                const item = AppState.cart.find((item => item.id === id));
+                if (item && newQuantity >= 1) {
+                    item.quantity = newQuantity;
                     updateCart();
                 }
-                if (e.target.classList.contains("cart-item-remove")) {
-                    const id = e.target.getAttribute("data-id");
-                    cart = cart.filter((item => item.id !== id));
-                    updateCart();
-                }
-                if (e.target.classList.contains("close-order-form")) closeOrderForm();
-            }));
-            if (closeCartBtn) closeCartBtn.addEventListener("click", closeCart);
-            if (submitOrderBtn) submitOrderBtn.addEventListener("click", submitOrder);
-            const orderForm = document.getElementById("order-form");
-            if (orderForm) orderForm.addEventListener("submit", handleOrderFormSubmit);
-            const orderFormOverlay = document.querySelector(".order-form-overlay");
-            if (orderFormOverlay) orderFormOverlay.addEventListener("click", closeOrderForm);
-            document.addEventListener("change", (e => {
-                if (e.target.classList.contains("quantity__input") && e.target.closest(".cart-item")) {
-                    const id = e.target.getAttribute("data-id");
-                    const newQuantity = parseInt(e.target.value) || 1;
-                    const item = cart.find((item => item.id === id));
-                    if (item && newQuantity >= 1) {
-                        item.quantity = newQuantity;
-                        updateCart();
-                    }
-                }
-            }));
-            document.addEventListener("keydown", (e => {
-                if (e.key === "Escape" && document.querySelector(".order-form-modal.active")) closeOrderForm();
-            }));
-        }
-        function initHeaderTransformation() {
-            if (!header) {
-                console.error("Элемент .header не найден");
-                return;
             }
-            let isTicking = false;
-            function requestTick() {
-                if (!isTicking) {
-                    requestAnimationFrame((() => {
-                        handleScrollStyles();
-                        isTicking = false;
-                    }));
-                    isTicking = true;
-                }
-            }
-            window.addEventListener("scroll", requestTick);
-            window.addEventListener("resize", (() => {
-                if (!isDesktop()) {
-                    [ logoText, logoTextShort, ...phoneItems, ...emailItems, ...phoneLinks, ...emailLinks, actionsContacts, headerBody ].filter(Boolean).forEach((el => el.style.cssText = ""));
-                    header.classList.remove("scrolled");
-                    headerScrollState = false;
-                    savedHeaderState = false;
-                }
-                requestTick();
-            }));
-            handleScrollStyles();
-        }
-        function initScrollTopButton() {
-            const scrollTopBtn = document.querySelector(".scroll-top");
-            if (!scrollTopBtn) return;
-            window.addEventListener("scroll", (() => {
-                scrollTopBtn.classList.toggle("visible", window.pageYOffset > window.innerHeight / 2);
-            }));
-            scrollTopBtn.addEventListener("click", (e => {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
-            }));
-        }
-        function initTableMobileAdaptation() {
-            const table = document.querySelector(".specs-table");
-            if (!table) return;
-            const headers = Array.from(table.querySelectorAll(".specs-table__header")).map((header => header.textContent));
-            table.querySelectorAll(".specs-table__row").forEach((row => {
-                Array.from(row.querySelectorAll("td")).forEach(((cell, index) => {
-                    cell.setAttribute("data-label", headers[index]);
+        }));
+        document.addEventListener("keydown", (e => {
+            if (e.key === "Escape" && document.querySelector(".order-form-modal.active")) closeOrderForm();
+        }));
+    }
+    function initHeaderTransformation() {
+        if (!DOM.header) return;
+        let isTicking = false;
+        function requestTick() {
+            if (!isTicking) {
+                requestAnimationFrame((() => {
+                    handleScrollStyles();
+                    isTicking = false;
                 }));
-            }));
-        }
-        function fixMobileViewportIssues() {
-            function setRealViewportHeight() {
-                const vh = window.innerHeight * .01;
-                document.documentElement.style.setProperty("--vh", `${vh}px`);
-                if (cartModal) cartModal.style.height = window.innerHeight + "px";
-                const orderFormModal = document.querySelector(".order-form-modal");
-                if (orderFormModal) orderFormModal.style.height = window.innerHeight + "px";
+                isTicking = true;
             }
-            setRealViewportHeight();
-            window.addEventListener("resize", setRealViewportHeight);
-            window.addEventListener("orientationchange", setRealViewportHeight);
         }
-        function initInputMask() {
-            const phoneInput = document.getElementById("order-phone");
-            if (phoneInput) IMask(phoneInput, {
-                mask: "+7 (000) 000-00-00"
-            });
-            const callBackPhoneInput = document.getElementById("call-back-phone");
-            if (callBackPhoneInput) IMask(callBackPhoneInput, {
-                mask: "+7 (000) 000-00-00"
-            });
-        }
-        function showErrorMessage(message) {
-            const errorMessage = document.createElement("div");
-            errorMessage.className = "error-message";
-            errorMessage.textContent = message;
-            errorMessage.style.background = "#e74c3c";
-            document.body.appendChild(errorMessage);
-            setTimeout((() => errorMessage.remove()), 2500);
-        }
-        function showSuccessMessage(message) {
-            const successMessage = document.createElement("div");
-            successMessage.className = "success-message";
-            successMessage.textContent = message;
-            document.body.appendChild(successMessage);
-            setTimeout((() => successMessage.remove()), 2500);
-        }
-        function init() {
-            console.log("Инициализация приложения");
-            setupCartOverlay();
-            initEventHandlers();
-            loadCartFromStorage();
-            if (productsContainer) {
-                generateProductCards();
-                if (searchForm) initSearchFunctionality();
-                if (categoryFilter) initCategoryFilter();
+        window.addEventListener("scroll", requestTick);
+        window.addEventListener("resize", (() => {
+            if (!isDesktop()) {
+                [ DOM.logoText, DOM.logoTextShort, ...DOM.phoneItems, ...DOM.emailItems, ...DOM.phoneLinks, ...DOM.emailLinks, DOM.actionsContacts, DOM.headerBody ].filter(Boolean).forEach((el => el.style.cssText = ""));
+                DOM.header.classList.remove("scrolled");
+                AppState.headerScrollState = false;
+                AppState.savedHeaderState = false;
             }
-            initHeaderTransformation();
-            initScrollTopButton();
-            initTableMobileAdaptation();
-            fixMobileViewportIssues();
-            initInputMask();
-            initCallBackForm();
-            document.querySelectorAll(".order-form input").forEach((input => {
-                input.addEventListener("click", (event => {
-                    event.stopPropagation();
-                }));
+            requestTick();
+        }));
+        handleScrollStyles();
+    }
+    function initScrollTopButton() {
+        const scrollTopBtn = document.querySelector(".scroll-top");
+        if (!scrollTopBtn) return;
+        window.addEventListener("scroll", (() => {
+            scrollTopBtn.classList.toggle("visible", window.pageYOffset > window.innerHeight / 2);
+        }));
+        scrollTopBtn.addEventListener("click", (e => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }));
+    }
+    function initTableMobileAdaptation() {
+        const table = document.querySelector(".specs-table");
+        if (!table) return;
+        const headers = Array.from(table.querySelectorAll(".specs-table__header")).map((header => header.textContent));
+        table.querySelectorAll(".specs-table__row").forEach((row => {
+            Array.from(row.querySelectorAll("td")).forEach(((cell, index) => {
+                cell.setAttribute("data-label", headers[index]);
             }));
+        }));
+    }
+    function fixMobileViewportIssues() {
+        function setRealViewportHeight() {
+            const vh = window.innerHeight * .01;
+            document.documentElement.style.setProperty("--vh", `${vh}px`);
+            if (DOM.cartModal) DOM.cartModal.style.height = window.innerHeight + "px";
+            if (DOM.orderFormModal) DOM.orderFormModal.style.height = window.innerHeight + "px";
         }
-        init();
-    }));
-    document.addEventListener("DOMContentLoaded", (() => {
-        const infoIcon = document.querySelector(".info-icon");
-        if (infoIcon) {
-            infoIcon.addEventListener("click", (e => {
-                e.preventDefault();
-                infoIcon.classList.toggle("active");
-                setTimeout((() => {
-                    infoIcon.classList.remove("active");
-                }), 5e3);
-            }));
-            document.addEventListener("click", (e => {
-                if (!infoIcon.contains(e.target)) infoIcon.classList.remove("active");
-            }));
+        setRealViewportHeight();
+        window.addEventListener("resize", setRealViewportHeight);
+        window.addEventListener("orientationchange", setRealViewportHeight);
+    }
+    function initInputMask() {
+        const phoneInput = document.getElementById("order-phone");
+        if (phoneInput) IMask(phoneInput, {
+            mask: "+7 (000) 000-00-00"
+        });
+        const callBackPhoneInput = document.getElementById("call-back-phone");
+        if (callBackPhoneInput) IMask(callBackPhoneInput, {
+            mask: "+7 (000) 000-00-00"
+        });
+    }
+    function showErrorMessage(message) {
+        const errorMessage = document.createElement("div");
+        errorMessage.className = "error-message";
+        errorMessage.textContent = message;
+        errorMessage.style.background = "#e74c3c";
+        document.body.appendChild(errorMessage);
+        setTimeout((() => errorMessage.remove()), 2500);
+    }
+    function showSuccessMessage(message) {
+        const successMessage = document.createElement("div");
+        successMessage.className = "success-message";
+        successMessage.textContent = message;
+        document.body.appendChild(successMessage);
+        setTimeout((() => successMessage.remove()), 2500);
+    }
+    function generateProductCards() {
+        if (!DOM.productsContainer) {
+            console.error(translations.ru.containerNotFound);
+            return;
         }
-    }));
+        DOM.productsContainer.innerHTML = "";
+        if (!Array.isArray(products_productsData)) {
+            console.error(translations.ru.productsNotLoaded);
+            DOM.productsContainer.innerHTML = `<p class="error-message">${translations.ru.productsNotLoaded}</p>`;
+            return;
+        }
+        if (products_productsData.length === 0) {
+            DOM.productsContainer.innerHTML = `<p class="empty-message">${translations.ru.productsEmpty}</p>`;
+            return;
+        }
+        const fragment = document.createDocumentFragment();
+        try {
+            products_productsData.forEach(((product, index) => {
+                const productCard = createProductCard(product, index < LazyLoad.config.initialItems);
+                if (productCard) fragment.appendChild(productCard);
+            }));
+            DOM.productsContainer.appendChild(fragment);
+            AppState.displayedProducts = Math.min(products_productsData.length, LazyLoad.config.initialItems);
+            AppState.allProductsLoaded = AppState.displayedProducts >= products_productsData.length;
+            LazyLoad.init();
+        } catch (error) {
+            console.error(translations.ru.productsError, error);
+            DOM.productsContainer.innerHTML = `<p class="error-message">${translations.ru.productsError}</p>`;
+        }
+    }
+    function checkProductsData() {
+        if (!products_productsData || !Array.isArray(products_productsData)) {
+            console.error(translations.ru.productsNotLoaded);
+            DOM.productsContainer.innerHTML = `<p class="error-message">${translations.ru.productsNotLoaded}</p>`;
+            return false;
+        }
+        return true;
+    }
+    function script_init() {
+        calculateScrollbarWidth();
+        initDOMElements();
+        checkRequiredStyles();
+        setupCartOverlay();
+        initEventHandlers();
+        loadCartFromStorage();
+        if (DOM.productsContainer && checkProductsData()) {
+            generateProductCards();
+            if (DOM.searchForm) initSearchFunctionality();
+            if (DOM.categoryFilter) initCategoryFilter();
+        }
+        initHeaderTransformation();
+        initScrollTopButton();
+        initTableMobileAdaptation();
+        fixMobileViewportIssues();
+        initInputMask();
+        initCallBackForm();
+        document.querySelectorAll(".modal-content input, .modal-content textarea").forEach((input => {
+            input.addEventListener("click", (e => e.stopPropagation()));
+        }));
+    }
+    document.addEventListener("DOMContentLoaded", script_init);
     window["FLS"] = true;
     isWebp();
     menuInit();
