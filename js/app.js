@@ -8118,15 +8118,31 @@
         if (infoIcons.length === 0) return;
         const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
         if (!isTouchDevice) return;
+        const tooltipTimers = new WeakMap;
         infoIcons.forEach((icon => {
             icon.addEventListener("click", (e => {
                 e.preventDefault();
-                icon.classList.toggle("active");
+                if (tooltipTimers.has(icon)) {
+                    clearTimeout(tooltipTimers.get(icon));
+                    tooltipTimers.delete(icon);
+                }
+                icon.classList.add("active");
+                const timer = setTimeout((() => {
+                    icon.classList.remove("active");
+                    tooltipTimers.delete(icon);
+                }), 5e3);
+                tooltipTimers.set(icon, timer);
             }));
         }));
         document.addEventListener("click", (e => {
             const isInside = Array.from(infoIcons).some((icon => icon.contains(e.target)));
-            if (!isInside) infoIcons.forEach((icon => icon.classList.remove("active")));
+            if (!isInside) infoIcons.forEach((icon => {
+                icon.classList.remove("active");
+                if (tooltipTimers.has(icon)) {
+                    clearTimeout(tooltipTimers.get(icon));
+                    tooltipTimers.delete(icon);
+                }
+            }));
         }));
     }
     function initEventHandlers() {
