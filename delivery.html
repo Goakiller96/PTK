@@ -42,46 +42,10 @@
 			margin: 0;
 			font-family: Roboto, sans-serif;
 		}
-
-		.delivery__banner {
-			position: relative;
-			min-height: 500px;
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-			color: #fff;
-			overflow: hidden;
-		}
-
-		.delivery__banner::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(230, 148, 16, 0.3)), url('img/sklad.webp');
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: center;
-			z-index: -1;
-		}
-
-		.delivery__banner-title,
-		.delivery__banner-subtitle {
-			text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-			color: #fff;
-			padding: 0 5px;
-			position: relative;
-			z-index: 1;
-		}
 	</style>
 
 	<!-- Основные стили -->
-	<!-- <link  rel="stylesheet" href="./css/style.min.css?_v=20250807154044"> -->
+	<!-- <link  rel="stylesheet" href="./css/style.min.css?_v=20250812133124"> -->
 	<link rel="preload" href="./css/style.min.css?_v=20250723163836" as="style">
 	<link rel="stylesheet" href="./css/style.min.css?_v=20250723163836">
 
@@ -168,16 +132,15 @@
 				<div class="header__top">
 					<div class="header__container">
 						<div class="header__body">
-
 							<div class="header__main">
 								<div class="header__logo">
 									<a href="index.html" class="header__logo-img" aria-label="НПП Плазматехкомплект - Главная страница">
 										<svg width="43.972534" height="45.000000" viewBox="0 0 43.9725 45" fill="none" role="img" xmlns="http://www.w3.org/2000/svg">
 											<title>Логотип НПП Плазматехкомплект</title>
-											<path id="Subtract (Border)" d="M29 22.81L43.97 7.84C39.38 3.04 32.58 0 25 0C11.19 0 0 10.07 0 22.5C0 34.92 11.19 45 25 45C32.41 45 39.07 42.09 43.65 37.47L29 22.81ZM34.44 4.88C36.35 5.69 38.08 6.71 39.63 7.94L24.75 22.81L39.29 37.35C38.18 38.21 37.02 38.95 35.79 39.57C32.6 41.19 29 42 25 42C21.26 42 17.86 41.28 14.8 39.84C12.83 38.91 11.01 37.69 9.32 36.18C6.81 33.91 5.04 31.37 4.02 28.56C3.34 26.66 3 24.64 3 22.5C3 20.35 3.34 18.33 4.02 16.43C5.04 13.62 6.81 11.08 9.32 8.81C11.01 7.3 12.83 6.08 14.8 5.15C17.86 3.71 21.26 3 25 3C27.25 3 29.42 3.28 31.52 3.86C32.51 4.14 33.48 4.48 34.44 4.88Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
-											<path id="Line 1 (Border)" d="M41 9.5L8 9.5L8 6.5L41 6.5L41 9.5Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
-											<path id="Line 2 (Border)" d="M25.5 8L25.5 43L22.5 43L22.5 8L25.5 8Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
-											<path id="Line 2 (Border)" d="M10.5 7L10.5 38L7.5 38L7.5 7L10.5 7Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
+											<path id="subtract-border-1" d="M29 22.81L43.97 7.84C39.38 3.04 32.58 0 25 0C11.19 0 0 10.07 0 22.5C0 34.92 11.19 45 25 45C32.41 45 39.07 42.09 43.65 37.47L29 22.81ZM34.44 4.88C36.35 5.69 38.08 6.71 39.63 7.94L24.75 22.81L39.29 37.35C38.18 38.21 37.02 38.95 35.79 39.57C32.6 41.19 29 42 25 42C21.26 42 17.86 41.28 14.8 39.84C12.83 38.91 11.01 37.69 9.32 36.18C6.81 33.91 5.04 31.37 4.02 28.56C3.34 26.66 3 24.64 3 22.5C3 20.35 3.34 18.33 4.02 16.43C5.04 13.62 6.81 11.08 9.32 8.81C11.01 7.3 12.83 6.08 14.8 5.15C17.86 3.71 21.26 3 25 3C27.25 3 29.42 3.28 31.52 3.86C32.51 4.14 33.48 4.48 34.44 4.88Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
+											<path id="line-1-border-1" d="M41 9.5L8 9.5L8 6.5L41 6.5L41 9.5Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
+											<path id="line-2-border-1" d="M25.5 8L25.5 43L22.5 43L22.5 8L25.5 8Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
+											<path id="line-2-border-2" d="M10.5 7L10.5 38L7.5 38L7.5 7L10.5 7Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
 										</svg>
 									</a>
 									<a href="index.html" class="header__logo-text">НПП"Плазматехкомплект"</a>
@@ -199,7 +162,6 @@
 							</div>
 
 							<div data-da=".header__container,640" class="header__actions">
-
 								<div class="actions__contacts actions__contacts-header" itemscope itemtype="http://schema.org/Organization">
 									<meta itemprop="name" content="НПП Плазматехкомплект">
 									<div class="phones">
@@ -246,10 +208,10 @@
 							<div class="header__bottom-title">Меню</div>
 							<ul data-spollers="767.98,max" class="menu__list">
 								<li class="menu__item">
-									<a href="catalog.html" class="menu__link" itemprop="url">КАТАЛОГ</a>
+									<a href="catalog.html" class="menu__link" itemprop="url">Каталог</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link" itemprop="url">ПЛАЗМОТРОНЫ</a>
+									<a href="#" class="menu__link" itemprop="url">Плазмотроны</a>
 									<button data-spoller type="button" class="menu__arrow _icon-arrow-down" aria-expanded="false" aria-controls="submenu-2"></button>
 									<ul class="menu__sub-list" id="submenu-2">
 										<li class="menu__sub-item">
@@ -270,24 +232,6 @@
 									</ul>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link" itemprop="url">РАСХОДНИКИ</a>
-									<button data-spoller type="button" class="menu__arrow _icon-arrow-down" aria-controls="submenu-3"></button>
-									<ul class="menu__sub-list" id="submenu-3">
-										<li class="menu__sub-item">
-											<a href="#" class="menu__sub-link">пункт</a>
-										</li>
-										<li class="menu__sub-item">
-											<a href="#" class="menu__sub-link">пункт</a>
-										</li>
-										<li class="menu__sub-item">
-											<a href="#" class="menu__sub-link">пункт</a>
-										</li>
-										<li class="menu__sub-item">
-											<a href="#" class="menu__sub-link">пункт</a>
-										</li>
-									</ul>
-								</li>
-								<li class="menu__item">
 									<a href="delivery.html" class="menu__link" itemprop="url">Доставка</a>
 								</li>
 								<li class="menu__item">
@@ -301,9 +245,6 @@
 			</div>
 		</header>
 		<main class="page">
-
-
-			<!-- Хлебные крошки для страницы каталога -->
 			<div class="breadcrumbs__container">
 				<nav class="breadcrumbs" aria-label="Хлебные крошки">
 					<ul class="breadcrumbs__list">
@@ -317,7 +258,6 @@
 				</nav>
 			</div>
 
-
 			<section class="delivery" itemscope itemtype="http://schema.org/ShippingDeliveryTime">
 				<div class="delivery__container">
 					<div class="delivery__title-wrapper">
@@ -330,13 +270,13 @@
 							отправляем их через проверенных транспортных партнёров. Выбирайте удобную ТК — мы организуем
 							доставку по всей России.
 						</p>
-						<meta itemprop="transitTime" content="P3D" />
-						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Monday" />
-						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Tuesday" />
-						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Wednesday" />
-						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Thursday" />
-						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Friday" />
-						<meta itemprop="cutOffTime" content="18:00:00+05:00" />
+						<meta itemprop="transitTime" content="P3D">
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Monday">
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Tuesday">
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Wednesday">
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Thursday">
+						<link itemprop="businessDays" href="http://purl.org/goodrelations/v1#Friday">
+						<meta itemprop="cutOffTime" content="18:00:00+05:00">
 					</div>
 				</div>
 			</section>
@@ -405,7 +345,7 @@
 						<div class="terms__item item-terms" itemscope itemtype="http://schema.org/PickupLocation">
 							<div class="terms__item-top">
 								<div class="terms__item-image" aria-hidden="true">
-									<img class="terms__item-img" src="img/icons/warehouse.svg" alt="Самовывоз промышленного оборудования в Екатеринбурге" loading="lazy" role="presentation" width="30" height="30">
+									<img class="terms__item-img" src="img/icons/warehouse.svg" alt="Самовывоз промышленного оборудования в Екатеринбурге" loading="lazy" width="30" height="30">
 								</div>
 								<h3 class="terms__title" itemprop="name">Самовывоз</h3>
 							</div>
@@ -448,16 +388,8 @@
 									</div>
 								</div>
 
-								<!-- <div class="terms__map" data-iframe>
-                                    <iframe
-                                        data-src="https://yandex.ru/map-widget/v1/?um=constructor%3A6ee453af400c8e1629b87358e7a2dd0053d17cfe22e12c694959b372fcebe2fc&source=constructor"
-                                        width="600" height="400" frameborder="0"
-                                        title="Карта проезда к складу промышленного оборудования в Екатеринбурге"
-                                        aria-label="Карта проезда">
-                                    </iframe>
-                                </div> -->
 								<div id="map" style="width: 100%; max-width: 600px; height: 250px;"></div>
-								<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=34202b0c-6ef0-4eae-a85d-84ee4b506f8b&_v=20250807154044"></script>
+								<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=34202b0c-6ef0-4eae-a85d-84ee4b506f8b&_v=20250812133124"></script>
 								<script>
 									ymaps.ready(function() {
 										var myMap = new ymaps.Map("map", {
@@ -470,8 +402,6 @@
 										}));
 									});
 								</script>
-
-
 							</div>
 						</div>
 					</div>
@@ -527,70 +457,62 @@
 					</div>
 				</div>
 			</section>
-
-
-
-
 		</main>
 		<footer class="footer">
 			<div class="footer__container">
 				<div class="footer__body">
 					<div class="footer__main">
-						<div class="footer__block">
-							<div class="footer__logo">
-								<a href="/" class="footer__logo-img">
-									<svg width="43.972534" height="45.000000" viewBox="0 0 43.9725 45" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-
-										<path id="Subtract (Border)" d="M29 22.81L43.97 7.84C39.38 3.04 32.58 0 25 0C11.19 0 0 10.07 0 22.5C0 34.92 11.19 45 25 45C32.41 45 39.07 42.09 43.65 37.47L29 22.81ZM34.44 4.88C36.35 5.69 38.08 6.71 39.63 7.94L24.75 22.81L39.29 37.35C38.18 38.21 37.02 38.95 35.79 39.57C32.6 41.19 29 42 25 42C21.26 42 17.86 41.28 14.8 39.84C12.83 38.91 11.01 37.69 9.32 36.18C6.81 33.91 5.04 31.37 4.02 28.56C3.34 26.66 3 24.64 3 22.5C3 20.35 3.34 18.33 4.02 16.43C5.04 13.62 6.81 11.08 9.32 8.81C11.01 7.3 12.83 6.08 14.8 5.15C17.86 3.71 21.26 3 25 3C27.25 3 29.42 3.28 31.52 3.86C32.51 4.14 33.48 4.48 34.44 4.88Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
-										<path id="Line 1 (Border)" d="M41 9.5L8 9.5L8 6.5L41 6.5L41 9.5Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
-										<path id="Line 2 (Border)" d="M25.5 8L25.5 43L22.5 43L22.5 8L25.5 8Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
-										<path id="Line 2 (Border)" d="M10.5 7L10.5 38L7.5 38L7.5 7L10.5 7Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
-									</svg>
-								</a>
-								<a href="index.html" class="footer__logo-text">НПП"Плазматехкомплект"</a>
-								<a href="index.html" class="footer__logo-text-short">ПТК</a>
-							</div>
-
-							<div class="actions__contacts actions__contacts-footer">
-								<div class="phones">
-									<div class="phones__icon _icon-phone"></div>
-									<div class="phones__item">
-										<a href="tel:+73432879643" class="phones__link">+7(343)287-96-43</a>
-										<a href="tel:+79089020509" class="phones__link">+7(908)902-05-09</a>
-									</div>
-								</div>
-
-								<div class="emails">
-									<div class="emails__icon _icon-mail"></div>
-									<div class="emails__item">
-										<a href="mailto:promplazma@mail.ru" class="emails__link">promplazma@mail.ru</a>
-										<a href="mailto:plazmatk@mail.ru" class="emails__link">plazmatk@mail.ru</a>
-									</div>
-								</div>
-							</div>
-
-							<div class="footer__call-back">
-								<button type="button" class="footer__call-back-btn" aria-label="Заказать звонок">Заказать
-									звонок</button>
-							</div>
-
-
-							<div class="footer__content">
-								<div class="footer__opentime">
-									<div class="footer__opentime-text">Время работы:</div>
-									<div class="footer__opentime-time">с 10:00 до 18:00</div>
-								</div>
-
-								<div class="footer__address">
-									<div class="footer__address-text">Адрес:</div>
-									<address class="footer__address-location">г. Екатеринбург,<br>
-										пр-т Космонавтов 11Б, литера Б</address>
-								</div>
-							</div>
-
+						<div class="footer__logo">
+							<a href="/" class="footer__logo-img">
+								<svg width="43.972534" height="45.000000" viewBox="0 0 43.9725 45" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+									<title>Логотип НПП Плазматехкомплект</title>
+									<path id="subtract-border-2" d="M29 22.81L43.97 7.84C39.38 3.04 32.58 0 25 0C11.19 0 0 10.07 0 22.5C0 34.92 11.19 45 25 45C32.41 45 39.07 42.09 43.65 37.47L29 22.81ZM34.44 4.88C36.35 5.69 38.08 6.71 39.63 7.94L24.75 22.81L39.29 37.35C38.18 38.21 37.02 38.95 35.79 39.57C32.6 41.19 29 42 25 42C21.26 42 17.86 41.28 14.8 39.84C12.83 38.91 11.01 37.69 9.32 36.18C6.81 33.91 5.04 31.37 4.02 28.56C3.34 26.66 3 24.64 3 22.5C3 20.35 3.34 18.33 4.02 16.43C5.04 13.62 6.81 11.08 9.32 8.81C11.01 7.3 12.83 6.08 14.8 5.15C17.86 3.71 21.26 3 25 3C27.25 3 29.42 3.28 31.52 3.86C32.51 4.14 33.48 4.48 34.44 4.88Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
+									<path id="line-1-border-2" d="M41 9.5L8 9.5L8 6.5L41 6.5L41 9.5Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
+									<path id="line-2-border-3" d="M25.5 8L25.5 43L22.5 43L22.5 8L25.5 8Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
+									<path id="line-2-border-4" d="M10.5 7L10.5 38L7.5 38L7.5 7L10.5 7Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd" />
+								</svg>
+							</a>
+							<a href="index.html" class="footer__logo-text">НПП"Плазматехкомплект"</a>
+							<a href="index.html" class="footer__logo-text-short">ПТК</a>
 						</div>
 
+						<div class="actions__contacts actions__contacts-footer">
+							<div class="phones">
+								<div class="phones__icon _icon-phone"></div>
+								<div class="phones__item">
+									<a href="tel:+73432879643" class="phones__link">+7(343)287-96-43</a>
+									<a href="tel:+79089020509" class="phones__link">+7(908)902-05-09</a>
+								</div>
+							</div>
+
+							<div class="emails">
+								<div class="emails__icon _icon-mail"></div>
+								<div class="emails__item">
+									<a href="mailto:promplazma@mail.ru" class="emails__link">promplazma@mail.ru</a>
+									<a href="mailto:plazmatk@mail.ru" class="emails__link">plazmatk@mail.ru</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="footer__call-back">
+							<button type="button" class="footer__call-back-btn" aria-label="Заказать звонок">Заказать
+								звонок</button>
+						</div>
+
+						<div class="footer__content">
+							<div class="footer__opentime">
+								<div class="footer__opentime-text">Время работы:</div>
+								<div class="footer__opentime-time">с 10:00 до 18:00</div>
+							</div>
+
+							<div class="footer__address">
+								<div class="footer__address-text">Адрес:</div>
+								<address class="footer__address-location">г. Екатеринбург,<br>
+									пр-т Космонавтов 11Б, литера Б</address>
+							</div>
+						</div>
 					</div>
+
 					<div class="footer__bottom-wrapper">
 						<div class="footer__menu menu">
 							<nav class="footer-menu__body">
@@ -653,7 +575,7 @@
 		</footer>
 	</div>
 	<!-- Общие элементы корзины -->
-	<aside class="cart-modal" aria-modal="true" aria-labelledby="cart-title" role="dialog" tabindex="-1" aria-describedby="cart-description">
+	<div class="cart-modal" aria-labelledby="cart-title" tabindex="-1" aria-describedby="cart-description">
 		<div id="cart-description" class="visually-hidden">
 			Управление товарами в корзине
 		</div>
@@ -670,12 +592,11 @@
 			<button type="button" class="submit-order">Оформить заказ</button>
 		</div>
 		<span tabindex="0" class="focus-trap-end" aria-hidden="true"></span>
-	</aside>
+	</div>
 	<div class="cart-overlay"></div>
 
-
 	<!-- Модальное окно формы заказа -->
-	<aside class="order-form-modal" aria-modal="true" aria-labelledby="order-form-title" role="dialog" tabindex="-1" aria-describedby="order-form-description">
+	<div class="order-form-modal" aria-modal="true" aria-labelledby="order-form-title" role="dialog" tabindex="-1" aria-describedby="order-form-description">
 		<div id="order-form-description" class="visually-hidden">
 			Форма для заполнения данных заказа
 		</div>
@@ -705,12 +626,11 @@
 			</div>
 		</form>
 		<span tabindex="0" class="focus-trap-end" aria-hidden="true"></span>
-	</aside>
+	</div>
 	<div class="order-form-overlay"></div>
 
-
-	<!-- Модальное окно формы обратного звонка-->
-	<aside class="call-back-modal" aria-modal="true" aria-labelledby="call-back-title" role="dialog" tabindex="-1" aria-describedby="call-back-description">
+	<!-- Модальное окно формы обратного звонка -->
+	<div class="call-back-modal" aria-labelledby="call-back-title" aria-describedby="call-back-description" tabindex="-1">
 		<div id="call-back-description" class="visually-hidden">
 			Форма для заказа обратного звонка
 		</div>
@@ -733,15 +653,14 @@
 				<button type="submit" class="call-back-submit">Отправить</button>
 			</div>
 		</form>
-	</aside>
+	</div>
 	<div class="call-back-overlay"></div>
-
 
 	<!-- Кнопка наверх -->
 	<button class="scroll-top" aria-label="Наверх">
 		<i class="_icon-arrow-down"></i>
 	</button>
-	<script src="js/app.min.js?_v=20250807154044"></script>
+	<script src="js/app.min.js?_v=20250812133124"></script>
 </body>
 
 </html>
