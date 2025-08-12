@@ -8113,6 +8113,22 @@
             }
         }));
     }
+    function initTouchTooltips() {
+        const infoIcons = document.querySelectorAll(".info-icon");
+        if (infoIcons.length === 0) return;
+        const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+        if (!isTouchDevice) return;
+        infoIcons.forEach((icon => {
+            icon.addEventListener("click", (e => {
+                e.preventDefault();
+                icon.classList.toggle("active");
+            }));
+        }));
+        document.addEventListener("click", (e => {
+            const isInside = Array.from(infoIcons).some((icon => icon.contains(e.target)));
+            if (!isInside) infoIcons.forEach((icon => icon.classList.remove("active")));
+        }));
+    }
     function initEventHandlers() {
         document.addEventListener("click", (e => {
             if (e.target.classList.contains("quantity__btn")) {
@@ -8306,6 +8322,10 @@
         fixMobileViewportIssues();
         initInputMask();
         initCallBackForm();
+        initTouchTooltips();
+        document.querySelectorAll(".modal-content input, .modal-content textarea").forEach((input => {
+            input.addEventListener("click", (e => e.stopPropagation()));
+        }));
         document.querySelectorAll(".modal-content input, .modal-content textarea").forEach((input => {
             input.addEventListener("click", (e => e.stopPropagation()));
         }));
