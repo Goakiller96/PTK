@@ -3301,6 +3301,36 @@ h3 {
   }
 }
 
+.order-form-modal {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  height: -webkit-fill-available;
+  background: #fff;
+  -webkit-box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  -webkit-transition: right 0.3s ease;
+  transition: right 0.3s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.order-form-modal.active {
+  right: 0;
+}
+
 .plazmotron__table {
   width: 100%;
   margin: 0 auto;
@@ -3387,7 +3417,6 @@ h3 {
 .image-section {
   width: 50%;
   padding: 15px;
-  background-color: rgba(230, 230, 230, 0.4);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3444,7 +3473,6 @@ h3 {
 }
 
 .parts-table th {
-  background-color: rgba(230, 230, 230, 0.4);
   font-weight: 700;
   position: sticky;
   font-size: 0.875rem;
@@ -3625,6 +3653,23 @@ h3 {
   margin: 0;
   font-size: 1em;
   padding: 0;
+}
+
+.parts-table th:first-child {
+  width: 20%;
+}
+
+.parts-table th:last-child {
+  width: 80%;
+}
+
+.parts-table th:nth-child(1),
+.parts-table th:nth-child(2) {
+  width: 10%;
+}
+
+.parts-table th:nth-child(3) {
+  width: 80%;
 }
 
 .delivery__banner-title {
@@ -4292,7 +4337,8 @@ h3 {
     position: absolute;
     background: #fff8d5;
     top: 0;
-    right: 375px;
+    right: calc(50% - 180px);
+    width: 100vw;
     width: 100vw;
     height: 100%;
   }
