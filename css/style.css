@@ -4806,6 +4806,13 @@ h3 {
   }
 }
 
+@media (max-width: 479px) {
+  .cart-modal {
+    -webkit-box-shadow: 0px 0 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0 0px rgba(0, 0, 0, 0.1);
+  }
+}
+
 @media (max-width: 468px) {
   .parts-table th:nth-child(1),
   .parts-table th:nth-child(2) {
