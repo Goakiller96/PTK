@@ -701,6 +701,7 @@ h3 {
   gap: 20px;
   padding: 60px 0px 0px 0px;
   position: relative;
+  overflow: hidden;
   z-index: 2;
 }
 
@@ -5807,6 +5808,8 @@ h3 {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 
   .slider-arrows {
