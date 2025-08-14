@@ -4103,10 +4103,6 @@
             watchOverflow: true,
             speed: 800,
             initialSlide: 1,
-            autoplay: {
-                delay: 9e3,
-                disableOnInteraction: true
-            },
             parallax: true,
             pagination: {
                 el: ".controls-slider-main__dots",
@@ -4428,22 +4424,6 @@
             description: "Сопло для плазмотрона ВПР-400",
             category: "Сопла"
         }, {
-            title: "Корпус сопла ВПР-210М",
-            article: "210020",
-            image: "img/cards/korpus-sopla-210.webp",
-            alt: "Корпус сопла ВПР-210М",
-            description: "Корпус сопла для плазмотрона ВПР-210м",
-            category: "Комплектующие"
-        }, {
-            title: "Электрод для плазмотрона",
-            article: "1514",
-            image: "img/cards/electrod-ag.webp",
-            sizes: [ "Гафний", "Серебро" ],
-            sizeLabel: "Тип вставки:",
-            alt: "Электроды для плазменной резки",
-            description: "Катоды для плазмотронов с различными типами вставок",
-            category: "Электроды"
-        }, {
             title: "Электрод для плазмотрона конусный ЭП-03",
             article: "4014",
             image: "img/cards/electrod.webp",
@@ -4461,6 +4441,22 @@
             alt: "Электроды для плазменной резки",
             description: "Износостойкие сопла для резки алюминия и цветных металлов",
             category: "Электроды"
+        }, {
+            title: "Электрод для плазмотрона",
+            article: "1514",
+            image: "img/cards/electrod-ag.webp",
+            sizes: [ "Гафний", "Серебро" ],
+            sizeLabel: "Тип вставки:",
+            alt: "Электроды для плазменной резки",
+            description: "Катоды для плазмотронов с различными типами вставок",
+            category: "Электроды"
+        }, {
+            title: "Корпус сопла ВПР-210М",
+            article: "210020",
+            image: "img/cards/korpus-sopla-210.webp",
+            alt: "Корпус сопла ВПР-210М",
+            description: "Корпус сопла для плазмотрона ВПР-210м",
+            category: "Комплектующие"
         }, {
             title: "Корпус с изоляционной втулкой ВПР-410",
             article: "410008",
@@ -7656,21 +7652,43 @@
     }
     const LazyLoad = {
         config: {
-            initialItems: 10,
-            loadMoreItems: 5,
-            scrollThreshold: 300
+            rowsToLoad: 2,
+            scrollThreshold: 300,
+            minCardWidth: 220
+        },
+        getCardsPerRow() {
+            if (!DOM.productsContainer) {
+                console.warn(translations.ru.containerNotFound);
+                return 5;
+            }
+            const containerWidth = DOM.productsContainer.offsetWidth;
+            const cardsPerRow = Math.floor(containerWidth / this.config.minCardWidth);
+            return Math.max(1, cardsPerRow);
+        },
+        getInitialItems() {
+            return this.getCardsPerRow() * this.config.rowsToLoad;
+        },
+        getLoadMoreItems() {
+            return this.getCardsPerRow() * this.config.rowsToLoad;
         },
         init() {
-            if (!DOM.productsContainer) return;
-            this.loadMoreProducts(this.config.initialItems);
+            if (!DOM.productsContainer) {
+                console.error(translations.ru.containerNotFound);
+                return;
+            }
+            this.reset();
             window.addEventListener("scroll", this.handleScroll.bind(this));
+            window.addEventListener("resize", debounce((() => {
+                AppState.filteredProducts = null;
+                this.reset();
+            }), 300));
         },
         handleScroll() {
             if (AppState.isLoading || AppState.allProductsLoaded) return;
             const scrollPosition = window.innerHeight + window.scrollY;
             const pageHeight = document.documentElement.scrollHeight;
             const threshold = pageHeight - this.config.scrollThreshold;
-            if (scrollPosition >= threshold) this.loadMoreProducts(this.config.loadMoreItems);
+            if (scrollPosition >= threshold) this.loadMoreProducts(this.getLoadMoreItems());
         },
         loadMoreProducts(count) {
             if (AppState.isLoading || AppState.allProductsLoaded) return;
@@ -7680,14 +7698,15 @@
             const productsToAdd = filteredProducts.slice(AppState.displayedProducts, endIndex);
             const fragment = document.createDocumentFragment();
             productsToAdd.forEach(((product, index) => {
-                const productCard = createProductCard(product, AppState.displayedProducts + index < this.config.initialItems);
+                const productCard = createProductCard(product, AppState.displayedProducts < this.getInitialItems());
+                productCard.style.animationDelay = `${index * .02}s`;
                 fragment.appendChild(productCard);
             }));
             DOM.productsContainer.appendChild(fragment);
             AppState.displayedProducts = endIndex;
             AppState.allProductsLoaded = AppState.displayedProducts >= filteredProducts.length;
             AppState.isLoading = false;
-            if (!AppState.allProductsLoaded && this.shouldLoadMoreImmediately()) this.loadMoreProducts(this.config.loadMoreItems);
+            if (!AppState.allProductsLoaded && this.shouldLoadMoreImmediately()) this.loadMoreProducts(this.getLoadMoreItems());
         },
         shouldLoadMoreImmediately() {
             const pageHeight = document.documentElement.scrollHeight;
@@ -7701,7 +7720,7 @@
             AppState.isLoading = false;
             if (DOM.productsContainer) {
                 DOM.productsContainer.innerHTML = "";
-                this.loadMoreProducts(this.config.initialItems);
+                this.loadMoreProducts(this.getInitialItems());
             }
         }
     };
@@ -8282,36 +8301,6 @@
         document.body.appendChild(successMessage);
         setTimeout((() => successMessage.remove()), 2500);
     }
-    function generateProductCards() {
-        if (!DOM.productsContainer) {
-            console.error(translations.ru.containerNotFound);
-            return;
-        }
-        DOM.productsContainer.innerHTML = "";
-        if (!Array.isArray(products_productsData)) {
-            console.error(translations.ru.productsNotLoaded);
-            DOM.productsContainer.innerHTML = `<p class="error-message">${translations.ru.productsNotLoaded}</p>`;
-            return;
-        }
-        if (products_productsData.length === 0) {
-            DOM.productsContainer.innerHTML = `<p class="empty-message">${translations.ru.productsEmpty}</p>`;
-            return;
-        }
-        const fragment = document.createDocumentFragment();
-        try {
-            products_productsData.forEach(((product, index) => {
-                const productCard = createProductCard(product, index < LazyLoad.config.initialItems);
-                if (productCard) fragment.appendChild(productCard);
-            }));
-            DOM.productsContainer.appendChild(fragment);
-            AppState.displayedProducts = Math.min(products_productsData.length, LazyLoad.config.initialItems);
-            AppState.allProductsLoaded = AppState.displayedProducts >= products_productsData.length;
-            LazyLoad.init();
-        } catch (error) {
-            console.error(translations.ru.productsError, error);
-            DOM.productsContainer.innerHTML = `<p class="error-message">${translations.ru.productsError}</p>`;
-        }
-    }
     function checkProductsData() {
         if (!products_productsData || !Array.isArray(products_productsData)) {
             console.error(translations.ru.productsNotLoaded);
@@ -8328,7 +8317,7 @@
         initEventHandlers();
         loadCartFromStorage();
         if (DOM.productsContainer && checkProductsData()) {
-            generateProductCards();
+            LazyLoad.init();
             if (DOM.searchForm) initSearchFunctionality();
             if (DOM.categoryFilter) initCategoryFilter();
         }
