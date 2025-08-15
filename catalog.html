@@ -22,6 +22,11 @@
 	<link rel="apple-touch-icon" href="./apple-touch-icon.png">
 	<meta name="theme-color" content="#005f87">
 
+	<!-- Предзагрузка ключевого изображения для LCP -->
+	<link rel="preload" href="img/delivery-banner.webp" as="image" type="image/webp">
+	<link rel="preload" href="img/delivery-banner.jpg" as="image">
+
+
 
 	<!-- Предварительное подключение к Яндекс.Картам -->
 	<link rel="preconnect" href="https://yandex.ru">
@@ -45,7 +50,7 @@
 	</style>
 
 	<!-- Основные стили -->
-	<!-- <link  rel="stylesheet" href="./css/style.min.css?_v=20250812133124"> -->
+	<!-- <link  rel="stylesheet" href="./css/style.min.css?_v=20250815132244"> -->
 	<link rel="preload" href="./css/style.min.css?_v=20250723163836" as="style">
 	<link rel="stylesheet" href="./css/style.min.css?_v=20250723163836">
 
@@ -214,7 +219,7 @@
 								</li>
 								<li class="menu__item">
 									<a href="#" class="menu__link" itemprop="url">Плазмотроны</a>
-									<button data-spoller type="button" class="menu__arrow _icon-arrow-down" aria-expanded="false" aria-controls="submenu-2"></button>
+									<button data-spoller type="button" class="menu__arrow _icon-arrow-down" aria-expanded="false" aria-controls="submenu-2" aria-label="Развернуть подменю"></button>
 									<ul class="menu__sub-list" id="submenu-2">
 										<li class="menu__sub-item">
 											<a href="plazmotron-vpr-210m.html" class="menu__sub-link">ВПР-210М</a>
@@ -283,12 +288,11 @@
 
 			<section class="catalog">
 				<div class="catalog__container">
-					<!-- <h2 class="catalog__title title">Каталог</h2> -->
 					<div class="catalog__title-wrapper">
 						<h2 class="catalog__title">Каталог</h2>
-						<span class="info-icon">
+						<span class="info-icon" aria-describedby="tooltip-info">
 							i
-							<span class="tooltip">
+							<span id="tooltip-info" role="tooltip" class="tooltip">
 								<span>Сформируйте и отправьте заказ.</span>
 								<span>Мы направим вам счет или сообщим актуальные цены.</span>
 							</span>
@@ -296,13 +300,13 @@
 					</div>
 
 					<div class="catalog__filter">
-						<label for="category-select">Фильтр по категории:</label>
+						<label for="category-select" id="category-filter-label">Фильтр по категории:</label>
 						<div class="custom-select" id="category-filter">
-							<div class="custom-select__trigger" tabindex="0" aria-expanded="false" role="button">
+							<div class="custom-select__trigger" tabindex="0" aria-expanded="false" aria-haspopup="listbox" role="button" aria-controls="category-options">
 								<span class="custom-select__value">Все товары</span>
 								<span class="custom-select__arrow"></span>
 							</div>
-							<ul class="custom-select__options" role="listbox">
+							<ul class="custom-select__options" id="category-options" role="listbox" aria-labelledby="category-filter-label">
 								<!-- Опции будут добавлены через JavaScript -->
 							</ul>
 							<select id="category-select" class="hidden-select" aria-hidden="true">
@@ -311,7 +315,7 @@
 						</div>
 					</div>
 
-					<div class="catalog__wrapper" id="products-container">
+					<div class="catalog__wrapper" id="products-container" role="list">
 						<!-- Карточки товаров будут генерироваться здесь -->
 					</div>
 				</div>
@@ -385,7 +389,8 @@
 									</li>
 									<li class="footer-menu__item">
 										<a href="#" class="footer-menu__link">ПЛАЗМОТРОНЫ</a>
-										<button data-spoller type="button" class="footer-menu__arrow menu__arrow _icon-arrow-down"></button>
+										<button data-spoller type="button" class="footer-menu__arrow menu__arrow _icon-arrow-down" aria-expanded="false" aria-label="Развернуть раздел меню">
+										</button>
 										<ul class="footer__sub-list">
 											<li class="footer__sub-item">
 												<a href="plazmotron-vpr-210m.html" class="footer__sub-link">ВПР-210М</a>
@@ -406,7 +411,8 @@
 									</li>
 									<li class="footer-menu__item">
 										<a href="#" class="footer-menu__link">ЭЛЕКТРОДЫ</a>
-										<button data-spoller type="button" class="footer-menu__arrow menu__arrow _icon-arrow-down"></button>
+										<button data-spoller type="button" class="footer-menu__arrow menu__arrow _icon-arrow-down" aria-expanded="false" aria-label="Развернуть раздел меню">
+										</button>
 										<ul class="footer__sub-list">
 											<li class="footer__sub-item">
 												<a href="#" class="footer__sub-link">Пункт меню</a>
@@ -439,7 +445,7 @@
 	</div>
 
 	<!-- Общие элементы корзины -->
-	<div class="cart-modal" aria-labelledby="cart-title" tabindex="-1" aria-describedby="cart-description">
+	<div class="cart-modal" id="cart-modal" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-describedby="cart-description">
 		<div id="cart-description" class="visually-hidden">
 			Управление товарами в корзине
 		</div>
@@ -460,7 +466,7 @@
 	<div class="cart-overlay"></div>
 
 	<!-- Модальное окно формы заказа -->
-	<div class="order-form-modal" aria-modal="true" aria-labelledby="order-form-title" role="dialog" tabindex="-1" aria-describedby="order-form-description">
+	<div class="order-form-modal" id="order-form-modal" aria-modal="true" aria-labelledby="order-form-title" role="dialog" tabindex="-1" aria-describedby="order-form-description">
 		<div id="order-form-description" class="visually-hidden">
 			Форма для заполнения данных заказа
 		</div>
@@ -473,17 +479,17 @@
 			<div class="order-form__group">
 				<label for="order-name">Имя</label>
 				<input type="text" id="order-name" name="name" placeholder="Введите ваше имя" required autocomplete="name">
-				<span class="error-message" id="order-name-error"></span>
+				<span class="error-message" id="order-name-error" aria-live="polite"></span>
 			</div>
 			<div class="order-form__group">
 				<label for="order-phone">Телефон</label>
 				<input type="tel" id="order-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
-				<span class="error-message" id="order-phone-error"></span>
+				<span class="error-message" id="order-phone-error" aria-live="polite"></span>
 			</div>
 			<div class="order-form__group">
 				<label for="order-email">Email</label>
 				<input type="email" id="order-email" name="email" placeholder="Введите ваш email" required autocomplete="email">
-				<span class="error-message" id="order-email-error"></span>
+				<span class="error-message" id="order-email-error" aria-live="polite"></span>
 			</div>
 			<div class="order-form__footer">
 				<button type="submit" class="submit-order-form">Отправить заказ</button>
@@ -494,7 +500,7 @@
 	<div class="order-form-overlay"></div>
 
 	<!-- Модальное окно формы обратного звонка -->
-	<div class="call-back-modal" aria-labelledby="call-back-title" aria-describedby="call-back-description" tabindex="-1">
+	<div class="call-back-modal" id="call-back-modal" role="dialog" aria-modal="true" aria-labelledby="call-back-title" aria-describedby="call-back-description" tabindex="-1">
 		<div id="call-back-description" class="visually-hidden">
 			Форма для заказа обратного звонка
 		</div>
@@ -506,12 +512,12 @@
 			<div class="call-back-form__group">
 				<label for="call-back-name">Имя</label>
 				<input type="text" id="call-back-name" name="name" placeholder="Введите ваше имя" required autocomplete="name">
-				<span class="error-message" id="call-back-name-error"></span>
+				<span class="error-message" id="call-back-name-error" aria-live="polite"></span>
 			</div>
 			<div class="call-back-form__group">
 				<label for="call-back-phone">Телефон</label>
 				<input type="tel" id="call-back-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
-				<span class="error-message" id="call-back-phone-error"></span>
+				<span class="error-message" id="call-back-phone-error" aria-live="polite"></span>
 			</div>
 			<div class="call-back-form__footer">
 				<button type="submit" class="call-back-submit">Отправить</button>
@@ -522,10 +528,10 @@
 
 	<!-- Кнопка наверх -->
 	<button class="scroll-top" aria-label="Наверх">
-		<i class="_icon-arrow-down"></i>
+		<i class="_icon-arrow-down" aria-hidden="true"></i>
 	</button>
 
-	<script src="js/app.min.js?_v=20250812133124"></script>
+	<script src="js/app.min.js?_v=20250815132244"></script>
 </body>
 
 </html>
