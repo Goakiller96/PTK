@@ -2426,7 +2426,6 @@ h3 {
 .quantity__btn {
   width: 32px;
   height: 32px;
-  background: rgba(122, 122, 122, 0.1);
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 16px;
@@ -7076,10 +7075,7 @@ h3 {
   }
 
   .quantity__btn:hover {
-    background: #e0e0e0;
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
+    background: rgba(236, 236, 236, 0.5058823529);
   }
 
   .add-to-cart:hover {
