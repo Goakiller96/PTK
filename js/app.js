@@ -4479,13 +4479,6 @@
             description: "Гайка сопловая для плазмотронов ВПР-210м/402/400",
             category: "Комплектующие"
         }, {
-            title: "Гайка изолятора",
-            article: "4006",
-            image: "img/cards/gaika-izol.webp",
-            alt: "Гайка изолятора для плазмотрона",
-            description: "Гайка изолятора для плазмотронов ВПР-150/210м/402/400/410",
-            category: "Комплектующие"
-        }, {
             title: "Гайка сопловая",
             article: "4013",
             image: "img/cards/gaika-150.webp",
@@ -4493,6 +4486,13 @@
             sizeLabel: "Тип:",
             alt: "Гайка",
             description: "Гайка",
+            category: "Комплектующие"
+        }, {
+            title: "Гайка изолятора",
+            article: "4006",
+            image: "img/cards/gaika-izol.webp",
+            alt: "Гайка изолятора для плазмотрона",
+            description: "Гайка изолятора для плазмотронов ВПР-150/210м/402/400/410",
             category: "Комплектующие"
         }, {
             title: "Гайка присоединительная",
@@ -4509,11 +4509,11 @@
             description: "Распределитель для плазмотронов ВПР-150/210м/402/400/410",
             category: "Комплектующие"
         }, {
-            title: "Изолятор",
-            article: "4007",
-            image: "img/cards/izolator.webp",
-            alt: "Изолятор для плазмотрона",
-            description: "Изолятор для плазмотронов ВПР-150/210м/402/400/410",
+            title: "Электрододержатель ВПР-150/210м",
+            article: "1503",
+            image: "img/cards/zavihritel-210.webp",
+            alt: "Электрододержатель ВПР-150/210м",
+            description: "Электрододержатель/Завихритель для плазмотронов ВПР-150/210м",
             category: "Комплектующие"
         }, {
             title: "Электрододержатель ВПР-400/402м/410",
@@ -4525,11 +4525,11 @@
             description: "Электрододержатель/Завихритель для плазмотронов ВПР-400/402м/410",
             category: "Комплектующие"
         }, {
-            title: "Электрододержатель ВПР-150/210м",
-            article: "1503",
-            image: "img/cards/zavihritel-210.webp",
-            alt: "Электрододержатель ВПР-150/210м",
-            description: "Электрододержатель/Завихритель для плазмотронов ВПР-150/210м",
+            title: "Изолятор",
+            article: "4007",
+            image: "img/cards/izolator.webp",
+            alt: "Изолятор для плазмотрона",
+            description: "Изолятор для плазмотронов ВПР-150/210м/402/400/410",
             category: "Комплектующие"
         }, {
             title: "Кольцо изоляционное",
@@ -7653,7 +7653,7 @@
     const LazyLoad = {
         config: {
             rowsToLoad: 2,
-            scrollThreshold: 300,
+            scrollThreshold: 350,
             minCardWidth: 220
         },
         getCardsPerRow() {
@@ -7679,8 +7679,11 @@
             this.reset();
             window.addEventListener("scroll", this.handleScroll.bind(this));
             window.addEventListener("resize", debounce((() => {
-                AppState.filteredProducts = null;
-                this.reset();
+                const wasAllLoaded = AppState.allProductsLoaded;
+                const wasLoading = AppState.isLoading;
+                AppState.displayedProducts;
+                this.handleScroll();
+                if (!wasAllLoaded && !wasLoading) this.loadMoreProducts(this.getLoadMoreItems());
             }), 300));
         },
         handleScroll() {
