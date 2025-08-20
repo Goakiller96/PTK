@@ -5354,6 +5354,11 @@ h3 {
     border-radius: 5px;
   }
 
+  .header__top {
+    background: -webkit-gradient(linear, right top, left top, from(#fff8d5), color-stop(#fff7cd), to(#fff6c7));
+    background: linear-gradient(270deg, #fff8d5, #fff7cd, #fff6c7);
+  }
+
   .header__body {
     padding: 10px 0;
   }
