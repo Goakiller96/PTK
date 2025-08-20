@@ -8338,6 +8338,24 @@
             input.addEventListener("click", (e => e.stopPropagation()));
         }));
     }
+    document.addEventListener("click", (e => {
+        const arrow = e.target.closest("[data-spoller-menu]");
+        if (!arrow) return;
+        const subList = arrow.nextElementSibling;
+        if (!subList || !subList.classList.contains("menu__sub-list")) return;
+        const isActive = arrow.classList.toggle("_spoller-active");
+        arrow.setAttribute("aria-expanded", isActive);
+    }));
+    document.addEventListener("click", (e => {
+        document.querySelectorAll("[data-spoller-menu]._spoller-active").forEach((arrow => {
+            const subList = arrow.nextElementSibling;
+            const isClickInside = arrow.contains(e.target) || subList && subList.contains(e.target);
+            if (!isClickInside) {
+                arrow.classList.remove("_spoller-active");
+                arrow.setAttribute("aria-expanded", "false");
+            }
+        }));
+    }));
     document.addEventListener("DOMContentLoaded", script_init);
     window["FLS"] = true;
     isWebp();
