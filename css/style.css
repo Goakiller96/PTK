@@ -475,7 +475,6 @@ h3 {
 }
 
 .breadcrumbs__item {
-  margin-right: 10px;
   padding-right: 15px;
   position: relative;
   display: -webkit-box;
@@ -484,6 +483,10 @@ h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.breadcrumbs__item:not(:last-child) {
+  margin-right: 10px;
 }
 
 .breadcrumbs__item:not(:last-child)::after {
@@ -602,8 +605,6 @@ h3 {
   align-items: center;
   line-height: 1.5;
   min-height: 1.5em;
-  -webkit-transition: border-color 0.3s ease;
-  transition: border-color 0.3s ease;
 }
 
 .custom-select__trigger:focus {
@@ -1198,10 +1199,10 @@ h3 {
 }
 
 .menu__link {
-  font-weight: 500;
   color: #383838;
   text-transform: uppercase;
   font-size: 0.875rem;
+  font-weight: 500;
   -webkit-transition-property: color, fill, opacity, visibility, height, max-height, -webkit-transform;
   transition-property: color, fill, opacity, visibility, height, max-height, -webkit-transform;
   transition-property: color, fill, transform, opacity, visibility, height, max-height;
@@ -1213,7 +1214,6 @@ h3 {
 }
 
 .menu__arrow {
-  margin-left: 4px;
   font-size: 8px;
   -webkit-transition-property: color, fill, opacity, visibility, height, max-height, -webkit-transform;
   transition-property: color, fill, opacity, visibility, height, max-height, -webkit-transform;
@@ -1236,7 +1236,6 @@ h3 {
   background: #fff;
   -webkit-box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: 0.625rem;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
@@ -1942,8 +1941,8 @@ h3 {
   -webkit-transform: translateY(20px);
       -ms-transform: translateY(20px);
           transform: translateY(20px);
-  -webkit-animation: fadeInUp 0.6s ease-out forwards;
-          animation: fadeInUp 0.6s ease-out forwards;
+  -webkit-animation: fadeInUp 0.6s ease-out 0.3s forwards;
+          animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
 .services__card-title {
@@ -4220,15 +4219,14 @@ h3 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-column-gap: 8px;
-       -moz-column-gap: 8px;
-            column-gap: 8px;
+    -webkit-column-gap: 20px;
+       -moz-column-gap: 20px;
+            column-gap: 20px;
     padding: 3px 0;
   }
 
   .menu__item {
     padding: 2px;
-    margin: 0 3px;
   }
 
   .menu__item {
@@ -4254,6 +4252,10 @@ h3 {
     -webkit-transform: rotate(-180deg);
         -ms-transform: rotate(-180deg);
             transform: rotate(-180deg);
+  }
+
+  .menu__arrow {
+    margin-left: 4px;
   }
 
   .menu__sub-list {
@@ -5434,7 +5436,7 @@ h3 {
   .menu__list {
     border-radius: 5px;
     background-color: #fff8d5;
-    padding: 20px 10px 150px 10px;
+    padding: 20px 15px 150px 15px;
   }
 
   .menu__item:not(:last-child) {
