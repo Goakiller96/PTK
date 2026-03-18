@@ -4306,10 +4306,10 @@
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Плазмотрон ВПР-210m для плазменной резки металлов",
-            description: "Ремонтный комплект для горелок серии Фламинго",
+            description: "Плазмотрон для плазменной резки металлов",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-210m.html",
-            category: "Плазмотроны"
+            category: "Комплекты"
         }, {
             title: "Плазмотрон ВПР-402м<br> в сборе",
             article: "402-01",
@@ -4317,10 +4317,10 @@
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Плазмотрон ВПР-402м для плазменной резки металлов",
-            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом",
+            description: "Плазмотрон для плазменной резки металлов",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-402m.html",
-            category: "Плазмотроны"
+            category: "Комплекты"
         }, {
             title: "Плазмотрон ВПР-410<br> в сборе",
             article: "410-01",
@@ -4328,54 +4328,54 @@
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
             alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
-            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
+            description: "Плазмотрон для плазменной резки металлов",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-410.html",
-            category: "Плазмотроны"
+            category: "Комплекты"
         }, {
             title: "Плазмотрон ВПР-150/400<br> в сборе",
             article: "150-01/400-01",
             image: "img/plazmotron/vpr-150-400.webp",
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм", "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
-            alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
-            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
+            alt: "Плазмотрон ВПР-150/400",
+            description: "Плазмотрон для плазменной резки металлов",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-150-400.html",
-            category: "Плазмотроны"
+            category: "Комплекты"
         }, {
             title: "Плазмотрон ВПР-210м<br> без распределителя",
             article: "210-02",
             image: "img/plazmotron/vpr-210-golovka.webp",
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
             sizeLabel: "Диаметр сопла:",
-            alt: "Плазмотрон ВПР-210m для плазменной резки металлов",
-            description: "Ремонтный комплект для горелок серии Фламинго",
+            alt: "Плазмотрон ВПР-210m без распределителя",
+            description: "Плазмотрон для плазменной резки металлов",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-210m.html",
-            category: "Плазмотроны"
+            category: "Комплекты"
         }, {
             title: "Плазмотрон ВПР-402м<br> без распределителя",
             article: "402-02",
             image: "img/plazmotron/vpr-402-golovka.webp",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
-            alt: "Плазмотрон ВПР-402м для плазменной резки металлов",
-            description: "Профессиональная горелка для плазменной резки с увеличенным ресурсом",
+            alt: "Плазмотрон ВПР-402м без распределителя",
+            description: "Плазмотрон для плазменной резки металлов",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-402m.html",
-            category: "Плазмотроны"
+            category: "Комплекты"
         }, {
             title: "Плазмотрон ВПР-410<br> без распределителя",
             article: "410-02",
             image: "img/plazmotron/vpr-410-golovka.webp",
             sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
             sizeLabel: "Диаметр сопла:",
-            alt: "Плазмотрон ВПР-410 для плазменной резки металлов",
-            description: "Сопла для плазменной резки серии 410 с медным охлаждением",
+            alt: "Плазмотрон ВПР-410 без распределителя",
+            description: "Плазмотрон для плазменной резки металлов",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-410.html",
-            category: "Плазмотроны"
+            category: "Комплекты"
         }, {
             title: "Плазмотрон ВПР-450р ручной",
             article: "450-01",
@@ -4386,135 +4386,21 @@
             description: "Плазмотрон для плазменной ручной резки металлов",
             hasDetails: true,
             detailsUrl: "plazmotron-vpr-450.html",
-            category: "Плазмотроны"
-        }, {
-            title: "Сопло плазменное 150/210",
-            article: "1512",
-            image: "img/cards/soplo-210_2.webp",
-            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 210 для тонкой резки",
-            description: "Сопла малого диаметра для точной резки тонколистового металла",
-            category: "Сопла"
-        }, {
-            title: "Сопло плазменное 402",
-            article: "402011",
-            image: "img/cards/soplo-402.webp",
-            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 402 для резки цветных металлов",
-            description: "Износостойкие сопла для резки алюминия и цветных металлов",
-            category: "Сопла"
-        }, {
-            title: "Сопло плазменное 410",
-            article: "410011",
-            image: "img/cards/soplo-410_2.webp",
-            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло 410 для плазмотрона",
-            description: "Сопла для плазменной резки серии 410",
-            category: "Сопла"
-        }, {
-            title: "Сопло плазменное ВПР-400",
-            article: "4012",
-            image: "img/cards/soplo-400.webp",
-            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
-            sizeLabel: "Диаметр сопла:",
-            alt: "Сопло ВПР-400",
-            description: "Сопло для плазмотрона ВПР-400",
-            category: "Сопла"
-        }, {
-            title: "Электрод для плазмотрона конусный ЭП-03",
-            article: "4014",
-            image: "img/cards/electrod.webp",
-            sizes: [ "Гафний", "Биметалл" ],
-            sizeLabel: "Тип вставки:",
-            alt: "Электроды для плазменной резки",
-            description: "Катоды для плазмотронов с различными типами вставок",
-            category: "Электроды"
-        }, {
-            title: "Электрод для плазмотрона резьбовой ЭП-05",
-            article: "4014",
-            image: "img/cards/electrod-rezba.webp",
-            sizes: [ "Гафний", "Биметалл" ],
-            sizeLabel: "Тип вставки:",
-            alt: "Электроды для плазменной резки",
-            description: "Износостойкие сопла для резки алюминия и цветных металлов",
-            category: "Электроды"
-        }, {
-            title: "Электрод для плазмотрона",
-            article: "1514",
-            image: "img/cards/electrod-ag.webp",
-            sizes: [ "Гафний", "Серебро" ],
-            sizeLabel: "Тип вставки:",
-            alt: "Электроды для плазменной резки",
-            description: "Катоды для плазмотронов с различными типами вставок",
-            category: "Электроды"
-        }, {
-            title: "Корпус сопла ВПР-210М",
-            article: "210020",
-            image: "img/cards/korpus-sopla-210.webp",
-            alt: "Корпус сопла ВПР-210М",
-            description: "Корпус сопла для плазмотрона ВПР-210м",
-            category: "Комплектующие"
-        }, {
-            title: "Корпус с изоляционной втулкой ВПР-410",
-            article: "410008",
-            image: "img/cards/korpus-410.webp",
-            alt: "Корпус для плазмотрона ВПР-410",
-            description: "Корпус с изоляционной втулкой для плазмотрона ВПР-410",
-            category: "Комплектующие"
-        }, {
-            title: "Корпус с изоляционной втулкой ВПР-400/402м",
-            article: "4009",
-            image: "img/cards/korpus-402-210.webp",
-            alt: "Корпус для плазмотрона ВПР-402/400",
-            description: "Корпус с изоляционной втулкой для плазмотрона ВПР-402/400",
-            category: "Комплектующие"
-        }, {
-            title: "Гайка сопловая ВПР-210м/400/402м",
-            article: "402007",
-            image: "img/cards/gaika-402.webp",
-            alt: "Гайка сопловая для плазмотронов ВПР-210м/402/400",
-            description: "Гайка сопловая для плазмотронов ВПР-210м/402/400",
-            category: "Комплектующие"
-        }, {
-            title: "Гайка сопловая",
-            article: "4013",
-            image: "img/cards/gaika-150.webp",
-            sizes: [ "Основная", "Усиленная", "Угловой рез" ],
-            sizeLabel: "Тип:",
-            alt: "Гайка",
-            description: "Гайка",
-            category: "Комплектующие"
-        }, {
-            title: "Гайка изолятора",
-            article: "4006",
-            image: "img/cards/gaika-izol.webp",
-            alt: "Гайка изолятора для плазмотрона",
-            description: "Гайка изолятора для плазмотронов ВПР-150/210м/402/400/410",
-            category: "Комплектующие"
-        }, {
-            title: "Гайка присоединительная",
-            article: "4002",
-            image: "img/cards/gaika-prisoed.webp",
-            alt: "Гайка присоединительная",
-            description: "Гайка присоединительная для плазмотрона",
-            category: "Комплектующие"
+            category: "Комплекты"
         }, {
             title: "Распределитель (силовой токоподвод)",
             article: "4001",
             image: "img/cards/raspredelitel.webp",
             alt: "Распределитель (силовой токоподвод) для плазмотрона",
             description: "Распределитель для плазмотронов ВПР-150/210м/402/400/410",
-            category: "Комплектующие"
+            category: "Унификация"
         }, {
-            title: "Электрододержатель ВПР-150/210м",
-            article: "1503",
-            image: "img/cards/zavihritel-210.webp",
-            alt: "Электрододержатель ВПР-150/210м",
-            description: "Электрододержатель/Завихритель для плазмотронов ВПР-150/210м",
-            category: "Комплектующие"
+            title: "Гайка присоединительная",
+            article: "4002",
+            image: "img/cards/gaika-prisoed.webp",
+            alt: "Гайка присоединительная",
+            description: "Гайка присоединительная для плазмотрона",
+            category: "Унификация"
         }, {
             title: "Электрододержатель ВПР-400/402м/410",
             article: "4003",
@@ -4523,123 +4409,288 @@
             sizeLabel: "Тип:",
             alt: "Электрододержатель ВПР-400/402м/410",
             description: "Электрододержатель/Завихритель для плазмотронов ВПР-400/402м/410",
-            category: "Комплектующие"
+            category: "Унификация"
         }, {
-            title: "Изолятор",
-            article: "4007",
-            image: "img/cards/izolator.webp",
-            alt: "Изолятор для плазмотрона",
-            description: "Изолятор для плазмотронов ВПР-150/210м/402/400/410",
-            category: "Комплектующие"
+            title: "Трубка",
+            article: "1504-4004",
+            image: "img/cards/trubka.webp",
+            sizes: [ "ВПР-400/402м/410", "ВПР-150/210м" ],
+            sizeLabel: "Тип:",
+            alt: "Трубка",
+            description: "Трубка для плазмотронов",
+            category: "Унификация"
         }, {
             title: "Кольцо изоляционное",
             article: "4005",
             image: "img/cards/kolltso-izolatora.webp",
             alt: "Кольцо изоляционное",
             description: "Кольцо изоляционное для плазмотрона",
-            category: "Комплектующие"
+            category: "Унификация"
         }, {
-            title: "Изолятор ВПР-450Р",
-            article: "450003",
-            image: "img/cards/izolator-450.webp",
-            alt: "Изолятор ВПР-450Р",
-            description: "Изолятор ВПР-450Р для плазмотрона ВПР-450Р",
-            category: "Комплектующие"
+            title: "Гайка изолятора",
+            article: "4006",
+            image: "img/cards/gaika-izol.webp",
+            alt: "Гайка изолятора для плазмотрона",
+            description: "Гайка изолятора для плазмотронов ВПР-150/210м/402/400/410",
+            category: "Унификация"
         }, {
-            title: "Втулка сопла ВПР-450Р",
-            article: "450009",
-            image: "img/cards/vtulka-sopla-450.webp",
-            alt: "Втулка сопла ВПР-450Р",
-            description: "Втулка сопла ВПР-450Р для плазмотрона ВПР-450Р",
-            category: "Комплектующие"
-        }, {
-            title: "Втулка сопла ВПР-150/210м",
-            article: "1510",
-            image: "img/cards/vtulka-sopla-210-150.webp",
-            alt: "Втулка сопла для ВПР-150/210м",
-            description: "Втулка сопла для плазмотронов ВПР-150/210м",
-            category: "Комплектующие"
-        }, {
-            title: "Втулка сопла ВПР-400/402м",
-            article: "4010-01",
-            image: "img/cards/vtulka-sopla-402-400.webp",
-            alt: "Втулка сопла ВПР-400/402м",
-            description: "Втулка сопла для плазмотронов ВПР-400/402м",
-            category: "Комплектующие"
-        }, {
-            title: "Втулка сопла (самоуплотняющаяся) ВПР-410",
-            article: "410009-02",
-            image: "img/cards/vtulka-sopla-su-410.webp",
-            alt: "Втулка сопла (самоуплотняющаяся) ВПР-410",
-            description: "Втулка сопла (самоуплотняющаяся) для плазмотрона ВПР-410",
-            category: "Комплектующие"
-        }, {
-            title: "Втулка сопла ВПР-410",
-            article: "410009-01",
-            image: "img/cards/vtulka-sopla-410.webp",
-            alt: "Втулка сопла ВПР-410",
-            description: "Втулка сопла для плазмотрона ВПР-410",
-            category: "Комплектующие"
-        }, {
-            title: "Кольцо защитное 450Р",
-            article: "450017",
-            image: "img/cards/koltso-450.webp",
-            alt: "Кольцо защитное 450Р",
-            description: "Кольцо защитное для плазмотрона ВПР-450Р",
-            category: "Комплектующие"
-        }, {
-            title: "Втулка изоляционная ВПР-410",
-            article: "410010",
-            image: "img/cards/vtulka-izol-410.webp",
-            alt: "Втулка изоляционная ВПР-410",
-            description: "Втулка изоляционная для плазмотрона ВПР-410",
-            category: "Комплектующие"
+            title: "Изолятор",
+            article: "4007",
+            image: "img/cards/izolator.webp",
+            alt: "Изолятор для плазмотрона",
+            description: "Изолятор для плазмотронов ВПР-150/210м/402/400/410",
+            category: "Унификация"
         }, {
             title: "Втулка изоляционная ВПР-150/210м/400/402м",
             article: "4008",
             image: "img/cards/vtulka-izol-402-210.webp",
             alt: "Втулка изоляционная ВПР-150/210м/400/402м",
             description: "Втулка изоляционная для плазмотронов ВПР-150/210м/400/402м",
-            category: "Комплектующие"
+            category: "Унификация"
+        }, {
+            title: "Корпус с изоляционной втулкой ВПР-400/402м",
+            article: "4009",
+            image: "img/cards/korpus-402-210.webp",
+            alt: "Корпус для плазмотрона ВПР-402/400",
+            description: "Корпус с изоляционной втулкой для плазмотрона ВПР-402/400",
+            category: "Унификация"
+        }, {
+            title: "Втулка сопла ВПР-400/402м",
+            article: "4010-01",
+            image: "img/cards/vtulka-sopla-402-400.webp",
+            alt: "Втулка сопла ВПР-400/402м",
+            description: "Втулка сопла для плазмотронов ВПР-400/402м",
+            category: "Унификация"
+        }, {
+            title: "Втулка сопла (самоуплотняющаяся) ВПР-400/402м",
+            article: "4010-02",
+            image: "img/cards/vtulka-sopla-su-410.webp",
+            alt: "Втулка сопла (самоуплотняющаяся) ВПР-400/402м",
+            description: "Втулка сопла (самоуплотняющаяся) для плазмотрона ВПР-400/402м",
+            category: "Унификация"
+        }, {
+            title: "Электрод для плазмотрона конусный ЭП-03",
+            article: "4014-11(12)",
+            image: "img/cards/electrod.webp",
+            sizes: [ "Гафний", "Биметалл" ],
+            sizeLabel: "Тип вставки:",
+            alt: "Электроды для плазменной резки",
+            description: "Электроды для плазмотронов",
+            category: "Унификация"
+        }, {
+            title: "Электрод для плазмотрона резьбовой ЭП-05",
+            article: "4014-21(22)",
+            image: "img/cards/electrod-rezba.webp",
+            sizes: [ "Гафний", "Биметалл" ],
+            sizeLabel: "Тип вставки:",
+            alt: "Электроды для плазменной резки",
+            description: "Электроды для плазмотронов с различными типами вставок",
+            category: "Унификация"
         }, {
             title: "Прокладка",
             article: "4015",
             image: "img/cards/prokladka.webp",
             alt: "Прокладка",
             description: "Прокладка для плазмотронов ВПР-150/210м/402/400/410",
-            category: "Комплектующие"
+            category: "Унификация"
         }, {
             title: "Кольца уплотнительные",
-            article: "4016-4020",
+            article: "4011, 4017, 4018, 4019, 4016-4020",
             image: "img/cards/koltsa.webp",
-            sizes: [ "09х13", "12х16", "18х22", "20х24", "30х35", "32х38", "36х41" ],
+            sizes: [ "12х16", "18х22", "20х24", "30х35", "32х38", "36х41" ],
             sizeLabel: "Размер:",
-            alt: "Ремкомплект для плазменной горелки",
-            description: "Ремонтный комплект для горелок серии Фламинго",
-            category: "Комплектующие"
+            alt: "Кольца уплотнительные",
+            description: "Кольца уплотнительные",
+            category: "Унификация"
         }, {
-            title: "Смазка силиконовая",
-            article: "7734",
-            image: "img/cards/smazka-silicot.webp",
-            alt: "Смазка силиконовая",
-            description: "Смазка силиконовая",
-            category: "Прочее"
+            title: "Изолятор установочный",
+            article: "4023",
+            image: "img/cards/.webp",
+            alt: "Изолятор установочный для плазмотрона",
+            description: "Изолятор для плазмотронов ВПР-150/210м/402/400/410",
+            category: "Унификация"
+        }, {
+            title: "Винт",
+            article: "4022",
+            image: "img/cards/.webp",
+            alt: "Винт M5",
+            description: "Винт M5 высоковольтный",
+            category: "Унификация"
+        }, {
+            title: "Электрододержатель ВПР-150/210м",
+            article: "1503",
+            image: "img/cards/zavihritel-210.webp",
+            alt: "Электрододержатель ВПР-150/210м",
+            description: "Электрододержатель/Завихритель для плазмотронов ВПР-150/210м",
+            category: "ВПР-150/210M"
+        }, {
+            title: "Втулка сопла ВПР-150/210м",
+            article: "1510",
+            image: "img/cards/vtulka-sopla-210-150.webp",
+            alt: "Втулка сопла для ВПР-150/210м",
+            description: "Втулка сопла для плазмотронов ВПР-150/210м",
+            category: "ВПР-150/210M"
+        }, {
+            title: "Корпус сопла ВПР-150",
+            article: "1511",
+            image: "img/cards/.webp",
+            alt: "Корпус сопла ВПР-150",
+            description: "Корпус сопла для плазмотрона ВПР-150",
+            category: "ВПР-150/210M"
+        }, {
+            title: "Корпус сопла ВПР-210м",
+            article: "210020",
+            image: "img/cards/korpus-sopla-210.webp",
+            alt: "Корпус сопла ВПР-210М",
+            description: "Корпус сопла для плазмотрона ВПР-210м",
+            category: "ВПР-150/210M"
+        }, {
+            title: "Сопло плазменное 150/210м",
+            article: "1512",
+            image: "img/cards/soplo-210_2.webp",
+            sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 210 для тонкой резки",
+            description: "Сопла для плазменной резки",
+            category: "ВПР-150/210M"
+        }, {
+            title: "Электрод для плазмотрона",
+            article: "1514",
+            image: "img/cards/electrod-ag.webp",
+            sizeLabel: "Тип вставки:",
+            alt: "Электроды для плазменной резки",
+            description: "Электроды для плазмотронов",
+            category: "ВПР-150/210M"
+        }, {
+            title: "Кольцо уплотнительное 09х13",
+            article: "1517",
+            image: "img/cards/koltsa.webp",
+            sizeLabel: "Размер:",
+            alt: "Кольцо уплотнительное 09х13",
+            description: "Кольцо уплотнительное",
+            category: "ВПР-150/210M"
+        }, {
+            title: "Гайка сопловая ВПР-210м/400/402м",
+            article: "402007",
+            image: "img/cards/gaika-402.webp",
+            alt: "Гайка сопловая для плазмотронов ВПР-210м/402/400",
+            description: "Гайка сопловая для плазмотронов ВПР-210м/402/400",
+            category: "ВПР-402M"
+        }, {
+            title: "Сопло плазменное 402",
+            article: "402011",
+            image: "img/cards/soplo-402.webp",
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 402 для резки цветных металлов",
+            description: "Сопла для плазменной резки",
+            category: "ВПР-402M"
+        }, {
+            title: "Кольцо уплотнительное 30х35",
+            article: "402017",
+            image: "img/cards/koltsa.webp",
+            sizeLabel: "Размер:",
+            alt: "Кольцо уплотнительное 30х35",
+            description: "Кольцо уплотнительное",
+            category: "ВПР-402M"
+        }, {
+            title: "Сопло плазменное ВПР-400",
+            article: "4012",
+            image: "img/cards/soplo-400.webp",
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло ВПР-400",
+            description: "Сопло для плазмотрона ВПР-400",
+            category: "ВПР-400"
+        }, {
+            title: "Гайка сопловая",
+            article: "4013",
+            image: "img/cards/gaika-150.webp",
+            sizes: [ "Основная", "Усиленная", "Угловой рез" ],
+            sizeLabel: "Тип:",
+            alt: "Гайка сопловая",
+            description: "Гайка сопловая",
+            category: "ВПР-400"
+        }, {
+            title: "Кольцо уплотнительное",
+            article: "4021",
+            image: "img/cards/.webp",
+            sizeLabel: "Размер:",
+            alt: "Кольцо уплотнительное",
+            description: "Кольцо уплотнительное",
+            category: "ВПР-400"
+        }, {
+            title: "Втулка изоляционная ВПР-410",
+            article: "410010",
+            image: "img/cards/vtulka-izol-410.webp",
+            alt: "Втулка изоляционная ВПР-410",
+            description: "Втулка изоляционная для плазмотрона ВПР-410",
+            category: "ВПР-410"
+        }, {
+            title: "Втулка сопла ВПР-410",
+            article: "410009-01",
+            image: "img/cards/vtulka-sopla-410.webp",
+            alt: "Втулка сопла ВПР-410",
+            description: "Втулка сопла для плазмотрона ВПР-410",
+            category: "ВПР-410"
+        }, {
+            title: "Втулка сопла (самоуплотняющаяся) ВПР-410",
+            article: "410009-02",
+            image: "img/cards/vtulka-sopla-su-410.webp",
+            alt: "Втулка сопла (самоуплотняющаяся) ВПР-410",
+            description: "Втулка сопла (самоуплотняющаяся) для плазмотрона ВПР-410",
+            category: "ВПР-410"
+        }, {
+            title: "Корпус с изоляционной втулкой ВПР-410",
+            article: "410008",
+            image: "img/cards/korpus-410.webp",
+            alt: "Корпус для плазмотрона ВПР-410",
+            description: "Корпус с изоляционной втулкой для плазмотрона ВПР-410",
+            category: "ВПР-410"
+        }, {
+            title: "Сопло плазменное 410",
+            article: "410011",
+            image: "img/cards/soplo-410_2.webp",
+            sizes: [ "2.5 мм", "3.0 мм", "3.5 мм", "4.0 мм" ],
+            sizeLabel: "Диаметр сопла:",
+            alt: "Сопло 410 для плазмотрона",
+            description: "Сопла для плазменной резки",
+            category: "ВПР-410"
+        }, {
+            title: "Изолятор ВПР-450Р",
+            article: "450003",
+            image: "img/cards/izolator-450.webp",
+            alt: "Изолятор ВПР-450Р",
+            description: "Изолятор ВПР-450Р для плазмотрона ВПР-450Р",
+            category: "ВПР-450Р"
+        }, {
+            title: "Втулка сопла ВПР-450Р",
+            article: "450009",
+            image: "img/cards/vtulka-sopla-450.webp",
+            alt: "Втулка сопла ВПР-450Р",
+            description: "Втулка сопла ВПР-450Р для плазмотрона ВПР-450Р",
+            category: "ВПР-450Р"
+        }, {
+            title: "Кольцо защитное 450Р",
+            article: "450017",
+            image: "img/cards/koltso-450.webp",
+            alt: "Кольцо защитное 450Р",
+            description: "Кольцо защитное для плазмотрона ВПР-450Р",
+            category: "ВПР-450Р"
         }, {
             title: "Ключ универсальный",
             article: "7725",
             image: "img/cards/kluch.webp",
             alt: "Ключ универсальный",
             description: "Ключ универсальный для плазмотронов ВПР-150/210м/400/402м",
-            category: "Прочее"
+            category: "Вспомогательные"
         }, {
-            title: "Трубка",
-            article: "1504-4004",
-            image: "img/cards/trubka.webp",
-            sizes: [ "ВПР-150/210м", "ВПР-400/402м/410" ],
-            sizeLabel: "Тип:",
-            alt: "Ремкомплект для плазменной горелки",
-            description: "Ремонтный комплект для горелок серии Фламинго",
-            category: "Комплектующие"
+            title: "Смазка силиконовая",
+            article: "7734",
+            image: "img/cards/smazka-silicot.webp",
+            alt: "Смазка силиконовая",
+            description: "Смазка силиконовая",
+            category: "Вспомогательные"
         } ];
         const productsData = [];
         initialProducts.forEach((product => {
@@ -4651,7 +4702,7 @@
         }));
         return productsData;
     }
-    const products_productsData = createInitialProducts();
+    const productsData = createInitialProducts();
     class EmailJSResponseStatus {
         constructor(_status = 0, _text = "Network Error") {
             this.status = _status;
@@ -7650,6 +7701,75 @@
         unlockBodyScroll();
         restoreHeaderState();
     }
+    function focusProductByArticle() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleParam = urlParams.get("article");
+        if (!articleParam) {
+            console.log("❌ Нет параметра article в URL");
+            return;
+        }
+        console.log(`🔍 Ищем артикул: "${articleParam}"`);
+        const targetProduct = productsData.find((p => (p.article || "").toString().trim().toLowerCase() === articleParam.toLowerCase()));
+        if (!targetProduct) {
+            console.error(`❌ Товар с артикулом "${articleParam}" не найден в базе данных`);
+            return;
+        }
+        const targetCategory = targetProduct.category;
+        if (targetCategory) {
+            console.log(`📂 Устанавливаем категорию: ${targetCategory}`);
+            setCategoryFilter(targetCategory);
+        }
+        if (!AppState.allProductsLoaded) LazyLoad.loadAllProducts();
+        setTimeout((() => {
+            if (!DOM.productsContainer) {
+                console.error("❌ productsContainer не найден");
+                return;
+            }
+            const cards = Array.from(DOM.productsContainer.querySelectorAll(".product__card"));
+            console.log(`Всего карточек после полной загрузки: ${cards.length}`);
+            let targetCard = null;
+            for (let card of cards) {
+                const cardArticle = (card.dataset.article || "").trim();
+                if (cardArticle.toLowerCase() === articleParam.toLowerCase()) {
+                    targetCard = card;
+                    break;
+                }
+            }
+            if (targetCard) {
+                console.log(`✅ НАЙДЕНА карточка "${articleParam}"`);
+                targetCard.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+                targetCard.classList.add("product-highlight");
+                setTimeout((() => targetCard.classList.remove("product-highlight")), 2e4);
+            } else {
+                console.error(`❌ Карточка с артикулом "${articleParam}" НЕ НАЙДЕНА`);
+                console.log("Доступные артикулы:", cards.map((c => c.dataset.article || "—")).join(" | "));
+            }
+        }), 400);
+    }
+    function setCategoryFilter(categoryValue) {
+        if (!DOM.categoryFilter) return;
+        const selectValue = DOM.categoryFilter.querySelector(".custom-select__value");
+        const optionsList = DOM.categoryFilter.querySelector(".custom-select__options");
+        if (!selectValue || !optionsList) return;
+        const optionItems = optionsList.querySelectorAll("li");
+        let found = false;
+        optionItems.forEach((option => {
+            if (option.dataset.value === categoryValue) {
+                optionItems.forEach((opt => opt.classList.remove("selected")));
+                option.classList.add("selected");
+                selectValue.textContent = option.textContent;
+                found = true;
+            }
+        }));
+        if (found) {
+            AppState.currentCategory = categoryValue;
+            AppState.filteredProducts = null;
+            LazyLoad.reset();
+        }
+    }
     const LazyLoad = {
         config: {
             rowsToLoad: 2,
@@ -7679,11 +7799,8 @@
             this.reset();
             window.addEventListener("scroll", this.handleScroll.bind(this));
             window.addEventListener("resize", debounce((() => {
-                const wasAllLoaded = AppState.allProductsLoaded;
-                const wasLoading = AppState.isLoading;
-                AppState.displayedProducts;
                 this.handleScroll();
-                if (!wasAllLoaded && !wasLoading) this.loadMoreProducts(this.getLoadMoreItems());
+                if (!AppState.allProductsLoaded && !AppState.isLoading) this.loadMoreProducts(this.getLoadMoreItems());
             }), 300));
         },
         handleScroll() {
@@ -7725,6 +7842,21 @@
                 DOM.productsContainer.innerHTML = "";
                 this.loadMoreProducts(this.getInitialItems());
             }
+        },
+        loadAllProducts() {
+            if (AppState.allProductsLoaded) return;
+            const filteredProducts = getFilteredProducts();
+            const remaining = filteredProducts.slice(AppState.displayedProducts);
+            const fragment = document.createDocumentFragment();
+            remaining.forEach((product => {
+                const productCard = createProductCard(product, false);
+                fragment.appendChild(productCard);
+            }));
+            DOM.productsContainer.appendChild(fragment);
+            AppState.displayedProducts = filteredProducts.length;
+            AppState.allProductsLoaded = true;
+            AppState.isLoading = false;
+            console.log(`✅ Загружено всех товаров: ${filteredProducts.length}`);
         }
     };
     function validateProduct(product) {
@@ -7732,11 +7864,11 @@
     }
     function getFilteredProducts() {
         if (AppState.filteredProducts) return AppState.filteredProducts;
-        if (!Array.isArray(products_productsData)) {
+        if (!Array.isArray(productsData)) {
             console.error(translations.ru.productsNotLoaded);
             return [];
         }
-        let filtered = products_productsData.filter(validateProduct);
+        let filtered = productsData.filter(validateProduct);
         if (AppState.currentCategory !== "all") filtered = filtered.filter((product => product.category === AppState.currentCategory));
         if (DOM.searchInput && DOM.searchInput.value.trim()) {
             const searchTerm = DOM.searchInput.value.trim().toLowerCase();
@@ -7933,7 +8065,7 @@
             user_phone: sanitizeInput(phoneInput.value) || ""
         };
         const sendEmail = (retries = 3, delay = 2e3) => {
-            es.send(emailConfig.serviceId, emailConfig.templateId, templateParams).then((response => {
+            es.send(emailConfig.serviceId, emailConfig.templateId, templateParams).then((() => {
                 showSuccessMessage(translations.ru.orderSuccess.replace("{total}", formatPrice(AppState.totalPrice)));
                 AppState.cart = [];
                 updateCart();
@@ -7957,7 +8089,7 @@
             if (Array.isArray(parsedCart)) {
                 AppState.cart = parsedCart.filter(validateCartItem);
                 updateCart();
-            } else throw new Error("Некорректный формат корзины");
+            }
         } catch (e) {
             console.error("Ошибка при загрузке корзины:", e);
             localStorage.removeItem("cart");
@@ -8017,13 +8149,13 @@
         const selectValue = DOM.categoryFilter.querySelector(".custom-select__value");
         const optionsList = DOM.categoryFilter.querySelector(".custom-select__options");
         if (!selectTrigger || !selectValue || !optionsList) return;
-        if (!Array.isArray(products_productsData)) {
+        if (!Array.isArray(productsData)) {
             console.error(translations.ru.productsNotLoaded);
             return;
         }
         const customCategoryOrder = [ "Плазмотроны", "Сопла", "Электроды", "Комплектующие", "Прочее" ];
         const categoryOrderMap = new Map(customCategoryOrder.map(((cat, index) => [ cat, index ])));
-        const categories = [ ...new Set(products_productsData.map((product => product.category)).filter((category => category))) ];
+        const categories = [ ...new Set(productsData.map((product => product.category)).filter(Boolean)) ];
         const sortedCategories = categories.sort(((a, b) => {
             const indexA = categoryOrderMap.has(a) ? categoryOrderMap.get(a) : customCategoryOrder.length;
             const indexB = categoryOrderMap.has(b) ? categoryOrderMap.get(b) : customCategoryOrder.length;
@@ -8125,13 +8257,11 @@
                     message: `Запрос обратного звонка от ${sanitizeInput(nameInput.value)}, телефон: ${sanitizeInput(phoneInput.value)}`,
                     request_date: (new Date).toLocaleString("ru-RU")
                 };
-                es.send(emailConfig.serviceId, emailConfig.templateId, templateParams).then((response => {
+                es.send(emailConfig.serviceId, emailConfig.templateId, templateParams).then((() => {
                     showSuccessMessage(translations.ru.callBackSuccess);
                     callBackForm.reset();
                     closeModalHandler();
-                }), (error => {
-                    showErrorMessage(translations.ru.callBackError);
-                }));
+                })).catch((() => showErrorMessage(translations.ru.callBackError)));
             }
         }));
     }
@@ -8144,10 +8274,7 @@
         infoIcons.forEach((icon => {
             icon.addEventListener("click", (e => {
                 e.preventDefault();
-                if (tooltipTimers.has(icon)) {
-                    clearTimeout(tooltipTimers.get(icon));
-                    tooltipTimers.delete(icon);
-                }
+                if (tooltipTimers.has(icon)) clearTimeout(tooltipTimers.get(icon));
                 icon.classList.add("active");
                 const timer = setTimeout((() => {
                     icon.classList.remove("active");
@@ -8305,9 +8432,9 @@
         setTimeout((() => successMessage.remove()), 2500);
     }
     function checkProductsData() {
-        if (!products_productsData || !Array.isArray(products_productsData)) {
+        if (!productsData || !Array.isArray(productsData)) {
             console.error(translations.ru.productsNotLoaded);
-            DOM.productsContainer.innerHTML = `<p class="error-message">${translations.ru.productsNotLoaded}</p>`;
+            if (DOM.productsContainer) DOM.productsContainer.innerHTML = `<p class="error-message">${translations.ru.productsNotLoaded}</p>`;
             return false;
         }
         return true;
@@ -8323,6 +8450,7 @@
             LazyLoad.init();
             if (DOM.searchForm) initSearchFunctionality();
             if (DOM.categoryFilter) initCategoryFilter();
+            focusProductByArticle();
         }
         initHeaderTransformation();
         initScrollTopButton();
@@ -8331,9 +8459,6 @@
         initInputMask();
         initCallBackForm();
         initTouchTooltips();
-        document.querySelectorAll(".modal-content input, .modal-content textarea").forEach((input => {
-            input.addEventListener("click", (e => e.stopPropagation()));
-        }));
         document.querySelectorAll(".modal-content input, .modal-content textarea").forEach((input => {
             input.addEventListener("click", (e => e.stopPropagation()));
         }));
