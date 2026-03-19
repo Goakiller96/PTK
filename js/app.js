@@ -4304,6 +4304,7 @@
             article: "210-01",
             image: "img/plazmotron/vpr-210m.webp",
             sizes: [ "1.3 мм", "1.5 мм", "1.8 мм", "2.0 мм" ],
+            price: 29585,
             sizeLabel: "Диаметр сопла:",
             alt: "Плазмотрон ВПР-210m для плазменной резки металлов",
             description: "Плазмотрон для плазменной резки металлов",
@@ -4494,12 +4495,43 @@
             description: "Прокладка для плазмотронов ВПР-150/210м/402/400/410",
             category: "Унификация"
         }, {
-            title: "Кольца уплотнительные",
-            article: "4011, 4017, 4018, 4019, 4016-4020",
+            title: "Кольцо 12x16",
+            article: "4011",
             image: "img/cards/koltsa.webp",
-            sizes: [ "12х16", "18х22", "20х24", "30х35", "32х38", "36х41" ],
             sizeLabel: "Размер:",
-            alt: "Кольца уплотнительные",
+            alt: "Кольцо 12x16",
+            description: "Кольца уплотнительные",
+            category: "Унификация"
+        }, {
+            title: "Кольцо 18x22",
+            article: "4017",
+            image: "img/cards/koltsa.webp",
+            sizeLabel: "Размер:",
+            alt: "Кольцо 18x22",
+            description: "Кольца уплотнительные",
+            category: "Унификация"
+        }, {
+            title: "Кольцо 20x24",
+            article: "4016-4020",
+            image: "img/cards/koltsa.webp",
+            sizeLabel: "Размер:",
+            alt: "Кольцо 20x24",
+            description: "Кольца уплотнительные",
+            category: "Унификация"
+        }, {
+            title: "Кольцо 32x38",
+            article: "4018",
+            image: "img/cards/koltsa.webp",
+            sizeLabel: "Размер:",
+            alt: "Кольцо 32x38",
+            description: "Кольца уплотнительные",
+            category: "Унификация"
+        }, {
+            title: "Кольцо 36x41",
+            article: "4019",
+            image: "img/cards/koltsa.webp",
+            sizeLabel: "Размер:",
+            alt: "Кольцо 36x41",
             description: "Кольца уплотнительные",
             category: "Унификация"
         }, {
@@ -8480,6 +8512,16 @@
                 arrow.setAttribute("aria-expanded", "false");
             }
         }));
+    }));
+    function syncCartFromStorage() {
+        loadCartFromStorage();
+        updateCart();
+    }
+    window.addEventListener("pageshow", (event => {
+        syncCartFromStorage();
+    }));
+    document.addEventListener("visibilitychange", (() => {
+        if (document.visibilityState === "visible") syncCartFromStorage();
     }));
     document.addEventListener("DOMContentLoaded", script_init);
     window["FLS"] = true;
