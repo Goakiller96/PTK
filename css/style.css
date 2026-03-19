@@ -2376,7 +2376,7 @@ h3 {
 .product__details-link {
   margin-top: 5px;
   color: #383838;
-  text-decoration: none;
+  text-decoration: underline;
   font-size: 14px;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
@@ -2385,7 +2385,7 @@ h3 {
 .product__details-link:hover,
 .product__details-link:focus {
   color: #383838;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .product__details-link:active {
